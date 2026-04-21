@@ -1,0 +1,304 @@
+/**
+ * KLDS Table Component
+ *
+ * Figma 노드: 1:15421 (tables) → 1:15422 (table)
+ *
+ * ※ 외부 CSS 프레임워크(Tailwind, Bootstrap 등) 사용 금지
+ * ※ 모든 값은 Figma MCP JSON → RGB→HEX 변환 → tokens.css 매핑 검증 완료
+ *
+ * 구조 (Figma 원본):
+ *   tables (1:15421) FRAME VERTICAL gap:24
+ *   └─ table (1:15422) FRAME VERTICAL gap:null
+ *      fills:#FFFFFF stroke:#E5E7EB cornerRadius:16
+ *      ├─ tr (1:15423) header FRAME HORIZONTAL gap:null
+ *      │  fills:#F3F4F6 stroke-bottom:#E5E7EB h:40
+ *      │  └─ th-medium × 6  HORIZONTAL padding:8 gap:4 align:CENTER
+ *      └─ tr × 9  data FRAME HORIZONTAL gap:null
+ *         └─ td-large × 6  HORIZONTAL padding:16h/4v gap:varies align:CENTER
+ *
+ * 컬럼 (Figma bounds 직접 측정):
+ *   col1(업무명)=flex-1  col2(요청자)=120  col3(시작일)=120
+ *   col4(종료일)=120     col5(우선순위)=100 col6(상태)=100
+ */
+
+/* ============================================================
+   1. Table Container
+   Figma: 1:15422 — FRAME VERTICAL
+   fills: #FFFFFF → --klds-color-white ✅
+   strokes: #E5E7EB → --klds-color-border-default ✅
+   cornerRadius: 16 → --klds-radius-m ✅
+   ============================================================ */
+.klds-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--klds-color-white);
+  border: 1px solid var(--klds-color-border-default);
+  border-radius: var(--klds-radius-m);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   2. Header Row
+   Figma: 1:15423 — FRAME HORIZONTAL
+   fills: #F3F4F6 → --klds-color-gray-gray02 ✅
+   stroke-bottom: #E5E7EB → --klds-color-border-default ✅
+   h: 40 → --klds-size-size6 ✅
+   ============================================================ */
+.klds-table__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: var(--klds-size-size6);
+  background-color: var(--klds-color-gray-gray01);
+  border-bottom: 1px solid var(--klds-color-border-default);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   3. Header Cell (th-medium)
+   Figma: INSTANCE/FRAME HORIZONTAL
+   padding: 8 → --klds-padding-xxs ✅
+   gap: 4 → --klds-gap-xxs ✅
+   align: CENTER
+   font: Pretendard 16px/Bold lineHeight:1.5
+   text: #121212 → --klds-color-text-black ✅
+   ============================================================ */
+.klds-table__th {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--klds-gap-xxs);
+  padding: var(--klds-padding-xxs);
+  font-family: var(--klds-typography-fontfamily-text);
+  font-size: var(--klds-typography-fontsize-s);
+  font-weight: var(--klds-typography-fontweight-bold);
+  line-height: 1.5;
+  color: var(--klds-color-text-black);
+  text-align: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  min-width: 40px;
+  height: 40px;
+}
+
+/* ============================================================
+   4. Data Row
+   Figma: 1:15438 등 — FRAME HORIZONTAL
+   fills: 없음 → background 없음
+   strokes: 없음 → border 없음
+   h: 52
+   ============================================================ */
+.klds-table__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 52px;
+  flex-shrink: 0;
+}
+
+.klds-table__row:hover {
+  background-color: var(--klds-color-background-hover);
+}
+
+/* ============================================================
+   5. Data Cell (td-large) — 기본
+   Figma: FRAME HORIZONTAL
+   fills: 없음 → background 없음 (투명)
+   padding: px:16 py:4 → --klds-padding-m / --klds-padding-xxxs ✅
+   gap: 4 → --klds-gap-xxs ✅
+   align: CENTER, justify: CENTER
+   font: Pretendard 16px/Regular lineHeight:1.5
+   text: #4B5563 → --klds-color-gray-gray07 ✅
+   ============================================================ */
+.klds-table__td {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--klds-gap-xxs);
+  padding: var(--klds-padding-xxxs) var(--klds-padding-m);
+  height: 52px;
+  font-family: var(--klds-typography-fontfamily-text);
+  font-size: var(--klds-typography-fontsize-s);
+  font-weight: var(--klds-typography-fontweight-regular);
+  line-height: 1.5;
+  color: var(--klds-color-gray-gray07);
+  box-sizing: border-box;
+  flex-shrink: 0;
+  min-width: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   6. Column Width (Figma bounds 직접 측정)
+   첫 번째 컬럼(업무명)은 flex-grow:1, 나머지는 고정 폭
+   ============================================================ */
+.klds-table__col--flex {
+  flex: 1 0 0;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+.klds-table__col--120 {
+  width: 120px;
+}
+
+.klds-table__col--100 {
+  width: 100px;
+}
+
+/* ============================================================
+   7. 업무명 셀 변형 (td col1)
+   Figma: justify=flex-start, font-weight:SemiBold(600)
+   ============================================================ */
+
+/* 공통: 업무명 셀은 좌측 정렬 */
+.klds-table__td--task {
+  justify-content: flex-start;
+  cursor: pointer;
+  min-width: 0;
+  /* flex 자식 축소 허용 */
+  overflow: hidden;
+  /* 말줄임 동작 보장 */
+}
+
+/* 7a. 일반 (gap:null) — text+redDot, gap 미적용 */
+.klds-table__td--task-default {
+  justify-content: flex-start;
+  gap: unset;
+}
+
+/* 7b. 별 아이콘 (gap:8) → --klds-gap-xs ✅ */
+.klds-table__td--task-star {
+  justify-content: flex-start;
+  gap: var(--klds-gap-xs);
+}
+
+/* 7c. 경고 아이콘 (gap:4) → --klds-gap-xxs ✅ */
+.klds-table__td--task-warning {
+  justify-content: flex-start;
+  gap: var(--klds-gap-xxs);
+}
+
+/* 업무명 텍스트: font-weight 600 (SemiBold) */
+.klds-table__task-label {
+  font-weight: 600;
+  color: var(--klds-color-text-black);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 업무명 텍스트 + red dot 감싸는 프레임 */
+.klds-table__task-text {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--klds-gap-xxs);
+  min-width: 0;
+  /* flex 자식 축소 허용 → 말줄임 동작 */
+  overflow: hidden;
+  /* 내부 텍스트 넘침 방지 */
+}
+
+/* ============================================================
+   8. Red Dot
+   Figma: RECTANGLE 4×4, fills → #FF4D4F, cornerRadius: 9999
+   "red dot" 프레임: items-center pt:4px
+   ============================================================ */
+.klds-table__red-dot-wrap {
+  display: flex;
+  align-items: center;
+  padding-top: 4px;
+  flex-shrink: 0;
+}
+
+.klds-table__red-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: var(--klds-radius-circle);
+  background-color: var(--klds-color-critical);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   9. 경고 텍스트 색상
+   Figma: text fills → #FF4D4F → --klds-color-critical ✅
+   ============================================================ */
+.klds-table__task-label--warning {
+  color: var(--klds-color-critical);
+}
+
+/* (아이콘 스타일은 섹션 14 mask-icon 방식으로 통합) */
+
+/* ============================================================
+   12–13. 우선순위/상태 태그
+   → tag.css 디자인 시스템 컴포넌트(klds-tag--small) 사용
+   → .klds-table__priority-tag, .klds-table__status-tag 삭제됨
+   ============================================================ */
+
+/* klds-tag 내부 mask-icon: tag 텍스트 색상(currentColor) 상속 */
+.klds-tag .klds-table__mask-icon {
+  background-color: currentColor;
+  /* tag color 상속 */
+}
+
+/* ============================================================
+   14. 아이콘 색상 (mask-image 방식)
+   CSS filter는 정확한 색상 재현이 불가하므로
+   mask-image + background-color 방식 사용 (LNB, button-icon 동일)
+   HTML에서 인라인 style로 mask-image URL을 지정
+   ============================================================ */
+
+/* 공통: mask 아이콘 기본 설정 */
+.klds-table__mask-icon {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* ic-star03-fill: #005386 → --klds-color-primary ✅ */
+.klds-table__mask-icon--primary {
+  background-color: var(--klds-color-primary);
+}
+
+/* ic-triangle-warning: #FF4D4F → --klds-color-critical ✅ */
+.klds-table__mask-icon--danger {
+  background-color: var(--klds-color-critical);
+}
+
+/* 헤더 필터 아이콘: mask 방식 (16×16) */
+.klds-table__filter-icon {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background-color: var(--klds-color-icon-gray);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  cursor: pointer;
+}
+
+/* ============================================================
+   15. Scroll Wrapper
+   ============================================================ */
+.klds-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}

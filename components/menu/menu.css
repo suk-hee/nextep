@@ -1,0 +1,87 @@
+/* 
+  KLDS Menu Component
+  Figma node: 1:17397
+*/
+
+.klds-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-width: 96px;
+    width: max-content;
+    overflow: hidden;
+    padding: var(--klds-spacing-xs, 8px);
+    border-radius: var(--klds-radius-xs, 8px);
+    border: 1px solid var(--klds-color-border-default, #E5E7EB);
+    background-color: var(--klds-color-white, #FFFFFF);
+    box-sizing: border-box;
+}
+
+.klds-menu__item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 44px;
+    padding: 0 var(--klds-padding-xl, 24px);
+    gap: var(--klds-gap-xs, 8px);
+    border-radius: var(--klds-radius-xxs, 6px);
+    background-color: var(--klds-color-white, #FFFFFF);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+/* Hover State */
+.klds-menu__item:hover,
+.klds-menu__item.is-hover
+
+/* For force hover state in demo */
+    {
+    background-color: var(--klds-color-background-hover, #F4F7FF);
+}
+
+.klds-menu__item-text {
+    flex: 1;
+    font-family: var(--klds-typography-fontfamily-text, 'Pretendard', sans-serif);
+    font-size: var(--klds-typography-fontsize-s, 16px);
+    font-weight: var(--klds-typography-fontweight-regular, 400);
+    line-height: 1.5;
+    color: var(--klds-color-text-black, #121212);
+    margin: 0;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+/* Checkbox Option */
+.klds-menu__item-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 4px;
+}
+
+/* Icon Option */
+.klds-menu__item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    background-color: var(--klds-color-icon-gray, #374151) !important;
+}
+
+.klds-menu__item-icon img,
+.klds-menu__item-icon svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Icon Hover State */
+.klds-menu__item:hover .klds-menu__item-icon,
+.klds-menu__item.is-hover .klds-menu__item-icon {
+    background-color: var(--klds-color-icon-primary, #005386) !important;
+}

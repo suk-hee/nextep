@@ -1,0 +1,74 @@
+/**
+ * Badge Component — Figma node 512:11070
+ *
+ * Figma 구조:
+ *
+ * badge (COMPONENT_SET)
+ * ├─ type=number (20×20, padding:0 4px, r:9999, bg:#FF4D4F)
+ * │    └─ text (14/600, #FFFFFF, line-height:21)
+ * └─ type=dot (4×4, r:9999, bg:#FF4D4F)
+ *
+ * 토큰 매핑:
+ *   #FF4D4F → --klds-color-red-red05
+ *   #FFFFFF → --klds-color-white
+ *   14px   → --klds-typography-fontsize-xs
+ *   600    → --klds-typography-fontweight-semibold
+ *   9999   → --klds-radius-circle
+ *   4px    → --klds-padding-xxxs
+ *
+ * 사용법:
+ *   <!-- type=number -->
+ *   <span class="klds-badge klds-badge--number">3</span>
+ *
+ *   <!-- type=dot -->
+ *   <span class="klds-badge klds-badge--dot"></span>
+ */
+
+
+/* ========================================
+   Badge — 공통
+   ======================================== */
+.klds-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   type=number (20×20, padding:0 4px, r:9999, bg:#FF4D4F)
+   ======================================== */
+.klds-badge--number {
+    min-width: 20px;
+    height: 20px;
+    padding: 0 var(--klds-padding-xxxs, 4px);
+    /* padding: 0 4px */
+    border-radius: var(--klds-radius-circle, 9999px);
+    /* r: 9999 */
+    background-color: var(--klds-color-red-red05, #FF4D4F);
+    /* bg: #FF4D4F */
+    color: var(--klds-color-white, #FFFFFF);
+    /* text: #FFFFFF */
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-xs, 14px);
+    /* 14px */
+    font-weight: 600;
+    /* 600 */
+    line-height: 21px;
+    /* lh: 21 */
+}
+
+
+/* ========================================
+   type=dot (4×4, r:9999, bg:#FF4D4F)
+   ======================================== */
+.klds-badge--dot {
+    width: 4px;
+    height: 4px;
+    border-radius: var(--klds-radius-circle, 9999px);
+    /* r: 9999 */
+    background-color: var(--klds-color-red-red05, #FF4D4F);
+    /* bg: #FF4D4F */
+}

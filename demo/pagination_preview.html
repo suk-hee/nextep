@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagination Component Preview - KLDS</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../components/pagination/pagination.css">
+  <style>
+    /* ═══════════════════════════════════
+   Demo Page Styles
+   ═══════════════════════════════════ */
+    body {
+      font-family: 'Pretendard', sans-serif;
+      padding: 40px;
+      background: #F9FAFB;
+    }
+
+    .preview-section {
+      margin-bottom: 60px;
+    }
+
+    .preview-section h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #121212;
+    }
+
+    .preview-section p {
+      font-size: 14px;
+      color: #6B7280;
+      margin-bottom: 24px;
+    }
+
+    .preview-box {
+      background: white;
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 16px;
+    }
+
+    .preview-box h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 16px;
+    }
+
+    .event-log {
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      padding: 16px;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 12px;
+      color: #374151;
+      max-height: 200px;
+      overflow-y: auto;
+      margin-top: 24px;
+    }
+
+    .event-log__item {
+      margin-bottom: 4px;
+    }
+
+    .event-log__time {
+      color: #9CA3AF;
+    }
+
+    .event-log__data {
+      color: #005386;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 40px;">Pagination Component Preview</h1>
+
+  <div class="preview-section">
+    <h2>기본 (첫 페이지)</h2>
+    <p>총 20페이지 중 1페이지, 이전 버튼 비활성화 상태</p>
+    <div class="preview-box">
+      <h3>currentPage: 1 / totalPages: 20</h3>
+      <div class="pagination" id="pagination-first"></div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <h2>중간 페이지 (Ellipsis 양쪽 표시)</h2>
+    <p>총 20페이지 중 10페이지, 양쪽에 ellipsis 표시</p>
+    <div class="preview-box">
+      <h3>currentPage: 10 / totalPages: 20</h3>
+      <div class="pagination" id="pagination-middle"></div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <h2>마지막 페이지</h2>
+    <p>총 20페이지 중 20페이지, 다음 버튼 비활성화 상태</p>
+    <div class="preview-box">
+      <h3>currentPage: 20 / totalPages: 20</h3>
+      <div class="pagination" id="pagination-last"></div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <h2>적은 페이지 수 (Ellipsis 없음)</h2>
+    <p>총 5페이지, 모든 번호가 표시됨</p>
+    <div class="preview-box">
+      <h3>currentPage: 3 / totalPages: 5</h3>
+      <div class="pagination" id="pagination-few"></div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <h2>인터랙티브</h2>
+    <p>직접 클릭하여 페이지를 변경해보세요</p>
+    <div class="preview-box">
+      <h3>currentPage: 1 / totalPages: 30</h3>
+      <div class="pagination" id="pagination-interactive"></div>
+    </div>
+    <div class="event-log" id="eventLog">
+      <div class="event-log__item">이벤트 대기 중...</div>
+    </div>
+  </div>
+
+  <script src="../components/pagination/pagination.js"></script>
+  <script>
+    /* Initialize all pagination instances */
+    new Pagination(document.getElementById('pagination-first'), { currentPage: 1, totalPages: 20 });
+    new Pagination(document.getElementById('pagination-middle'), { currentPage: 10, totalPages: 20 });
+    new Pagination(document.getElementById('pagination-last'), { currentPage: 20, totalPages: 20 });
+    new Pagination(document.getElementById('pagination-few'), { currentPage: 3, totalPages: 5 });
+
+    var interactiveBox = document.querySelector('#pagination-interactive').closest('.preview-box');
+    var interactiveTitle = interactiveBox.querySelector('h3');
+    new Pagination(document.getElementById('pagination-interactive'), {
+      currentPage: 1,
+      totalPages: 30,
+      onChange: function (page) {
+        interactiveTitle.textContent = 'currentPage: ' + page + ' / totalPages: 30';
+        var now = new Date().toLocaleTimeString();
+        var logItem = document.createElement('div');
+        logItem.className = 'event-log__item';
+        logItem.innerHTML = '<span class="event-log__time">[' + now + ']</span> page changed → <span class="event-log__data">' + page + '</span>';
+        var eventLog = document.getElementById('eventLog');
+        eventLog.insertBefore(logItem, eventLog.firstChild);
+        if (eventLog.children.length > 20) eventLog.removeChild(eventLog.lastChild);
+      }
+    });
+  </script>
+
+</body>
+
+</html>

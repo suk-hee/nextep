@@ -1,0 +1,884 @@
+/**
+ * Dynamic Card Component — Figma node 366:10480, 366:10586
+ * type=mail (cardLayer=1), type=approval (cardLayer=1)
+ *
+ * 구조:
+ * .dynamic-card (284×290, VERTICAL, r:16, bg:타입별 컬러)
+ * ├─ .dynamic-card__header (284×32, HORIZONTAL, p:2/8/0/8, cross:CENTER)
+ * │   ├─ .dynamic-card__title (HORIZONTAL, gap:4, cross:CENTER)
+ * │   │   ├─ .dynamic-card__title-icon (20×20, mask)
+ * │   │   └─ .dynamic-card__title-text (14/700)
+ * │   └─ .dynamic-card__close (20×20, mask, ic-close-small)
+ * └─ .dynamic-card__contents (VERTICAL, gap:16, p:16, r:16, bg:#FFF, border)
+ *     ├─ .dynamic-card__info (VERTICAL, gap:12)
+ *     │   ├─ .dynamic-card__user (HORIZONTAL, gap:8, cross:CENTER)
+ *     │   │   ├─ .dynamic-card__avatar (40×40)
+ *     │   │   └─ .dynamic-card__user-info (VERTICAL)
+ *     │   │       ├─ .dynamic-card__user-meta (14/600, #777)
+ *     │   │       └─ .dynamic-card__user-subject (16/600, #121212)
+ *     │   └─ .dynamic-card__mail-contents (VERTICAL, gap:8)
+ *     │       ├─ tag (기존 klds-tag 재사용)
+ *     │       └─ .dynamic-card__summary-item (HORIZONTAL, gap:8)
+ *     └─ .dynamic-card__bottom (HORIZONTAL, gap:8)
+ *         ├─ .dynamic-card__left-btns (HORIZONTAL, gap:8, flex:1)
+ *         └─ .dynamic-card__right-btns (32×32)
+ *
+ * 토큰 매핑:
+ *   #F9F0FF → --klds-color-purple-purple01 (mail 배경)
+ *   #531DAB → --klds-color-purple-purple07 (mail 강조색)
+ *   #EFDBFF → --klds-color-purple-purple02 (mail contents border)
+ *   #FFF2E8 → --klds-color-volcano-volcano01 (approval 배경)
+ *   #D4380D → --klds-color-volcano-volcano07 (approval 강조색)
+ *   #FFD8BF → --klds-color-volcano-volcano02 (approval contents border)
+ *   16px radius → --klds-radius-m
+ *   14px font → --klds-typography-fontsize-xs
+ *   16px font → --klds-typography-fontsize-s
+ *   12px gap → --klds-gap-s
+ *   16px gap → --klds-gap-m
+ *   8px gap → --klds-gap-xs
+ *   4px gap → --klds-gap-xxs
+ */
+
+
+/* ========================================
+   Dynamic Card — 카드 컨테이너
+   Figma: 284×290, VERTICAL, r:16
+   ======================================== */
+.dynamic-card {
+    display: flex;
+    flex-direction: column;
+    width: 284px;
+    border-radius: var(--klds-radius-m, 16px);
+    /* r: 16 */
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+
+/* ========================================
+   타입별 배경색
+   ======================================== */
+.dynamic-card--mail {
+    background-color: var(--klds-color-purple-purple01, #F9F0FF);
+}
+
+.dynamic-card--approval {
+    background-color: var(--klds-color-volcano-volcano01, #FFF2E8);
+}
+
+.dynamic-card--videomeeting {
+    background-color: var(--klds-color-mint-mint01, #E1FAF6);
+}
+
+.dynamic-card--schedule {
+    background-color: var(--klds-color-mint-mint01, #E1FAF6);
+}
+
+
+/* ========================================
+   Header — 284×32, HORIZONTAL, p:2/8/0/8
+   ======================================== */
+.dynamic-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 8px 0 8px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.dynamic-card__title {
+    display: flex;
+    align-items: center;
+    gap: var(--klds-gap-xxs, 4px);
+    /* gap: 4 */
+    flex: 1;
+    min-width: 0;
+}
+
+.dynamic-card__title-icon {
+    display: inline-block;
+    width: var(--klds-size-size3, 20px);
+    /* 20px */
+    height: var(--klds-size-size3, 20px);
+    /* 20px */
+    flex-shrink: 0;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+/* mail 타입 아이콘 색상 */
+.dynamic-card--mail .dynamic-card__title-icon {
+    background-color: var(--klds-color-purple-purple07, #531DAB);
+    /* icon: #531DAB */
+}
+
+.dynamic-card__title-text {
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-xs, 14px);
+    /* 14px */
+    font-weight: var(--klds-typography-fontweight-bold, 700);
+    /* 700 */
+    line-height: 21px;
+}
+
+/* mail 타입 타이틀 색상 */
+.dynamic-card--mail .dynamic-card__title-text {
+    color: var(--klds-color-purple-purple07, #531DAB);
+    /* text: #531DAB */
+}
+
+/* approval 타입 아이콘/타이틀 색상 */
+.dynamic-card--approval .dynamic-card__title-icon {
+    background-color: var(--klds-color-volcano-volcano07, #D4380D);
+    /* icon: #D4380D */
+}
+
+.dynamic-card--approval .dynamic-card__title-text {
+    color: var(--klds-color-volcano-volcano07, #D4380D);
+    /* text: #D4380D */
+}
+
+/* videomeeting 타입 아이콘/타이틀 색상 */
+.dynamic-card--videomeeting .dynamic-card__title-icon {
+    background-color: var(--klds-color-mint-mint07, #08979C);
+}
+
+.dynamic-card--videomeeting .dynamic-card__title-text {
+    color: var(--klds-color-mint-mint07, #08979C);
+}
+
+/* schedule 타입 아이콘/타이틀 색상 */
+.dynamic-card--schedule .dynamic-card__title-icon {
+    background-color: var(--klds-color-mint-mint07, #08979C);
+}
+
+.dynamic-card--schedule .dynamic-card__title-text {
+    color: var(--klds-color-mint-mint07, #08979C);
+}
+
+.dynamic-card__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--klds-size-size3, 20px);
+    height: var(--klds-size-size3, 20px);
+    flex-shrink: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+.dynamic-card__close-icon {
+    display: inline-block;
+    width: var(--klds-size-size3, 20px);
+    height: var(--klds-size-size3, 20px);
+    background-color: var(--klds-color-icon-gray, #374151);
+    /* icon: #374151 */
+    -webkit-mask-image: url(../../assets/icons/ic-close-small.svg);
+    mask-image: url(../../assets/icons/ic-close-small.svg);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+
+/* ========================================
+   Layer Stack (cardLayer=2, 3)
+   ======================================== */
+.dynamic-card-group {
+    position: relative;
+    width: 284px;
+    z-index: 0;
+}
+
+/* Layer 2: 뒷 배경 레이어가 보일 수 있도록 12px 하단 패딩 부여 */
+.dynamic-card-group--layer-2 {
+    padding-bottom: 12px;
+}
+
+/* Layer 3: 두 개의 뒷 배경 레이어가 보일 수 있도록 24px 하단 패딩 부여 */
+.dynamic-card-group--layer-3 {
+    padding-bottom: 24px;
+}
+
+/* cardLayer=2 의 배경 레이어 (100px) */
+.dynamic-card-group__backdrop {
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    right: 16px;
+    height: 100px;
+    border-radius: var(--klds-radius-m, 16px);
+    z-index: 0;
+}
+
+/* Layer 3 기본 배경 레이어는 Layer 2에 해당하는 위치(아래에서 12px)로 이동 */
+.dynamic-card-group--layer-3 .dynamic-card-group__backdrop {
+    bottom: 12px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.05);
+}
+
+/* cardLayer=3 의 뒤쪽 두 번째 배경 레이어 */
+.dynamic-card-group__backdrop-2 {
+    position: absolute;
+    bottom: 0;
+    left: 32px;
+    right: 32px;
+    height: 100px;
+    border-radius: var(--klds-radius-m, 16px);
+    z-index: -1;
+}
+
+/* 내부 dynamic-card 내용물 높이에 맞게 그룹 래퍼가 동적으로 변하도록 함 */
+.dynamic-card-group .dynamic-card {
+    position: relative;
+    z-index: 1;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.05);
+    /* Figma 그대로 매핑 */
+}
+
+
+/* ========================================
+   Badge
+   ======================================== */
+.dynamic-card__badge {
+    background-color: var(--klds-color-critical, #ff4d4f);
+    color: var(--klds-color-white, #FFFFFF);
+    height: 20px;
+    min-width: 20px;
+    padding: 0 var(--klds-padding-xxxs, 4px);
+    border-radius: var(--klds-radius-circle, 9999px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-xs, 14px);
+    font-weight: 600;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   Actions (Close, Expand) for Layer Cards
+   ======================================== */
+.dynamic-card__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--klds-gap-xxs, 4px);
+}
+
+.dynamic-card__icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--klds-size-size3, 20px);
+    height: var(--klds-size-size3, 20px);
+    flex-shrink: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+.dynamic-card__icon-btn-icon {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: var(--klds-color-icon-gray, #374151);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+
+/* ========================================
+   Contents — VERTICAL, gap:16, p:16, r:16
+   bg:#FFF, border: 타입별 색상
+   ======================================== */
+.dynamic-card__contents {
+    display: flex;
+    flex-direction: column;
+    gap: var(--klds-gap-m, 16px);
+    /* gap: 16 */
+    padding: var(--klds-padding-m, 16px);
+    /* p: 16 */
+    border-radius: var(--klds-radius-m, 16px);
+    /* r: 16 */
+    background-color: var(--klds-color-white, #FFFFFF);
+    /* bg: #FFF */
+    flex: 1;
+    min-height: 0;
+    box-sizing: border-box;
+}
+
+/* mail 타입 border */
+.dynamic-card--mail .dynamic-card__contents {
+    border: 1px solid var(--klds-color-purple-purple02, #EFDBFF);
+    /* stroke: #EFDBFF */
+}
+
+/* approval 타입 border */
+.dynamic-card--approval .dynamic-card__contents {
+    border: 1px solid var(--klds-color-volcano-volcano02, #FFD8BF);
+    /* stroke: #FFD8BF */
+}
+
+/* videomeeting 타입 border */
+.dynamic-card--videomeeting .dynamic-card__contents {
+    border: 1px solid var(--klds-color-mint-mint02, #B5F5EC);
+}
+
+/* schedule 타입 border */
+.dynamic-card--schedule .dynamic-card__contents {
+    border: 1px solid var(--klds-color-mint-mint02, #B5F5EC);
+}
+
+
+/* ========================================
+   Info — VERTICAL, gap:12
+   ======================================== */
+.dynamic-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--klds-gap-s, 12px);
+    /* gap: 12 */
+    flex: 1;
+    min-height: 0;
+}
+
+
+/* ========================================
+   User — HORIZONTAL, gap:8, cross:CENTER
+   ======================================== */
+.dynamic-card__user {
+    display: flex;
+    align-items: center;
+    gap: var(--klds-gap-xs, 8px);
+    /* gap: 8 */
+}
+
+.dynamic-card__avatar {
+    position: relative;
+    width: var(--klds-size-size6, 40px);
+    height: var(--klds-size-size6, 40px);
+    flex-shrink: 0;
+}
+
+.dynamic-card__avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--klds-radius-circle, 9999px);
+    object-fit: cover;
+    border: 1px solid var(--klds-color-border-default, #E5E7EB);
+}
+
+.dynamic-card__avatar-status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: var(--klds-radius-circle, 9999px);
+    border: 2px solid var(--klds-color-white, #FFFFFF);
+    box-sizing: border-box;
+}
+
+.dynamic-card__avatar-status--online {
+    background-color: var(--klds-color-green-green04, #95DE64);
+    /* #95DE64 */
+}
+
+.dynamic-card__user-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.dynamic-card__user-meta {
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-xs, 14px);
+    /* 14px */
+    font-weight: 600;
+    line-height: 21px;
+    color: #777777;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dynamic-card__user-subject {
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-s, 16px);
+    /* 16px */
+    font-weight: 600;
+    line-height: 24px;
+    color: var(--klds-color-text-black, #121212);
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   Mail Contents — VERTICAL, gap:8
+   ======================================== */
+.dynamic-card__mail-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--klds-gap-xs, 8px);
+    /* gap: 8 */
+}
+
+
+/* ========================================
+   Summary Item — HORIZONTAL, gap:8
+   ======================================== */
+.dynamic-card__summary-item {
+    display: flex;
+    gap: var(--klds-gap-xs, 8px);
+    /* gap: 8 */
+    align-items: flex-start;
+}
+
+.dynamic-card__summary-bullet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--klds-size-size3, 20px);
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.dynamic-card__summary-bullet::after {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: var(--klds-radius-circle, 9999px);
+    background-color: var(--klds-color-text-black, #121212);
+}
+
+.dynamic-card__summary-icon {
+    display: inline-block;
+    width: var(--klds-size-size3, 20px);
+    /* 20px */
+    height: var(--klds-size-size3, 20px);
+    /* 20px */
+    flex-shrink: 0;
+    margin-top: 2px;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+.dynamic-card__summary-icon--star {
+    background-color: var(--klds-color-icon-primary, #005386);
+    -webkit-mask-image: url(../../assets/icons/ic-star03-fill.svg);
+    mask-image: url(../../assets/icons/ic-star03-fill.svg);
+}
+
+.dynamic-card__summary-text {
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-xs, 14px);
+    /* 14px */
+    font-weight: var(--klds-typography-fontweight-regular, 400);
+    /* 400 */
+    line-height: 21px;
+    color: var(--klds-color-text-black, #121212);
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+}
+
+.dynamic-card__summary-link {
+    font-weight: var(--klds-typography-fontweight-bold, 700);
+    color: var(--klds-color-text-primary, #005386);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+/* ========================================
+   Bottom Buttons — HORIZONTAL, gap:8
+   ======================================== */
+.dynamic-card__bottom {
+    display: flex;
+    align-items: center;
+    gap: var(--klds-gap-xs, 8px);
+    /* gap: 8 */
+}
+
+.dynamic-card__left-btns {
+    display: flex;
+    align-items: center;
+    gap: var(--klds-gap-xs, 8px);
+    /* gap: 8 */
+    flex: 1;
+    min-width: 0;
+}
+
+.dynamic-card__left-btns .button {
+    flex: 1;
+}
+
+.dynamic-card__right-btns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.dynamic-card__more-menu {
+    position: absolute;
+    bottom: calc(100% + 4px);
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ========================================
+   Avatar Group — 결재 카드용 아바타 그룹
+   Figma: HORIZONTAL, gap:-8, cross:CENTER
+   ======================================== */
+.dynamic-card__avatar-group {
+    display: flex;
+    align-items: center;
+}
+
+.dynamic-card__avatar-group-stack {
+    display: flex;
+    align-items: center;
+}
+
+.dynamic-card__avatar-group-stack .dynamic-card__avatar-small {
+    margin-left: -8px;
+}
+
+.dynamic-card__avatar-group-stack .dynamic-card__avatar-small:first-child {
+    margin-left: 0;
+}
+
+.dynamic-card__avatar-small {
+    position: relative;
+    width: var(--klds-size-size6, 40px);
+    height: var(--klds-size-size6, 40px);
+    flex-shrink: 0;
+}
+
+.dynamic-card__avatar-small img {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--klds-radius-l, 20px);
+    /* r: 20 */
+    object-fit: cover;
+    border: 2px solid var(--klds-color-white, #FFFFFF);
+    box-sizing: border-box;
+}
+
+/* 번호 더보기 (+3) */
+.dynamic-card__avatar-more {
+    width: var(--klds-size-size6, 40px);
+    height: var(--klds-size-size6, 40px);
+    border-radius: var(--klds-radius-l, 20px);
+    background-color: var(--klds-color-gray-gray02, #F3F4F6);
+    border: 1px solid var(--klds-color-border-default, #E5E7EB);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-xs, 14px);
+    font-weight: var(--klds-typography-fontweight-bold, 700);
+    line-height: 21px;
+    color: var(--klds-color-gray-gray07, #4B5563);
+    box-sizing: border-box;
+    margin-left: -8px;
+    flex-shrink: 0;
+}
+
+/* 추가 버튼 */
+.dynamic-card__avatar-add {
+    width: var(--klds-size-size6, 40px);
+    height: var(--klds-size-size6, 40px);
+    border-radius: var(--klds-radius-l, 20px);
+    background-color: var(--klds-color-white, #FFFFFF);
+    border: 1px solid var(--klds-color-gray-gray04, #CBD0D7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    box-sizing: border-box;
+    margin-left: var(--klds-gap-xs, 8px);
+    flex-shrink: 0;
+}
+
+.dynamic-card__avatar-add-icon {
+    display: inline-block;
+    width: var(--klds-size-size3, 20px);
+    height: var(--klds-size-size3, 20px);
+    background-color: var(--klds-color-gray-gray05, #9CA3AF);
+    -webkit-mask-image: url(../../assets/icons/ic-plus.svg);
+    mask-image: url(../../assets/icons/ic-plus.svg);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+
+/* ========================================
+   Approval Body — 결재 카드 본문 영역
+   Figma: VERTICAL, gap:8
+   ======================================== */
+.dynamic-card__approval-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--klds-gap-xs, 8px);
+    /* gap: 8 */
+    flex: 1;
+    min-height: 0;
+}
+
+.dynamic-card__approval-text {
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-xs, 14px);
+    /* 14px */
+    font-weight: var(--klds-typography-fontweight-regular, 400);
+    /* 400 */
+    line-height: 21px;
+    color: var(--klds-color-text-black, #121212);
+    margin: 0;
+    flex: 1;
+}
+
+
+/* ========================================
+   Videomeeting — 화상회의 카드 전용 스타일
+   Figma node: 366:10650
+   ======================================== */
+
+
+/* 태그 width를 텍스트 길이에 맞춤 (flex column stretch 방지) */
+.dynamic-card--videomeeting .dynamic-card__info>.klds-tag {
+    align-self: flex-start;
+}
+
+/* 하단 버튼 텍스트 줄바꿈 방지 */
+.dynamic-card--videomeeting .dynamic-card__left-btns .button {
+    white-space: nowrap;
+}
+
+/* 회의 본문 영역 */
+.dynamic-card__meeting-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--klds-gap-xs, 8px);
+    flex: 1;
+    min-height: 0;
+}
+
+.dynamic-card__meeting-title {
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-s, 16px);
+    font-weight: 600;
+    line-height: 24px;
+    color: var(--klds-color-text-black, #121212);
+    margin: 0;
+}
+
+.dynamic-card__meeting-desc {
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-xs, 14px);
+    font-weight: var(--klds-typography-fontweight-regular, 400);
+    line-height: 21px;
+    color: var(--klds-color-text-black, #121212);
+    margin: 0;
+}
+
+/* 참석자 아바타 그룹 (기존 avatar-group-stack 재활용) */
+.dynamic-card__attendees {
+    display: flex;
+    align-items: center;
+}
+
+
+/* ========================================
+   Schedule — 일정 카드 전용 스타일
+   Figma node: 366:10804
+   ======================================== */
+
+/* 태그 width를 텍스트 길이에 맞춤 (flex column stretch 방지) */
+.dynamic-card--schedule .dynamic-card__info>.klds-tag {
+    align-self: flex-start;
+}
+
+/* 하단 버튼 텍스트 줄바꿈 방지 */
+.dynamic-card--schedule .dynamic-card__left-btns .button {
+    white-space: nowrap;
+}
+
+/* 일정 제목 (16px/SemiBold, 1줄 말줄임) */
+.dynamic-card__schedule-title {
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-s, 16px);
+    font-weight: 600;
+    line-height: 24px;
+    color: var(--klds-color-text-black, #121212);
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+/* 일정 본문 (14px/Regular) */
+.dynamic-card__schedule-desc {
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-xs, 14px);
+    font-weight: var(--klds-typography-fontweight-regular, 400);
+    line-height: 21px;
+    color: var(--klds-color-text-black, #121212);
+    margin: 0;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 일정 카드 참석자 아바타 그룹 (40px, overlap -10px) */
+.dynamic-card__attendees-large {
+    display: flex;
+    align-items: center;
+}
+
+.dynamic-card__attendees-large .dynamic-card__avatar-group-stack {
+    padding-right: 10px;
+}
+
+.dynamic-card__attendees-large .dynamic-card__avatar-group-stack .dynamic-card__avatar-small {
+    width: var(--klds-size-size6, 40px);
+    height: var(--klds-size-size6, 40px);
+    margin-left: -10px;
+}
+
+.dynamic-card__attendees-large .dynamic-card__avatar-group-stack .dynamic-card__avatar-small:first-child {
+    margin-left: 0;
+}
+
+.dynamic-card__attendees-large .dynamic-card__avatar-small img {
+    border-width: 2px;
+}
+
+.dynamic-card__attendees-large .dynamic-card__avatar-more {
+    margin-left: -10px;
+}
+
+/* ========================================
+   News — 뉴스 카드 전용 스타일
+   Figma node: 366:10886
+   ======================================== */
+
+.dynamic-card--news {
+    background-color: var(--klds-color-green-green01, #EFFEE1);
+}
+
+.dynamic-card--news .dynamic-card__title-icon {
+    background-color: var(--klds-color-green-green07, #389E0D);
+}
+
+.dynamic-card--news .dynamic-card__title-text {
+    color: var(--klds-color-green-green07, #389E0D);
+}
+
+.dynamic-card--news .dynamic-card__contents {
+    border: 1px solid var(--klds-color-green-green02, #D9F7BE);
+    padding: 0 0 var(--klds-padding-m, 16px) 0;
+}
+
+/* 뉴스 카드 전용 썸네일 영역 */
+.dynamic-card__news-thumb {
+    width: 100%;
+    height: 120px;
+    border-radius: var(--klds-radius-s, 12px) var(--klds-radius-s, 12px) 0 0;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.dynamic-card__news-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 뉴스 카드 하단 정보/버튼 래퍼 (좌우 패딩 16, 내부 간격 16) */
+.dynamic-card__news-wrap-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--klds-gap-m, 16px);
+    padding: 0 var(--klds-padding-m, 16px);
+    flex: 1;
+}
+
+/* 요약본 제목/내용 */
+.dynamic-card__news-summary {
+    display: flex;
+    flex-direction: column;
+}
+
+.dynamic-card__news-title {
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-s, 16px);
+    font-weight: 600;
+    line-height: 24px;
+    color: var(--klds-color-text-black, #121212);
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.dynamic-card__news-desc {
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-xs, 14px);
+    font-weight: var(--klds-typography-fontweight-regular, 400);
+    line-height: 21px;
+    color: var(--klds-color-text-black, #121212);
+    margin: 0;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}
+
+/* 뉴스 하단 버튼 텍스트 줄바꿈 방지 */
+.dynamic-card--news .dynamic-card__left-btns .button {
+    white-space: nowrap;
+}

@@ -1,0 +1,211 @@
+/**
+ * Snackbar Component — Figma node 1378:23836
+ *
+ * Figma 구조:
+ *
+ * snackbar (COMPONENT)
+ * ├─ message (텍스트 컨테이너)
+ * │    └─ text (16px/SemiBold, #FFFFFF, line-height:1.5)
+ * └─ btn-close (32×32, 아이콘 버튼)
+ *      └─ ic-close-small (24×24, mask-image 방식)
+ *
+ * 토큰 매핑:
+ *   #121212 → --klds-color-black
+ *   #FFFFFF → --klds-color-white
+ *   16px    → --klds-padding-m  (left padding)
+ *   8px     → --klds-padding-xxs (right/top/bottom padding)
+ *   8px     → --klds-radius-xs
+ *   16px    → --klds-typography-fontsize-s
+ *   600     → --klds-typography-fontweight-semibold
+ *
+ * 사용법:
+ *   <!-- 기본 -->
+ *   <div class="klds-snackbar" role="status" aria-live="polite">
+ *     <span class="klds-snackbar__message">휴지통으로 이동했습니다.</span>
+ *     <button class="klds-snackbar__close" aria-label="닫기">
+ *       <span class="klds-snackbar__close-icon"
+ *         style="-webkit-mask-image:url(/assets/icons/ic-close-small.svg);mask-image:url(/assets/icons/ic-close-small.svg)"></span>
+ *     </button>
+ *   </div>
+ *
+ *   <!-- 액션 버튼 포함 -->
+ *   <div class="klds-snackbar" role="status" aria-live="polite">
+ *     <span class="klds-snackbar__message">휴지통으로 이동했습니다.</span>
+ *     <div class="klds-snackbar__actions">
+ *       <button class="klds-snackbar__action">실행 취소</button>
+ *     </div>
+ *     <button class="klds-snackbar__close" aria-label="닫기">
+ *       <span class="klds-snackbar__close-icon"
+ *         style="-webkit-mask-image:url(/assets/icons/ic-close-small.svg);mask-image:url(/assets/icons/ic-close-small.svg)"></span>
+ *     </button>
+ *   </div>
+ */
+
+
+/* ========================================
+   Snackbar — 컨테이너
+   ======================================== */
+.klds-snackbar {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding: var(--klds-padding-xxs, 8px) var(--klds-padding-xxs, 8px) var(--klds-padding-xxs, 8px) var(--klds-padding-m, 16px);
+    /* top/right/bottom: 8px, left: 16px */
+    border-radius: var(--klds-radius-xs, 8px);
+    background-color: var(--klds-color-black, #121212);
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   Snackbar — 메시지 텍스트
+   ======================================== */
+.klds-snackbar__message {
+    flex: 1;
+    padding-right: var(--klds-padding-xxs, 8px);
+    /* message와 close 버튼 사이 간격 */
+    color: var(--klds-color-white, #FFFFFF);
+    font-family: var(--klds-typography-fontfamily-text, "Pretendard"), sans-serif;
+    font-size: var(--klds-typography-fontsize-s, 16px);
+    font-weight: var(--klds-typography-fontweight-semibold, 600);
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   Snackbar — 액션 버튼 영역 (선택적)
+   ======================================== */
+.klds-snackbar__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--klds-padding-xxs, 8px);
+    padding-right: var(--klds-padding-xxs, 8px);
+    flex-shrink: 0;
+}
+
+.klds-snackbar__action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--klds-padding-xxs, 8px);
+    border: none;
+    border-radius: var(--klds-radius-xs, 8px);
+    background: transparent;
+    color: var(--klds-color-white, #FFFFFF);
+    font-family: var(--klds-typography-fontfamily-text, "Pretendard"), sans-serif;
+    font-size: var(--klds-typography-fontsize-s, 16px);
+    font-weight: var(--klds-typography-fontweight-semibold, 600);
+    line-height: 1.5;
+    cursor: pointer;
+    text-decoration: underline;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+}
+
+.klds-snackbar__action:hover {
+    opacity: 0.8;
+}
+
+
+/* ========================================
+   Snackbar — 닫기 버튼 (32×32)
+   ======================================== */
+.klds-snackbar__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 32px;
+    /* btn-close: 32×32 */
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: var(--klds-radius-circle, 9999px);
+    background: transparent;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.klds-snackbar__close:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    /* 화이트 계열 hover — 어두운 배경 위 */
+}
+
+.klds-snackbar__close:active {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+
+/* ========================================
+   Snackbar — 닫기 아이콘 (24×24, mask-image)
+   ======================================== */
+.klds-snackbar__close-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background-color: var(--klds-color-white, #FFFFFF);
+    /* 어두운 배경 위 → 흰색 아이콘 */
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+
+/* ========================================
+   Snackbar — 등장/퇴장 애니메이션
+   ======================================== */
+@keyframes klds-snackbar-in {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes klds-snackbar-out {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+}
+
+.klds-snackbar--enter {
+    animation: klds-snackbar-in 0.2s ease-out forwards;
+}
+
+.klds-snackbar--leave {
+    animation: klds-snackbar-out 0.2s ease-in forwards;
+}
+
+
+/* ========================================
+   Snackbar — 화면 상단 고정 포지셔닝 유틸리티
+   ======================================== */
+.klds-snackbar-container {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--klds-padding-xxs, 8px);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.klds-snackbar-container .klds-snackbar {
+    pointer-events: auto;
+}

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Component Preview - KLDS</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../components/prompt/prompt.css">
+  <style>
+    /* ===== Preview 전용 스타일 ===== */
+    body {
+      font-family: var(--klds-typography-fontfamily-text);
+      background-color: #f0f1f3;
+      padding: 40px;
+    }
+
+    .preview-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .preview-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #121212;
+    }
+
+    .preview-description {
+      font-size: 16px;
+      color: #374151;
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    .preview-section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #121212;
+    }
+
+    .preview-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .features-list {
+      list-style: none;
+      padding: 24px;
+      margin: 0;
+      background: #fff;
+      border-radius: 12px;
+    }
+
+    .features-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid #E5E7EB;
+      display: flex;
+      gap: 16px;
+    }
+
+    .features-list li:last-child {
+      border-bottom: none;
+    }
+
+    .features-list strong {
+      min-width: 160px;
+      color: #121212;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .features-list span {
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .badge-info {
+      display: inline-block;
+      background: #1890FF;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .log-section {
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 16px 20px;
+      color: #d4d4d4;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.8;
+      max-height: 200px;
+      overflow-y: auto;
+      margin-top: 16px;
+    }
+
+    .log-section .log-item {
+      padding: 2px 0;
+    }
+
+    .log-section .log-time {
+      color: #858585;
+      margin-right: 8px;
+    }
+
+    .log-section .log-type {
+      color: #4EC9B0;
+      margin-right: 8px;
+      font-weight: 600;
+    }
+
+    .log-section .log-message {
+      color: #CE9178;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="preview-container">
+
+    <h1 class="preview-title">Prompt Component <span class="badge-info">AI Assistance</span></h1>
+    <p class="preview-description">
+      AI와 대화할 수 있는 프롬프트 입력 영역입니다.<br>
+      Figma node 3:5651 기반 — default/focus 두 가지 레이아웃을 지원합니다.
+    </p>
+
+    <!-- ===== Interactive Demo ===== -->
+    <div class="preview-section">
+      <h2 class="section-title">Interactive Demo</h2>
+      <div class="preview-box">
+
+        <div class="prompt" data-base-path="../assets/icons/">
+          <div class="prompt__wrap">
+
+            <button class="prompt__btn-global" aria-label="글로벌 옵션">
+              <img src="../assets/icons/ic-global.svg" alt="" width="24" height="24">
+            </button>
+
+            <textarea class="prompt__input" placeholder="원하는 업무를 입력하세요." rows="1" aria-label="프롬프트 입력"></textarea>
+
+            <div class="prompt__right-btns">
+              <button class="prompt__btn prompt__btn--mic" aria-label="음성 입력">
+                <svg class="prompt__mic-svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M4 10C4 9.44772 4.44772 9 5 9C5.55228 9 6 9.44772 6 10C6 11.5913 6.63259 13.117 7.75781 14.2422C8.88303 15.3674 10.4087 16 12 16L12.2979 15.9922C13.7807 15.9185 15.1874 15.297 16.2422 14.2422C17.3674 13.117 18 11.5913 18 10C18 9.44772 18.4477 9 19 9C19.5523 9 20 9.44772 20 10C20 12.1217 19.1575 14.1569 17.6572 15.6572C16.3947 16.9198 14.7529 17.7137 13 17.9346V20H16C16.5523 20 17 20.4477 17 21C17 21.5523 16.5523 22 16 22H8C7.44772 22 7 21.5523 7 21C7 20.4477 7.44772 20 8 20H11V17.9346C9.24713 17.7137 7.60532 16.9198 6.34277 15.6572C4.84248 14.1569 4 12.1217 4 10ZM14 5C14 4.46957 13.7891 3.96101 13.4141 3.58594C13.0858 3.25765 12.6553 3.05515 12.1973 3.00977L12 3C11.4696 3 10.961 3.21087 10.5859 3.58594C10.2109 3.96101 10 4.46957 10 5V10C10 10.5304 10.2109 11.039 10.5859 11.4141C10.961 11.7891 11.4696 12 12 12C12.5304 12 13.039 11.7891 13.4141 11.4141C13.7891 11.039 14 10.5304 14 10V5ZM16 10C16 11.0609 15.5783 12.078 14.8281 12.8281C14.078 13.5783 13.0609 14 12 14C10.9391 14 9.92202 13.5783 9.17188 12.8281C8.42173 12.078 8 11.0609 8 10V5C8 3.93913 8.42173 2.92202 9.17188 2.17188C9.92202 1.42173 10.9391 1 12 1L12.1982 1.00488C13.1869 1.0539 14.1248 1.46859 14.8281 2.17188C15.5783 2.92202 16 3.93913 16 5V10Z"
+                    fill="#374151" />
+                </svg>
+              </button>
+              <button class="prompt__btn prompt__btn--send" aria-label="전송" disabled>
+                <span class="prompt__btn-icon"
+                  style="-webkit-mask-image:url(../assets/icons/ic-arrow-circle-up02.svg);mask-image:url(../assets/icons/ic-arrow-circle-up02.svg)"></span>
+              </button>
+            </div>
+
+            <div class="prompt__btns"></div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Event Log -->
+      <div class="log-section" id="eventLog">
+        <div class="log-item">
+          <span class="log-time">[Ready]</span>
+          <span class="log-type">INFO</span>
+          <span class="log-message">Prompt 초기화 완료 — 입력창을 클릭해보세요</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 테스트 방법 ===== -->
+    <div class="preview-section">
+      <h2 class="section-title">테스트 방법</h2>
+      <ul class="features-list">
+        <li>
+          <strong>📐 레이아웃 전환</strong>
+          <span>입력창을 클릭(focus)하면 <b>status=focus</b> UI로 변경됩니다. btn-global이 하단 왼쪽으로, right-btns가 하단 오른쪽으로 이동합니다.</span>
+        </li>
+        <li>
+          <strong>⌨️ 여러 줄 입력</strong>
+          <span><b>Shift + Enter</b>를 누르면 줄바꿈됩니다. 입력창 높이가 자동으로 확장됩니다 (최대 5줄).</span>
+        </li>
+        <li>
+          <strong>📤 전송 버튼 활성화</strong>
+          <span>텍스트를 입력하면 전송 버튼 아이콘이 <b>#CBD0D7(회색) → #121212(검정)</b>으로 변경됩니다.</span>
+        </li>
+        <li>
+          <strong>🎤 마이크 토글</strong>
+          <span>마이크 버튼 클릭 시 <b>ic-microphone → ic-microphone-fill</b>로 변경되고 색상이 <b>#374151 → #005386</b>으로 바뀝니다.</span>
+        </li>
+        <li>
+          <strong>↩️ Enter 전송</strong>
+          <span>Enter 키를 누르면 메시지를 전송하고 default 레이아웃으로 복귀합니다.</span>
+        </li>
+        <li>
+          <strong>🔙 blur 복귀</strong>
+          <span>입력창 밖을 클릭하면 텍스트가 없을 때 default 레이아웃으로 복귀합니다.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ===== 피그마 구조 ===== -->
+    <div class="preview-section">
+      <h2 class="section-title">Figma 레이아웃 구조</h2>
+      <ul class="features-list">
+        <li>
+          <strong>status=default</strong>
+          <span>wrap-prompt (<b>HORIZONTAL</b>, gap:8) → btn-global | input(440×27) | right-btns(mic+send)</span>
+        </li>
+        <li>
+          <strong>status=focus</strong>
+          <span>wrap-prompt (<b>VERTICAL</b>, gap:4, align:MAX) → input(560×auto) | btns(<b>SPACE_BETWEEN</b>:
+            btn-global | right-btns)</span>
+        </li>
+        <li>
+          <strong>핵심 차이</strong>
+          <span>focus 시 btn-global이 input 왼쪽 → 하단 btns 왼쪽으로 이동, input이 전체 너비 차지</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <script src="../components/prompt/prompt.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.prompt').forEach(function (el) {
+        new Prompt(el);
+      });
+
+      // ===== Event Logging =====
+      var logEl = document.getElementById('eventLog');
+      var textarea = document.querySelector('.prompt__input');
+      var btnMic = document.querySelector('.prompt__btn--mic');
+      var btnSend = document.querySelector('.prompt__btn--send');
+
+      function addLog(type, msg) {
+        var time = new Date().toTimeString().split(' ')[0];
+        var item = document.createElement('div');
+        item.className = 'log-item';
+        item.innerHTML =
+          '<span class="log-time">[' + time + ']</span>' +
+          '<span class="log-type">' + type + '</span>' +
+          '<span class="log-message">' + msg + '</span>';
+        logEl.appendChild(item);
+        logEl.scrollTop = logEl.scrollHeight;
+        if (logEl.children.length > 30) logEl.removeChild(logEl.firstChild);
+      }
+
+      textarea.addEventListener('focus', function () {
+        addLog('LAYOUT', '→ status=focus (VERTICAL, btn-global 하단 이동)');
+      });
+      textarea.addEventListener('blur', function () {
+        if (!textarea.value.trim())
+          addLog('LAYOUT', '→ status=default (HORIZONTAL, btn-global 입력창 왼쪽)');
+      });
+      textarea.addEventListener('input', function () {
+        var lines = textarea.value.split('\n').length;
+        var chars = textarea.value.length;
+        var active = btnSend.classList.contains('is-active');
+        addLog('INPUT', chars + '자 / ' + lines + '줄 — send: ' + (active ? '✅ #121212' : '⬜ #CBD0D7'));
+      });
+      btnMic.addEventListener('click', function () {
+        var on = btnMic.classList.contains('is-active');
+        addLog('MIC', on ? '🎤 ON → ic-microphone-fill (#005386)' : '🎤 OFF → ic-microphone (#374151)');
+      });
+      document.addEventListener('prompt:send', function (e) {
+        addLog('SEND', '전송: "' + e.detail.text.substring(0, 50) + '"');
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!-- ============================================================
+     Tab Component
+     Figma: tab (1:17432)
+     
+     Variants:
+       type=pill, active=false (1:17436)
+       type=pill, active=true  (1:17433)
+       type=line, active=false (128:5699)
+       type=line, active=true  (128:5700)
+     ============================================================ -->
+
+<!-- Pill 탭 그룹 (아이콘 + 텍스트) -->
+<div class="tabs tabs--pill">
+  <!-- active 탭 -->
+  <button class="tab tab--pill tab--active" data-tab="today">
+    <span class="tab__icon" data-icon="ic-calendar-event"></span>
+    <span class="tab__label">Today</span>
+  </button>
+  <!-- 일반 탭 (아이콘 있음) -->
+  <button class="tab tab--pill" data-tab="weekly">
+    <span class="tab__icon" data-icon="ic-calendar-week"></span>
+    <span class="tab__label">Weekly</span>
+  </button>
+  <!-- 일반 탭 (아이콘 있음) -->
+  <button class="tab tab--pill" data-tab="monthly">
+    <span class="tab__icon" data-icon="ic-calendar-30"></span>
+    <span class="tab__label">Monthly</span>
+  </button>
+</div>
+
+<!-- Line 탭 그룹 (텍스트만) -->
+<div class="tabs tabs--line">
+  <!-- active 탭 (아이콘 없음) -->
+  <button class="tab tab--line tab--active" data-tab="me">
+    <span class="tab__label">Me</span>
+  </button>
+  <!-- 일반 탭 (아이콘 없음) -->
+  <button class="tab tab--line" data-tab="team">
+    <span class="tab__label">Team</span>
+  </button>
+  <!-- 일반 탭 (아이콘 없음) -->
+  <button class="tab tab--line" data-tab="company">
+    <span class="tab__label">Company</span>
+  </button>
+</div>
+
+<!-- Line 탭 그룹 (아이콘 있음) -->
+<div class="tabs tabs--line">
+  <!-- active 탭 (아이콘 있음) -->
+  <button class="tab tab--line tab--active" data-tab="inbox">
+    <span class="tab__icon" data-icon="ic-mail"></span>
+    <span class="tab__label">Inbox</span>
+  </button>
+  <!-- 일반 탭 (아이콘 있음) -->
+  <button class="tab tab--line" data-tab="sent">
+    <span class="tab__icon" data-icon="ic-mail"></span>
+    <span class="tab__label">Sent</span>
+  </button>
+</div>
+
+<!-- 텍스트만 있는 Pill 탭 (아이콘 없음) -->
+<div class="tabs tabs--pill">
+  <button class="tab tab--pill tab--active" data-tab="all">
+    <span class="tab__label">All</span>
+  </button>
+  <button class="tab tab--pill" data-tab="active">
+    <span class="tab__label">Active</span>
+  </button>
+  <button class="tab tab--pill" data-tab="archived">
+    <span class="tab__label">Archived</span>
+  </button>
+</div>
+
+<!-- disabled 상태 -->
+<div class="tabs tabs--pill">
+  <button class="tab tab--pill tab--active" data-tab="enabled">
+    <span class="tab__label">Enabled</span>
+  </button>
+  <button class="tab tab--pill" data-tab="disabled" disabled>
+    <span class="tab__label">Disabled</span>
+  </button>
+</div>

@@ -1,0 +1,39 @@
+<!--
+  Mode Switch Component
+  Figma: mode-switch (1:17486), btn-mode (1:17554)
+
+  ──────────────────────────────────────────
+  Figma 스펙
+  ──────────────────────────────────────────
+  Container : 56px height, radius 9999, bg #D6E4FF, padding 8px
+  Button    : 40px height, radius 9999, padding 0 16px, gap 8px
+    default : transparent, color #121212
+    active  : bg #005386, color #FFFFFF, icon invert
+
+  ──────────────────────────────────────────
+  사용법
+  ──────────────────────────────────────────
+  - .is-active 클래스로 활성 상태 표시
+  - data-mode 속성으로 모드 식별
+  - 아이콘 + 텍스트 조합, 또는 텍스트만 가능
+  - JS: 클릭 시 같은 .mode-switch 내에서 is-active 토글
+-->
+
+<!-- ======================================
+     기본 사용: 클래식 / AI 모드 스위치
+     Figma와 동일한 구성
+     ====================================== -->
+<div class="mode-switch" role="tablist" aria-label="모드 전환">
+    <button class="mode-switch__btn is-active" role="tab" aria-selected="true" data-mode="classic">
+        <span class="mode-switch__icon">
+            <img src="../../assets/icons/ic-menu-grid.svg" alt="" width="24" height="24">
+        </span>
+        <span class="mode-switch__label">클래식</span>
+    </button>
+    <button class="mode-switch__btn" role="tab" aria-selected="false" data-mode="ai">
+        <span class="mode-switch__icon">
+            <img src="../../assets/icons/ic-star02.svg" alt="" width="24" height="24">
+        </span>
+        <span class="mode-switch__label">AI</span>
+    </button>
+</div>

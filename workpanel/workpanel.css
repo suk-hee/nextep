@@ -1,0 +1,1427 @@
+/**
+ * Workpanel Styles
+ * Daily View 및 workpanel 페이지 전용 스타일
+ */
+
+/* Layout 기본 설정 */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard', sans-serif;
+  overflow: hidden;
+}
+
+/* ============================================================
+     TOP-BOX (1:10768) — Daily View 메인 콘텐츠
+     layout: VERTICAL, gap: 24
+     ============================================================ */
+.top-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-xl);
+  /* 24px */
+  width: 100%;
+}
+
+/* header (1:10769) — layout: VERTICAL, gap: 12 */
+.top-box__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-s);
+  /* 12px */
+}
+
+.top-box__header-text {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-xs);
+  /* 8px */
+}
+
+.top-box__greeting {
+  flex: 1;
+  font-size: var(--klds-typography-fontsize-xxl);
+  /* 32px */
+  font-weight: var(--klds-typography-fontweight-regular);
+  /* 400 */
+  line-height: 1;
+  color: var(--klds-color-text-black);
+  margin: 0;
+}
+
+.top-box__btn-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--klds-size-size5);
+  /* 32px */
+  height: var(--klds-size-size5);
+  /* 32px */
+  border: none;
+  background: transparent;
+  border-radius: var(--klds-radius-xs);
+  /* 8px */
+  cursor: pointer;
+  padding: 0;
+}
+
+.top-box__btn-close:hover {
+  background: transparent;
+}
+
+.top-box__btn-close:hover .top-box__icon {
+  background-color: var(--klds-color-icon-primary);
+  /* #005386 */
+}
+
+.top-box__icon {
+  display: inline-block;
+  width: var(--klds-size-size5);
+  /* 32px */
+  height: var(--klds-size-size5);
+  /* 32px */
+  background-color: var(--klds-color-icon-gray);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-image: url(../assets/icons/ic-close.svg);
+  mask-image: url(../assets/icons/ic-close.svg);
+}
+
+.top-box__summary {
+  font-size: var(--klds-typography-fontsize-xxl);
+  /* 32px */
+  font-weight: var(--klds-typography-fontweight-medium);
+  /* 500 */
+  line-height: 1;
+  color: var(--klds-color-text-black);
+  margin: 0;
+}
+
+/* ============================================================
+     CHART-CARD (8:4698) — layout: HORIZONTAL, gap: 16
+     ============================================================ */
+.chart-card {
+  display: flex;
+  flex-direction: row;
+  gap: var(--klds-gap-m);
+  /* 16px */
+}
+
+.chart-card__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-xs);
+  /* 8px */
+  padding: var(--klds-padding-l);
+  /* 20px */
+  background: var(--klds-color-white);
+  border: 1px solid var(--klds-color-border-default);
+  border-radius: var(--klds-radius-m);
+  /* 16px */
+}
+
+.chart-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--klds-size-size5);
+  /* 32px */
+}
+
+.chart-card__title {
+  font-size: var(--klds-typography-fontsize-m);
+  /* 16px */
+  font-weight: 600;
+  line-height: 1;
+  color: var(--klds-color-text-black);
+  margin: 0;
+}
+
+/* 바로가기 라운드 버튼 */
+.chart-card__link-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--klds-size-size5);
+  /* 32px */
+  height: var(--klds-size-size5);
+  /* 32px */
+  border: 1px solid var(--klds-color-border-default);
+  border-radius: var(--klds-radius-circle);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.chart-card__link-btn:hover {
+  border-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+  background: transparent;
+}
+
+.chart-card__link-btn:hover .button-icon__icon {
+  background-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+}
+
+.chart-card__link-btn .button-icon__icon {
+  width: var(--klds-size-size3);
+  /* 20px */
+  height: var(--klds-size-size3);
+  /* 20px */
+  background-color: var(--klds-color-icon-gray);
+  -webkit-mask-image: url(../assets/icons/ic-arrow-up-right.svg);
+  mask-image: url(../assets/icons/ic-arrow-up-right.svg);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  display: inline-block;
+}
+
+.chart-card__contents {
+  display: flex;
+  flex-direction: row;
+  gap: var(--klds-gap-m);
+  /* 16px */
+  flex: 1;
+}
+
+/* left-box: 도넛 차트 영역 — w:260 */
+.chart-card__left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-m);
+  /* 16px */
+  width: 260px;
+  flex-shrink: 0;
+}
+
+.chart-card__chart-container {
+  position: relative;
+  width: 220px;
+  height: 221px;
+  margin: 0 auto;
+}
+
+.chart-card__total-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--klds-gap-xxs);
+  /* 4px */
+  z-index: 1;
+}
+
+.chart-card__total-label {
+  font-size: var(--klds-typography-fontsize-s);
+  /* 14px */
+  font-weight: var(--klds-typography-fontweight-medium);
+  line-height: 1;
+  color: var(--klds-color-text-black);
+}
+
+.chart-card__total-value {
+  font-size: var(--klds-typography-fontsize-xxl);
+  /* 32px */
+  font-weight: var(--klds-typography-fontweight-bold);
+  line-height: 1;
+  color: var(--klds-color-text-black);
+}
+
+.chart-card__donut {
+  width: 220px;
+  height: 221px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* 범례 — layout: HORIZONTAL, gap: 16 */
+.chart-card__legend {
+  display: flex;
+  justify-content: center;
+  gap: var(--klds-gap-m);
+  /* 16px */
+}
+
+.chart-card__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-xxs);
+  /* 4px */
+}
+
+.chart-card__legend-dot {
+  width: var(--klds-size-size2);
+  /* 16px */
+  height: var(--klds-size-size2);
+  /* 16px */
+  border-radius: var(--klds-radius-xxxs);
+  /* 4px */
+  flex-shrink: 0;
+}
+
+.chart-card__legend-dot--pending {
+  background: var(--klds-color-chart-pending);
+  /* #FFC53D */
+}
+
+.chart-card__legend-dot--progress {
+  background: var(--klds-color-chart-progress);
+  /* #36CFC9 */
+}
+
+.chart-card__legend-dot--delay {
+  background: var(--klds-color-chart-delay);
+  /* #F759AB */
+}
+
+.chart-card__legend-label {
+  font-size: var(--klds-typography-fontsize-xs);
+  /* 14px */
+  font-weight: var(--klds-typography-fontweight-medium);
+  line-height: 1;
+  color: var(--klds-color-text-black);
+}
+
+.chart-card__legend-value {
+  font-size: var(--klds-typography-fontsize-xs);
+  /* 14px */
+  font-weight: 600;
+  line-height: 1;
+  color: var(--klds-color-text-black);
+}
+
+/* right-box: 정보 영역 — layout: VERTICAL, gap: 16 */
+.chart-card__right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-m);
+  /* 16px */
+  flex: 1;
+  justify-content: center;
+}
+
+.chart-card__info-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-xs);
+  /* 8px */
+}
+
+.chart-card__info-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-xxxs);
+  /* 4px */
+}
+
+.chart-card__info-title {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-xxs);
+  /* 4px */
+  font-size: var(--klds-typography-fontsize-s);
+  /* 16px */
+  font-weight: 600;
+  line-height: var(--klds-typography-lineheight-xl);
+  /* 1.5 → 24px */
+  color: var(--klds-color-text-black);
+}
+
+.chart-card__info-title strong {
+  font-weight: 600;
+}
+
+/* 공통 mask 아이콘 */
+.chart-card__icon {
+  display: inline-block;
+  width: var(--klds-size-size3);
+  /* 20px */
+  height: var(--klds-size-size3);
+  /* 20px */
+  flex-shrink: 0;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.chart-card__icon--warning {
+  background-color: var(--klds-color-icon-primary);
+  -webkit-mask-image: url(../assets/icons/ic-triangle-warning.svg);
+  mask-image: url(../assets/icons/ic-triangle-warning.svg);
+}
+
+.chart-card__icon--star {
+  background-color: var(--klds-color-icon-primary);
+  -webkit-mask-image: url(../assets/icons/ic-star03-fill.svg);
+  mask-image: url(../assets/icons/ic-star03-fill.svg);
+}
+
+.chart-card__icon--bell {
+  background-color: var(--klds-color-icon-gray);
+  -webkit-mask-image: url(../assets/icons/ic-bell.svg);
+  mask-image: url(../assets/icons/ic-bell.svg);
+}
+
+.chart-card__icon--plus {
+  background-color: var(--klds-color-icon-gray);
+  -webkit-mask-image: url(../assets/icons/ic-plus.svg);
+  mask-image: url(../assets/icons/ic-plus.svg);
+}
+
+.chart-card__icon--caret-right {
+  background-color: var(--klds-color-icon-gray);
+  -webkit-mask-image: url(../assets/icons/ic-caret-right01.svg);
+  mask-image: url(../assets/icons/ic-caret-right01.svg);
+}
+
+.chart-card__icon--close-small {
+  background-color: var(--klds-color-icon-gray);
+  -webkit-mask-image: url(../assets/icons/ic-close-small.svg);
+  mask-image: url(../assets/icons/ic-close-small.svg);
+  cursor: pointer;
+}
+
+.chart-card__info-desc {
+  font-size: var(--klds-typography-fontsize-xs);
+  /* 14px */
+  font-weight: var(--klds-typography-fontweight-medium);
+  line-height: var(--klds-typography-lineheight-xl);
+  /* 1.5 → 21px */
+  color: var(--klds-color-text-gray);
+  margin: 0;
+}
+
+.chart-card__divider {
+  width: 100%;
+  height: 1px;
+  background: var(--klds-color-border-default);
+}
+
+/* 액션 버튼 — h:32, radius:6, border: gray05 */
+.chart-card__action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--klds-gap-xxs);
+  /* 4px */
+  height: var(--klds-size-size5);
+  /* 32px */
+  padding: 0 var(--klds-padding-xxs);
+  /* 0 8px */
+  background: var(--klds-color-white);
+  border: 1px solid var(--klds-color-input-border);
+  border-radius: var(--klds-radius-xxs);
+  /* 6px */
+  cursor: pointer;
+  font-size: var(--klds-typography-fontsize-xs);
+  /* 14px */
+  font-weight: 600;
+  line-height: var(--klds-typography-lineheight-xl);
+  color: var(--klds-color-text-black);
+  width: fit-content;
+}
+
+.chart-card__action-btn:hover {
+  border-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+  color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+}
+
+.chart-card__action-btn:hover .chart-card__icon {
+  background-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+}
+
+/* Request Task - insight 박스 — layout: VERTICAL, gap: 8 */
+.chart-card__insight-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-xs);
+  /* 8px */
+}
+
+.chart-card__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--klds-gap-xxs);
+  /* 4px */
+  height: var(--klds-size-size5);
+  /* 32px */
+  padding: 0 var(--klds-padding-xxs);
+  /* 0 8px */
+  background: var(--klds-color-white);
+  border: 1px solid var(--klds-color-border-default);
+  border-radius: var(--klds-radius-circle);
+  width: fit-content;
+}
+
+.chart-card__tag-label {
+  font-size: var(--klds-typography-fontsize-xxs);
+  /* 12px */
+  font-weight: var(--klds-typography-fontweight-regular);
+  line-height: var(--klds-typography-lineheight-xl);
+  color: var(--klds-color-text-gray);
+}
+
+.chart-card__insight-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-xs);
+  /* 8px */
+}
+
+.chart-card__insight-title {
+  font-size: var(--klds-typography-fontsize-s);
+  /* 16px */
+  font-weight: 600;
+  line-height: var(--klds-typography-lineheight-xl);
+  color: var(--klds-color-text-black);
+}
+
+.chart-card__insight-desc {
+  font-size: var(--klds-typography-fontsize-xs);
+  /* 14px */
+  font-weight: var(--klds-typography-fontweight-medium);
+  line-height: var(--klds-typography-lineheight-xl);
+  color: var(--klds-color-text-gray);
+  margin: 0;
+}
+
+/* 아바타 그룹 */
+.chart-card__user-group {
+  display: flex;
+  align-items: center;
+}
+
+.chart-card__avatar {
+  width: var(--klds-size-size5);
+  /* 32px */
+  height: var(--klds-size-size5);
+  /* 32px */
+  border-radius: var(--klds-radius-circle);
+  overflow: hidden;
+  border: 2px solid var(--klds-color-white);
+  flex-shrink: 0;
+}
+
+.chart-card__avatar+.chart-card__avatar {
+  margin-left: -5px;
+}
+
+.chart-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ============================================================
+   BOTTOM-BOX (128:5024) — Today's Schedule
+   layout: VERTICAL, gap: 16
+   ============================================================ */
+.bottom-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-m);
+  /* 16px */
+  width: 100%;
+}
+
+/* header (128:5025) — layout: HORIZONTAL, align: space-between */
+.bottom-box__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+}
+
+.bottom-box__title {
+  font-size: var(--klds-typography-fontsize-xl);
+  /* 24px */
+  font-weight: 600;
+  line-height: 1;
+  color: var(--klds-color-text-black);
+  margin: 0;
+}
+
+/* tabs — tab 컴포넌트 사용 */
+
+/* contents (128:5031) — 스케줄 컨텐츠 카드 */
+.bottom-box__contents {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-xl);
+  /*padding: var(--klds-padding-xl);
+  padding-top: var(--klds-padding-m);*/
+  background: var(--klds-color-white);
+  /*border: 1px solid var(--klds-color-border-default);
+  border-radius: var(--klds-radius-m);*/
+}
+
+.bottom-box__schedule {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-m);
+  /* 16px */
+}
+
+/* schedule-header (128:5033) — layout: HORIZONTAL, space-between */
+.bottom-box__schedule-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* schedule-tabs — tab 컴포넌트 사용 */
+
+/* comp-timetable-team: 타임테이블 + task-box 사이 gap 유지 */
+#comp-timetable-team {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-m); /* 16px */
+}
+
+/* date-navigator (128:5041) — layout: HORIZONTAL, gap: 16 */
+.bottom-box__date-navigator {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-m);
+  /* 16px */
+}
+
+.bottom-box__date {
+  font-size: var(--klds-typography-fontsize-xl);
+  /* 24px */
+  font-weight: 600;
+  line-height: 1;
+  color: var(--klds-color-text-black);
+  min-width: 134px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.bottom-box__nav-btn--prev .button-icon__icon {
+  -webkit-mask-image: url(../assets/icons/ic-caret-left.svg);
+  mask-image: url(../assets/icons/ic-caret-left.svg);
+}
+
+.bottom-box__nav-btn--next .button-icon__icon {
+  -webkit-mask-image: url(../assets/icons/ic-caret-right01.svg);
+  mask-image: url(../assets/icons/ic-caret-right01.svg);
+}
+
+/* toggle-group — Daily/Weekly/Monthly */
+.bottom-box__toggle-group {
+  display: flex;
+  align-items: center;
+}
+
+.bottom-box__toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-xxs);
+  /* 4px */
+  height: 32px;
+  padding: 0 var(--klds-padding-xxs);
+  /* 0 8px */
+  font-size: var(--klds-typography-fontsize-xs);
+  /* 14px */
+  font-weight: var(--klds-typography-fontweight-semibold);
+  /* 600 */
+  color: var(--klds-color-text-black);
+  background: var(--klds-color-white);
+  border: 1px solid var(--klds-color-border-default);
+  /* #E5E7EB */
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.bottom-box__toggle-btn:first-child {
+  border-radius: var(--klds-radius-xs) 0 0 var(--klds-radius-xs);
+  /* 8px */
+}
+
+.bottom-box__toggle-btn:last-child {
+  border-radius: 0 var(--klds-radius-xs) var(--klds-radius-xs) 0;
+  /* 8px */
+}
+
+.bottom-box__toggle-btn + .bottom-box__toggle-btn {
+  border-left: none;
+}
+
+.bottom-box__toggle-btn--active {
+  background: var(--klds-color-primary);
+  /* #005386 */
+  border-color: var(--klds-color-primary);
+  color: var(--klds-color-text-white);
+}
+
+.bottom-box__toggle-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--klds-color-text-black);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  flex-shrink: 0;
+}
+
+.bottom-box__toggle-btn--active .bottom-box__toggle-icon {
+  background-color: var(--klds-color-text-white);
+}
+
+/* AI Assistant 숨김 */
+.ai-assistant.is-hidden {
+  display: none;
+}
+
+/* Work Area 숨김 (AI Assistant 최대화) */
+.layout-content__work-area.is-hidden {
+  display: none;
+}
+
+.ai-assistant.is-maximized {
+  width: 100%;
+}
+
+#comp-ai-assistant:has(.ai-assistant.is-maximized) {
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════
+   Task Box — Figma node 1:10883
+   1120×244, VERTICAL, gap:8
+   ═══════════════════════════════════════ */
+.task-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.task-box__action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 40px;
+}
+
+.task-box__left-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-box__right-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-box__right-action .button--medium {
+  min-height: var(--klds-size-size6);
+  height: var(--klds-size-size6);
+  padding: 0 var(--klds-padding-m);
+  box-sizing: border-box;
+}
+
+/* ═══════════════════════════════════════
+   Card-Meeting Component — Figma node 1:10936
+   544×204, HORIZONTAL layout, gap: 24
+   ═══════════════════════════════════════ */
+.card-meeting {
+  display: flex;
+  flex-direction: row;
+  gap: var(--klds-gap-xl);
+  /* 24px */
+  width: 100%;
+}
+
+.card-meeting__card {
+  width: 25%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background: var(--klds-color-white, #ffffff);
+  border: 1px solid var(--klds-color-gray-03, #E5E7EB);
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+/* — time row — */
+.card-meeting__time {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-meeting__icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--klds-color-gray-gray03, #E5E7EB);
+  flex-shrink: 0;
+}
+
+.card-meeting__icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--klds-color-gray-07, #374151);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* — info row — */
+.card-meeting__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-s, 12px);
+}
+
+.card-meeting__title {
+  margin: 0;
+  font-size: var(--klds-typography-fontsize-m, 16px);
+  font-weight: 600;
+  line-height: var(--klds-typography-lineheight-xl);
+  color: var(--klds-color-text-black, #121212);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-meeting__avatar-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ═══════════════════════════════════════
+   Monthly Calendar — Figma node 1:14625
+   ═══════════════════════════════════════ */
+.bottom-box__calendar {
+  width: 100%;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 48px repeat(5, 1fr);
+  border: 1px solid var(--klds-color-border-default);
+  border-radius: var(--klds-radius-xl);
+  overflow: hidden;
+  width: 100%;
+}
+
+.calendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--klds-padding-xxs) var(--klds-padding-s);
+  border-bottom: 1px solid var(--klds-color-border-default);
+  font-size: var(--klds-typography-fontsize-s);
+  font-weight: var(--klds-typography-fontweight-semibold);
+  color: var(--klds-color-text-black);
+  line-height: 1.2;
+  letter-spacing: -0.28px;
+}
+
+.calendar__header--holiday {
+  color: var(--klds-color-red-red05);
+}
+
+.calendar__cell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-xs);
+  padding: var(--klds-padding-xs);
+  border-bottom: 1px solid var(--klds-color-border-default);
+  border-left: 1px solid var(--klds-color-border-default);
+  overflow: hidden;
+  background: var(--klds-color-white, #ffffff);
+  min-height: 150px;
+  box-sizing: border-box;
+}
+
+.calendar__cell--another {
+  background: var(--klds-color-gray-gray01, #fafafa);
+}
+
+.calendar__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.calendar__number span {
+  font-size: var(--klds-typography-fontsize-s);
+  font-weight: var(--klds-typography-fontweight-semibold);
+  color: var(--klds-color-text-black);
+  line-height: 1.2;
+  letter-spacing: -0.28px;
+  white-space: nowrap;
+}
+
+.calendar__cell--holiday .calendar__number span {
+  color: var(--klds-color-red-red05);
+}
+
+.calendar__cell--another .calendar__number span {
+  color: var(--klds-color-gray-gray04);
+}
+
+.calendar__cell--today .calendar__number {
+  background: var(--klds-color-black, #121212);
+  border-radius: var(--klds-radius-circle);
+}
+
+.calendar__cell--today .calendar__number span {
+  color: var(--klds-color-white, #ffffff);
+}
+
+.calendar__tags {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-xxs);
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.calendar__tag {
+  display: flex;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--klds-padding-xs);
+  border-radius: var(--klds-radius-xxxs);
+  font-family: var(--klds-typography-fontfamily-text, 'Pretendard', sans-serif);
+  font-size: var(--klds-typography-fontsize-xs);
+  font-weight: var(--klds-typography-fontweight-regular);
+  line-height: 1.5;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+}
+
+.calendar__tag--purple {
+  background: var(--klds-color-purple-purple02);
+  color: var(--klds-color-purple-purple06);
+}
+
+.calendar__tag--green {
+  background: var(--klds-color-green-green02);
+  color: var(--klds-color-green-green07);
+}
+
+.calendar__tag--blue {
+  background: var(--klds-color-lightblue-lightblue02);
+  color: var(--klds-color-lightblue-lightblue07);
+}
+
+/* 첫 번째 열 border-left 제거 — wrapper 테두리와 중복 방지 */
+/* grid 자식: 헤더 7개(1~7) + 셀, 첫 열 셀 = 8번째부터 7n+8 */
+.calendar > :nth-child(7n+8) {
+  border-left: none;
+}
+
+/* 마지막 행 border-bottom 제거 — wrapper 테두리와 중복 방지 */
+.calendar > .calendar__cell:nth-last-child(-n+7) {
+  border-bottom: none;
+}
+
+.card-meeting__avatar-more .avatar__fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--klds-color-gray-06, #6B7280);
+  background: var(--klds-color-gray-02, #F3F4F6);
+  border-radius: 50%;
+}
+
+.card-meeting__btn-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1.5px dashed var(--klds-color-gray-04, #D1D5DB);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: border-color 0.15s;
+}
+
+.card-meeting__btn-add:hover {
+  border-color: var(--klds-color-gray-06, #6B7280);
+}
+
+.card-meeting__btn-add img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.45;
+}
+
+/* — tag label override — */
+.card-meeting .klds-tag__label {
+  font-size: 12px;
+}
+
+/* — buttons row — */
+.card-meeting__buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+}
+
+
+/* ============================================================
+   work-area--split — 상하 분할 레이아웃
+   Figma node: 509:10397
+   work-area (1240×1162, VERTICAL, gap:16, FILL/HUG)
+   ├─ work-card (1240×410, VERTICAL, gap:16, p:24, r:24, bg:#FFF)
+   └─ work-card (1240×736, VERTICAL, gap:16, p:24, r:24, bg:#FFF)
+   ============================================================ */
+
+/* split 변형: 기존 work-area 패딩/배경/radius 제거 → 컨테이너 역할 */
+.layout-content__work-area--split {
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  gap: var(--klds-gap-m, 16px);
+  /* gap: 16 */
+}
+
+/* work-card: 개별 카드 영역 */
+.work-card {
+  display: flex;
+  flex-direction: column;
+  /* VERTICAL */
+  gap: var(--klds-gap-m, 16px);
+  /* gap: 16 */
+  padding: var(--klds-padding-xl, 24px);
+  /* padding: 24 */
+  background-color: var(--klds-color-white);
+  /* fill: #FFFFFF */
+  border-radius: var(--klds-radius-xl, 24px);
+  /* radius: 24 */
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.layout-content__work-area--split .work-card:last-child {
+  flex: 1;
+  min-height: 0;
+}
+
+
+/* ============================================================
+   top-box--compact — dynamic-panel 전용
+   Figma node: 319:9016
+   gap: 8 (기존 top-box는 gap: 24)
+   ============================================================ */
+.top-box--compact {
+  gap: var(--klds-gap-xs, 8px);
+}
+
+
+/* ============================================================
+   chart-card--compact — dynamic-panel 전용
+   Figma node: 319:9016
+   기존 chart-card 대비:
+   - chart-container: 120×120 (기존 220×221)
+   - left-box: HORIZONTAL (chart + legend 가로 배치), width:auto
+   - legend: VERTICAL (기존 HORIZONTAL)
+   - contents gap: 40 (기존 16)
+   - padding: 16/20/20/20 (기존 20)
+   - right-box gap: 24 (My Task)
+   ============================================================ */
+
+/* padding 변경: 16/20/20/20 */
+.chart-card--compact .chart-card__item {
+  padding: 16px 20px 20px 20px;
+}
+
+/* contents: gap 40 (Figma: gap:40.0) */
+.chart-card--compact .chart-card__contents {
+  gap: 40px;
+  align-items: center;
+}
+
+/* left-box: HORIZONTAL, gap:16, width:auto (기존: VERTICAL, 260px) */
+.chart-card--compact .chart-card__left {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--klds-gap-m, 16px);
+  width: auto;
+  flex-shrink: 0;
+}
+
+/* chart-container: 120×120 (기존 220×221) */
+.chart-card--compact .chart-card__chart-container {
+  width: 120px;
+  height: 120px;
+}
+
+.chart-card--compact .chart-card__donut {
+  width: 120px;
+  height: 120px;
+}
+
+/* total-container — 작은 도넛에 맞게 */
+.chart-card--compact .chart-card__total-label {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.chart-card--compact .chart-card__total-value {
+  font-size: 18px;
+}
+
+/* legend: VERTICAL (기존: HORIZONTAL) */
+.chart-card--compact .chart-card__legend {
+  flex-direction: column;
+  gap: var(--klds-gap-xs, 8px);
+}
+
+/* right-box: gap 24 (기존 16) — My Task */
+.chart-card--compact .chart-card__right {
+  gap: 24px;
+}
+
+/* right-box: Request Task는 gap:16 유지 → insight-box가 있는 경우 */
+.chart-card--compact .chart-card__right:has(.chart-card__insight-box) {
+  gap: var(--klds-gap-m, 16px);
+}
+
+/* divider: width 260px 고정 (Figma: 260×1) */
+.chart-card--compact .chart-card__divider {
+  width: 260px;
+}
+
+
+/* ============================================================
+   아바타 +N 카운트 / + 추가 버튼
+   Figma: btn-number (32×32, fill:#FFF, stroke:#FFF, r:9999)
+          btn-add (32×32, fill:#FFF, stroke:#CBD0D7, r:9999)
+   ============================================================ */
+.chart-card__avatar--count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--klds-color-white);
+  border-color: var(--klds-color-white);
+}
+
+.chart-card__avatar--count span {
+  font-size: var(--klds-typography-fontsize-xs, 12px);
+  font-weight: 400;
+  color: var(--klds-color-text-gray, #374151);
+  line-height: 18px;
+}
+
+.chart-card__avatar--add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--klds-color-white);
+  border: 1px solid var(--klds-color-gray-gray04, #CBD0D7);
+  cursor: pointer;
+}
+
+.chart-card__avatar--add .chart-card__icon {
+  width: 16px;
+  height: 16px;
+}
+
+
+/* ============================================================
+   Dynamic Panel — 하단 work-card header
+   Figma node: 514:11088
+   1192×32, HORIZONTAL, gap:8, cross:CENTER, main:SPACE_BETWEEN
+   ============================================================ */
+.dynamic-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--klds-gap-xs, 8px);
+  /* gap: 8 */
+}
+
+.dynamic-panel__header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-xs, 8px);
+  /* gap: 8 */
+}
+
+/* ============================================================
+   Dynamic Panel — 카드 그리드
+   Figma node: 342:13272
+   ============================================================ */
+.dynamic-panel__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--klds-gap-m, 16px);
+  width: 100%;
+}
+
+.dynamic-panel__grid .dynamic-card-group,
+.dynamic-panel__grid .dynamic-card {
+  width: 100%;
+  height: 100%;
+}
+
+.dynamic-panel__grid .dynamic-card-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.dynamic-panel__grid .dynamic-card-group .dynamic-card {
+  flex: 1;
+}
+
+/* ============================================================
+   Mail Detail View (dynamic-panel__detail-view)
+   ============================================================ */
+.dynamic-panel__detail-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-m);
+  height: 100%;
+}
+
+.dynamic-panel__detail-header {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-xs);
+  height: 32px;
+}
+
+.dynamic-panel__detail-title {
+  font-size: var(--klds-typography-fontsize-xl);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--klds-color-text-black);
+  margin: 0;
+}
+
+.dynamic-panel__detail-content {
+  display: flex;
+  gap: var(--klds-gap-m);
+  align-items: flex-start;
+  height: 100%;
+}
+
+.dynamic-panel__detail-card {
+  flex: 1;
+  background: var(--klds-color-white);
+  border: 1px solid var(--klds-color-border-default);
+  border-radius: var(--klds-radius-m);
+  padding: var(--klds-padding-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-m);
+  overflow-y: auto;
+  height: 100%;
+}
+
+.dynamic-panel__detail-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dynamic-panel__detail-card-header .dynamic-card__close,
+.dynamic-panel__detail-card-header .dynamic-card__close-icon {
+  width: var(--klds-size-size5, 24px);
+  height: var(--klds-size-size5, 24px);
+}
+
+.dynamic-panel__detail-user {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-m);
+  margin-bottom: var(--klds-gap-xxs);
+}
+
+.dynamic-panel__detail-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-xxxs);
+}
+
+.dynamic-panel__detail-user-meta {
+  font-size: var(--klds-typography-fontsize-xs);
+  color: var(--klds-color-text-gray);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.dynamic-panel__detail-user-title {
+  font-size: var(--klds-typography-fontsize-l);
+  font-weight: 700;
+  color: var(--klds-color-text-black);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.dynamic-panel__detail-body {
+  font-size: var(--klds-typography-fontsize-s);
+  line-height: 1.6;
+  color: var(--klds-color-text-black);
+  margin: 0;
+}
+
+.dynamic-panel__detail-actions {
+  display: flex;
+  gap: var(--klds-gap-xs);
+  margin-top: auto;
+  padding-top: var(--klds-gap-m);
+}
+
+.dynamic-panel__detail-right {
+  width: 576px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-m);
+}
+
+.dynamic-panel__detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--klds-gap-m);
+}
+
+.dynamic-panel__detail-grid .dynamic-card-group,
+.dynamic-panel__detail-grid .dynamic-card {
+  width: 100%;
+}
+
+/* ============================================================
+   Utility classes to replace inline styles
+   ============================================================ */
+
+.dynamic-panel__pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.dynamic-panel__detail-spacer {
+  flex: 1;
+}
+
+.dynamic-panel__detail-pagination {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 2560px) {
+  .dynamic-panel__grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.dynamic-panel__header-actions {
+  position: relative;
+}
+
+.dynamic-panel__filter-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================================
+   Empty State (No Cards)
+   ============================================================ */
+.dynamic-panel__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  min-height: 480px;
+}
+
+.dynamic-panel__empty-image {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dynamic-panel__empty-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.dynamic-panel__empty-text {
+  font-family: var(--klds-typography-fontfamily-text, 'Pretendard', sans-serif);
+  font-size: var(--klds-typography-fontsize-l, 20px);
+  font-weight: var(--klds-typography-fontweight-semibold, 600);
+  color: var(--klds-color-text-black, #121212);
+  line-height: 1.3;
+  text-align: center;
+}
+
+@media (max-width: 1600px) {
+  .chart-card {
+    flex-direction: column;
+  }
+
+  .dynamic-panel__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

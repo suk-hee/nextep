@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LNB Component - KLDS</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../components/badge/badge.css">
+  <link rel="stylesheet" href="lnb.css">
+</head>
+
+<body>
+  <!-- 
+    LNB (Left Navigation Bar) Component
+    Figma: lnb (node 3:3540)
+    Size: 80 x 1000 (full height)
+    Layout: Vertical, padding 8px, gap 8px
+    
+    구조:
+    - lnb-menu-group: 상단 메뉴 10개 (group-menus, vertical, gap 8px)
+    - lnb-menu-bottom: 하단 메뉴 2개 (menu-todo, menu-help, vertical, gap 8px)
+    
+    사용법:
+    - active 클래스: 현재 선택된 메뉴 표시 (배경 primary06 #005386, 아이콘 흰색)
+    - data-badge 속성: 뱃지 숫자 표시 (없으면 뱃지 미표시)
+    
+    Menu 컴포넌트 목록 (Figma COMPONENT_SET):
+    - menu-home         : ic-home01         (홈)
+    - menu-workspace    : ic-bag            (워크스페이스)
+    - menu-chat         : ic-chat-circle    (채팅)
+    - menu-mail         : ic-mail           (메일)
+    - menu-schedule     : ic-calendar-days  (일정)
+    - menu-files        : ic-folder1        (자료실)
+    - menu-video-meeting: ic-webcam         (화상회의)
+    - menu-org          : ic-sitemap        (조직도)
+    - menu-collect      : ic-file-document  (문서수합)
+    - menu-more         : ic-more-horizontal(더보기)
+    - menu-todo         : ic-check02        (할 일)
+    - menu-help         : ic-circle-help    (도움말)
+    
+    Figma 디자인 매핑:
+    - Container: 80x1000, vertical, padding 8, gap 8
+    - group-menus: 48px width, vertical, gap 8
+    - menu item: 48x48, horizontal, gap 10, align CENTER, radius 8
+    - icon: 24x24, fill #121212 (default) / #FFFFFF (active)
+    - badge: 20x20, radius 9999, bg red05(#FF4D4F), Pretendard 14/600 white
+    - active state: bg primary06(#005386)
+  -->
+
+  <!-- LNB Component -->
+  <nav class="lnb" role="navigation" aria-label="메인 네비게이션">
+    <!-- 상단 메뉴 그룹 (Figma: group-menus, vertical, gap 8) -->
+    <div class="lnb-menu-group">
+      <!-- menu-home -->
+      <button class="lnb-menu-item" data-menu="home" title="홈">
+        <span class="lnb-menu-icon">
+          <img src="../../assets/icons/ic-home01.svg" alt="홈" width="24" height="24">
+        </span>
+      </button>
+
+      <!-- menu-workspace -->
+      <button class="lnb-menu-item" data-menu="workspace" title="워크스페이스">
+        <span class="lnb-menu-icon">
+          <img src="../../assets/icons/ic-bag.svg" alt="워크스페이스" width="24" height="24">
+        </span>
+      </button>
+
+      <!-- menu-chat -->
+      <button class="lnb-menu-item" data-menu="chat" title="채팅">
+        <span class="lnb-menu-icon">
+          <img src="../../assets/icons/ic-chat-circle.svg" alt="채팅" width="24" height="24">
+        </span>
+      </button>
+
+      <!-- menu-mail (뱃지 예시) -->
+      <button class="lnb-menu-item" data-menu="mail" title="메일" data-badge="8">
+        <span class="lnb-menu-icon">
+          <img src="../../assets/icons/ic-mail.svg" alt="메일" width="24" height="24">
+        </span>
+        <span class="klds-badge klds-badge--number">8</span>
+      </button>
+
+      <!-- menu-schedule (active 예시) -->
+      <button class="lnb-menu-item active" data-menu="schedule" title="일정">
+        <span class="lnb-menu-icon">
+          <img src="../../assets/icons/ic-calendar-days.svg" alt="일정" width="24" height="24">
+        </span>
+      </button>
+
+      <!-- menu-files -->
+      <button class="lnb-menu-item" data-menu="files" title="자료실">
+        <span class="lnb-menu-icon">
+          <img src="../../assets/icons/ic-folder1.svg" alt="자료실" width="24" height="24">
+        </span>
+      </button>
+
+      <!-- menu-video-meeting -->
+      <button class="lnb-menu-item" data-menu="video-meeting" title="화상회의">
+        <span class="lnb-menu-icon">
+          <img src="../../assets/icons/ic-webcam.svg" alt="화상회의" width="24" height="24">
+        </span>
+      </button>
+
+      <!-- menu-org -->
+      <button class="lnb-menu-item" data-menu="org" title="조직도">
+        <span class="lnb-menu-icon">
+          <img src="../../assets/icons/ic-sitemap.svg" alt="조직도" width="24" height="24">
+        </span>
+      </button>
+
+      <!-- menu-collect -->
+      <button class="lnb-menu-item" data-menu="collect" title="취합>
+        <span class=" lnb-menu-icon">
+        <img src="../../assets/icons/ic-file-document.svg" alt="취합" width="24" height="24">
+        </span>
+      </button>
+
+      <!-- menu-apps -->
+      <button class="lnb-menu-item" data-menu="apps" title="Apps" onclick="location.href='../../apps/apps.html'">
+        <span class="lnb-menu-icon">
+          <img src="../../assets/icons/ic-menu-apps.svg" alt="Apps" width="24" height="24">
+        </span>
+      </button>
+    </div>
+
+    <!-- 하단 메뉴 그룹 (Figma: lnb 직접 자식, space-between으로 하단 배치) -->
+    <div class="lnb-menu-bottom">
+      <!-- menu-todo -->
+      <a href="../../workpanel/workpanel.html" class="lnb-menu-item" data-menu="todo" title="할 일">
+        <span class="lnb-menu-icon">
+          <img src="../../assets/icons/ic-check02.svg" alt="할 일" width="24" height="24">
+        </span>
+      </a>
+
+      <!-- menu-help -->
+      <button class="lnb-menu-item" data-menu="help" title="도움말">
+        <span class="lnb-menu-icon">
+          <img src="../../assets/icons/ic-circle-help.svg" alt="도움말" width="24" height="24">
+        </span>
+      </button>
+    </div>
+  </nav>
+</body>
+
+</html>

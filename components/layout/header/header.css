@@ -1,0 +1,321 @@
+/**
+ * Header Component — Figma node 1:17439
+ *
+ * 피그마 노드 정밀 분석 (company=posco variant):
+ *
+ * header (COMPONENT_SET) 1920×80
+ *   └─ company=posco (1:17440) 1920×80
+ *        layout: HORIZONTAL, gap: 16, align: SPACE_BETWEEN
+ *        padding: 좌표 역산 → { top:0, right:24, bottom:0, left:0 }
+ *        fills: 없음 (투명)
+ *
+ *   ├─ header-left (1:17441) 320×56
+ *   │    layout: HORIZONTAL, padding: 16, gap: 16
+ *   │    ├─ btn-menu (FRAME) 48×48, gap: 10, align: CENTER
+ *   │    │    └─ button-icon (INSTANCE) 40×40, radius: 9999
+ *   │    │         └─ ic-menu-hamburger 24×24
+ *   │    └─ favority-user (FRAME) 240×56
+ *   │         layout: HORIZONTAL, padding: 12, gap: 8
+ *   │         fills: #FFFFFF, cornerRadius: 9999
+ *   │         └─ avata-group-favorite (INSTANCE) 216×40
+ *   │              gap: 4
+ *   │              └─ avatar ×4 (40×40) + btn-add (40×40)
+ *   │
+ *   ├─ logo-nextep (INSTANCE) 201.5×26
+ *   │    중앙 정렬 (absolute 처리)
+ *   │
+ *   └─ header-right (1:17447) 474×56
+ *        layout: HORIZONTAL, gap: 16
+ *        ├─ mode-switch (INSTANCE) 202×56
+ *        │    fills: #D6E4FF, padding: 8, cornerRadius: 9999
+ *        │    ├─ btn-mode (classic) 106×40, padding: 16, gap: 8, CENTER
+ *        │    └─ btn-mode (ai) 80×40, fills: #005386
+ *        └─ right-btns (FRAME) 256×56
+ *             layout: HORIZONTAL, padding: 12, gap: 8
+ *             fills: #FFFFFF, cornerRadius: 9999
+ *             ├─ button-icon ×4 (40×40) — search, bolt, bell, setting
+ *             └─ btn-me (40×40, gap: 4)
+ *                  └─ avata 40×40 + ic-caret-down02 20×20
+ *
+ * 토큰 매핑:
+ *   4px  → --klds-gap-xxs
+ *   8px  → --klds-padding-xxs / --klds-gap-xs
+ *   10px → (직접 사용)
+ *   12px → --klds-padding-s / --klds-gap-s
+ *   16px → --klds-padding-m / --klds-gap-m
+ *   24px → --klds-padding-xl / --klds-gap-xl
+ *   40px → --klds-size-size6
+ *   48px → --klds-size-size7
+ *   56px → --klds-size-size8
+ *   80px → (직접 사용)
+ *   9999 → --klds-radius-circle
+ */
+
+/* ─────────────────────────────────────────
+   .header  —  최상위 컨테이너
+   Figma: company=posco 1920×80, HORIZONTAL, gap: 16, SPACE_BETWEEN
+   좌표 역산: left=0, right=24 (header-right 끝 1585, header 끝 1609)
+   ───────────────────────────────────────── */
+.header {
+  display: flex;
+  /* layout.mode: HORIZONTAL */
+  align-items: center;
+  justify-content: space-between;
+  /* layout.align: SPACE_BETWEEN */
+  width: 100%;
+  height: 80px;
+  /* bounds.h: 80 */
+  padding: 0 var(--klds-padding-xl, 24px) 0 0;
+  /* 좌표역산: top:0 right:24 bottom:0 left:0 */
+  gap: var(--klds-gap-m, 16px);
+  /* 16px */
+  background: transparent;
+  /* fills: 없음 */
+  position: relative;
+  flex-shrink: 0;
+  /* 헤더 높이 고정 */
+  box-sizing: border-box;
+}
+
+
+/* ─────────────────────────────────────────
+   .header__left  —  좌측 영역
+   Figma: header-left 320×56, HORIZONTAL, padding: 16, gap: 16
+   ───────────────────────────────────────── */
+.header__left {
+  display: flex;
+  /* layout.mode: HORIZONTAL */
+  align-items: center;
+  gap: var(--klds-gap-m);
+  /* 16px */
+  padding: var(--klds-padding-m);
+  /* 16px */
+  height: var(--klds-size-size8);
+  /* 56px */
+}
+
+
+/* ─────────────────────────────────────────
+   .header__btn-menu  —  메뉴 버튼 래퍼
+   Figma: btn-menu (FRAME) 48×48, gap: 10, align: CENTER
+   내부 button-icon도 48×48로 확장
+   ───────────────────────────────────────── */
+.header__btn-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--klds-size-size7, 48px);
+  /* 48px */
+  height: var(--klds-size-size7, 48px);
+  /* 48px */
+  flex-shrink: 0;
+}
+
+/* 메뉴 버튼 내 button-icon → 48×48 (래퍼와 동일 크기) */
+.header__btn-menu .button-icon,
+.header .button-icon[data-action="toggle-lnb"] {
+  width: var(--klds-size-size7, 48px);
+  /* 48px */
+  height: var(--klds-size-size7, 48px);
+  /* 48px */
+}
+
+/* hover 시: 배경색 제거, 아이콘 primary 컬러로 변경 */
+.header__btn-menu .button-icon:hover:not(:disabled),
+.header .button-icon[data-action="toggle-lnb"]:hover:not(:disabled) {
+  background-color: transparent;
+  /* 배경색 제거 */
+}
+
+.header__btn-menu .button-icon:hover:not(:disabled) .button-icon__icon,
+.header .button-icon[data-action="toggle-lnb"]:hover:not(:disabled) .button-icon__icon {
+  background-color: var(--klds-color-primary-primary06, #005386);
+  /* 아이콘 primary */
+}
+
+
+/* ─────────────────────────────────────────
+   .header__favorite-users  —  즐겨찾기 사용자 (favority-user FRAME)
+   Figma: 240×56, HORIZONTAL, padding: 12, gap: 8
+   fills: #FFFFFF, cornerRadius: 9999
+   ───────────────────────────────────────── */
+.header__favorite-users {
+  display: flex;
+  /* layout.mode: HORIZONTAL */
+  align-items: center;
+  gap: var(--klds-gap-xs);
+  /* 8px */
+  padding: var(--klds-padding-s);
+  /* 12px */
+  height: var(--klds-size-size8);
+  /* 56px */
+  background-color: var(--klds-color-white);
+  /* fills: #FFFFFF */
+  border-radius: var(--klds-radius-circle);
+  /* 9999px */
+}
+
+
+/* avata-group-favorite 인스턴스 활용 (기존 avatar 컴포넌트) */
+/* avatar.css의 .avatar-group 재사용 */
+.header__favorite-users .avatar-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--klds-gap-xxs);
+  /* 4px */
+}
+
+
+/* ─────────────────────────────────────────
+   .header__logo  —  중앙 로고
+   Figma: logo-nextep 201.5×26
+   부모 내 중앙 배치 → absolute 처리
+   ───────────────────────────────────────── */
+.header__logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.header__logo img,
+.header__logo svg {
+  display: block;
+}
+
+
+/* ─────────────────────────────────────────
+   .header__right  —  우측 영역
+   Figma: header-right 474×56, HORIZONTAL, gap: 16
+   ───────────────────────────────────────── */
+.header__right {
+  display: flex;
+  /* layout.mode: HORIZONTAL */
+  align-items: center;
+  gap: var(--klds-gap-m);
+  /* 16px */
+}
+
+
+/* ─────────────────────────────────────────
+   mode-switch 영역
+   ※ 기존 컴포넌트(switch/mode-switch.css)를 그대로 재사용합니다.
+   ※ .mode-switch, .mode-switch__btn, .mode-switch__icon, .mode-switch__label
+   ※ 클래스와 마크업 구조는 mode-switch 컴포넌트 규격을 따릅니다.
+   ※ header.css에서는 별도 스타일을 정의하지 않습니다.
+   ───────────────────────────────────────── */
+
+
+/* ─────────────────────────────────────────
+   .header__right-btns  —  우측 버튼 그룹 (right-btns FRAME)
+   Figma: 256×56, HORIZONTAL, padding: 12, gap: 8
+   fills: #FFFFFF, cornerRadius: 9999
+   ───────────────────────────────────────── */
+.header__right-btns {
+  display: flex;
+  /* layout.mode: HORIZONTAL */
+  align-items: center;
+  gap: var(--klds-gap-xs);
+  /* 8px */
+  padding: var(--klds-padding-xxs);
+  /* 8px */
+  background-color: var(--klds-color-white);
+  /* fills: #FFFFFF */
+  border-radius: var(--klds-radius-circle);
+  /* 9999px */
+}
+
+
+/* ─────────────────────────────────────────
+   아이콘 버튼들 — button-icon 컴포넌트 재사용
+   Figma: button-icon (INSTANCE 40×40) × 4개
+   → button-icon.css의 .button-icon--medium.button-icon--default 사용
+   → 별도 스타일 정의 불필요
+   ───────────────────────────────────────── */
+
+
+/* ─────────────────────────────────────────
+   .header__user-btn  —  사용자 프로필 버튼 (btn-me FRAME)
+   Figma: 40×40, HORIZONTAL, gap: 4
+   fills: 없음
+   주의: ic-caret-down02는 Figma에서 btn-me 밖에 위치
+   ───────────────────────────────────────── */
+.header__user-btn {
+  display: flex;
+  /* layout.mode: HORIZONTAL */
+  align-items: center;
+  gap: var(--klds-gap-xxs);
+  /* 4px */
+  background: transparent;
+  /* fills: 없음 */
+  border: none;
+  /* strokes: 없음 */
+  cursor: pointer;
+  padding: 0;
+}
+
+
+/* ─────────────────────────────────────────
+   .header__user-avatar  —  사용자 아바타 (avata 인스턴스)
+   Figma: 40×40, fills: #E5E8EB, strokes: #E5E8EB (1px), cornerRadius: 20
+   layout: HORIZONTAL, align: CENTER
+   ───────────────────────────────────────── */
+.header__user-avatar {
+  width: var(--klds-size-size6);
+  /* 40px */
+  height: var(--klds-size-size6);
+  /* 40px */
+  background-color: var(--klds-color-gray-gray03);
+  /* fills: #E5E7EB (≒#E5E8EB) */
+  border: 1px solid var(--klds-color-gray-gray03);
+  /* strokes: #E5E7EB */
+  border-radius: var(--klds-radius-l);
+  /* 20px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ─────────────────────────────────────────
+   .header__user-dropdown  —  드롭다운 아이콘
+   Figma: ic-caret-down02 20×20
+   ───────────────────────────────────────── */
+.header__user-dropdown {
+  width: var(--klds-size-size3);
+  /* 20px */
+  height: var(--klds-size-size3);
+  /* 20px */
+  flex-shrink: 0;
+}
+
+
+/* ─── 반응형 ─── 피그마에 정의 없음, UX 보조용 */
+
+@media (max-width: 1200px) {
+  .header__favorite-users {
+    display: none;
+  }
+
+  .header__logo {
+    left: 72px;
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 var(--klds-padding-s, 12px) 0 0;
+    /* 0 12px 0 0 */
+  }
+
+  .header__mode-switch {
+    display: none;
+  }
+
+  .header__logo {
+    position: static;
+    transform: none;
+  }
+}

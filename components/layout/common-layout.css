@@ -1,0 +1,258 @@
+/**
+ * Common Layout Component — Figma node 83:4818
+ *
+ * ──────────────────────────────────────────
+ * Figma 노드 구조 (depth 기준 1:1 매핑)
+ * ──────────────────────────────────────────
+ *
+ * common layout (FRAME) 1920×1080
+ *   layout: VERTICAL, padding: 없음, gap: 없음
+ *   fills: rgba(0.941, 0.961, 1.0, 1) → #F0F5FF
+ *
+ * ├─ header (INSTANCE 83:4819) 1920×80
+ * │    → header 컴포넌트 재사용 (header/header.css)
+ * │
+ * └─ wrap (FRAME 83:4820) 1920×1000
+ *      layout: HORIZONTAL, gap: 없음, align: SPACE_BETWEEN
+ *      ├─ lnb (INSTANCE 83:4821) 80×1000
+ *      │    → lnb 컴포넌트 재사용 (lnb/lnb.css)
+ *      │
+ *      └─ contents (FRAME 83:4822) 1840×1000
+ *           layout: HORIZONTAL, gap: 24
+ *           padding: 좌표역산 → { top:0, right:24, bottom:24, left:0 }
+ *           ├─ work-area (FRAME 83:4823) 1232×976
+ *           │    fills: #FFFFFF, radius: 24, padding: 32, gap: 32
+ *           └─ ai-assistant (INSTANCE 83:4935) 560×976
+ *                → ai-assistant 컴포넌트 재사용 (ai-assistant/ai-assistant.css)
+ *
+ * ──────────────────────────────────────────
+ * Design Tokens 매핑
+ * ──────────────────────────────────────────
+ *
+ * Background : #F0F5FF → --klds-color-background-primary
+ * Gap 24     : 24px    → --klds-gap-xl
+ * Padding 24 : 24px    → --klds-padding-xl  (contents right/bottom)
+ * Padding 32 : 32px    → --klds-padding-xxl
+ * Radius 24  : 24px    → --klds-radius-xl
+ */
+
+/* ========================================
+   Layout Container
+   Figma: common layout (83:4818)
+   1920×1080, VERTICAL, fills: #F0F5FF
+   ======================================== */
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  /* layout.mode: VERTICAL */
+  width: 100%;
+  /* bounds.w: 1920 → 100% */
+  height: 100vh;
+  /* bounds.h: 1080 → 100vh */
+  height: 100dvh;
+  /* 모바일 대응 (피그마에 정의 없음) */
+  background-color: var(--klds-color-background-primary, #F0F5FF);
+  /* fills: rgba(0.941,0.961,1,1) */
+  overflow: hidden;
+  /* 자식 고정 스크롤 */
+  box-sizing: border-box;
+}
+
+/* ========================================
+   Wrap (Main Section)
+   Figma: wrap (83:4820)
+   1920×1000, HORIZONTAL, SPACE_BETWEEN
+   ======================================== */
+.layout-main {
+  display: flex;
+  flex-direction: row;
+  /* layout.mode: HORIZONTAL */
+  justify-content: space-between;
+  /* layout.align: SPACE_BETWEEN */
+  flex: 1;
+  /* 남은 높이 차지 (1080 - 80header = 1000) */
+  min-height: 0;
+  /* flex 자식 스크롤 허용 */
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ========================================
+   Contents Section
+   Figma: contents (83:4822)
+   1840×1000, HORIZONTAL, gap: 24
+   ======================================== */
+.layout-content {
+  display: flex;
+  flex-direction: row;
+  /* layout.mode: HORIZONTAL */
+  gap: var(--klds-gap-m, 16px);
+  /* layout.gap: 16 */
+  padding: 0 var(--klds-padding-xl, 24px) var(--klds-padding-xl, 24px) 0;
+  /* 좌표역산: top:0 right:24 bottom:24 left:0 */
+  flex: 1;
+  /* 1840 / (1920-80lnb) = flex-grow */
+  min-height: 0;
+  /* flex 자식 스크롤 허용 */
+  overflow: hidden;
+  /* 자식 개별 스크롤 제어 */
+  box-sizing: border-box;
+  position: relative;
+  /* FAB absolute 포지셔닝 기준 */
+  transition: gap 0.35s ease;
+  /* ai-assistant 닫힐 때 gap 트랜지션 */
+}
+
+/* ai-assistant 닫힌 상태에서 불필요한 gap 제거 */
+.layout-content:has(.ai-assistant.is-hidden) {
+  gap: 0;
+}
+
+/* Work Area 숨김 (AI Assistant 최대화) */
+.layout-content__work-area.is-hidden {
+  display: none;
+}
+
+/* AI Assistant 래퍼 div를 레이아웃에서 투명하게 처리 */
+#comp-ai-assistant {
+  display: contents;
+}
+
+
+/* ========================================
+   FAB Button (AI Assistant 재열기)
+   Figma: button-fab (501:10390)
+   layout-content 우하단 고정
+   기본: 아래로 숨김 → .is-visible 시 슬라이드 업
+   ======================================== */
+.layout-fab {
+  position: absolute;
+  bottom: var(--klds-padding-xl, 24px);
+  right: var(--klds-padding-xl, 24px);
+  z-index: 10;
+  transform: translateY(80px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s ease, opacity 0.25s ease;
+}
+
+.layout-fab.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ========================================
+   Work Area (Content Slot)
+   Figma: work-area (83:4823)
+   1232×976, radius:24, bg:#FFF, padding:32, gap:32
+   ======================================== */
+.layout-content__work-area {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: var(--klds-color-bg-white, #FFFFFF);
+  border-radius: var(--klds-radius-xl, 24px);
+  padding: var(--klds-padding-xl, 24px);
+  gap: var(--klds-gap-xxxl, 32px);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* ========================================
+   Scrollbar Styles (피그마에 정의 없음)
+   ======================================== */
+.layout-content__work-area::-webkit-scrollbar {
+  width: 4px;
+}
+
+.layout-content__work-area::-webkit-scrollbar-thumb {
+  background-color: var(--klds-color-gray-gray03, #E5E7EB);
+  border-radius: 4px;
+}
+
+.layout-content__work-area::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* ========================================
+   Responsive Adjustments
+   피그마에 정의 없음, 반응형 대응용
+   ======================================== */
+
+/* 1440px: LNB 숨김, contents 좌측 패딩 추가 */
+@media (max-width: 1440px) {
+  .lnb {
+    display: none;
+  }
+
+  .layout-content {
+    padding-left: var(--klds-padding-xl, 24px);
+  }
+
+  .layout-content__work-area {
+    min-width: 800px;
+  }
+}
+
+/* Tablet (≤ 1440px): AI Assistant 자동 숨김 (JS 제어) */
+@media (max-width: 1440px) {
+  .layout-content {
+    overflow-y: auto;
+  }
+}
+
+
+
+/* ========================================
+   Overlay (모바일 LNB 배경 딤)
+   피그마에 정의 없음, 반응형 UX 대응용
+   ======================================== */
+.layout-overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .layout-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .layout-overlay.is-visible {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* ========================================
+   Print Styles
+   피그마에 정의 없음, 인쇄 대응용
+   ======================================== */
+@media print {
+
+  .header,
+  .lnb,
+  .ai-assistant {
+    display: none;
+  }
+
+  .layout-container {
+    height: auto;
+    overflow: visible;
+  }
+
+  .layout-content {
+    flex-direction: column;
+  }
+
+  .layout-content__work-area {
+    overflow: visible;
+    page-break-inside: avoid;
+  }
+}

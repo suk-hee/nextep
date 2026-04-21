@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tag File Component Preview</title>
+    <!-- CSS Import -->
+    <link rel="stylesheet" href="../styles/tokens.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../components/tag/tag-file.css">
+    <style>
+        body {
+            padding: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .preview-section {
+            margin-bottom: 40px;
+        }
+
+        .preview-section h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .component-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .row {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="preview-section">
+        <h2>1. PPT</h2>
+        <div class="row">
+            <div class="klds-tag-file">
+                <div class="klds-tag-file__icon">
+                    <img src="../assets/attach/ppt.svg" alt="ppt">
+                </div>
+                <div class="klds-tag-file__content">
+                    <div class="klds-tag-file__name">presentation.pptx</div>
+                </div>
+            </div>
+
+            <div class="klds-tag-file">
+                <div class="klds-tag-file__icon">
+                    <img src="../assets/attach/ppt.svg" alt="ppt">
+                </div>
+                <div class="klds-tag-file__content">
+                    <div class="klds-tag-file__support-info">포스코 제안ㆍ11-04</div>
+                    <div class="klds-tag-file__name">presentation_final.pptx</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="preview-section">
+        <h2>2. Word</h2>
+        <div class="row">
+            <div class="klds-tag-file">
+                <div class="klds-tag-file__icon">
+                    <img src="../assets/attach/word.svg" alt="word">
+                </div>
+                <div class="klds-tag-file__content">
+                    <div class="klds-tag-file__name">document.docx</div>
+                </div>
+            </div>
+
+            <div class="klds-tag-file">
+                <div class="klds-tag-file__icon">
+                    <img src="../assets/attach/word.svg" alt="word">
+                </div>
+                <div class="klds-tag-file__content">
+                    <div class="klds-tag-file__support-info">포스코 기획ㆍ11-04</div>
+                    <div class="klds-tag-file__name">document_v2.docx</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="preview-section">
+        <h2>3. Excel</h2>
+        <div class="row">
+            <div class="klds-tag-file">
+                <div class="klds-tag-file__icon">
+                    <img src="../assets/attach/excel.svg" alt="excel">
+                </div>
+                <div class="klds-tag-file__content">
+                    <div class="klds-tag-file__name">spreadsheet.xlsx</div>
+                </div>
+            </div>
+
+            <div class="klds-tag-file">
+                <div class="klds-tag-file__icon">
+                    <img src="../assets/attach/excel.svg" alt="excel">
+                </div>
+                <div class="klds-tag-file__content">
+                    <div class="klds-tag-file__support-info">포스코 재무ㆍ11-04</div>
+                    <div class="klds-tag-file__name">spreadsheet_review.xlsx</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="preview-section">
+        <h2>4. PDF</h2>
+        <div class="row">
+            <div class="klds-tag-file">
+                <div class="klds-tag-file__icon">
+                    <img src="../assets/attach/pdf.svg" alt="pdf">
+                </div>
+                <div class="klds-tag-file__content">
+                    <div class="klds-tag-file__name">report.pdf</div>
+                </div>
+            </div>
+
+            <div class="klds-tag-file">
+                <div class="klds-tag-file__icon">
+                    <img src="../assets/attach/pdf.svg" alt="pdf">
+                </div>
+                <div class="klds-tag-file__content">
+                    <div class="klds-tag-file__support-info">포스코 보고ㆍ11-04</div>
+                    <div class="klds-tag-file__name">report_final.pdf</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="preview-section">
+        <h2>5. HWP (한글)</h2>
+        <div class="row">
+            <div class="klds-tag-file">
+                <div class="klds-tag-file__icon">
+                    <img src="../assets/attach/hwp.svg" alt="hwp">
+                </div>
+                <div class="klds-tag-file__content">
+                    <div class="klds-tag-file__name">korean_document.hwp</div>
+                </div>
+            </div>
+
+            <div class="klds-tag-file">
+                <div class="klds-tag-file__icon">
+                    <img src="../assets/attach/hwp.svg" alt="hwp">
+                </div>
+                <div class="klds-tag-file__content">
+                    <div class="klds-tag-file__support-info">포스코 규정ㆍ11-04</div>
+                    <div class="klds-tag-file__name">korean_document_edited.hwp</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="preview-section">
+        <h2>6. 말줄임 테스트 (Truncation)</h2>
+        <p style="margin-bottom: 16px; color: #666; font-size: 14px;">부모 컨테이너의 너비가 제한되었을 때 텍스트가 잘리는 형태를 확인합니다.</p>
+        <div style="width: 200px; border: 1px dashed #ccc; padding: 10px;">
+            <div class="klds-tag-file">
+                <div class="klds-tag-file__icon">
+                    <img src="../assets/attach/word.svg" alt="word">
+                </div>
+                <div class="klds-tag-file__content">
+                    <div class="klds-tag-file__support-info">매우 긴 지원 정보가 입력되었을 때 말줄임 처리 확인</div>
+                    <div class="klds-tag-file__name">매우_긴_파일_이름이_입력되었을_때_말줄임_처리_확인.docx</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

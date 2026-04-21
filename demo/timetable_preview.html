@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable Component Preview - KLDS</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/tokens.css">
+    <link rel="stylesheet" href="../components/avatar/avatar.css">
+    <link rel="stylesheet" href="../components/timetable/timetable.css">
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            padding: 40px;
+            background: #F9FAFB;
+        }
+
+        .preview-section {
+            margin-bottom: 60px;
+        }
+
+        .preview-section h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #121212;
+        }
+
+        .preview-section p {
+            font-size: 14px;
+            color: #6B7280;
+            margin-bottom: 24px;
+        }
+
+        .preview-box {
+            background: #F3F4F6;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 40px;">Timetable Component Preview</h1>
+
+    <!-- ═══════════════════════════════════════
+     type=me — 내 업무 타임테이블
+     Figma: 136:6559
+     ═══════════════════════════════════════ -->
+    <div class="preview-section">
+        <h2>type=me — 내 업무</h2>
+        <p>내 하루 업무를 시간대별로 확인 (체크박스 없음, 1행)</p>
+
+        <div class="preview-box">
+            <div class="timetable">
+                <!-- 헤더 -->
+                <div class="timetable__thead">
+                    <div class="timetable__th timetable__th--name">이름</div>
+                    <div class="timetable__th timetable__th--time">08:00</div>
+                    <div class="timetable__th timetable__th--time">09:00</div>
+                    <div class="timetable__th timetable__th--time">10:00</div>
+                    <div class="timetable__th timetable__th--time">11:00</div>
+                    <div class="timetable__th timetable__th--time">12:00</div>
+                    <div class="timetable__th timetable__th--time">13:00</div>
+                    <div class="timetable__th timetable__th--time">14:00</div>
+                    <div class="timetable__th timetable__th--time">15:00</div>
+                    <div class="timetable__th timetable__th--time">16:00</div>
+                    <div class="timetable__th timetable__th--time">17:00</div>
+                    <div class="timetable__th timetable__th--time">18:00</div>
+                    <div class="timetable__th timetable__th--time">19:00</div>
+                </div>
+
+                <!-- 박소정 -->
+                <div class="timetable__row">
+                    <div class="timetable__cell-user">
+                        <div class="timetable__user-info">
+                            <div class="avatar avatar--small">
+                                <img src="../assets/avatars/female01.jpg" alt="박소정" class="avatar__image">
+                            </div>
+                            <div class="timetable__user-text">
+                                <span class="timetable__user-name">박소정</span>
+                                <span class="timetable__user-role">차장</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timetable__cell-time">
+                        <div class="timetable__grid">
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell"></div>
+
+                            <!-- 이벤트: 차세대 EP 논의 (green, 08:30~09:30) -->
+                            <div class="timetable__event timetable__event--green" style="left: 4.2%; width: 12.5%;">
+                                <span class="timetable__event-text">차세대 EP 논의 미팅</span>
+                            </div>
+                            <!-- 이벤트: 디자인 시스템 컴포넌트 논의 (lightblue, 10:00~12:00) -->
+                            <div class="timetable__event timetable__event--lightblue"
+                                style="left: 20.8%; width: 16.7%;">
+                                <span class="timetable__event-text">디자인 시스템 컴포…</span>
+                            </div>
+                            <!-- 이벤트: 콘텐츠 디자이너 면접 (lightblue, 14:30~16:30) -->
+                            <div class="timetable__event timetable__event--lightblue"
+                                style="left: 54.2%; width: 16.7%;">
+                                <span class="timetable__event-text">콘텐츠 디자이너 면접</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+     type=another — 다른 사람 업무 타임테이블
+     Figma: 136:6560
+     ═══════════════════════════════════════ -->
+    <div class="preview-section">
+        <h2>type=another — 다른 사람 업무</h2>
+        <p>팀원들의 하루 업무를 시간대별로 확인 (체크박스 있음, 여러 행)</p>
+
+        <div class="preview-box">
+            <div class="timetable">
+                <!-- 헤더 -->
+                <div class="timetable__thead">
+                    <div class="timetable__th timetable__th--checkbox">
+                        <div class="timetable__checkbox timetable__checkbox--select-all" data-checked="false">
+                        </div>
+                    </div>
+                    <div class="timetable__th timetable__th--name">이름</div>
+                    <div class="timetable__th timetable__th--time">08:00</div>
+                    <div class="timetable__th timetable__th--time">09:00</div>
+                    <div class="timetable__th timetable__th--time">10:00</div>
+                    <div class="timetable__th timetable__th--time">11:00</div>
+                    <div class="timetable__th timetable__th--time">12:00</div>
+                    <div class="timetable__th timetable__th--time">13:00</div>
+                    <div class="timetable__th timetable__th--time">14:00</div>
+                    <div class="timetable__th timetable__th--time">15:00</div>
+                    <div class="timetable__th timetable__th--time">16:00</div>
+                    <div class="timetable__th timetable__th--time">17:00</div>
+                    <div class="timetable__th timetable__th--time">18:00</div>
+                    <div class="timetable__th timetable__th--time">19:00</div>
+                </div>
+
+                <!-- 첫 행: 박소정 (unchecked) -->
+                <div class="timetable__row timetable__row--border">
+                    <div class="timetable__cell-checkbox">
+                        <div class="timetable__checkbox" data-checked="false"></div>
+                    </div>
+                    <div class="timetable__cell-user">
+                        <div class="timetable__user-info">
+                            <div class="avatar avatar--small">
+                                <img src="../assets/avatars/female01.jpg" alt="박소정" class="avatar__image">
+                            </div>
+                            <div class="timetable__user-text">
+                                <span class="timetable__user-name">박소정</span>
+                                <span class="timetable__user-role">차장</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timetable__cell-time">
+                        <div class="timetable__grid">
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell"></div>
+
+                            <div class="timetable__event timetable__event--green" style="left: 4.2%; width: 12.5%;">
+                                <span class="timetable__event-text">차세대 EP 논의 미팅</span>
+                            </div>
+                            <div class="timetable__event timetable__event--lightblue"
+                                style="left: 20.8%; width: 16.7%;">
+                                <span class="timetable__event-text">디자인 시스템 컴포…</span>
+                            </div>
+                            <div class="timetable__event timetable__event--lightblue"
+                                style="left: 54.2%; width: 16.7%;">
+                                <span class="timetable__event-text">콘텐츠 디자이너 면접</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 신명훈 (checked) -->
+                <div class="timetable__row timetable__row--border timetable__row--checked">
+                    <div class="timetable__cell-checkbox">
+                        <div class="timetable__checkbox timetable__checkbox--checked" data-checked="true">
+                            <span class="timetable__check-icon">
+                                <svg viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 3.5L4.5 7L11 1" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="timetable__cell-user">
+                        <div class="timetable__user-info">
+                            <div class="avatar avatar--small">
+                                <img src="../assets/avatars/male02.jpg" alt="신명훈" class="avatar__image">
+                            </div>
+                            <div class="timetable__user-text">
+                                <span class="timetable__user-name">신명훈</span>
+                                <span class="timetable__user-role">과장</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timetable__cell-time">
+                        <div class="timetable__grid">
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell"></div>
+
+                            <!-- AI 행사 준비 (pill, 08:30~10:00) -->
+                            <div class="timetable__event timetable__event--ai" style="left: 2%; width: 12.5%;">
+                                <span class="timetable__event-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.6144 17.7956L11.492 15.7854C12.2731 13.9966 13.6789 12.5726 15.4325 11.7942L17.8482 10.7219C18.6162 10.381 18.6162 9.26368 17.8482 8.92277L15.5079 7.88394C13.7092 7.08552 12.2782 5.60881 11.5105 3.75894L10.6215 1.61673C10.2916 0.821766 9.19319 0.821768 8.8633 1.61673L7.97427 3.75892C7.20657 5.60881 5.77553 7.08552 3.97685 7.88394L1.63658 8.92277C0.868537 9.26368 0.868536 10.381 1.63658 10.7219L4.0523 11.7942C5.80589 12.5726 7.21171 13.9966 7.99275 15.7854L8.8704 17.7956C9.20776 18.5682 10.277 18.5682 10.6144 17.7956ZM19.4014 22.6899L19.6482 22.1242C20.0882 21.1156 20.8807 20.3125 21.8695 19.8732L22.6299 19.5353C23.0412 19.3526 23.0412 18.7549 22.6299 18.5722L21.9121 18.2532C20.8978 17.8026 20.0911 16.9698 19.6586 15.9269L19.4052 15.3156C19.2285 14.8896 18.6395 14.8896 18.4628 15.3156L18.2094 15.9269C17.777 16.9698 16.9703 17.8026 15.956 18.2532L15.2381 18.5722C14.8269 18.7549 14.8269 19.3526 15.2381 19.5353L15.9985 19.8732C16.9874 20.3125 17.7798 21.1156 18.2198 22.1242L18.4667 22.6899C18.6473 23.104 19.2207 23.104 19.4014 22.6899Z" />
+                                    </svg>
+                                </span>
+                                <span class="timetable__event-text">행사 준비</span>
+                            </div>
+                            <!-- 코엑스 행사 (purple, 10:00~17:00) -->
+                            <div class="timetable__event timetable__event--purple" style="left: 20.8%; width: 58.4%;">
+                                <span class="timetable__event-text">코엑스 행사 (웨비나)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 박수진 (checked) -->
+                <div class="timetable__row timetable__row--border timetable__row--checked">
+                    <div class="timetable__cell-checkbox">
+                        <div class="timetable__checkbox timetable__checkbox--checked" data-checked="true">
+                            <span class="timetable__check-icon">
+                                <svg viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 3.5L4.5 7L11 1" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="timetable__cell-user">
+                        <div class="timetable__user-info">
+                            <div class="avatar avatar--small">
+                                <img src="../assets/avatars/female02.jpg" alt="박수진" class="avatar__image">
+                            </div>
+                            <div class="timetable__user-text">
+                                <span class="timetable__user-name">박수진</span>
+                                <span class="timetable__user-role">대리</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timetable__cell-time">
+                        <div class="timetable__grid">
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell"></div>
+
+                            <!-- 협력업체 미팅 (orange, 09:30~14:30) -->
+                            <div class="timetable__event timetable__event--orange" style="left: 12.5%; width: 50%;">
+                                <span class="timetable__event-text">협력업체 미팅</span>
+                            </div>
+                            <!-- 박수진 원온원 (lightblue, 17:00~19:00) -->
+                            <div class="timetable__event timetable__event--lightblue"
+                                style="left: 70.8%; width: 16.7%;">
+                                <span class="timetable__event-text">박수진 원온원</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 배진영 (unchecked) -->
+                <div class="timetable__row">
+                    <div class="timetable__cell-checkbox">
+                        <div class="timetable__checkbox" data-checked="false"></div>
+                    </div>
+                    <div class="timetable__cell-user">
+                        <div class="timetable__user-info">
+                            <div class="avatar avatar--small">
+                                <img src="../assets/avatars/male01.jpg" alt="배진영" class="avatar__image">
+                            </div>
+                            <div class="timetable__user-text">
+                                <span class="timetable__user-name">배진영</span>
+                                <span class="timetable__user-role">대리</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timetable__cell-time">
+                        <div class="timetable__grid">
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell timetable__grid-cell--half"></div>
+                            <div class="timetable__grid-cell"></div>
+                            <div class="timetable__grid-cell"></div>
+
+                            <!-- 인터뷰 설문 작성 (green, 08:30~10:00) -->
+                            <div class="timetable__event timetable__event--green" style="left: 8.3%; width: 12.5%;">
+                                <span class="timetable__event-text">인터뷰 설문 작성</span>
+                            </div>
+                            <!-- 고객사 인터뷰 (mint, 13:00~17:30) -->
+                            <div class="timetable__event timetable__event--mint" style="left: 41.7%; width: 37.5%;">
+                                <span class="timetable__event-text">고객사 인터뷰</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+     이벤트 색상 팔레트
+     ═══════════════════════════════════════ -->
+    <div class="preview-section">
+        <h2>이벤트 색상 팔레트</h2>
+        <p>사용 가능한 이벤트 태그 색상</p>
+
+        <div class="preview-box" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+            <div class="timetable__event timetable__event--green" style="position: relative; transform: none;">
+                <span class="timetable__event-text">green</span>
+            </div>
+            <div class="timetable__event timetable__event--lightblue" style="position: relative; transform: none;">
+                <span class="timetable__event-text">lightblue</span>
+            </div>
+            <div class="timetable__event timetable__event--purple" style="position: relative; transform: none;">
+                <span class="timetable__event-text">purple</span>
+            </div>
+            <div class="timetable__event timetable__event--orange" style="position: relative; transform: none;">
+                <span class="timetable__event-text">orange</span>
+            </div>
+            <div class="timetable__event timetable__event--mint" style="position: relative; transform: none;">
+                <span class="timetable__event-text">mint</span>
+            </div>
+            <div class="timetable__event timetable__event--ai" style="position: relative; transform: none;">
+                <span class="timetable__event-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.6144 17.7956L11.492 15.7854C12.2731 13.9966 13.6789 12.5726 15.4325 11.7942L17.8482 10.7219C18.6162 10.381 18.6162 9.26368 17.8482 8.92277L15.5079 7.88394C13.7092 7.08552 12.2782 5.60881 11.5105 3.75894L10.6215 1.61673C10.2916 0.821766 9.19319 0.821768 8.8633 1.61673L7.97427 3.75892C7.20657 5.60881 5.77553 7.08552 3.97685 7.88394L1.63658 8.92277C0.868537 9.26368 0.868536 10.381 1.63658 10.7219L4.0523 11.7942C5.80589 12.5726 7.21171 13.9966 7.99275 15.7854L8.8704 17.7956C9.20776 18.5682 10.277 18.5682 10.6144 17.7956ZM19.4014 22.6899L19.6482 22.1242C20.0882 21.1156 20.8807 20.3125 21.8695 19.8732L22.6299 19.5353C23.0412 19.3526 23.0412 18.7549 22.6299 18.5722L21.9121 18.2532C20.8978 17.8026 20.0911 16.9698 19.6586 15.9269L19.4052 15.3156C19.2285 14.8896 18.6395 14.8896 18.4628 15.3156L18.2094 15.9269C17.777 16.9698 16.9703 17.8026 15.956 18.2532L15.2381 18.5722C14.8269 18.7549 14.8269 19.3526 15.2381 19.5353L15.9985 19.8732C16.9874 20.3125 17.7798 21.1156 18.2198 22.1242L18.4667 22.6899C18.6473 23.104 19.2207 23.104 19.4014 22.6899Z" />
+                    </svg>
+                </span>
+                <span class="timetable__event-text">AI tag</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript: 체크박스 토글 + 전체선택 -->
+    <script>
+        (function () {
+            'use strict';
+
+            var CHECK_SVG = '<span class="timetable__check-icon">' +
+                '<svg viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+                '<path d="M1 3.5L4.5 7L11 1" stroke="white" stroke-width="2" ' +
+                'stroke-linecap="round" stroke-linejoin="round"/>' +
+                '</svg></span>';
+
+            /**
+             * 단일 체크박스 상태를 설정
+             * @param {HTMLElement} checkbox
+             * @param {boolean} checked
+             */
+            function setCheckboxState(checkbox, checked) {
+                checkbox.dataset.checked = String(checked);
+                if (checked) {
+                    checkbox.classList.add('timetable__checkbox--checked');
+                    if (!checkbox.querySelector('.timetable__check-icon')) {
+                        checkbox.innerHTML = CHECK_SVG;
+                    }
+                } else {
+                    checkbox.classList.remove('timetable__checkbox--checked');
+                    checkbox.innerHTML = '';
+                }
+
+                // 행 배경 토글
+                var row = checkbox.closest('.timetable__row');
+                if (row) {
+                    if (checked) {
+                        row.classList.add('timetable__row--checked');
+                    } else {
+                        row.classList.remove('timetable__row--checked');
+                    }
+                }
+            }
+
+            // 각 행의 체크박스 클릭 이벤트
+            document.querySelectorAll('.timetable__checkbox:not(.timetable__checkbox--select-all)').forEach(function (checkbox) {
+                checkbox.addEventListener('click', function () {
+                    var isChecked = checkbox.dataset.checked === 'true';
+                    setCheckboxState(checkbox, !isChecked);
+
+                    // 전체선택 체크박스 상태 동기화
+                    var timetable = checkbox.closest('.timetable');
+                    if (timetable) {
+                        syncSelectAll(timetable);
+                    }
+                });
+            });
+
+            // 전체 선택 체크박스 클릭 이벤트
+            document.querySelectorAll('.timetable__checkbox--select-all').forEach(function (selectAll) {
+                selectAll.addEventListener('click', function () {
+                    var isChecked = selectAll.dataset.checked === 'true';
+                    var newChecked = !isChecked;
+
+                    setCheckboxState(selectAll, newChecked);
+
+                    // 모든 행 체크박스 동기화
+                    var timetable = selectAll.closest('.timetable');
+                    if (timetable) {
+                        timetable.querySelectorAll('.timetable__checkbox:not(.timetable__checkbox--select-all)').forEach(function (cb) {
+                            setCheckboxState(cb, newChecked);
+                        });
+                    }
+                });
+            });
+
+            /**
+             * 행 체크박스 상태에 따라 전체선택 체크박스 동기화
+             */
+            function syncSelectAll(timetable) {
+                var selectAll = timetable.querySelector('.timetable__checkbox--select-all');
+                if (!selectAll) return;
+
+                var rowCheckboxes = timetable.querySelectorAll('.timetable__checkbox:not(.timetable__checkbox--select-all)');
+                var allChecked = true;
+                rowCheckboxes.forEach(function (cb) {
+                    if (cb.dataset.checked !== 'true') allChecked = false;
+                });
+                setCheckboxState(selectAll, allChecked);
+            }
+        })();
+    </script>
+
+</body>
+
+</html>

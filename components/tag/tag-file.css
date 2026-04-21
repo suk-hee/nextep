@@ -1,0 +1,73 @@
+/**
+ * KLDS Tag File Component
+ * 
+ * 가변 폭을 가지는 파일 태그 컴포넌트입니다.
+ */
+
+.klds-tag-file {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--klds-gap-s);
+    padding: var(--klds-padding-xxs) var(--klds-padding-m) var(--klds-padding-xxs) var(--klds-padding-xxs);
+    background-color: var(--klds-color-white);
+    border: 1px solid var(--klds-color-border-default);
+    border-radius: var(--klds-radius-s);
+    /* 12px */
+    box-sizing: border-box;
+    width: fit-content;
+    max-width: 100%;
+    /* 부모 컨테이너를 넘어가지 않게 제한 */
+}
+
+/* 좌측 아이콘 영역 */
+.klds-tag-file__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--klds-size-size6, 40px);
+    height: var(--klds-size-size6, 40px);
+    background-color: var(--klds-color-gray-gray02);
+    border-radius: var(--klds-radius-xs);
+    /* 8px */
+    flex-shrink: 0;
+}
+
+.klds-tag-file__icon img {
+    width: var(--klds-size-size5, 32px);
+    height: var(--klds-size-size5, 32px);
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+/* 우측 텍스트 영역 */
+.klds-tag-file__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    /* 텍스트 말줄임을 위해 필요 */
+}
+
+/* 상단 부가 정보 텍스트 (옵션) */
+.klds-tag-file__support-info {
+    font-family: var(--klds-typography-fontfamily-text);
+    font-weight: var(--klds-typography-fontweight-regular);
+    font-size: var(--klds-typography-fontsize-xs);
+    color: var(--klds-color-gray-gray06);
+    line-height: 1.5;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* 하단 파일 이름 텍스트 */
+.klds-tag-file__name {
+    font-family: var(--klds-typography-fontfamily-text);
+    font-weight: var(--klds-typography-fontweight-semibold);
+    font-size: var(--klds-typography-fontsize-s);
+    color: var(--klds-color-text-black);
+    line-height: 1.5;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

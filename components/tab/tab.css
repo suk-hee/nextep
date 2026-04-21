@@ -1,0 +1,234 @@
+/**
+ * Tab Component
+ * 
+ * Figma: tab (1:17432)
+ * 
+ * Variants:
+ *   type=pill, active=false (1:17436) — Pill, 회색 배경, 검정 텍스트/아이콘
+ *   type=pill, active=true  (1:17433) — Pill, 검정 배경, 흰색 텍스트/아이콘
+ *   type=line, active=false (128:5699) — 언더라인, 회색 텍스트/아이콘
+ *   type=line, active=true  (128:5700) — 언더라인, 검정 텍스트/아이콘, primary 하단선
+ */
+
+
+/* ============================================
+   Tabs Container
+   ============================================ */
+
+.tabs {
+  display: flex;
+  align-items: center;
+}
+
+/* pill container — gap 8px */
+.tabs--pill {
+  gap: var(--klds-gap-xs);
+  /* 8px */
+}
+
+/* line container — gap 24px */
+.tabs--line {
+  gap: var(--klds-gap-xl);
+  /* 24px */
+}
+
+
+/* ============================================
+   Tab 공통
+   ============================================ */
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  font-size: var(--klds-typography-fontsize-s);
+  font-weight: 600;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.tab:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--klds-color-primary-primary06);
+  /* #005386 */
+  outline-offset: 2px;
+  border-radius: inherit;
+}
+
+
+/* ============================================
+   Tab Icon — 24×24 mask
+   ============================================ */
+
+.tab__icon {
+  display: inline-block;
+  width: var(--klds-size-size4);
+  /* 24px */
+  height: var(--klds-size-size4);
+  /* 24px */
+  flex-shrink: 0;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+
+/* ============================================
+   Tab Label
+   ============================================ */
+
+.tab__label {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+
+/* ============================================
+   pill — Pill 형태
+   Figma: 1:17436 (비활성), 1:17433 (활성)
+   ============================================ */
+
+.tab--pill {
+  gap: var(--klds-gap-xs);
+  /* 8px — Figma gap:8 */
+  padding: 0 var(--klds-padding-s);
+  /* 0 16px — Figma padding:16 */
+  height: 40px;
+  /* Figma h:40 */
+  border-radius: var(--klds-radius-circle);
+  /* 9999px — Figma cornerRadius:9999 */
+  background: var(--klds-color-bg-gray02);
+  /* #F3F4F6 — Figma 1:17436 fills */
+  color: var(--klds-color-text-black);
+  /* #121212 — Figma 1:17438 text fills */
+  line-height: var(--klds-typography-lineheight-xl);
+  /* 24px — Figma 1:17438 lineHeight */
+}
+
+/* pill 아이콘 — 검정 */
+.tab--pill .tab__icon {
+  background-color: var(--klds-color-text-black);
+  /* #121212 — Figma I1:17437;1451:872 fills */
+}
+
+/* pill active */
+.tab--pill.tab--active {
+  background: var(--klds-color-text-black);
+  /* #121212 — Figma 1:17433 fills */
+  color: var(--klds-color-white);
+  /* #FFFFFF — Figma 1:17435 text fills */
+}
+
+.tab--pill.tab--active .tab__icon {
+  background-color: var(--klds-color-white);
+  /* #FFFFFF — Figma I1:17434;1451:872 fills */
+}
+
+
+/* ============================================
+   line — 언더라인 형태
+   Figma: 128:5699 (비활성), 128:5700 (활성)
+   ============================================ */
+
+.tab--line {
+  position: relative;
+  gap: var(--klds-gap-xs);
+  /* 8px — Figma gap:8 */
+  min-height: 44px;
+  /* Figma 128:5699 h:44 */
+  padding: 0;
+  color: var(--klds-color-text-gray04);
+  /* #9CA3AF — Figma 128:5697 fills */
+  line-height: var(--klds-typography-lineheight-s);
+  /* 16px — Figma 128:5697 lineHeight */
+}
+
+/* line 아이콘 — 회색 */
+.tab--line .tab__icon {
+  background-color: var(--klds-color-text-gray04);
+  /* #9CA3AF — Figma I128:5710;1451:872 fills */
+}
+
+/* line active */
+.tab--line.tab--active {
+  color: var(--klds-color-text-black);
+  /* #121212 — Figma 128:5701 fills */
+}
+
+.tab--line.tab--active .tab__icon {
+  background-color: var(--klds-color-text-black);
+  /* #121212 — Figma I128:5714;1451:872 fills */
+}
+
+/* line active 언더라인 — 하단 2px */
+.tab--line.tab--active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--klds-color-primary-primary06);
+  /* #005386 — Figma 128:5700 strokes */
+}
+
+
+/* ============================================
+   Icon Masks — data-icon 속성
+   ============================================ */
+
+.tab__icon[data-icon="ic-calendar-event"] {
+  -webkit-mask-image: url(../../assets/icons/ic-calendar-event.svg);
+  mask-image: url(../../assets/icons/ic-calendar-event.svg);
+}
+
+.tab__icon[data-icon="ic-calendar-week"] {
+  -webkit-mask-image: url(../../assets/icons/ic-calendar-week.svg);
+  mask-image: url(../../assets/icons/ic-calendar-week.svg);
+}
+
+.tab__icon[data-icon="ic-calendar-30"] {
+  -webkit-mask-image: url(../../assets/icons/ic-calendar-30.svg);
+  mask-image: url(../../assets/icons/ic-calendar-30.svg);
+}
+
+.tab__icon[data-icon="ic-mail"] {
+  -webkit-mask-image: url(../../assets/icons/ic-mail.svg);
+  mask-image: url(../../assets/icons/ic-mail.svg);
+}
+
+.tab__icon[data-icon="ic-list-unordered"] {
+  -webkit-mask-image: url(../../assets/icons/ic-list-unordered.svg);
+  mask-image: url(../../assets/icons/ic-list-unordered.svg);
+}
+
+.tab__icon[data-icon="ic-table"] {
+  -webkit-mask-image: url(../../assets/icons/ic-table.svg);
+  mask-image: url(../../assets/icons/ic-table.svg);
+}
+
+
+/* ============================================
+   Screen Reader Only
+   ============================================ */
+
+.tab__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

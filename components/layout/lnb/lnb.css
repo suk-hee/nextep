@@ -1,0 +1,226 @@
+/**
+ * LNB (Left Navigation Bar) — Figma node 3:3540
+ *
+ * 피그마 노드 구조 (depth 기준 1:1 매핑):
+ *
+ * lnb (COMPONENT) 80×1000
+ *   layout: VERTICAL, padding: 8, gap: 8
+ *   fills: 없음 (투명)
+ *
+ * ├─ group-menus (FRAME) 48×auto
+ * │    layout: VERTICAL, padding: 없음, gap: 8
+ * │    └─ menu-* (INSTANCE) 48×48  ×10개
+ * │         layout: HORIZONTAL, gap: 10, align: CENTER
+ * │         cornerRadius: 8, fills: 없음
+ * │         ├─ icon (INSTANCE) 24×24
+ * │         │    Vector fill: #121212
+ * │         └─ badge (FRAME) 20×20
+ * │              fills: #FF4D4F, radius: 9999
+ * │              layout: VERTICAL, padding: 8, gap: 8, align: CENTER
+ * │              └─ "8" (TEXT) Pretendard 14/600 #FFF lineHeight:14
+ * │              position: top:-5  right:-5 (메뉴 기준)
+ * │
+ * ├─ menu-todo (INSTANCE) 48×48  ← lnb 직접 자식
+ * └─ menu-help (INSTANCE) 48×48  ← lnb 직접 자식
+ *
+ * 토큰 매핑 (tokens.css 기준):
+ *   8px  → --klds-padding-xxs / --klds-gap-xs / --klds-gap-xs / --klds-radius-xs
+ *   10px → --klds-padding-xs
+ *   48px → --klds-size-size7
+ *   24px → --klds-size-size4
+ *   20px → --klds-size-size3
+ *   9999 → --klds-radius-circle
+ *   14px → --klds-typography-fontsize-s
+ *   600  → (tokens에 bold=700만 존재, 직접 600 사용)
+ */
+
+
+/* ─────────────────────────────────────────
+   .lnb  —  최상위 컨테이너
+   Figma: 80×1000, VERTICAL, padding:8, gap:8, fills:없음
+   ───────────────────────────────────────── */
+.lnb {
+    width: 80px;
+    min-width: 80px;
+    flex-shrink: 0;
+    height: 100%;
+    min-height: 0;
+    /* flex 자식 overflow 허용 */
+    background: transparent;
+    /* fills: 없음 */
+    display: flex;
+    flex-direction: column;
+    /* VERTICAL */
+    align-items: center;
+    padding: var(--klds-padding-xxs);
+    /* 8px */
+    gap: var(--klds-gap-xs);
+    /* 8px */
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.lnb::-webkit-scrollbar {
+    width: 0;
+}
+
+
+/* ─────────────────────────────────────────
+   .lnb-menu-group  —  상단 메뉴 그룹
+   Figma: group-menus (FRAME) 48×auto, VERTICAL, gap:8
+   ───────────────────────────────────────── */
+.lnb-menu-group {
+    display: flex;
+    flex-direction: column;
+    /* VERTICAL */
+    align-items: center;
+    gap: var(--klds-gap-xs);
+    /* 8px */
+    width: var(--klds-size-size7);
+    /* 48px */
+}
+
+
+/* ─────────────────────────────────────────
+   .lnb-menu-bottom  —  하단 메뉴 그룹
+   Figma: menu-todo, menu-help는 lnb 직접 자식
+   margin-top:auto로 하단 밀착
+   ───────────────────────────────────────── */
+.lnb-menu-bottom {
+    display: flex;
+    flex-direction: column;
+    /* VERTICAL */
+    align-items: center;
+    gap: var(--klds-gap-xs);
+    /* 8px */
+    width: var(--klds-size-size7);
+    /* 48px */
+    margin-top: auto;
+    padding-bottom: var(--klds-padding-xxs, 8px);
+    /* 하단 여백 확보 */
+    flex-shrink: 0;
+    /* 축소 방지 */
+}
+
+
+/* ─────────────────────────────────────────
+   .lnb-menu-item  —  메뉴 버튼
+   Figma: 48×48, HORIZONTAL, gap:10, align:CENTER
+   cornerRadius: 8, fills: 없음
+   ───────────────────────────────────────── */
+.lnb-menu-item {
+    position: relative;
+    width: var(--klds-size-size7);
+    /* 48px */
+    height: var(--klds-size-size7);
+    /* 48px */
+    min-height: var(--klds-size-size7);
+    /* 48px */
+    display: flex;
+    align-items: center;
+    /* align: CENTER */
+    justify-content: center;
+    /* align: CENTER */
+    gap: var(--klds-padding-xs);
+    /* 10px */
+    border: none;
+    border-radius: var(--klds-radius-xs);
+    /* 8px */
+    background: transparent;
+    /* fills: 없음 */
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.15s ease;
+}
+
+.lnb-menu-item:hover {
+    background-color: transparent;
+    /* hover 배경색 제거 */
+}
+
+.lnb-menu-item:focus-visible {
+    outline: 2px solid var(--klds-color-primary);
+    /* #005386 */
+    outline-offset: 2px;
+}
+
+
+/* ─────────────────────────────────────────
+   .lnb-menu-item.active
+   Figma COMPONENT_SET state=active: bg primary06
+   ───────────────────────────────────────── */
+.lnb-menu-item.active {
+    background-color: var(--klds-color-primary-primary06);
+    /* #005386 */
+}
+
+.lnb-menu-item.active .lnb-menu-icon span {
+    background-color: var(--klds-color-text-white, #FFFFFF);
+    /* active: 흰색 */
+}
+
+
+/* ─────────────────────────────────────────
+   .lnb-menu-icon  —  아이콘 래퍼
+   Figma: icon (INSTANCE) 24×24
+   Vector fill: #121212 (svg 자체 색상)
+   mask 방식으로 구현하여 hover 시 색상 변경
+   ───────────────────────────────────────── */
+.lnb-menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--klds-size-size4);
+    /* 24px */
+    height: var(--klds-size-size4);
+    /* 24px */
+}
+
+/* 기본: img → mask span으로 교체 */
+.lnb-menu-icon img {
+    display: none;
+    /* img 숨김 */
+}
+
+.lnb-menu-icon span {
+    display: inline-block;
+    width: var(--klds-size-size4);
+    /* 24px */
+    height: var(--klds-size-size4);
+    /* 24px */
+    background-color: var(--klds-color-text-black, #121212);
+    /* 기본: 검정 */
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    transition: background-color 0.15s ease;
+}
+
+/* hover 시 primary 컬러로 변경 (비활성 상태에서만) */
+.lnb-menu-item:hover:not(.active) .lnb-menu-icon span {
+    background-color: var(--klds-color-primary-primary06, #005386);
+}
+
+
+/* ─────────────────────────────────────────
+   .lnb-menu-item .klds-badge  —  뱃지 위치 지정
+   badge 컴포넌트(badge.css)를 재사용하며, 메뉴 아이템 내
+   absolute 포지셔닝만 담당
+   Figma: top:-5, right:-5 (메뉴 48px 기준)
+   ───────────────────────────────────────── */
+.lnb-menu-item .klds-badge {
+    position: absolute;
+    pointer-events: none;
+    top: -5px;
+    right: -5px;
+}
+
+
+/* ─────────────────────────────────────────
+   Tooltip  —  호버 시 메뉴명 표시
+   TODO: 추후 별도 툴팁 컴포넌트로 추가 예정
+   ───────────────────────────────────────── */

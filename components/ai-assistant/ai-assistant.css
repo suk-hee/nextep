@@ -1,0 +1,806 @@
+/**
+ * AI Assistant Component — Figma node 3:5433
+ *
+ * 피그마 노드 정확한 구조:
+ *
+ * ai-assistant (560×976, padding:24, gap:24, radius:24, bg:#FFF)
+ *   └─ ai-default (512×928, VERTICAL, gap:32)
+ *        └─ wrap (512×928, VERTICAL, gap:32)
+ *             ├─ ai-header (512×32, HORIZONTAL, gap:10, SPACE_BETWEEN)
+ *             │    ├─ btn-maximize (146×32, HORIZONTAL, gap:8, CENTER, radius:8)
+ *             │    │    ├─ ic-sidebar-right (24×24)
+ *             │    │    └─ "AI Assistant" (20/700, line:24, #121212)
+ *             │    └─ btn-close (32×32, HORIZONTAL, CENTER, radius:8)
+ *             │         └─ ic-close (32×32)
+ *             │
+ *             ├─ ai-contents-default (512×772, VERTICAL, gap:40, align:CENTER)
+ *             │    ├─ title (339×94, 36/700, line:46.8, align:CENTER, #121212)
+ *             │    └─ btn-list (512×304, HORIZONTAL, padding:0 24, gap:16, align:CENTER)
+ *             │         └─ btn ×6 (144×144, VERTICAL, padding:8, gap:8, align:CENTER, radius:24, border:#E5E7EB)
+ *             │              ├─ icon (56×56)
+ *             │              └─ label (18/600, line:18, #121212)
+ *             │
+ *             └─ prompt (512×60, padding:16, gap:8, radius:12, border:#E5E7EB)
+ *
+ * 토큰 매핑:
+ *   8px  → --klds-gap-xs
+ *   10px → 직접 사용
+ *   16px → --klds-gap-m / --klds-padding-m
+ *   18px → --klds-typography-fontsize-l
+ *   20px → 직접 사용
+ *   24px → --klds-padding-xl / --klds-size-size4
+ *   32px → --klds-gap-xxl / --klds-size-size5
+ *   36px → 직접 사용
+ *   40px → --klds-gap-xxxl
+ *   #FFFFFF → --klds-color-white
+ *   #121212 → --klds-color-text-black
+ *   #E5E7EB → --klds-color-border-default
+ */
+
+
+/* ═════════════════════════════════════════
+   Container
+   ═════════════════════════════════════════ */
+
+.ai-assistant {
+  width: 560px;
+  height: 100%;
+  background-color: var(--klds-color-white);
+  border-radius: 24px;
+  padding: var(--klds-padding-xl);
+  /* 24px */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* 닫힌 상태 */
+.ai-assistant.is-hidden {
+  width: 0;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* 확장 상태 */
+.ai-assistant.is-maximized {
+  flex: 1;
+  flex-direction: row;
+  gap: var(--klds-gap-m);
+  /* 16px — 패널 간 간격 */
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.ai-assistant.is-maximized .ai-assistant__default {
+  flex: 1;
+  min-width: 0;
+  padding: var(--klds-padding-xl);
+  background-color: var(--klds-color-white);
+  border-radius: var(--klds-radius-xl);
+  /* 24px */
+}
+
+/* 확장/축소 아이콘 전환 */
+.ai-assistant__icon-collapse {
+  display: none;
+  width: var(--klds-size-size4);
+  /* 24px */
+  height: var(--klds-size-size4);
+  flex-shrink: 0;
+  background-color: var(--klds-color-text-black);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+.ai-assistant__icon-expand {
+  display: block;
+}
+
+/* ═════════════════════════════════════════
+   Left Menu (확장 시 노출) — Figma: w:240, r:24, px:8 py:16, gap:16
+   ═════════════════════════════════════════ */
+
+.ai-assistant__left-menu {
+  display: none;
+  width: 240px;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: var(--klds-gap-m);
+  /* 16px */
+  padding: var(--klds-padding-m) var(--klds-padding-xxs);
+  /* py:16 px:8 */
+  overflow-y: auto;
+  box-sizing: border-box;
+  background-color: var(--klds-color-white);
+  border-radius: var(--klds-radius-xl);
+  /* 24px */
+}
+
+.ai-assistant.is-maximized .ai-assistant__left-menu {
+  display: flex;
+  align-self: stretch;
+}
+
+.ai-assistant__left-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.ai-assistant__left-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.ai-assistant__left-group-title {
+  font-family: var(--klds-typography-fontfamily-text), sans-serif;
+  font-size: var(--klds-typography-fontsize-s);
+  /* 16px */
+  font-weight: 600;
+  color: var(--klds-color-text-black);
+  padding: var(--klds-padding-xxs) var(--klds-padding-m);
+  /* py:8 px:16 */
+}
+
+/* Figma: min-h:44, px:16, gap:8, r:6 */
+.ai-assistant__left-item {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-xs);
+  /* 8px */
+  height: 40px;
+  padding: 0 var(--klds-padding-m);
+  /* px:16 */
+  border-radius: var(--klds-radius-xxs);
+  /* 6px */
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.ai-assistant__left-item:hover {
+  background-color: var(--klds-color-gray-gray02);
+}
+
+.ai-assistant__left-item--active,
+.ai-assistant__left-item--active:hover {
+  background-color: var(--klds-color-hover);
+  /* #F4F7FF */
+}
+
+.ai-assistant__left-item--active .ai-assistant__item-label {
+  color: var(--klds-color-primary);
+}
+
+.ai-assistant__left-item--active .ai-assistant__item-icon {
+  background-color: var(--klds-color-primary);
+}
+
+.ai-assistant__item-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background-color: var(--klds-color-text-black);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.ai-assistant__item-label {
+  font-family: var(--klds-typography-fontfamily-text), sans-serif;
+  font-size: var(--klds-typography-fontsize-s);
+  color: var(--klds-color-text-black);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ═════════════════════════════════════════
+   Right Menu (확장 시 노출) — Figma: w:360, r:24, px:8 py:16
+   ═════════════════════════════════════════ */
+
+.ai-assistant__right-menu {
+  display: none;
+  width: 360px;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: var(--klds-gap-m);
+  /* 16px */
+  padding: var(--klds-padding-m) var(--klds-padding-xxs);
+  /* py:16 px:8 */
+  overflow-y: auto;
+  box-sizing: border-box;
+  background-color: var(--klds-color-white);
+  border-radius: var(--klds-radius-xl);
+  /* 24px */
+}
+
+.ai-assistant.is-maximized .ai-assistant__right-menu {
+  display: flex;
+  align-self: stretch;
+}
+
+.ai-assistant__right-tabs {
+  display: flex;
+  gap: var(--klds-gap-xxs);
+  /* 4px */
+  flex-shrink: 0;
+  padding: 0 var(--klds-padding-m);
+}
+
+/* Figma: h:32, r:circle, Template active=black bg */
+.ai-assistant__right-tab {
+  height: 32px;
+  padding: 0 var(--klds-padding-m);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--klds-typography-fontfamily-text), sans-serif;
+  font-size: var(--klds-typography-fontsize-s);
+  color: var(--klds-color-text-black);
+  border-radius: var(--klds-radius-circle);
+}
+
+.ai-assistant__right-tab--active {
+  background-color: var(--klds-color-black);
+  color: var(--klds-color-text-white);
+}
+
+.ai-assistant__right-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-m);
+  /* 16px */
+}
+
+.ai-assistant__tmpl-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.ai-assistant__tmpl-title {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-xs);
+  /* 8px */
+  min-height: 32px;
+  padding: 0 var(--klds-padding-m);
+  font-family: var(--klds-typography-fontfamily-text), sans-serif;
+  font-size: var(--klds-typography-fontsize-s);
+  font-weight: 600;
+  color: var(--klds-color-text-black);
+}
+
+.ai-assistant__tmpl-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background-color: var(--klds-color-text-black);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+
+/* Figma: px:32 */
+.ai-assistant__tmpl-item {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-xs);
+  /* 8px */
+  padding: 0 var(--klds-padding-xxl);
+  /* px:32 */
+  height: 40px;
+  cursor: pointer;
+  font-family: var(--klds-typography-fontfamily-text), sans-serif;
+  font-size: var(--klds-typography-fontsize-s);
+  color: var(--klds-color-text-black);
+}
+
+.ai-assistant__tmpl-item:hover {
+  background-color: var(--klds-color-gray-gray02);
+  border-radius: var(--klds-radius-xxs);
+}
+
+.ai-assistant__tmpl-sub-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background-color: var(--klds-color-text-black);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* ═════════════════════════════════════════
+   tmpl-group 접기/펼치기
+   ═════════════════════════════════════════ */
+
+.ai-assistant__tmpl-title {
+  cursor: pointer;
+}
+
+.ai-assistant__tmpl-group.is-collapsed .ai-assistant__tmpl-item {
+  display: none;
+}
+
+.ai-assistant__tmpl-group.is-collapsed .ai-assistant__tmpl-icon {
+  transform: rotate(-90deg);
+}
+
+
+/* ═════════════════════════════════════════
+   ai-default & wrap
+   ═════════════════════════════════════════ */
+
+.ai-assistant__default {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-xxl);
+  /* 32px */
+  height: 100%;
+  overflow: hidden;
+}
+
+.ai-assistant__wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-xxl);
+  /* 32px */
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  /* prompt absolute 기준 */
+}
+
+
+/* ═════════════════════════════════════════
+   Header (512×32)
+   ═════════════════════════════════════════ */
+
+.ai-assistant__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--klds-size-size5);
+  /* 32px */
+  gap: 10px;
+  /* 피그마: gap 10px */
+  flex-shrink: 0;
+}
+
+/* btn-maximize (146×32) */
+.ai-assistant__btn-maximize {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-xs);
+  /* 8px */
+  height: var(--klds-size-size5);
+  /* 32px */
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.ai-assistant__btn-maximize svg {
+  width: var(--klds-size-size4);
+  /* 24px */
+  height: var(--klds-size-size4);
+  /* 24px */
+  flex-shrink: 0;
+}
+
+.ai-assistant__title {
+  font-family: var(--klds-typography-fontfamily-text), sans-serif;
+  font-size: 20px;
+  /* 피그마: 20 */
+  font-weight: 700;
+  line-height: 24px;
+  /* 피그마: 24 */
+  color: var(--klds-color-text-black);
+  /* #121212 */
+  margin: 0;
+}
+
+/* btn-close (32×32) */
+.ai-assistant__btn-close {
+  width: var(--klds-size-size5);
+  /* 32px */
+  height: var(--klds-size-size5);
+  /* 32px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.ai-assistant__btn-close svg {
+  width: var(--klds-size-size5);
+  /* 32px */
+  height: var(--klds-size-size5);
+  /* 32px */
+}
+.ai-assistant__btn-close .ai-assistant__icon-collapse-btn {
+  display: none;
+  width: var(--klds-size-size4);
+  height: var(--klds-size-size4);
+  background-color: var(--klds-color-icon-black);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  flex-shrink: 0;
+}
+.ai-assistant.is-maximized .ai-assistant__btn-close .ai-assistant__icon-close {
+  display: none;
+}
+.ai-assistant.is-maximized .ai-assistant__btn-close .ai-assistant__icon-collapse-btn {
+  display: inline-block;
+}
+
+
+/* ═════════════════════════════════════════
+   Contents (512×772, VERTICAL, gap:40, align:CENTER)
+   ═════════════════════════════════════════ */
+
+.ai-assistant__contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 피그마: align CENTER */
+  justify-content: center;
+  gap: var(--klds-gap-xxxl);
+  /* 40px */
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 80px;
+  /* prompt 영역만큼 하단 여백 */
+}
+
+/* Chat view specific container styles */
+.ai-assistant__contents--chat {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* greeting (339×94) */
+.ai-assistant__greeting {
+  font-family: var(--klds-typography-fontfamily-text), sans-serif;
+  font-size: 36px;
+  /* 피그마: 36 */
+  font-weight: 700;
+  line-height: 46.8px;
+  /* 피그마: 46.8 */
+  text-align: center;
+  color: var(--klds-color-text-black);
+  /* #121212 */
+  margin: 0;
+  white-space: pre-line;
+}
+.ai-assistant__greeting-name {
+  color: var(--klds-color-text-primary);
+}
+
+
+/* ═════════════════════════════════════════
+   btn-list (512×304, HORIZONTAL, padding:24, gap:16, align:CENTER)
+   ═════════════════════════════════════════ */
+
+.ai-assistant__btn-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  /* 피그마: align CENTER */
+  gap: var(--klds-gap-m);
+  /* 16px */
+  padding: 0 var(--klds-padding-xl);
+  /* 좌우만 24px, 상하 0 */
+  width: 512px;
+  box-sizing: border-box;
+}
+
+/* btn (144×144, VERTICAL, padding:8, gap:8, align:CENTER) */
+.ai-assistant__btn {
+  width: 144px;
+  height: 144px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--klds-gap-xs);
+  /* 8px */
+  background-color: var(--klds-color-white);
+  /* #FFFFFF */
+  border: 1px solid var(--klds-color-border-default);
+  /* #E5E7EB */
+  border-radius: 24px;
+  padding: var(--klds-gap-xs);
+  /* 8px */
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.ai-assistant__btn:hover {
+  border-color: var(--klds-color-border-primary);
+}
+
+/* icon (56×56) */
+.ai-assistant__btn-icon {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+.ai-assistant__btn-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* label (18/600, line:18) */
+.ai-assistant__btn-label {
+  font-family: var(--klds-typography-fontfamily-text), sans-serif;
+  font-size: var(--klds-typography-fontsize-m);
+  /* 18px */
+  font-weight: 600;
+  line-height: 18px;
+  /* 피그마: 18 */
+  text-align: center;
+  color: var(--klds-color-text-black);
+  /* #121212 */
+  margin: 0;
+  word-break: keep-all;
+}
+
+
+/* ═════════════════════════════════════════
+   Prompt 영역 (하단 absolute 고정)
+   ═════════════════════════════════════════ */
+
+.ai-assistant__prompt {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: var(--klds-color-white);
+  /* 뒤 컨텐츠 가림 */
+}
+
+.ai-assistant__prompt .prompt {
+  max-width: 100%;
+  width: 100%;
+}
+
+/* ═════════════════════════════════════════
+   설정 버튼 (확장 상태에서만 노출)
+   ═════════════════════════════════════════ */
+
+.ai-assistant__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ai-assistant__settings-wrap {
+  display: none;
+  position: relative;
+}
+
+.ai-assistant.is-maximized .ai-assistant__settings-wrap {
+  display: block;
+}
+
+.ai-assistant__btn-settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.ai-assistant__settings-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-color: var(--klds-color-text-black, #121212);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.ai-assistant__settings-menu {
+  display: none !important;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 100;
+  min-width: 160px;
+}
+
+.ai-assistant__settings-menu.is-open {
+  display: flex !important;
+}
+
+/* ═════════════════════════════════════════
+   My Data 리스트
+   ═════════════════════════════════════════ */
+
+.ai-assistant__data-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.ai-assistant__data-item {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-xs, 8px);
+  min-height: 40px;
+  border-radius: var(--klds-radius-xxs, 6px);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.ai-assistant__data-item:hover {
+  background-color: var(--klds-color-background-hover);
+}
+
+.ai-assistant__data-item--1depth {
+  padding: 0 var(--klds-padding-m, 16px);
+}
+
+.ai-assistant__data-item--2depth {
+  padding-left: 64px;
+  padding-right: var(--klds-padding-m, 16px);
+}
+
+
+.ai-assistant__data-caret {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background-color: var(--klds-color-text-black, #121212);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.ai-assistant__data-folder {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background-color: var(--klds-color-text-black, #121212);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.ai-assistant__data-sub-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background-color: var(--klds-color-text-black, #121212);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.ai-assistant__data-label {
+  flex: 1;
+  font-family: var(--klds-typography-fontfamily-text, 'Pretendard', sans-serif);
+  font-size: var(--klds-typography-fontsize-s, 16px);
+  font-weight: var(--klds-typography-fontweight-regular, 400);
+  line-height: 1.5;
+  color: var(--klds-color-black, #121212);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ═════════════════════════════════════════
+   Chat Bubble (User)
+   ═════════════════════════════════════════ */
+
+.ai-assistant__chat-bubble {
+  display: flex;
+  width: 100%;
+}
+
+.ai-assistant__chat-bubble--user {
+  justify-content: flex-end;
+}
+
+.ai-assistant__chat-bubble-content {
+  background-color: var(--klds-color-gray-gray02, #f3f4f6);
+  padding: var(--klds-padding-m, 16px);
+  border-radius: var(--klds-radius-xxl, 32px);
+  border-top-right-radius: 0;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  max-width: 80%;
+  overflow: hidden;
+}
+
+.ai-assistant__chat-bubble-text {
+  font-family: var(--klds-typography-fontfamily-text), sans-serif;
+  font-size: var(--klds-typography-fontsize-s, 16px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--klds-color-text-black, #121212);
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: keep-all;
+}
+
+.ai-assistant__chat-text {
+  font-family: var(--klds-typography-fontfamily-text), sans-serif;
+  font-size: var(--klds-typography-fontsize-s, 16px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--klds-color-text-black, #121212);
+  margin: 0;
+  width: 100%;
+}
+
+
+/* ─── 반응형 ─── */
+
+@media (max-width: 1440px) {
+  .ai-assistant {
+    width: 100%;
+    flex-shrink: 1;
+  }
+}

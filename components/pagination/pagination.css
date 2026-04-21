@@ -1,0 +1,122 @@
+/**
+ * Pagination Component — Figma node 141:9263
+ *
+ * 피그마 노드 분석 결과:
+ *
+ * 전체 구조: COMPONENT "pagination"
+ *   - layout.mode: HORIZONTAL
+ *   - layout.gap: 4px
+ *   - layout.align: CENTER
+ *   - bounds: 304×32px
+ *
+ * 구성 요소:
+ *   1. IconButton (prev) — id:141:9242, 32×32, r6, icon 20×20, fill:#374151
+ *   2. number (default)  — 32×32, r4, Pretendard 16/400, fill:#121212
+ *   3. number (active)   — id:141:9244, 32×32, r9999, bg:#005386, stroke:#005386, text:#FFFFFF
+ *   4. ellipsis          — id:141:9248, 16×16, ic-more-horizontal, fill:#9CA3AF
+ *   5. IconButton (next) — id:141:9250, 32×32, r6, icon 20×20, fill:#374151
+ *
+ * 토큰 매핑:
+ *   height 32px  → var(--klds-size-size5)
+ *   gap 4px      → var(--klds-gap-xxs)
+ *   r4           → var(--klds-radius-xxxs)
+ *   r6           → var(--klds-radius-xxs)
+ *   r9999        → var(--klds-radius-circle)
+ *   font 16px    → var(--klds-typography-fontsize-s)
+ *   lh 24px      → var(--klds-typography-lineheight-xl) = 1.5
+ *   #005386      → var(--klds-color-primary)
+ *   #121212      → var(--klds-color-text-black)
+ *   #FFFFFF      → var(--klds-color-white)
+ *   #374151      → var(--klds-color-icon-gray)
+ *   #9CA3AF      → var(--klds-color-icon-lightgray)
+ */
+
+/* ═══════════════════════════════════
+   컨테이너
+   ═══════════════════════════════════ */
+.pagination {
+  display: inline-flex;
+  align-items: center;                                     /* Figma: layout.align = CENTER */
+  gap: var(--klds-gap-xxs);                                  /* Figma: gap = 4 → 4px */
+  font-family: var(--klds-typography-fontfamily-text);
+  user-select: none;
+}
+
+/* ═══════════════════════════════════
+   이전 / 다음 버튼 (IconButton)
+   ═══════════════════════════════════ */
+.pagination__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--klds-size-size5);                             /* 32px */
+  height: var(--klds-size-size5);                            /* 32px */
+  border-radius: var(--klds-radius-xxs);                   /* 6px */
+  border: none;
+  background: transparent;
+  color: var(--klds-color-icon-gray);                      /* #374151 → SVG currentColor */
+  cursor: pointer;
+  padding: 0;
+}
+
+.pagination__button:disabled {
+  color: var(--klds-color-icon-lightgray);                 /* #9CA3AF */
+  cursor: not-allowed;
+}
+
+/* 아이콘 SVG 크기 보정 */
+.pagination__button svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════
+   페이지 번호 (기본)
+   ═══════════════════════════════════ */
+.pagination__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--klds-size-size5);                         /* 32px */
+  height: var(--klds-size-size5);                            /* 32px */
+  border-radius: var(--klds-radius-xxxs);                  /* 4px */
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+
+  font-family: var(--klds-typography-fontfamily-text);
+  font-size: var(--klds-typography-fontsize-s);            /* 16px */
+  font-weight: var(--klds-typography-fontweight-regular);  /* 400 */
+  line-height: var(--klds-typography-lineheight-xl);       /* 1.5 → 24px */
+  color: var(--klds-color-text-black);                     /* #121212 */
+}
+
+/* ═══════════════════════════════════
+   페이지 번호 (활성)
+   ═══════════════════════════════════ */
+.pagination__item--active {
+  border-radius: var(--klds-radius-circle);                /* 9999px */
+  background-color: var(--klds-color-primary);             /* #005386 */
+  color: var(--klds-color-white);                          /* #FFFFFF */
+  border: 1px solid var(--klds-color-primary);             /* stroke #005386 */
+  cursor: default;
+}
+
+/* ═══════════════════════════════════
+   Ellipsis (…)
+   ═══════════════════════════════════ */
+.pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--klds-size-size5);                             /* 같은 열 정렬용 32px */
+  height: var(--klds-size-size5);
+  color: var(--klds-color-icon-lightgray);                 /* #9CA3AF → SVG currentColor */
+  cursor: default;
+}
+
+.pagination__ellipsis svg {
+  display: block;
+  flex-shrink: 0;
+}

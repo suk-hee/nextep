@@ -1,0 +1,223 @@
+<!--
+  KLDS Schedule Tag Component - HTML Templates
+  Figma 노드: 1392:25573
+
+  사용법:
+  .klds-schedule-tag
+    .klds-schedule-tag--{color}  : white | gray | red | orange | green
+                                    lightblue | blue | purple | pink | volcano
+
+  구성:
+    .klds-schedule-tag__content
+      .klds-schedule-tag__title   (스케쥴 제목 텍스트)
+      .klds-schedule-tag__avatars (아바타 그룹, xxsmall/24px stacked)
+        .avatar                   (기존 .avatar 클래스, 24px override 적용)
+          .avatar__image          (또는 .avatar__fallback)
+
+  의존 CSS:
+    - components/avatar/avatar.css
+    - components/schedule-tag/schedule-tag.css
+-->
+
+<!-- ═══════════════════════════════════════════
+     white
+     ═══════════════════════════════════════════ -->
+<div class="klds-schedule-tag klds-schedule-tag--white">
+  <div class="klds-schedule-tag__content">
+    <span class="klds-schedule-tag__title">Schedule Title</span>
+    <div class="klds-schedule-tag__avatars">
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male01.jpg" alt="홍길동" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/female01.jpg" alt="이영희" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male02.jpg" alt="김철수" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/female02.jpg" alt="박지수" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     gray
+     ═══════════════════════════════════════════ -->
+<div class="klds-schedule-tag klds-schedule-tag--gray">
+  <div class="klds-schedule-tag__content">
+    <span class="klds-schedule-tag__title">Schedule Title</span>
+    <div class="klds-schedule-tag__avatars">
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male03.jpg" alt="이민준" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/female03.jpg" alt="최수연" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male04.jpg" alt="정우진" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     red
+     ═══════════════════════════════════════════ -->
+<div class="klds-schedule-tag klds-schedule-tag--red">
+  <div class="klds-schedule-tag__content">
+    <span class="klds-schedule-tag__title">Schedule Title</span>
+    <div class="klds-schedule-tag__avatars">
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/female01.jpg" alt="이영희" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male01.jpg" alt="홍길동" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/female02.jpg" alt="박지수" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     orange
+     ═══════════════════════════════════════════ -->
+<div class="klds-schedule-tag klds-schedule-tag--orange">
+  <div class="klds-schedule-tag__content">
+    <span class="klds-schedule-tag__title">Schedule Title</span>
+    <div class="klds-schedule-tag__avatars">
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male02.jpg" alt="김철수" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/female03.jpg" alt="최수연" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male03.jpg" alt="이민준" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     green
+     ═══════════════════════════════════════════ -->
+<div class="klds-schedule-tag klds-schedule-tag--green">
+  <div class="klds-schedule-tag__content">
+    <span class="klds-schedule-tag__title">Schedule Title</span>
+    <div class="klds-schedule-tag__avatars">
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/female02.jpg" alt="박지수" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male01.jpg" alt="홍길동" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/female01.jpg" alt="이영희" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     lightblue
+     ═══════════════════════════════════════════ -->
+<div class="klds-schedule-tag klds-schedule-tag--lightblue">
+  <div class="klds-schedule-tag__content">
+    <span class="klds-schedule-tag__title">Schedule Title</span>
+    <div class="klds-schedule-tag__avatars">
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male01.jpg" alt="홍길동" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/female01.jpg" alt="이영희" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male02.jpg" alt="김철수" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     blue
+     ═══════════════════════════════════════════ -->
+<div class="klds-schedule-tag klds-schedule-tag--blue">
+  <div class="klds-schedule-tag__content">
+    <span class="klds-schedule-tag__title">Schedule Title</span>
+    <div class="klds-schedule-tag__avatars">
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/female03.jpg" alt="최수연" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male03.jpg" alt="이민준" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/female02.jpg" alt="박지수" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     purple
+     ═══════════════════════════════════════════ -->
+<div class="klds-schedule-tag klds-schedule-tag--purple">
+  <div class="klds-schedule-tag__content">
+    <span class="klds-schedule-tag__title">Schedule Title</span>
+    <div class="klds-schedule-tag__avatars">
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male02.jpg" alt="김철수" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/female01.jpg" alt="이영희" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male04.jpg" alt="정우진" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     pink
+     ═══════════════════════════════════════════ -->
+<div class="klds-schedule-tag klds-schedule-tag--pink">
+  <div class="klds-schedule-tag__content">
+    <span class="klds-schedule-tag__title">Schedule Title</span>
+    <div class="klds-schedule-tag__avatars">
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/female04.jpg" alt="김지민" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male05.jpg" alt="박성준" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/female05.jpg" alt="오하은" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     volcano
+     ═══════════════════════════════════════════ -->
+<div class="klds-schedule-tag klds-schedule-tag--volcano">
+  <div class="klds-schedule-tag__content">
+    <span class="klds-schedule-tag__title">Schedule Title</span>
+    <div class="klds-schedule-tag__avatars">
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male06.jpg" alt="한동훈" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/female06.jpg" alt="신유리" />
+      </div>
+      <div class="avatar">
+        <img class="avatar__image" src="../../assets/avatars/male01.jpg" alt="홍길동" />
+      </div>
+    </div>
+  </div>
+</div>

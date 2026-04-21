@@ -1,0 +1,561 @@
+.button {
+  display: inline-flex;
+  /* layout.mode: HORIZONTAL */
+  align-items: center;
+  /* layout.align: CENTER */
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-family: var(--klds-typography-fontfamily-text), sans-serif;
+  box-sizing: border-box;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+
+/* ─────────────────────────────────────────
+   Size Variants
+   ───────────────────────────────────────── */
+
+/* Small: 32h, padding 8(horizontal), gap 4, radius 6, font 14/600/21 */
+.button--small {
+  height: var(--klds-size-size5);
+  /* 32px */
+  padding-left: var(--klds-padding-xxs);
+  /* 8px */
+  padding-right: var(--klds-padding-xxs);
+  /* 8px */
+  gap: var(--klds-gap-xxs);
+  /* 4px */
+  border-radius: var(--klds-radius-xxs);
+  /* 6px */
+  font-size: var(--klds-typography-fontsize-xs);
+  /* 14px */
+  font-weight: 600;
+  /* font.weight: 600 */
+  line-height: 21px;
+  /* font.lineHeight: 21 */
+}
+
+.button--small .button__icon {
+  width: var(--klds-size-size3);
+  /* 20px */
+  height: var(--klds-size-size3);
+  /* 20px */
+}
+
+/* Medium: 40h, padding 16(horizontal), gap 4, radius 8, font 16/700/24 */
+.button--medium {
+  height: var(--klds-size-size6);
+  /* 40px */
+  padding-left: var(--klds-padding-m);
+  /* 16px */
+  padding-right: var(--klds-padding-m);
+  /* 16px */
+  gap: var(--klds-gap-xxs);
+  /* 4px */
+  border-radius: var(--klds-radius-xs);
+  /* 8px */
+  font-size: var(--klds-typography-fontsize-s);
+  /* 16px */
+  font-weight: 700;
+  /* font.weight: 700 */
+  line-height: 24px;
+  /* font.lineHeight: 24 */
+}
+
+.button--medium .button__icon {
+  width: var(--klds-size-size4);
+  /* 24px */
+  height: var(--klds-size-size4);
+  /* 24px */
+}
+
+
+/* ─────────────────────────────────────────
+   Icon Element  —  mask-image 방식
+   SVG를 mask로 사용하여 background-color로 정확한 색상 적용
+   ───────────────────────────────────────── */
+.button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  transition: background-color 0.15s;
+}
+
+
+/* ═════════════════════════════════════════
+   Type: fill-primary (small + medium 동일)
+   ═════════════════════════════════════════ */
+
+/* default → bg:#005386, text:#FFFFFF, icon:#FFFFFF */
+.button--fill-primary {
+  background-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+  color: var(--klds-color-white);
+  /* #FFFFFF */
+}
+
+.button--fill-primary .button__icon {
+  background-color: var(--klds-color-white);
+  /* #FFFFFF */
+}
+
+/* hover → bg:#024A77, text:#FFFFFF, icon:#FFFFFF */
+.button--fill-primary:hover:not(:disabled) {
+  background-color: var(--klds-color-button-fill-surface-hover);
+  /* #024A77 */
+}
+
+/* click → hover와 동일 */
+.button--fill-primary:active:not(:disabled) {
+  background-color: var(--klds-color-button-fill-surface-hover);
+  /* #024A77 */
+}
+
+/* disabled → bg:#F3F4F6, border:#E5E7EB, text:#9CA3AF, icon:#9CA3AF */
+.button--fill-primary:disabled {
+  background-color: var(--klds-color-button-surface-disabled);
+  /* #F3F4F6 */
+  border: 1px solid var(--klds-color-button-border-disabled);
+  /* #E5E7EB */
+  color: var(--klds-color-gray-gray05);
+  /* #9CA3AF */
+}
+
+.button--fill-primary:disabled .button__icon {
+  background-color: var(--klds-color-gray-gray05);
+  /* #9CA3AF */
+}
+
+
+/* ═════════════════════════════════════════
+   Type: fill-secondary
+   small default: text:#121212, icon:#374151
+   medium default: text:#374151, icon:#374151
+   hover/click/disabled: small + medium 동일
+   ═════════════════════════════════════════ */
+
+/* default 공통 → bg:#FFFFFF, border:#9CA3AF */
+.button--fill-secondary {
+  background-color: var(--klds-color-white);
+  /* #FFFFFF */
+  border: 1px solid var(--klds-color-gray-gray05);
+  /* #9CA3AF */
+}
+
+/* small default → text:#121212, icon:#374151 */
+.button--small.button--fill-secondary {
+  color: var(--klds-color-text-black);
+  /* #121212 */
+}
+
+.button--small.button--fill-secondary .button__icon {
+  background-color: var(--klds-color-icon-gray);
+  /* #374151 */
+}
+
+/* medium default → text:#374151, icon:#374151 */
+.button--medium.button--fill-secondary {
+  color: var(--klds-color-text-gray);
+  /* #374151 */
+}
+
+.button--medium.button--fill-secondary .button__icon {
+  background-color: var(--klds-color-icon-gray);
+  /* #374151 */
+}
+
+/* hover → border:#005386, text:#005386, icon:#005386 */
+.button--fill-secondary:hover:not(:disabled) {
+  border-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+  color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+}
+
+.button--fill-secondary:hover:not(:disabled) .button__icon {
+  background-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+}
+
+/* click → hover와 동일 */
+.button--fill-secondary:active:not(:disabled) {
+  border-color: var(--klds-color-button-fill-surface);
+  color: var(--klds-color-button-fill-surface);
+}
+
+.button--fill-secondary:active:not(:disabled) .button__icon {
+  background-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+}
+
+/* disabled → bg:#F3F4F6, border:#E5E7EB, text:#9CA3AF, icon:#9CA3AF */
+.button--fill-secondary:disabled {
+  background-color: var(--klds-color-button-surface-disabled);
+  /* #F3F4F6 */
+  border-color: var(--klds-color-button-border-disabled);
+  /* #E5E7EB */
+  color: var(--klds-color-gray-gray05);
+  /* #9CA3AF */
+}
+
+.button--fill-secondary:disabled .button__icon {
+  background-color: var(--klds-color-gray-gray05);
+  /* #9CA3AF */
+}
+
+
+/* ═════════════════════════════════════════
+   Type: outline-primary (small + medium)
+   hover/click 시 bg:#024A77 채움, text/icon → #FFFFFF
+   small default: bg:#FFFFFF
+   medium default: bg:transparent
+   ═════════════════════════════════════════ */
+
+/* default → border:#005386, text:#005386, icon:#005386 */
+.button--outline-primary {
+  border: 1px solid var(--klds-color-button-fill-surface);
+  /* #005386 */
+  color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+}
+
+/* small default → bg:#FFFFFF */
+.button--small.button--outline-primary {
+  background-color: var(--klds-color-white);
+  /* #FFFFFF */
+}
+
+/* medium default → bg:transparent */
+.button--medium.button--outline-primary {
+  background: transparent;
+}
+
+.button--outline-primary .button__icon {
+  background-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+}
+
+/* hover → bg:#024A77, border:#005386, text:#FFFFFF, icon:#FFFFFF */
+.button--outline-primary:hover:not(:disabled) {
+  background-color: var(--klds-color-button-fill-surface-hover);
+  /* #024A77 */
+  border-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+  color: var(--klds-color-white);
+  /* #FFFFFF */
+}
+
+.button--outline-primary:hover:not(:disabled) .button__icon {
+  background-color: var(--klds-color-white);
+  /* #FFFFFF */
+}
+
+/* click → hover와 동일 */
+.button--outline-primary:active:not(:disabled) {
+  background-color: var(--klds-color-button-fill-surface-hover);
+  /* #024A77 */
+  border-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+  color: var(--klds-color-white);
+  /* #FFFFFF */
+}
+
+.button--outline-primary:active:not(:disabled) .button__icon {
+  background-color: var(--klds-color-white);
+  /* #FFFFFF */
+}
+
+/* disabled → bg:#F3F4F6, border:#E5E7EB, text:#9CA3AF, icon:#9CA3AF */
+.button--outline-primary:disabled {
+  background-color: var(--klds-color-button-surface-disabled);
+  /* #F3F4F6 */
+  border-color: var(--klds-color-button-border-disabled);
+  /* #E5E7EB */
+  color: var(--klds-color-gray-gray05);
+  /* #9CA3AF */
+}
+
+.button--outline-primary:disabled .button__icon {
+  background-color: var(--klds-color-gray-gray05);
+  /* #9CA3AF */
+}
+
+
+/* ═════════════════════════════════════════
+   Type: outline-secondary (small + medium)
+   hover/click: 모두 border/text/icon → #005386
+   small default: text:#121212
+   medium default: text:#374151
+   ═════════════════════════════════════════ */
+
+/* default 공통 → bg:none, border:#9CA3AF */
+.button--outline-secondary {
+  background: transparent;
+  border: 1px solid var(--klds-color-gray-gray05);
+  /* #9CA3AF */
+}
+
+/* small default → text:#121212, icon:#374151 */
+.button--small.button--outline-secondary {
+  color: var(--klds-color-text-black);
+  /* #121212 */
+}
+
+.button--small.button--outline-secondary .button__icon {
+  background-color: var(--klds-color-icon-gray);
+  /* #374151 */
+}
+
+/* medium default → text:#374151, icon:#374151 */
+.button--medium.button--outline-secondary {
+  color: var(--klds-color-text-gray);
+  /* #374151 */
+}
+
+.button--medium.button--outline-secondary .button__icon {
+  background-color: var(--klds-color-icon-gray);
+  /* #374151 */
+}
+
+/* hover → border:#005386, text:#005386, icon:#005386 (small + medium 동일) */
+.button--outline-secondary:hover:not(:disabled) {
+  border-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+  color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+}
+
+.button--outline-secondary:hover:not(:disabled) .button__icon {
+  background-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+}
+
+/* click → hover와 동일 */
+.button--outline-secondary:active:not(:disabled) {
+  border-color: var(--klds-color-button-fill-surface);
+  color: var(--klds-color-button-fill-surface);
+}
+
+.button--outline-secondary:active:not(:disabled) .button__icon {
+  background-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+}
+
+/* disabled → bg:#F3F4F6, border:#E5E7EB, text:#9CA3AF, icon:#9CA3AF */
+.button--outline-secondary:disabled {
+  background-color: var(--klds-color-button-surface-disabled);
+  /* #F3F4F6 */
+  border-color: var(--klds-color-button-border-disabled);
+  /* #E5E7EB */
+  color: var(--klds-color-gray-gray05);
+  /* #9CA3AF */
+}
+
+.button--outline-secondary:disabled .button__icon {
+  background-color: var(--klds-color-gray-gray05);
+  /* #9CA3AF */
+}
+
+
+/* ═════════════════════════════════════════
+   Type: text (small + medium)
+   small default: text:#121212, icon:#374151
+   medium default: text:#374151, icon:#374151
+   ═════════════════════════════════════════ */
+
+/* default 공통 → bg:none */
+.button--text {
+  background: transparent;
+}
+
+/* small default → text:#121212, icon:#374151 */
+.button--small.button--text {
+  color: var(--klds-color-text-black);
+  /* #121212 */
+}
+
+.button--small.button--text .button__icon {
+  background-color: var(--klds-color-icon-gray);
+  /* #374151 */
+}
+
+/* medium default → text:#374151, icon:#374151 */
+.button--medium.button--text {
+  color: var(--klds-color-text-gray);
+  /* #374151 */
+}
+
+.button--medium.button--text .button__icon {
+  background-color: var(--klds-color-icon-gray);
+  /* #374151 */
+}
+
+/* hover → text:#005386, icon:#005386 */
+.button--text:hover:not(:disabled) {
+  color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+}
+
+.button--text:hover:not(:disabled) .button__icon {
+  background-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+}
+
+/* click → hover와 동일 */
+.button--text:active:not(:disabled) {
+  color: var(--klds-color-button-fill-surface);
+}
+
+.button--text:active:not(:disabled) .button__icon {
+  background-color: var(--klds-color-button-fill-surface);
+  /* #005386 */
+}
+
+/* disabled → bg:#F3F4F6, border:#E5E7EB, text:#9CA3AF, icon:#9CA3AF */
+.button--text:disabled {
+  background-color: var(--klds-color-button-surface-disabled);
+  /* #F3F4F6 */
+  border: 1px solid var(--klds-color-button-border-disabled);
+  /* #E5E7EB */
+  color: var(--klds-color-gray-gray05);
+  /* #9CA3AF */
+}
+
+.button--text:disabled .button__icon {
+  background-color: var(--klds-color-gray-gray05);
+  /* #9CA3AF */
+}
+
+
+/* ═════════════════════════════════════════
+   Toggle Button — Figma node 374:12366
+   COMPONENT_SET: position (first|center|last) × active (true|false)
+
+   구조:
+   .toggle-button-group (래퍼, display:flex)
+   └─ .toggle-button (각 버튼)
+       ├─ .toggle-button__icon (20×20, mask-image)
+       └─ 텍스트 (직접)
+
+   Figma 스펙:
+   - height: 32px, padding: 0 8px, gap: 4
+   - font: 14/600/lh:21
+   - active=false → bg:#FFF, border:#E5E7EB, text:#121212, icon:#121212
+   - active=true  → bg:#005386, text:#FFF, icon:#FFF
+   - position=first → border-radius: left only
+   - position=center → border-radius: 0
+   - position=last → border-radius: right only
+   - radius 값: --klds-radius-xs(8px)
+
+   사용법:
+   <div class="toggle-button-group">
+     <button class="toggle-button is-active">
+       <span class="toggle-button__icon" style="...mask-image..."></span>
+       Label
+     </button>
+     <button class="toggle-button">
+       <span class="toggle-button__icon" style="...mask-image..."></span>
+       Label
+     </button>
+   </div>
+   ═════════════════════════════════════════ */
+
+/* ─── 그룹 래퍼 ─── */
+.toggle-button-group {
+  display: inline-flex;
+}
+
+/* 인접 버튼 간 border 겹침 방지 */
+.toggle-button-group .toggle-button+.toggle-button {
+  margin-left: -1px;
+}
+
+/* ─── 개별 버튼 ─── */
+.toggle-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--klds-size-size5, 32px);
+  /* 32px */
+  padding: 0 var(--klds-padding-xxs, 8px);
+  /* 0 8px */
+  gap: var(--klds-gap-xxs, 4px);
+  /* 4px */
+  border: 1px solid var(--klds-color-border-default, #E5E7EB);
+  /* stroke: #E5E7EB */
+  background-color: var(--klds-color-white, #FFFFFF);
+  /* bg: #FFFFFF */
+  color: var(--klds-color-text-black, #121212);
+  /* text: #121212 */
+  font-family: var(--klds-typography-fontfamily-text), sans-serif;
+  font-size: var(--klds-typography-fontsize-xs, 14px);
+  /* 14px */
+  font-weight: 600;
+  line-height: 21px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border-radius: 0;
+  position: relative;
+}
+
+/* ─── position: first (첫 번째 버튼) ─── */
+.toggle-button-group .toggle-button:first-child {
+  border-radius: var(--klds-radius-xs, 8px) 0 0 var(--klds-radius-xs, 8px);
+}
+
+/* ─── position: last (마지막 버튼) ─── */
+.toggle-button-group .toggle-button:last-child {
+  border-radius: 0 var(--klds-radius-xs, 8px) var(--klds-radius-xs, 8px) 0;
+}
+
+/* ─── 버튼이 2개뿐인 경우 first+last 모두 해당 ─── */
+.toggle-button-group .toggle-button:first-child:last-child {
+  border-radius: var(--klds-radius-xs, 8px);
+}
+
+/* ─── active=true 상태 ─── */
+.toggle-button.is-active {
+  background-color: var(--klds-color-button-fill-surface, #005386);
+  /* bg: #005386 */
+  border-color: var(--klds-color-button-fill-surface, #005386);
+  color: var(--klds-color-white, #FFFFFF);
+  /* text: #FFFFFF */
+  z-index: 1;
+  /* 활성 버튼이 인접 border 위에 표시 */
+}
+
+/* ─── 아이콘 ─── */
+.toggle-button__icon {
+  display: inline-block;
+  width: var(--klds-size-size3, 20px);
+  /* 20px */
+  height: var(--klds-size-size3, 20px);
+  /* 20px */
+  flex-shrink: 0;
+  background-color: var(--klds-color-text-black, #121212);
+  /* icon: #121212 */
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* active 시 아이콘 색상 */
+.toggle-button.is-active .toggle-button__icon {
+  background-color: var(--klds-color-white, #FFFFFF);
+  /* icon: #FFFFFF */
+}

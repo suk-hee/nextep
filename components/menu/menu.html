@@ -1,0 +1,83 @@
+<!--
+  KLDS Menu Component - HTML Templates
+  Figma 노드: 1:17397 (menu)
+
+  변형:
+    default     → 파란색/배경 변화 없음
+    hover       → 배경 파란색 톤, 글자색 파란색
+    with-icon   → 좌측에 아이콘
+    with-checkbox → 좌측에 체크박스
+-->
+
+<!-- 기본 메뉴 -->
+<div class="klds-menu">
+    <div class="klds-menu__item">
+        <span class="klds-menu__item-text">안 읽은 메일함</span>
+    </div>
+    <div class="klds-menu__item is-hover">
+        <span class="klds-menu__item-text">받은 메일함 (Hover State)</span>
+    </div>
+    <div class="klds-menu__item">
+        <span class="klds-menu__item-text">보낸 메일함</span>
+    </div>
+    <div class="klds-menu__item">
+        <span class="klds-menu__item-text">임시 메일함</span>
+    </div>
+</div>
+
+<!-- 체크박스가 포함된 메뉴 -->
+<div class="klds-menu">
+    <label class="klds-menu__item">
+        <div class="klds-menu__item-checkbox">
+            <div class="klds-checkbox">
+                <input type="checkbox" class="klds-checkbox__input">
+                <span class="klds-checkbox__box">
+                    <svg class="klds-checkbox__icon" width="12" height="8" viewBox="0 0 12 8" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 3.5L4.5 7L11 1" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <span class="klds-menu__item-text">항목 1</span>
+    </label>
+    <label class="klds-menu__item">
+        <div class="klds-menu__item-checkbox">
+            <div class="klds-checkbox">
+                <input type="checkbox" class="klds-checkbox__input" checked>
+                <span class="klds-checkbox__box">
+                    <svg class="klds-checkbox__icon" width="12" height="8" viewBox="0 0 12 8" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 3.5L4.5 7L11 1" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <span class="klds-menu__item-text">항목 2 (Checked)</span>
+    </label>
+</div>
+
+<!-- 아이콘이 포함된 메뉴 -->
+<div class="klds-menu">
+    <div class="klds-menu__item">
+        <div class="klds-menu__item-icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-mail.svg);mask-image:url(../assets/icons/ic-mail.svg);background-color:var(--klds-color-text-black,#121212);">
+        </div>
+        <span class="klds-menu__item-text">메일 편지함</span>
+    </div>
+    <div class="klds-menu__item is-hover">
+        <!-- Hover 상태일 때는 아이콘 색상을 Primary로 변경할 수 있도록 처리 -->
+        <div class="klds-menu__item-icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-folder.svg);mask-image:url(../assets/icons/ic-folder.svg);background-color:var(--klds-color-primary,#005386);">
+        </div>
+        <span class="klds-menu__item-text">공용 폴더</span>
+    </div>
+    <div class="klds-menu__item">
+        <div class="klds-menu__item-icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-trash-empty.svg);mask-image:url(../assets/icons/ic-trash-empty.svg);background-color:var(--klds-color-text-black,#121212);">
+        </div>
+        <span class="klds-menu__item-text">휴지통</span>
+    </div>
+</div>

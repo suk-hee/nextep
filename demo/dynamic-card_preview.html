@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KLDS Dynamic Card Component Preview</title>
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/tokens.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../components/tag/tag.css">
+    <link rel="stylesheet" href="../components/button/button.css">
+    <link rel="stylesheet" href="../components/button/button-icon.css">
+    <link rel="stylesheet" href="../components/card/dynamic-card.css">
+    <style>
+        body {
+            padding: var(--klds-padding-xl);
+            background-color: var(--klds-color-gray-gray02);
+            font-family: var(--klds-typography-fontfamily-text), sans-serif;
+        }
+
+        .preview-title {
+            font-size: 28px;
+            font-weight: var(--klds-typography-fontweight-bold);
+            color: var(--klds-color-text-black);
+            margin-bottom: var(--klds-gap-xl);
+        }
+
+        .preview-subtitle {
+            font-size: var(--klds-typography-fontsize-xl);
+            font-weight: var(--klds-typography-fontweight-bold);
+            color: var(--klds-color-text-black);
+            margin: var(--klds-gap-xxl) 0 var(--klds-gap-m);
+            padding-bottom: var(--klds-gap-xs);
+            border-bottom: 2px solid var(--klds-color-gray-gray03);
+        }
+
+        .preview-section-title {
+            font-size: var(--klds-typography-fontsize-l);
+            font-weight: var(--klds-typography-fontweight-medium);
+            color: var(--klds-color-gray-gray07);
+            margin: var(--klds-gap-xl) 0 var(--klds-gap-s);
+        }
+
+        .card-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--klds-gap-xl);
+            margin-bottom: var(--klds-gap-xl);
+        }
+
+        .info-text {
+            font-size: var(--klds-typography-fontsize-xs);
+            color: var(--klds-color-gray-gray05);
+            margin-top: var(--klds-gap-xs);
+        }
+
+        .code-block {
+            background: var(--klds-color-white);
+            border: 1px solid var(--klds-color-border-default);
+            border-radius: var(--klds-radius-xxs);
+            padding: var(--klds-padding-s);
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: var(--klds-typography-fontsize-xxs);
+            color: var(--klds-color-text-black);
+            margin-top: var(--klds-gap-xs);
+            white-space: pre;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="preview-title">📬 Dynamic Card Component</h1>
+    <p
+        style="color: var(--klds-color-gray-gray06); margin-bottom: var(--klds-gap-xl); font-size: var(--klds-typography-fontsize-xs);">
+        Figma 노드: 366:10480 &nbsp;|&nbsp;
+        속성: type (mail, approval, meeting, schedule, news) × cardLayer (1, 2, 3) &nbsp;|&nbsp;
+        <a href="https://www.figma.com/design/HJdhN6zf8pJq8mh4RvlDd3/NextEP?node-id=366-10480" target="_blank"
+            style="color: var(--klds-color-primary);">Figma에서 보기 ↗</a>
+    </p>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+
+
+    <!-- ═══════════════════════════════════════════════════════
+       SECTION 1: cardLayer=1
+       ═══════════════════════════════════════════════════════ -->
+    <h2 class="preview-subtitle">cardLayer=1 Cards</h2>
+    <div class="card-row">
+
+        <!-- Dynamic Card — type=mail, cardLayer=1        Figma node: 366:10480        284×290, VERTICAL, r:16, bg:#F9F0FF (purple01)        ============================================================ -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:#888;">type=mail</div>
+            <div class="dynamic-card dynamic-card--mail">
+            
+                    <!-- header (284×32, HORIZONTAL, p:2/8/0/8) -->
+                    <div class="dynamic-card__header">
+                        <div class="dynamic-card__title">
+                            <span class="dynamic-card__title-icon"
+                                style="-webkit-mask-image:url(../assets/icons/ic-mail.svg);mask-image:url(../assets/icons/ic-mail.svg)"></span>
+                            <span class="dynamic-card__title-text">메일</span>
+                        </div>
+                        <button class="dynamic-card__close" aria-label="닫기">
+                            <span class="dynamic-card__close-icon"></span>
+                        </button>
+                    </div>
+            
+                    <!-- contents (VERTICAL, gap:16, p:16, r:16, bg:#FFF, border:#EFDBFF) -->
+                    <div class="dynamic-card__contents">
+            
+                        <!-- info (VERTICAL, gap:12) -->
+                        <div class="dynamic-card__info">
+            
+                            <!-- user (HORIZONTAL, gap:8) -->
+                            <div class="dynamic-card__user">
+                                <div class="dynamic-card__avatar">
+                                    <img src="../assets/avatars/female01.jpg" alt="윤지영" />
+                                    <span class="dynamic-card__avatar-status dynamic-card__avatar-status--online"></span>
+                                </div>
+                                <div class="dynamic-card__user-info">
+                                    <p class="dynamic-card__user-meta">윤지영ㆍ11-04 (화) 오전 11:32</p>
+                                    <p class="dynamic-card__user-subject">EP 제안 요청서</p>
+                                </div>
+                            </div>
+            
+                            <!-- mail-contents (VERTICAL, gap:8) -->
+                            <div class="dynamic-card__mail-contents">
+                                <!-- tag: 긴급 (small, round, red) -->
+                                <span class="klds-tag klds-tag--small klds-tag--red">
+                                    <span class="klds-tag__label">긴급</span>
+                                </span>
+            
+                                <!-- summary-list: bullet + text -->
+                                <div class="dynamic-card__summary-item">
+                                    <span class="dynamic-card__summary-bullet"></span>
+                                    <p class="dynamic-card__summary-text">긴급건으로 11월 5일 오전 중으로 파일을 전달해야 돼요.</p>
+                                </div>
+            
+                                <!-- summary-list: AI icon + text -->
+                                <div class="dynamic-card__summary-item">
+                                    <span class="dynamic-card__summary-icon dynamic-card__summary-icon--star"></span>
+                                    <p class="dynamic-card__summary-text">11월 5일 오후 3시에 회의 참석을 요청했어요. 일정에 등록할까요?</p>
+                                </div>
+                            </div>
+            
+                        </div>
+            
+                        <!-- bottom-btns (HORIZONTAL, gap:8) -->
+                        <div class="dynamic-card__bottom">
+                            <div class="dynamic-card__left-btns">
+                                <button class="button button--small button--outline-secondary">
+                                    <span class="button__icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+                                    <span>AI 답장</span>
+                                </button>
+                                <button class="button button--small button--outline-secondary">
+                                    <span class="button__icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-check02.svg);mask-image:url(../assets/icons/ic-check02.svg)"></span>
+                                    <span>할일 등록</span>
+                                </button>
+                            </div>
+                            <div class="dynamic-card__right-btns">
+                                <button class="button-icon button-icon--small button-icon--default" aria-label="더보기">
+                                    <span class="button-icon__icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-more-horizontal.svg);mask-image:url(../assets/icons/ic-more-horizontal.svg)"></span>
+                                </button>
+                            </div>
+                        </div>
+            
+                    </div>
+                </div>
+        </div>
+
+        <!-- Dynamic Card — type=approval, cardLayer=1        Figma node: 366:10586        284×290, VERTICAL, r:16, bg:#FFF2E8 (volcano01)        ============================================================ -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:#888;">type=approval</div>
+            <div class="dynamic-card dynamic-card--approval" style="margin-top:24px;">
+            
+                    <!-- header -->
+                    <div class="dynamic-card__header">
+                        <div class="dynamic-card__title">
+                            <span class="dynamic-card__title-icon"
+                                style="-webkit-mask-image:url(../assets/icons/ic-stamp.svg);mask-image:url(../assets/icons/ic-stamp.svg)"></span>
+                            <span class="dynamic-card__title-text">결재</span>
+                        </div>
+                        <button class="dynamic-card__close" aria-label="닫기">
+                            <span class="dynamic-card__close-icon"></span>
+                        </button>
+                    </div>
+            
+                    <!-- contents -->
+                    <div class="dynamic-card__contents">
+                        <div class="dynamic-card__info">
+            
+                            <!-- user -->
+                            <div class="dynamic-card__user">
+                                <div class="dynamic-card__avatar">
+                                    <img src="../assets/avatars/female01.jpg" alt="윤지영" />
+                                    <span class="dynamic-card__avatar-status dynamic-card__avatar-status--online"></span>
+                                </div>
+                                <div class="dynamic-card__user-info">
+                                    <p class="dynamic-card__user-meta">윤지영ㆍ11-04 (화) 오전 11:32</p>
+                                    <p class="dynamic-card__user-subject">경비청구 지불 요청서</p>
+                                </div>
+                            </div>
+            
+            
+            
+                            <!-- approval-body (태그 + 본문) -->
+                            <div class="dynamic-card__approval-body">
+                                <span class="klds-tag klds-tag--small klds-tag--red">
+                                    <span class="klds-tag__label">반려 추천</span>
+                                </span>
+                                <p class="dynamic-card__approval-text">예산 초과 및 세부내역이 누락되었어요.</p>
+                            </div>
+            
+                        </div>
+            
+                        <!-- bottom-btns -->
+                        <div class="dynamic-card__bottom">
+                            <div class="dynamic-card__left-btns">
+                                <button class="button button--small button--outline-secondary">
+                                    <span class="button__icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-check.svg);mask-image:url(../assets/icons/ic-check.svg)"></span>
+                                    <span>승인</span>
+                                </button>
+                                <button class="button button--small button--outline-secondary">
+                                    <span class="button__icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-circle-refusal.svg);mask-image:url(../assets/icons/ic-circle-refusal.svg)"></span>
+                                    <span>반려</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Dynamic Card — type=videomeeting, cardLayer=1        Figma node: 366:10650        284×290, VERTICAL, r:16, bg:#E1FAF6 (mint01)        ============================================================ -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:#888;">type=videomeeting</div>
+            <div class="dynamic-card dynamic-card--videomeeting" style="margin-top:24px;">
+            
+                    <!-- header -->
+                    <div class="dynamic-card__header">
+                        <div class="dynamic-card__title">
+                            <span class="dynamic-card__title-icon"
+                                style="-webkit-mask-image:url(../assets/icons/ic-webcam.svg);mask-image:url(../assets/icons/ic-webcam.svg)"></span>
+                            <span class="dynamic-card__title-text">화상회의</span>
+                        </div>
+                        <button class="dynamic-card__close" aria-label="닫기">
+                            <span class="dynamic-card__close-icon"></span>
+                        </button>
+                    </div>
+            
+                    <!-- contents -->
+                    <div class="dynamic-card__contents">
+                        <div class="dynamic-card__info">
+            
+                            <!-- 시간 태그 -->
+                            <span class="klds-tag klds-tag--small klds-tag--orange">
+                                <span class="klds-tag__label">오전 11:00 - 오전 12:00</span>
+                            </span>
+            
+                            <!-- 회의 본문 -->
+                            <div class="dynamic-card__meeting-body">
+                                <p class="dynamic-card__meeting-title">디자인 시스템 컴포넌트 회의</p>
+                                <p class="dynamic-card__meeting-desc">신규 컴포넌트와 구 컴포넌트 관리에 대해 개발자와 함께 논의해요.</p>
+                            </div>
+            
+                            <!-- 참석자 아바타 그룹 -->
+                            <div class="dynamic-card__attendees">
+                                <div class="dynamic-card__avatar-group-stack">
+                                    <div class="dynamic-card__avatar-small">
+                                        <img src="../assets/avatars/init.jpg" alt="참석자1" />
+                                    </div>
+                                    <div class="dynamic-card__avatar-small">
+                                        <img src="../assets/avatars/female02.jpg" alt="참석자2" />
+                                    </div>
+                                    <div class="dynamic-card__avatar-small">
+                                        <img src="../assets/avatars/male01.jpg" alt="참석자3" />
+                                    </div>
+                                    <span class="dynamic-card__avatar-more">+3</span>
+                                </div>
+                            </div>
+            
+                        </div>
+            
+                        <!-- bottom-btns -->
+                        <div class="dynamic-card__bottom">
+                            <div class="dynamic-card__left-btns">
+                                <button class="button button--small button--outline-secondary">
+                                    <span class="button__icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-login.svg);mask-image:url(../assets/icons/ic-login.svg)"></span>
+                                    <span>회의 입장</span>
+                                </button>
+                                <button class="button button--small button--outline-secondary">
+                                    <span class="button__icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-file-document.svg);mask-image:url(../assets/icons/ic-file-document.svg)"></span>
+                                    <span>지난 회의 요약</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Dynamic Card — type=schedule, cardLayer=1        Figma node: 366:10804        284×290, VERTICAL, r:16, bg:#E1FAF6 (mint01)        ============================================================ -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:#888;">type=schedule</div>
+            <div class="dynamic-card dynamic-card--schedule" style="margin-top:24px;">
+            
+                    <!-- header -->
+                    <div class="dynamic-card__header">
+                        <div class="dynamic-card__title">
+                            <span class="dynamic-card__title-icon"
+                                style="-webkit-mask-image:url(../assets/icons/ic-calendar-days.svg);mask-image:url(../assets/icons/ic-calendar-days.svg)"></span>
+                            <span class="dynamic-card__title-text">일정</span>
+                        </div>
+                        <button class="dynamic-card__close" aria-label="닫기">
+                            <span class="dynamic-card__close-icon"></span>
+                        </button>
+                    </div>
+            
+                    <!-- contents -->
+                    <div class="dynamic-card__contents">
+                        <div class="dynamic-card__info">
+            
+                            <!-- 시간 태그 (orange) -->
+                            <span class="klds-tag klds-tag--small klds-tag--orange">
+                                <span class="klds-tag__label">오후 3:00 - 오후 4:00</span>
+                            </span>
+            
+                            <!-- 일정 제목 -->
+                            <p class="dynamic-card__schedule-title">웨비나 행사 회의</p>
+            
+                            <!-- 일정 본문 -->
+                            <p class="dynamic-card__schedule-desc">마케팅팀과 함께 행사 아젠다와 부스 디자인을 회의해요.</p>
+            
+                            <!-- 참석자 아바타 그룹 (40px, overlap -10px) -->
+                            <div class="dynamic-card__attendees-large">
+                                <div class="dynamic-card__avatar-group-stack">
+                                    <div class="dynamic-card__avatar-small">
+                                        <img src="../assets/avatars/init.jpg" alt="참석자1" />
+                                    </div>
+                                    <div class="dynamic-card__avatar-small">
+                                        <img src="../assets/avatars/female02.jpg" alt="참석자2" />
+                                    </div>
+                                    <div class="dynamic-card__avatar-small">
+                                        <img src="../assets/avatars/male01.jpg" alt="참석자3" />
+                                    </div>
+                                    <div class="dynamic-card__avatar-small">
+                                        <img src="../assets/avatars/male02.jpg" alt="참석자4" />
+                                    </div>
+                                </div>
+                            </div>
+            
+                        </div>
+            
+                        <!-- bottom-btns -->
+                        <div class="dynamic-card__bottom">
+                            <div class="dynamic-card__left-btns">
+                                <button class="button button--small button--outline-secondary">
+                                    <span class="button__icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-compass.svg);mask-image:url(../assets/icons/ic-compass.svg)"></span>
+                                    <span>회의실 조회</span>
+                                </button>
+                                <button class="button button--small button--outline-secondary">
+                                    <span class="button__icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-file-document.svg);mask-image:url(../assets/icons/ic-file-document.svg)"></span>
+                                    <span>지난 회의 요약</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Dynamic Card — type=news, cardLayer=1        Figma node: 366:10886        284×290, VERTICAL, r:16, bg:#EFFEE1 (green01)        ============================================================ -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:#888;">type=news</div>
+            <div class="dynamic-card dynamic-card--news" style="margin-top:24px;">
+            
+                    <!-- header -->
+                    <div class="dynamic-card__header">
+                        <div class="dynamic-card__title">
+                            <span class="dynamic-card__title-icon"
+                                style="-webkit-mask-image:url(../assets/icons/ic-news.svg);mask-image:url(../assets/icons/ic-news.svg)"></span>
+                            <span class="dynamic-card__title-text">뉴스</span>
+                        </div>
+                        <button class="dynamic-card__close" aria-label="닫기">
+                            <span class="dynamic-card__close-icon"></span>
+                        </button>
+                    </div>
+            
+                    <!-- contents -->
+                    <div class="dynamic-card__contents">
+                        <div class="dynamic-card__info">
+            
+                            <!-- 썸네일 영역 -->
+                            <div class="dynamic-card__news-thumb">
+                                <img src="../assets/news/placeholder.jpg" alt="뉴스 썸네일"
+                                    onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\'><rect width=\'100%\' height=\'100%\' fill=\'#CBD0D7\'/><text x=\'50%\' y=\'50%\' fill=\'#ffffff\' font-family=\'sans-serif\' font-size=\'14\' text-anchor=\'middle\' dominant-baseline=\'middle\'>Image</text></svg>'" />
+                            </div>
+            
+                            <!-- 제목 및 요약 / 하단 버튼 영역 -->
+                            <div class="dynamic-card__news-wrap-info">
+                                <div class="dynamic-card__news-summary">
+                                    <p class="dynamic-card__news-title">포스코 그룹 이웃 연말 돕기 성금 100억 기탁</p>
+                                    <p class="dynamic-card__news-desc">포스코 그룹이 사회복지 공동모금회에 연말 이웃돕기 성금 100억원을 기탁했다. 불확실한 경영 환경</p>
+                                </div>
+            
+                                <!-- bottom-btns -->
+                                <div class="dynamic-card__bottom">
+                                    <div class="dynamic-card__left-btns">
+                                        <button class="button button--small button--outline-secondary">
+                                            <span class="button__icon"
+                                                style="-webkit-mask-image:url(../assets/icons/ic-external-link.svg);mask-image:url(../assets/icons/ic-external-link.svg)"></span>
+                                            <span>원문보기</span>
+                                        </button>
+                                        <button class="button button--small button--outline-secondary">
+                                            <span class="button__icon"
+                                                style="-webkit-mask-image:url(../assets/icons/ic-share.svg);mask-image:url(../assets/icons/ic-share.svg)"></span>
+                                            <span>기사 공유</span>
+                                        </button>
+                                    </div>
+                                    <div class="dynamic-card__right-btns">
+                                        <button class="button-icon button-icon--small button-icon--default" aria-label="더보기">
+                                            <span class="button-icon__icon"
+                                                style="-webkit-mask-image:url(../assets/icons/ic-more-horizontal.svg);mask-image:url(../assets/icons/ic-more-horizontal.svg)"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+            
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+       SECTION 2: cardLayer=2
+       ═══════════════════════════════════════════════════════ -->
+    <h2 class="preview-subtitle">cardLayer=2 Cards</h2>
+    <div class="card-row">
+
+        <!-- Dynamic Card Group — type=mail, cardLayer=2        Figma node: 417:12843        284×302, Stacked (Layer 2)        ============================================================ -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:#888;">type=mail</div>
+            <div class="dynamic-card-group dynamic-card-group--layer-2" style="margin-top:24px;">
+                    <div class="dynamic-card-group__backdrop dynamic-card--mail"></div>
+                    <div class="dynamic-card dynamic-card--mail">
+            
+                        <!-- header -->
+                        <div class="dynamic-card__header">
+                            <div class="dynamic-card__title">
+                                <span class="dynamic-card__title-icon"
+                                    style="-webkit-mask-image:url(../assets/icons/ic-mail.svg);mask-image:url(../assets/icons/ic-mail.svg)"></span>
+                                <span class="dynamic-card__title-text">메일</span>
+                                <span class="dynamic-card__badge">2</span>
+                            </div>
+                            <!-- actions: expand + close -->
+                            <div class="dynamic-card__actions">
+                                <button class="dynamic-card__icon-btn" aria-label="확대">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-expand.svg);mask-image:url(../assets/icons/ic-expand.svg)"></span>
+                                </button>
+                                <button class="dynamic-card__icon-btn" aria-label="닫기">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-close-small.svg);mask-image:url(../assets/icons/ic-close-small.svg)"></span>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <!-- contents -->
+                        <div class="dynamic-card__contents">
+                            <div class="dynamic-card__info">
+            
+                                <!-- user -->
+                                <div class="dynamic-card__user">
+                                    <div class="dynamic-card__avatar">
+                                        <!-- NOTE: female01 is used based on Figma context -->
+                                        <img src="../assets/avatars/female01.jpg" alt="윤지영" />
+                                    </div>
+                                    <div class="dynamic-card__user-info">
+                                        <p class="dynamic-card__user-meta">윤지영ㆍ11-04 (화) 오전 11:32</p>
+                                        <p class="dynamic-card__user-subject">EP 제안 요청서</p>
+                                    </div>
+                                </div>
+            
+                                <!-- mail-contents -->
+                                <div class="dynamic-card__mail-contents">
+                                    <!-- tag: 긴급 (small, round, red) -->
+                                    <span class="klds-tag klds-tag--small klds-tag--red">
+                                        <span class="klds-tag__label">긴급</span>
+                                    </span>
+            
+                                    <!-- summary-list: bullet + text -->
+                                    <div class="dynamic-card__summary-item">
+                                        <span class="dynamic-card__summary-bullet"></span>
+                                        <p class="dynamic-card__summary-text">긴급건으로 11월 5일 오전 중으로 파일을 전달해야 돼요.</p>
+                                    </div>
+            
+                                    <!-- summary-list: AI icon + text -->
+                                    <div class="dynamic-card__summary-item">
+                                        <span class="dynamic-card__summary-icon dynamic-card__summary-icon--star"></span>
+                                        <p class="dynamic-card__summary-text">11월 5일 오후 3시에 회의 참석을 요청했어요. <span
+                                                style="font-weight:700; color:#005386; text-decoration: underline;">일정에
+                                                등록할까요?</span></p>
+                                    </div>
+                                </div>
+            
+                            </div>
+            
+                            <!-- bottom-btns -->
+                            <div class="dynamic-card__bottom">
+                                <div class="dynamic-card__left-btns">
+                                    <button class="button button--small button--outline-secondary">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+                                        <span>AI 답장</span>
+                                    </button>
+                                    <button class="button button--small button--outline-secondary">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-check02.svg);mask-image:url(../assets/icons/ic-check02.svg)"></span>
+                                        <span>할일 등록</span>
+                                    </button>
+                                </div>
+                                <div class="dynamic-card__right-btns">
+                                    <button class="button-icon button-icon--small button-icon--default" aria-label="더보기">
+                                        <span class="button-icon__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-more-horizontal.svg);mask-image:url(../assets/icons/ic-more-horizontal.svg)"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Dynamic Card Group — type=approval, cardLayer=2        Figma node: 417:12871        284×302, Stacked (Layer 2)        ============================================================ -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:#888;">type=approval</div>
+            <div class="dynamic-card-group dynamic-card-group--layer-2" style="margin-top:24px;">
+                    <div class="dynamic-card-group__backdrop dynamic-card--approval"></div>
+                    <div class="dynamic-card dynamic-card--approval">
+            
+                        <!-- header -->
+                        <div class="dynamic-card__header">
+                            <div class="dynamic-card__title">
+                                <span class="dynamic-card__title-icon"
+                                    style="-webkit-mask-image:url(../assets/icons/ic-stamp.svg);mask-image:url(../assets/icons/ic-stamp.svg)"></span>
+                                <span class="dynamic-card__title-text">결재</span>
+                                <span class="dynamic-card__badge">2</span>
+                            </div>
+                            <!-- actions: expand + close -->
+                            <div class="dynamic-card__actions">
+                                <button class="dynamic-card__icon-btn" aria-label="확대">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-expand.svg);mask-image:url(../assets/icons/ic-expand.svg)"></span>
+                                </button>
+                                <button class="dynamic-card__icon-btn" aria-label="닫기">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-close-small.svg);mask-image:url(../assets/icons/ic-close-small.svg)"></span>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <!-- contents -->
+                        <div class="dynamic-card__contents">
+                            <div class="dynamic-card__info">
+            
+                                <!-- user -->
+                                <div class="dynamic-card__user">
+                                    <div class="dynamic-card__avatar">
+                                        <img src="../assets/avatars/female01.jpg" alt="윤지영" />
+                                        <span class="dynamic-card__avatar-status dynamic-card__avatar-status--online"></span>
+                                    </div>
+                                    <div class="dynamic-card__user-info">
+                                        <p class="dynamic-card__user-meta">윤지영ㆍ11-04 (화) 오전 11:32</p>
+                                        <p class="dynamic-card__user-subject">경비청구 지불 요청서</p>
+                                    </div>
+                                </div>
+            
+                                <!-- approval-body (태그 + 본문) -->
+                                <div class="dynamic-card__approval-body">
+                                    <span class="klds-tag klds-tag--small klds-tag--red">
+                                        <span class="klds-tag__label">반려 추천</span>
+                                    </span>
+                                    <p class="dynamic-card__approval-text">예산 초과 및 세부내역이 누락되었어요.</p>
+                                </div>
+            
+                            </div>
+            
+                            <!-- bottom-btns -->
+                            <div class="dynamic-card__bottom">
+                                <div class="dynamic-card__left-btns">
+                                    <button class="button button--small button--outline-secondary">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-check.svg);mask-image:url(../assets/icons/ic-check.svg)"></span>
+                                        <span>승인</span>
+                                    </button>
+                                    <button class="button button--small button--outline-secondary">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-circle-refusal.svg);mask-image:url(../assets/icons/ic-circle-refusal.svg)"></span>
+                                        <span>반려</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Dynamic Card Group — type=videomeeting, cardLayer=2        Figma node: 417:12891        284×302, Stacked (Layer 2)        ============================================================ -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:#888;">type=videomeeting</div>
+            <div class="dynamic-card-group dynamic-card-group--layer-2" style="margin-top:24px;">
+                    <div class="dynamic-card-group__backdrop dynamic-card--videomeeting"></div>
+                    <div class="dynamic-card dynamic-card--videomeeting">
+            
+                        <!-- header -->
+                        <div class="dynamic-card__header">
+                            <div class="dynamic-card__title">
+                                <span class="dynamic-card__title-icon"
+                                    style="-webkit-mask-image:url(../assets/icons/ic-webcam.svg);mask-image:url(../assets/icons/ic-webcam.svg)"></span>
+                                <span class="dynamic-card__title-text">화상회의</span>
+                                <span class="dynamic-card__badge">2</span>
+                            </div>
+                            <!-- actions: expand + close -->
+                            <div class="dynamic-card__actions">
+                                <button class="dynamic-card__icon-btn" aria-label="확대">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-expand.svg);mask-image:url(../assets/icons/ic-expand.svg)"></span>
+                                </button>
+                                <button class="dynamic-card__icon-btn" aria-label="닫기">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-close-small.svg);mask-image:url(../assets/icons/ic-close-small.svg)"></span>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <!-- contents -->
+                        <div class="dynamic-card__contents">
+                            <div class="dynamic-card__info">
+            
+                                <!-- time tag -->
+                                <span class="klds-tag klds-tag--small klds-tag--orange">
+                                    <span class="klds-tag__label">오전 11:00 - 오전 12:00</span>
+                                </span>
+            
+                                <!-- meet title & desc -->
+                                <div class="dynamic-card__meeting-body">
+                                    <p class="dynamic-card__meeting-title">디자인 시스템 컴포넌트 회의</p>
+                                    <p class="dynamic-card__meeting-desc">신규 컴포넌트와 구 컴포넌트 관리에 대해 개발자와 함께 논의해요.</p>
+                                </div>
+            
+                                <!-- 참석자 아바타 그룹 -->
+                                <div class="dynamic-card__attendees">
+                                    <div class="dynamic-card__avatar-group-stack">
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/init.jpg" alt="참석자1" />
+                                        </div>
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/male01.jpg" alt="참석자2" />
+                                        </div>
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/female01.jpg" alt="참석자3" />
+                                        </div>
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/male02.jpg" alt="참석자4" />
+                                        </div>
+                                    </div>
+                                </div>
+            
+                            </div>
+            
+                            <!-- bottom-btns -->
+                            <div class="dynamic-card__bottom">
+                                <div class="dynamic-card__left-btns">
+                                    <button class="button button--small button--outline-secondary">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-login.svg);mask-image:url(../assets/icons/ic-login.svg)"></span>
+                                        <span>회의 입장</span>
+                                    </button>
+                                    <button class="button button--small button--outline-secondary">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-file-document.svg);mask-image:url(../assets/icons/ic-file-document.svg)"></span>
+                                        <span>지난 회의 요약</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Dynamic Card Group — type=schedule, cardLayer=2        Figma node: 417:12906        284×302, Stacked (Layer 2)        ============================================================ -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:#888;">type=schedule</div>
+            <div class="dynamic-card-group dynamic-card-group--layer-2" style="margin-top:24px;">
+                    <div class="dynamic-card-group__backdrop dynamic-card--schedule"></div>
+                    <div class="dynamic-card dynamic-card--schedule">
+            
+                        <!-- header -->
+                        <div class="dynamic-card__header">
+                            <div class="dynamic-card__title">
+                                <span class="dynamic-card__title-icon"
+                                    style="-webkit-mask-image:url(../assets/icons/ic-calendar-days.svg);mask-image:url(../assets/icons/ic-calendar-days.svg)"></span>
+                                <span class="dynamic-card__title-text">일정</span>
+                                <span class="dynamic-card__badge">2</span>
+                            </div>
+                            <!-- actions: expand + close -->
+                            <div class="dynamic-card__actions">
+                                <button class="dynamic-card__icon-btn" aria-label="확대">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-expand.svg);mask-image:url(../assets/icons/ic-expand.svg)"></span>
+                                </button>
+                                <button class="dynamic-card__icon-btn" aria-label="닫기">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-close-small.svg);mask-image:url(../assets/icons/ic-close-small.svg)"></span>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <!-- contents -->
+                        <div class="dynamic-card__contents">
+                            <div class="dynamic-card__info">
+            
+                                <!-- time tag -->
+                                <span class="klds-tag klds-tag--small klds-tag--orange">
+                                    <span class="klds-tag__label">오후 3:00 - 오후 4:00</span>
+                                </span>
+            
+                                <!-- meet title & desc -->
+                                <div class="dynamic-card__meeting-body">
+                                    <p class="dynamic-card__meeting-title">웨비나 행사 회의</p>
+                                    <p class="dynamic-card__meeting-desc">마케팅팀과 함께 행사 아젠다와 부스 디자인을 회의해요.</p>
+                                </div>
+            
+                                <!-- 참석자 아바타 그룹 -->
+                                <div class="dynamic-card__attendees">
+                                    <div class="dynamic-card__avatar-group-stack">
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/init.jpg" alt="참석자1" />
+                                        </div>
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/male01.jpg" alt="참석자2" />
+                                        </div>
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/female01.jpg" alt="참석자3" />
+                                        </div>
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/male02.jpg" alt="참석자4" />
+                                        </div>
+                                    </div>
+                                </div>
+            
+                            </div>
+            
+                            <!-- bottom-btns -->
+                            <div class="dynamic-card__bottom">
+                                <div class="dynamic-card__left-btns">
+                                    <button class="button button--small button--outline-secondary">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-compass.svg);mask-image:url(../assets/icons/ic-compass.svg)"></span>
+                                        <span>회의실 조회</span>
+                                    </button>
+                                    <button class="button button--small button--outline-secondary">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-file-document.svg);mask-image:url(../assets/icons/ic-file-document.svg)"></span>
+                                        <span>지난 회의 요약</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Dynamic Card Group — type=news, cardLayer=2        Figma node: 417:12921        284×302, Stacked (Layer 2)        ============================================================ -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:#888;">type=news</div>
+            <div class="dynamic-card-group dynamic-card-group--layer-2" style="margin-top:24px;">
+                    <div class="dynamic-card-group__backdrop dynamic-card--news"></div>
+                    <div class="dynamic-card dynamic-card--news">
+            
+                        <!-- header -->
+                        <div class="dynamic-card__header">
+                            <div class="dynamic-card__title">
+                                <span class="dynamic-card__title-icon"
+                                    style="-webkit-mask-image:url(../assets/icons/ic-news.svg);mask-image:url(../assets/icons/ic-news.svg)"></span>
+                                <span class="dynamic-card__title-text">뉴스</span>
+                                <span class="dynamic-card__badge">2</span>
+                            </div>
+                            <!-- actions: expand + close -->
+                            <div class="dynamic-card__actions">
+                                <button class="dynamic-card__icon-btn" aria-label="확대">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-expand.svg);mask-image:url(../assets/icons/ic-expand.svg)"></span>
+                                </button>
+                                <button class="dynamic-card__icon-btn" aria-label="닫기">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-close-small.svg);mask-image:url(../assets/icons/ic-close-small.svg)"></span>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <!-- contents -->
+                        <div class="dynamic-card__contents">
+                            <div class="dynamic-card__info">
+            
+                                <!-- 썸네일 영역 -->
+                                <div class="dynamic-card__news-thumb">
+                                    <img src="../assets/news/placeholder.jpg" alt="뉴스 썸네일"
+                                        onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\'><rect width=\'100%\' height=\'100%\' fill=\'#CBD0D7\'/><text x=\'50%\' y=\'50%\' fill=\'#ffffff\' font-family=\'sans-serif\' font-size=\'14\' text-anchor=\'middle\' dominant-baseline=\'middle\'>Image</text></svg>'" />
+                                </div>
+            
+                                <!-- 제목 및 요약 / 하단 버튼 영역 -->
+                                <div class="dynamic-card__news-wrap-info">
+                                    <div class="dynamic-card__news-summary">
+                                        <p class="dynamic-card__news-title">포스코 그룹 이웃 연말 돕기 성금 100억 기탁</p>
+                                        <p class="dynamic-card__news-desc">포스코 그룹이 사회복지 공동모금회에 연말 이웃돕기 성금 100억원을 기탁했다. 불확실한 경영 환경
+                                        </p>
+                                    </div>
+            
+                                    <!-- bottom-btns -->
+                                    <div class="dynamic-card__bottom">
+                                        <div class="dynamic-card__left-btns">
+                                            <button class="button button--small button--outline-secondary">
+                                                <span class="button__icon"
+                                                    style="-webkit-mask-image:url(../assets/icons/ic-external-link.svg);mask-image:url(../assets/icons/ic-external-link.svg)"></span>
+                                                <span>원문보기</span>
+                                            </button>
+                                            <button class="button button--small button--outline-secondary">
+                                                <span class="button__icon"
+                                                    style="-webkit-mask-image:url(../assets/icons/ic-share.svg);mask-image:url(../assets/icons/ic-share.svg)"></span>
+                                                <span>기사 공유</span>
+                                            </button>
+                                        </div>
+                                        <div class="dynamic-card__right-btns">
+                                            <button class="button-icon button-icon--small button-icon--default" aria-label="더보기">
+                                                <span class="button-icon__icon"
+                                                    style="-webkit-mask-image:url(../assets/icons/ic-more-horizontal.svg);mask-image:url(../assets/icons/ic-more-horizontal.svg)"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+       SECTION 3: cardLayer=3
+       ═══════════════════════════════════════════════════════ -->
+    <h2 class="preview-subtitle">cardLayer=3 Cards</h2>
+    <div class="card-row">
+
+        <!-- Dynamic Card Group — type=mail, cardLayer=3        Figma node: 417:13184        284×314, Stacked (Layer 3)        ============================================================ -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:#888;">type=mail</div>
+            <div class="dynamic-card-group dynamic-card-group--layer-3" style="margin-top:24px;">
+                    <div class="dynamic-card-group__backdrop-2 dynamic-card--mail"></div>
+                    <div class="dynamic-card-group__backdrop dynamic-card--mail"></div>
+                    <div class="dynamic-card dynamic-card--mail">
+            
+                        <!-- header -->
+                        <div class="dynamic-card__header">
+                            <div class="dynamic-card__title">
+                                <span class="dynamic-card__title-icon"
+                                    style="-webkit-mask-image:url(../assets/icons/ic-mail.svg);mask-image:url(../assets/icons/ic-mail.svg)"></span>
+                                <span class="dynamic-card__title-text">메일</span>
+                                <span class="dynamic-card__badge">5</span>
+                            </div>
+                            <!-- actions: expand + close -->
+                            <div class="dynamic-card__actions">
+                                <button class="dynamic-card__icon-btn" aria-label="확대">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-expand.svg);mask-image:url(../assets/icons/ic-expand.svg)"></span>
+                                </button>
+                                <button class="dynamic-card__icon-btn" aria-label="닫기">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-close-small.svg);mask-image:url(../assets/icons/ic-close-small.svg)"></span>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <!-- contents -->
+                        <div class="dynamic-card__contents">
+                            <div class="dynamic-card__info">
+                                <!-- user -->
+                                <div class="dynamic-card__user">
+                                    <div class="dynamic-card__avatar">
+                                        <!-- NOTE: female01 is used based on Figma context -->
+                                        <img src="../assets/avatars/female01.jpg" alt="윤지영" />
+                                    </div>
+                                    <div class="dynamic-card__user-info">
+                                        <p class="dynamic-card__user-meta">윤지영ㆍ11-04 (화) 오전 11:32</p>
+                                        <p class="dynamic-card__user-subject">EP 제안 요청서</p>
+                                    </div>
+                                </div>
+            
+                                <!-- mail-contents -->
+                                <div class="dynamic-card__mail-contents">
+                                    <!-- tag: 긴급 (small, round, red) -->
+                                    <span class="klds-tag klds-tag--small klds-tag--red">
+                                        <span class="klds-tag__label">긴급</span>
+                                    </span>
+            
+                                    <!-- summary-list: bullet + text -->
+                                    <div class="dynamic-card__summary-item">
+                                        <span class="dynamic-card__summary-bullet"></span>
+                                        <p class="dynamic-card__summary-text">긴급건으로 11월 5일 오전 중으로 파일을 전달해야 돼요.</p>
+                                    </div>
+            
+                                    <!-- summary-list: AI icon + text -->
+                                    <div class="dynamic-card__summary-item">
+                                        <span class="dynamic-card__summary-icon dynamic-card__summary-icon--star"></span>
+                                        <p class="dynamic-card__summary-text">11월 5일 오후 3시에 회의 참석을 요청했어요. <span
+                                                style="font-weight:700; color:#005386; text-decoration: underline;">일정에
+                                                등록할까요?</span></p>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <!-- bottom-btns -->
+                            <div class="dynamic-card__bottom">
+                                <div class="dynamic-card__left-btns">
+                                    <button class="button button--small button--outline-secondary">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+                                        <span>AI 답장</span>
+                                    </button>
+                                    <button class="button button--small button--outline-secondary">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-check02.svg);mask-image:url(../assets/icons/ic-check02.svg)"></span>
+                                        <span>할일 등록</span>
+                                    </button>
+                                </div>
+                                <div class="dynamic-card__right-btns">
+                                    <button class="button-icon button-icon--small button-icon--default" aria-label="더보기">
+                                        <span class="button-icon__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-more-horizontal.svg);mask-image:url(../assets/icons/ic-more-horizontal.svg)"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Dynamic Card Group — type=approval, cardLayer=3        Figma node: 417:13162        284×314, Stacked (Layer 3)        ============================================================ -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:#888;">type=approval</div>
+            <div class="dynamic-card-group dynamic-card-group--layer-3" style="margin-top:24px;">
+                    <div class="dynamic-card-group__backdrop-2 dynamic-card--approval"></div>
+                    <div class="dynamic-card-group__backdrop dynamic-card--approval"></div>
+                    <div class="dynamic-card dynamic-card--approval">
+            
+                        <!-- header -->
+                        <div class="dynamic-card__header">
+                            <div class="dynamic-card__title">
+                                <span class="dynamic-card__title-icon"
+                                    style="-webkit-mask-image:url(../assets/icons/ic-stamp.svg);mask-image:url(../assets/icons/ic-stamp.svg)"></span>
+                                <span class="dynamic-card__title-text">결재</span>
+                                <span class="dynamic-card__badge">5</span>
+                            </div>
+                            <!-- actions: expand + close -->
+                            <div class="dynamic-card__actions">
+                                <button class="dynamic-card__icon-btn" aria-label="확대">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-expand.svg);mask-image:url(../assets/icons/ic-expand.svg)"></span>
+                                </button>
+                                <button class="dynamic-card__icon-btn" aria-label="닫기">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-close-small.svg);mask-image:url(../assets/icons/ic-close-small.svg)"></span>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <!-- contents -->
+                        <div class="dynamic-card__contents">
+                            <div class="dynamic-card__info">
+            
+                                <!-- user -->
+                                <div class="dynamic-card__user">
+                                    <div class="dynamic-card__avatar">
+                                        <img src="../assets/avatars/female01.jpg" alt="윤지영" />
+                                    </div>
+                                    <div class="dynamic-card__user-info">
+                                        <p class="dynamic-card__user-meta">윤지영ㆍ11-04 (화) 오전 11:32</p>
+                                        <p class="dynamic-card__user-subject">경비청구 지불 요청서</p>
+                                    </div>
+                                </div>
+            
+                                <!-- approval-body (태그 + 본문) -->
+                                <div class="dynamic-card__approval-body">
+                                    <span class="klds-tag klds-tag--small klds-tag--red">
+                                        <span class="klds-tag__label">반려 추천</span>
+                                    </span>
+                                    <p class="dynamic-card__approval-text">예산 초과 및 세부내역이 누락되었어요.</p>
+                                </div>
+            
+                            </div>
+            
+                            <!-- bottom-btns -->
+                            <div class="dynamic-card__bottom">
+                                <div class="dynamic-card__left-btns" style="width: 100%;">
+                                    <button class="button button--small button--outline-secondary" style="flex:1;">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-check.svg);mask-image:url(../assets/icons/ic-check.svg)"></span>
+                                        <span>승인</span>
+                                    </button>
+                                    <button class="button button--small button--outline-secondary" style="flex:1;">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-circle-refusal.svg);mask-image:url(../assets/icons/ic-circle-refusal.svg)"></span>
+                                        <span>반려</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Dynamic Card Group — type=videomeeting, cardLayer=3        Figma node: 417:13128        284×314, Stacked (Layer 3)        ============================================================ -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:#888;">type=videomeeting</div>
+            <div class="dynamic-card-group dynamic-card-group--layer-3" style="margin-top:24px;">
+                    <div class="dynamic-card-group__backdrop-2 dynamic-card--videomeeting"></div>
+                    <div class="dynamic-card-group__backdrop dynamic-card--videomeeting"></div>
+                    <div class="dynamic-card dynamic-card--videomeeting">
+            
+                        <!-- header -->
+                        <div class="dynamic-card__header">
+                            <div class="dynamic-card__title">
+                                <span class="dynamic-card__title-icon"
+                                    style="-webkit-mask-image:url(../assets/icons/ic-webcam.svg);mask-image:url(../assets/icons/ic-webcam.svg)"></span>
+                                <span class="dynamic-card__title-text">화상회의</span>
+                                <span class="dynamic-card__badge">5</span>
+                            </div>
+                            <!-- actions: expand + close -->
+                            <div class="dynamic-card__actions">
+                                <button class="dynamic-card__icon-btn" aria-label="확대">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-expand.svg);mask-image:url(../assets/icons/ic-expand.svg)"></span>
+                                </button>
+                                <button class="dynamic-card__icon-btn" aria-label="닫기">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-close-small.svg);mask-image:url(../assets/icons/ic-close-small.svg)"></span>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <!-- contents -->
+                        <div class="dynamic-card__contents">
+                            <div class="dynamic-card__info">
+            
+                                <!-- time tag -->
+                                <span class="klds-tag klds-tag--small klds-tag--orange">
+                                    <span class="klds-tag__label">오전 11:00 - 오전 12:00</span>
+                                </span>
+            
+                                <!-- meet title & desc -->
+                                <div class="dynamic-card__meeting-body">
+                                    <p class="dynamic-card__meeting-title">디자인 시스템 컴포넌트 회의</p>
+                                    <p class="dynamic-card__meeting-desc">신규 컴포넌트와 구 컴포넌트 관리에 대해 개발자와 함께 논의해요.</p>
+                                </div>
+            
+                                <!-- 참석자 아바타 그룹 -->
+                                <div class="dynamic-card__attendees">
+                                    <div class="dynamic-card__avatar-group-stack">
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/init.jpg" alt="참석자1" />
+                                        </div>
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/male01.jpg" alt="참석자2" />
+                                        </div>
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/female01.jpg" alt="참석자3" />
+                                        </div>
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/male02.jpg" alt="참석자4" />
+                                        </div>
+                                    </div>
+                                </div>
+            
+                            </div>
+            
+                            <!-- bottom-btns -->
+                            <div class="dynamic-card__bottom">
+                                <div class="dynamic-card__left-btns">
+                                    <button class="button button--small button--outline-secondary">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-login.svg);mask-image:url(../assets/icons/ic-login.svg)"></span>
+                                        <span>회의 입장</span>
+                                    </button>
+                                    <button class="button button--small button--outline-secondary">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-file-document.svg);mask-image:url(../assets/icons/ic-file-document.svg)"></span>
+                                        <span>지난 회의 요약</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Dynamic Card Group — type=schedule, cardLayer=3        Figma node: 417:13145        284×314, Stacked (Layer 3)        ============================================================ -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:#888;">type=schedule</div>
+            <div class="dynamic-card-group dynamic-card-group--layer-3" style="margin-top:24px;">
+                    <div class="dynamic-card-group__backdrop-2 dynamic-card--schedule"></div>
+                    <div class="dynamic-card-group__backdrop dynamic-card--schedule"></div>
+                    <div class="dynamic-card dynamic-card--schedule">
+            
+                        <!-- header -->
+                        <div class="dynamic-card__header">
+                            <div class="dynamic-card__title">
+                                <span class="dynamic-card__title-icon"
+                                    style="-webkit-mask-image:url(../assets/icons/ic-calendar-days.svg);mask-image:url(../assets/icons/ic-calendar-days.svg)"></span>
+                                <span class="dynamic-card__title-text">일정</span>
+                                <span class="dynamic-card__badge">5</span>
+                            </div>
+                            <!-- actions: expand + close -->
+                            <div class="dynamic-card__actions">
+                                <button class="dynamic-card__icon-btn" aria-label="확대">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-expand.svg);mask-image:url(../assets/icons/ic-expand.svg)"></span>
+                                </button>
+                                <button class="dynamic-card__icon-btn" aria-label="닫기">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-close-small.svg);mask-image:url(../assets/icons/ic-close-small.svg)"></span>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <!-- contents -->
+                        <div class="dynamic-card__contents">
+                            <div class="dynamic-card__info">
+            
+                                <!-- time tag -->
+                                <span class="klds-tag klds-tag--small klds-tag--orange">
+                                    <span class="klds-tag__label">오후 3:00 - 오후 4:00</span>
+                                </span>
+            
+                                <!-- meet title & desc -->
+                                <div class="dynamic-card__meeting-body">
+                                    <p class="dynamic-card__meeting-title">웨비나 행사 회의</p>
+                                    <p class="dynamic-card__meeting-desc">마케팅팀과 함께 행사 아젠다와 부스 디자인을 회의해요.</p>
+                                </div>
+            
+                                <!-- 참석자 아바타 그룹 -->
+                                <div class="dynamic-card__attendees">
+                                    <div class="dynamic-card__avatar-group-stack">
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/init.jpg" alt="참석자1" />
+                                        </div>
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/male01.jpg" alt="참석자2" />
+                                        </div>
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/female01.jpg" alt="참석자3" />
+                                        </div>
+                                        <div class="dynamic-card__avatar-small">
+                                            <img src="../assets/avatars/male02.jpg" alt="참석자4" />
+                                        </div>
+                                    </div>
+                                </div>
+            
+                            </div>
+            
+                            <!-- bottom-btns -->
+                            <div class="dynamic-card__bottom">
+                                <div class="dynamic-card__left-btns">
+                                    <button class="button button--small button--outline-secondary">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-compass.svg);mask-image:url(../assets/icons/ic-compass.svg)"></span>
+                                        <span>회의실 조회</span>
+                                    </button>
+                                    <button class="button button--small button--outline-secondary">
+                                        <span class="button__icon"
+                                            style="-webkit-mask-image:url(../assets/icons/ic-file-document.svg);mask-image:url(../assets/icons/ic-file-document.svg)"></span>
+                                        <span>지난 회의 요약</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Dynamic Card Group — type=news, cardLayer=3        Figma node: 417:13106        284×314, Stacked (Layer 3)        ============================================================ -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:#888;">type=news</div>
+            <div class="dynamic-card-group dynamic-card-group--layer-3" style="margin-top:24px;">
+                    <div class="dynamic-card-group__backdrop-2 dynamic-card--news"></div>
+                    <div class="dynamic-card-group__backdrop dynamic-card--news"></div>
+                    <div class="dynamic-card dynamic-card--news">
+            
+                        <!-- header -->
+                        <div class="dynamic-card__header">
+                            <div class="dynamic-card__title">
+                                <span class="dynamic-card__title-icon"
+                                    style="-webkit-mask-image:url(../assets/icons/ic-news.svg);mask-image:url(../assets/icons/ic-news.svg)"></span>
+                                <span class="dynamic-card__title-text">뉴스</span>
+                                <span class="dynamic-card__badge">5</span>
+                            </div>
+                            <!-- actions: expand + close -->
+                            <div class="dynamic-card__actions">
+                                <button class="dynamic-card__icon-btn" aria-label="확대">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-expand.svg);mask-image:url(../assets/icons/ic-expand.svg)"></span>
+                                </button>
+                                <button class="dynamic-card__icon-btn" aria-label="닫기">
+                                    <span class="dynamic-card__icon-btn-icon"
+                                        style="-webkit-mask-image:url(../assets/icons/ic-close-small.svg);mask-image:url(../assets/icons/ic-close-small.svg)"></span>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <!-- contents -->
+                        <div class="dynamic-card__contents">
+                            <div class="dynamic-card__info">
+            
+                                <!-- 썸네일 영역 -->
+                                <div class="dynamic-card__news-thumb">
+                                    <img src="../assets/news/placeholder.jpg" alt="뉴스 썸네일"
+                                        onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\'><rect width=\'100%\' height=\'100%\' fill=\'#CBD0D7\'/><text x=\'50%\' y=\'50%\' fill=\'#ffffff\' font-family=\'sans-serif\' font-size=\'14\' text-anchor=\'middle\' dominant-baseline=\'middle\'>Image</text></svg>'" />
+                                </div>
+            
+                                <!-- 제목 및 요약 / 하단 버튼 영역 -->
+                                <div class="dynamic-card__news-wrap-info">
+                                    <div class="dynamic-card__news-summary">
+                                        <p class="dynamic-card__news-title">포스코 그룹 이웃 연말 돕기 성금 100억 기탁</p>
+                                        <p class="dynamic-card__news-desc">포스코 그룹이 사회복지 공동모금회에 연말 이웃돕기 성금 100억원을 기탁했다. 불확실한 경영 환경
+                                        </p>
+                                    </div>
+            
+                                    <!-- bottom-btns -->
+                                    <div class="dynamic-card__bottom">
+                                        <div class="dynamic-card__left-btns">
+                                            <button class="button button--small button--outline-secondary">
+                                                <span class="button__icon"
+                                                    style="-webkit-mask-image:url(../assets/icons/ic-external-link.svg);mask-image:url(../assets/icons/ic-external-link.svg)"></span>
+                                                <span>원문보기</span>
+                                            </button>
+                                            <button class="button button--small button--outline-secondary">
+                                                <span class="button__icon"
+                                                    style="-webkit-mask-image:url(../assets/icons/ic-share.svg);mask-image:url(../assets/icons/ic-share.svg)"></span>
+                                                <span>기사 공유</span>
+                                            </button>
+                                        </div>
+                                        <div class="dynamic-card__right-btns">
+                                            <button class="button-icon button-icon--small button-icon--default" aria-label="더보기">
+                                                <span class="button-icon__icon"
+                                                    style="-webkit-mask-image:url(../assets/icons/ic-more-horizontal.svg);mask-image:url(../assets/icons/ic-more-horizontal.svg)"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+       SECTION 4: 코드 사용법
+       ═══════════════════════════════════════════════════════ -->
+    <h2 class="preview-subtitle">타입별 클래스</h2>
+    <div class="code-block">dynamic-card--mail /* bg: purple01, title: purple07, border: purple02 */
+dynamic-card--approval /* bg: volcano01, title: volcano07, border: volcano02 */
+dynamic-card--videomeeting /* bg: mint01, title: mint07, border: mint02 */
+dynamic-card--schedule /* bg: orange01, title: orange07, border: orange02 */
+dynamic-card--news /* bg: blue01, title: blue07, border: blue02 */</div>
+
+</body>
+</html>

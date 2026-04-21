@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avatar Component Preview - KLDS</title>
+
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../components/avatar/avatar.css">
+
+
+  <!-- Page Styles -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+      background-color: #f9fafb;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      margin-bottom: 48px;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 18px;
+      color: #6b7280;
+    }
+
+    .section {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 32px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .section-description {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 24px;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    .preview-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .preview-label {
+      font-size: 14px;
+      color: #6b7280;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .divider {
+      height: 1px;
+      background: #e5e7eb;
+      margin: 32px 0;
+    }
+
+    .code-block {
+      background: #1f2937;
+      color: #e5e7eb;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      overflow-x: auto;
+      margin-top: 16px;
+    }
+
+    .code-block code {
+      color: #93c5fd;
+    }
+
+    .flex-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .interactive-controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .control-group-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .control-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border: 1px solid #d1d5db;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: #f9fafb;
+      border-color: #9ca3af;
+    }
+
+    .btn.active {
+      background: #3b82f6;
+      color: white;
+      border-color: #3b82f6;
+    }
+
+    #interactive-demo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 48px;
+      background: #f9fafb;
+      border-radius: 8px;
+      min-height: 160px;
+      border: 2px dashed #e5e7eb;
+    }
+
+    .demo-info {
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: #eff6ff;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #1e40af;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .demo-info-icon {
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎭 Avatar Component</h1>
+      <p>사용자 프로필 이미지를 표시하는 Avatar 컴포넌트 미리보기</p>
+    </div>
+
+    <!-- Avatar Sizes -->
+    <div class="section">
+      <h2 class="section-title">아바타 크기</h2>
+      <p class="section-description">5가지 크기를 지원합니다: xsmall, small, medium, large, xlarge</p>
+
+      <div class="preview-grid">
+        <div class="preview-item">
+          <div class="avatar avatar--xsmall">
+            <img class="avatar__image" src="../assets/avatars/male01.jpg" alt="User"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>JD</div>')">
+          </div>
+          <span class="preview-label">xsmall (32px)</span>
+        </div>
+
+        <div class="preview-item">
+          <div class="avatar avatar--small">
+            <img class="avatar__image" src="../assets/avatars/female01.jpg" alt="User"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>SA</div>')">
+          </div>
+          <span class="preview-label">small (40px)</span>
+        </div>
+
+        <div class="preview-item">
+          <div class="avatar avatar--medium">
+            <img class="avatar__image" src="../assets/avatars/male02.jpg" alt="User"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>MJ</div>')">
+          </div>
+          <span class="preview-label">medium (48px)</span>
+        </div>
+
+        <div class="preview-item">
+          <div class="avatar avatar--large">
+            <img class="avatar__image" src="../assets/avatars/female02.jpg" alt="User"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>EL</div>')">
+          </div>
+          <span class="preview-label">large (64px)</span>
+        </div>
+
+        <div class="preview-item">
+          <div class="avatar avatar--xlarge">
+            <img class="avatar__image" src="../assets/avatars/male03.jpg" alt="User"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>BW</div>')">
+          </div>
+          <span class="preview-label">xlarge (100px)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Avatar Status -->
+    <div class="section">
+      <h2 class="section-title">상태 표시</h2>
+      <p class="section-description">온라인 상태를 표시할 수 있습니다: online, offline, away, busy</p>
+
+      <div class="preview-grid">
+        <div class="preview-item">
+          <div class="avatar avatar--medium">
+            <img class="avatar__image" src="../assets/avatars/male01.jpg" alt="User"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>JD</div>')">
+            <div class="avatar__status avatar__status--online"></div>
+          </div>
+          <span class="preview-label">Online</span>
+        </div>
+
+        <div class="preview-item">
+          <div class="avatar avatar--medium">
+            <img class="avatar__image" src="../assets/avatars/female01.jpg" alt="User"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>SA</div>')">
+            <div class="avatar__status avatar__status--offline"></div>
+          </div>
+          <span class="preview-label">Offline</span>
+        </div>
+
+        <div class="preview-item">
+          <div class="avatar avatar--medium">
+            <img class="avatar__image" src="../assets/avatars/male02.jpg" alt="User"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>MJ</div>')">
+            <div class="avatar__status avatar__status--away"></div>
+          </div>
+          <span class="preview-label">Away</span>
+        </div>
+
+        <div class="preview-item">
+          <div class="avatar avatar--medium">
+            <img class="avatar__image" src="../assets/avatars/female02.jpg" alt="User"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>EL</div>')">
+            <div class="avatar__status avatar__status--busy"></div>
+          </div>
+          <span class="preview-label">Busy</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Avatar Fallback -->
+    <div class="section">
+      <h2 class="section-title">폴백 (Fallback)</h2>
+      <p class="section-description">이미지가 없거나 로드 실패시 표시되는 대체 UI</p>
+
+      <div class="preview-grid">
+        <div class="preview-item">
+          <div class="avatar avatar--medium">
+            <div class="avatar__fallback">JD</div>
+          </div>
+          <span class="preview-label">이니셜</span>
+        </div>
+
+        <div class="preview-item">
+          <div class="avatar avatar--medium">
+            <div class="avatar__fallback">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M12 5C10.3431 5 9 6.34315 9 8C9 9.65685 10.3431 11 12 11C13.6569 11 15 9.65685 15 8C15 6.34315 13.6569 5 12 5ZM7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8C17 10.7614 14.7614 13 12 13C9.23858 13 7 10.7614 7 8ZM7.20266 15.3395C8.47422 14.4918 10.1733 14 12 14C13.8267 14 15.5258 14.4918 16.7973 15.3395C18.0619 16.1826 19 17.457 19 19C19 19.5523 18.5523 20 18 20C17.4477 20 17 19.5523 17 19C17 18.3338 16.5949 17.6083 15.6879 17.0036C14.7879 16.4036 13.487 16 12 16C10.513 16 9.21207 16.4036 8.31206 17.0036C7.40506 17.6083 7 18.3338 7 19C7 19.5523 6.55228 20 6 20C5.44772 20 5 19.5523 5 19C5 17.457 5.93809 16.1826 7.20266 15.3395Z"
+                  fill="currentColor" />
+              </svg>
+            </div>
+          </div>
+          <span class="preview-label">기본 아이콘 (ic-user)</span>
+        </div>
+
+        <div class="preview-item">
+          <div class="avatar avatar--medium">
+            <div class="avatar__fallback">A</div>
+            <div class="avatar__status avatar__status--online"></div>
+          </div>
+          <span class="preview-label">이니셜 + 상태</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Avatar Group -->
+    <div class="section">
+      <h2 class="section-title">아바타 그룹</h2>
+      <p class="section-description">여러 아바타를 그룹으로 표시</p>
+
+      <div class="flex-row" style="margin-bottom: 24px;">
+        <span class="preview-label" style="margin-right: 16px;">기본 그룹:</span>
+        <div class="avatar-group">
+          <div class="avatar avatar--small">
+            <img class="avatar__image" src="../assets/avatars/male01.jpg" alt="User 1"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>U1</div>')">
+            <div class="avatar__status avatar__status--online"></div>
+          </div>
+          <div class="avatar avatar--small">
+            <img class="avatar__image" src="../assets/avatars/female01.jpg" alt="User 2"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>U2</div>')">
+            <div class="avatar__status avatar__status--offline"></div>
+          </div>
+          <div class="avatar avatar--small">
+            <img class="avatar__image" src="../assets/avatars/male02.jpg" alt="User 3"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>U3</div>')">
+            <div class="avatar__status avatar__status--away"></div>
+          </div>
+          <div class="avatar avatar--small">
+            <img class="avatar__image" src="../assets/avatars/female02.jpg" alt="User 4"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>U4</div>')">
+            <div class="avatar__status avatar__status--busy"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-row" style="margin-bottom: 24px;">
+        <span class="preview-label" style="margin-right: 16px;">스택 그룹:</span>
+        <div class="avatar-group avatar-group--stacked">
+          <div class="avatar avatar--small">
+            <img class="avatar__image" src="../assets/avatars/male01.jpg" alt="User 1"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>U1</div>')">
+          </div>
+          <div class="avatar avatar--small">
+            <img class="avatar__image" src="../assets/avatars/female01.jpg" alt="User 2"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>U2</div>')">
+          </div>
+          <div class="avatar avatar--small">
+            <img class="avatar__image" src="../assets/avatars/male02.jpg" alt="User 3"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>U3</div>')">
+          </div>
+          <div class="avatar avatar--small">
+            <div class="avatar__fallback">+5</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-row">
+        <span class="preview-label" style="margin-right: 16px;">추가 버튼:</span>
+        <div class="avatar-group">
+          <div class="avatar avatar--small">
+            <img class="avatar__image" src="../assets/avatars/male01.jpg" alt="User 1"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>U1</div>')">
+          </div>
+          <div class="avatar avatar--small">
+            <img class="avatar__image" src="../assets/avatars/female01.jpg" alt="User 2"
+              onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<div class=avatar__fallback>U2</div>')">
+          </div>
+          <button class="avatar-group__add" onclick="alert('사용자 추가!')">
+            <svg class="avatar-group__add-icon" viewBox="0 0 20 20" fill="none">
+              <path d="M10 4.16667V15.8333M4.16667 10H15.8333" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Demo -->
+    <div class="section">
+      <h2 class="section-title">🎮 인터랙티브 데모</h2>
+      <p class="section-description">버튼을 클릭하여 아바타의 크기와 상태를 실시간으로 변경해보세요</p>
+
+      <div style="margin-bottom: 16px;">
+        <div class="control-group-label">📐 크기 (Size)</div>
+        <div class="control-group" id="size-controls">
+          <button class="btn active" data-size="medium">Medium</button>
+          <button class="btn" data-size="xsmall">XSmall</button>
+          <button class="btn" data-size="small">Small</button>
+          <button class="btn" data-size="large">Large</button>
+          <button class="btn" data-size="xlarge">XLarge</button>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <div class="control-group-label">🔵 상태 (Status)</div>
+        <div class="control-group" id="status-controls">
+          <button class="btn" data-status="online">🟢 Online</button>
+          <button class="btn" data-status="offline">⚪ Offline</button>
+          <button class="btn" data-status="away">🟡 Away</button>
+          <button class="btn" data-status="busy">🔴 Busy</button>
+          <button class="btn" data-status="none">✕ 상태 없음</button>
+        </div>
+      </div>
+
+      <div id="interactive-demo"></div>
+
+      <div class="demo-info">
+        <span class="demo-info-icon">💡</span>
+        <span>현재 상태: 크기 = <strong id="info-size">medium</strong>, 상태 = <strong id="info-status">없음</strong></span>
+      </div>
+    </div>
+
+    <!-- Code Examples -->
+    <div class="section">
+      <h2 class="section-title">코드 예제</h2>
+      <p class="section-description">Avatar 컴포넌트 사용 방법</p>
+
+      <h3 style="font-size: 18px; margin-top: 24px; margin-bottom: 12px; color: #374151;">HTML 사용</h3>
+      <div class="code-block">
+        <code>&lt;!-- 기본 Avatar --&gt;
+&lt;div class="avatar avatar--medium"&gt;
+  &lt;img class="avatar__image" src="path/to/image.jpg" alt="User"&gt;
+  &lt;div class="avatar__status avatar__status--online"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Fallback Avatar --&gt;
+&lt;div class="avatar avatar--medium"&gt;
+  &lt;div class="avatar__fallback"&gt;JD&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Avatar Group --&gt;
+&lt;div class="avatar-group"&gt;
+  &lt;div class="avatar avatar--small"&gt;
+    &lt;img class="avatar__image" src="user1.jpg" alt="User 1"&gt;
+  &lt;/div&gt;
+  &lt;div class="avatar avatar--small"&gt;
+    &lt;img class="avatar__image" src="user2.jpg" alt="User 2"&gt;
+  &lt;/div&gt;
+  &lt;button class="avatar-group__add"&gt;
+    &lt;svg class="avatar-group__add-icon" viewBox="0 0 20 20"&gt;
+      &lt;path d="M10 4.16667V15.8333M4.16667 10H15.8333" stroke="currentColor"/&gt;
+    &lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code>
+      </div>
+
+      <h3 style="font-size: 18px; margin-top: 24px; margin-bottom: 12px; color: #374151;">JavaScript 사용</h3>
+      <div class="code-block">
+        <code>// 단일 Avatar
+const avatar = new Avatar({
+  size: 'medium',
+  src: '../assets/avatars/male01.jpg',
+  alt: 'John Doe',
+  status: 'online'
+});
+
+avatar.mount('#container');
+
+// 동적 업데이트
+avatar.setSize('large');
+avatar.setStatus('busy');
+avatar.setSrc('new-image.jpg');</code>
+      </div>
+    </div>
+  </div>
+
+  <script src="../components/avatar/avatar.js"></script>
+  <!-- Interactive Demo Script (인라인) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // === 인터랙티브 데모 ===
+      let currentSize = 'medium';
+      let currentStatus = null;
+
+      // 데모 아바타 생성
+      const demoAvatar = new Avatar({
+        size: currentSize,
+        src: '../assets/avatars/male01.jpg',
+        alt: 'Demo User',
+        fallback: 'DU',
+        status: null
+      });
+      demoAvatar.mount('#interactive-demo');
+
+      // 정보 업데이트 함수
+      function updateInfo() {
+        document.getElementById('info-size').textContent = currentSize;
+        document.getElementById('info-status').textContent = currentStatus || '없음';
+      }
+
+      // 크기 버튼 이벤트
+      document.querySelectorAll('#size-controls .btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          // active 클래스 토글
+          document.querySelectorAll('#size-controls .btn').forEach(function (b) {
+            b.classList.remove('active');
+          });
+          btn.classList.add('active');
+
+          // 크기 변경
+          currentSize = btn.getAttribute('data-size');
+          demoAvatar.setSize(currentSize);
+          updateInfo();
+        });
+      });
+
+      // 상태 버튼 이벤트
+      document.querySelectorAll('#status-controls .btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          // active 클래스 토글
+          document.querySelectorAll('#status-controls .btn').forEach(function (b) {
+            b.classList.remove('active');
+          });
+          btn.classList.add('active');
+
+          // 상태 변경
+          var statusValue = btn.getAttribute('data-status');
+          currentStatus = (statusValue === 'none') ? null : statusValue;
+          demoAvatar.setStatus(currentStatus);
+          updateInfo();
+        });
+      });
+
+      updateInfo();
+      console.log('✅ Avatar 인터랙티브 데모 초기화 완료');
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+/**
+ * KLDS Design System - Global CSS
+ * 공통 레이아웃 스타일
+ */
+
+@import url('./tokens.css');
+@import url('./reset.css');
+
+/* Font */
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Base Styles */
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--klds-typography-fontfamily-text), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: var(--klds-typography-fontsize-m);
+    font-weight: var(--klds-typography-fontweight-regular);
+    line-height: var(--klds-typography-lineheight-l);
+    color: var(--klds-color-text-black);
+    background-color: var(--klds-color-white);
+    min-width: 800px;
+}
+
+/* Code blocks */
+code,
+pre {
+    font-family: var(--klds-typography-fontfamily-code), monospace;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header Component - KLDS</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../components/avatar/avatar.css">
+  <link rel="stylesheet" href="../../components/switch/mode-switch.css">
+  <link rel="stylesheet" href="../../components/button/button-icon.css">
+  <link rel="stylesheet" href="header.css">
+</head>
+<body>
+  <!-- Header Component -->
+  <header class="header">
+    
+    <!-- Left Section -->
+    <div class="header__left">
+      
+      <!-- Menu Button → button-icon 컴포넌트 사용 -->
+      <button class="button-icon button-icon--medium button-icon--default" aria-label="메뉴 열기">
+        <span class="button-icon__icon" style="-webkit-mask-image:url(../../assets/icons/ic-menu-hamburger.svg);mask-image:url(../../assets/icons/ic-menu-hamburger.svg)"></span>
+      </button>
+      
+      <!-- Favorite Users -->
+      <div class="header__favorite-users">
+        <div class="avatar-group">
+          <!-- Avatar 1 -->
+          <div class="avatar avatar--small">
+            <img src="../../assets/avatars/male01.jpg" alt="User 1" class="avatar__image">
+          </div>
+          <!-- Avatar 2 -->
+          <div class="avatar avatar--small">
+            <img src="../../assets/avatars/female01.jpg" alt="User 2" class="avatar__image">
+          </div>
+          <!-- Avatar 3 -->
+          <div class="avatar avatar--small">
+            <img src="../../assets/avatars/male02.jpg" alt="User 3" class="avatar__image">
+          </div>
+          <!-- Avatar 4 -->
+          <div class="avatar avatar--small">
+            <img src="../../assets/avatars/female02.jpg" alt="User 4" class="avatar__image">
+          </div>
+        </div>
+        <!-- Add Button (avatar-group__add 활용) -->
+        <button class="avatar-group__add" aria-label="사용자 추가">
+          <img src="../../assets/icons/ic-plus.svg" alt="" class="avatar-group__add-icon">
+        </button>
+      </div>
+      
+    </div>
+    
+    <!-- Center Logo -->
+    <div class="header__logo">
+      <img src="../../assets/images/logo-nextep.svg" alt="Next EP" height="26">
+    </div>
+    
+    <!-- Right Section -->
+    <div class="header__right">
+      
+      <!-- Mode Switch (기존 mode-switch 컴포넌트 재사용) -->
+      <div class="mode-switch" role="tablist" aria-label="모드 전환">
+        <button class="mode-switch__btn" role="tab" aria-selected="false" data-mode="classic">
+          <span class="mode-switch__icon">
+            <img src="../../assets/icons/ic-menu-grid.svg" alt="" width="24" height="24">
+          </span>
+          <span class="mode-switch__label">클래식</span>
+        </button>
+        <button class="mode-switch__btn is-active" role="tab" aria-selected="true" data-mode="ai">
+          <span class="mode-switch__icon">
+            <img src="../../assets/icons/ic-star02.svg" alt="" width="24" height="24">
+          </span>
+          <span class="mode-switch__label">AI</span>
+        </button>
+      </div>
+      
+      <!-- Right Buttons → button-icon 컴포넌트 사용 -->
+      <div class="header__right-btns">
+        <!-- Search Button -->
+        <button class="button-icon button-icon--medium button-icon--default" aria-label="검색">
+          <span class="button-icon__icon" style="-webkit-mask-image:url(../../assets/icons/ic-search.svg);mask-image:url(../../assets/icons/ic-search.svg)"></span>
+        </button>
+        
+        <!-- Bolt Button -->
+        <button class="button-icon button-icon--medium button-icon--default" aria-label="빠른 실행">
+          <span class="button-icon__icon" style="-webkit-mask-image:url(../../assets/icons/ic-bolt.svg);mask-image:url(../../assets/icons/ic-bolt.svg)"></span>
+        </button>
+        
+        <!-- Bell Button -->
+        <button class="button-icon button-icon--medium button-icon--default" aria-label="알림">
+          <span class="button-icon__icon" style="-webkit-mask-image:url(../../assets/icons/ic-bell.svg);mask-image:url(../../assets/icons/ic-bell.svg)"></span>
+        </button>
+        
+        <!-- Settings Button -->
+        <button class="button-icon button-icon--medium button-icon--default" aria-label="설정">
+          <span class="button-icon__icon" style="-webkit-mask-image:url(../../assets/icons/ic-setting.svg);mask-image:url(../../assets/icons/ic-setting.svg)"></span>
+        </button>
+        
+        <!-- User Profile Button -->
+        <button class="header__user-btn" aria-label="사용자 메뉴">
+          <div class="header__user-avatar">
+            <img src="../../assets/icons/ic-user.svg" alt="" width="24" height="24">
+          </div>
+          <img src="../../assets/icons/ic-caret-down02.svg" alt="" class="header__user-dropdown" width="20" height="20">
+        </button>
+      </div>
+      
+    </div>
+    
+  </header>
+  <!-- Mode Switch JS (기존 컴포넌트 재사용) -->
+  <script src="../switch/mode-switch.js"></script>
+</body>
+</html>

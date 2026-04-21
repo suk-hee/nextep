@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Component Preview - KLDS</title>
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../components/button/button.css">
+  <link rel="stylesheet" href="../components/button/button-icon.css">
+  <style>
+    body {
+      font-family: var(--klds-typography-fontfamily-text), sans-serif;
+      background-color: var(--klds-color-gray-gray02);
+      padding: 40px;
+    }
+
+    .preview-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--klds-color-text-black);
+    }
+
+    .preview-description {
+      font-size: 16px;
+      color: var(--klds-color-text-gray);
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    .preview-section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--klds-color-text-black);
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      color: var(--klds-color-text-gray);
+    }
+
+    .preview-box {
+      background: var(--klds-color-white);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .button-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .row-label {
+      font-size: 12px;
+      color: var(--klds-color-text-gray);
+      min-width: 60px;
+    }
+
+    .icon-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .icon-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .badge-new {
+      display: inline-block;
+      background: #FF4D4F;
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .badge-changed {
+      display: inline-block;
+      background: #FAAD14;
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="preview-title">Button Component</h1>
+  <p class="preview-description">
+    KLDS 디자인 시스템의 Button 컴포넌트입니다.<br>
+    Figma node 8:4357 기반 — startIcon, endIcon은 사용자 옵션입니다.
+  </p>
+
+  <!-- ===== Small Buttons ===== -->
+  <div class="preview-section">
+    <h2 class="section-title">Button — Small (32h)</h2>
+    <div class="preview-box">
+
+      <h3 class="section-subtitle">fill-primary</h3>
+      <div class="button-row">
+        <button class="button button--small button--fill-primary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--small button--fill-primary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+        </button>
+        <button class="button button--small button--fill-primary">
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--small button--fill-primary">
+          <span>button</span>
+        </button>
+        <button class="button button--small button--fill-primary" disabled>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+      </div>
+
+      <h3 class="section-subtitle">outline-primary <span class="badge-new">NEW</span></h3>
+      <div class="button-row">
+        <button class="button button--small button--outline-primary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--small button--outline-primary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+        </button>
+        <button class="button button--small button--outline-primary">
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--small button--outline-primary">
+          <span>button</span>
+        </button>
+        <button class="button button--small button--outline-primary" disabled>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+      </div>
+
+      <h3 class="section-subtitle">fill-secondary</h3>
+      <div class="button-row">
+        <button class="button button--small button--fill-secondary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--small button--fill-secondary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+        </button>
+        <button class="button button--small button--fill-secondary">
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--small button--fill-secondary">
+          <span>button</span>
+        </button>
+        <button class="button button--small button--fill-secondary" disabled>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+      </div>
+
+      <h3 class="section-subtitle">outline-secondary</h3>
+      <div class="button-row">
+        <button class="button button--small button--outline-secondary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--small button--outline-secondary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+        </button>
+        <button class="button button--small button--outline-secondary">
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--small button--outline-secondary">
+          <span>button</span>
+        </button>
+        <button class="button button--small button--outline-secondary" disabled>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+      </div>
+
+      <h3 class="section-subtitle">text</h3>
+      <div class="button-row">
+        <button class="button button--small button--text">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--small button--text">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+        </button>
+        <button class="button button--small button--text">
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--small button--text">
+          <span>button</span>
+        </button>
+        <button class="button button--small button--text" disabled>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Medium Buttons ===== -->
+  <div class="preview-section">
+    <h2 class="section-title">Button — Medium (40h)</h2>
+    <div class="preview-box">
+
+      <h3 class="section-subtitle">fill-primary</h3>
+      <div class="button-row">
+        <button class="button button--medium button--fill-primary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--medium button--fill-primary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+        </button>
+        <button class="button button--medium button--fill-primary">
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--medium button--fill-primary">
+          <span>button</span>
+        </button>
+        <button class="button button--medium button--fill-primary" disabled>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+      </div>
+
+      <h3 class="section-subtitle">outline-primary <span class="badge-changed">CHANGED</span> — hover/click 시 bg채움</h3>
+      <div class="button-row">
+        <button class="button button--medium button--outline-primary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--medium button--outline-primary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+        </button>
+        <button class="button button--medium button--outline-primary">
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--medium button--outline-primary">
+          <span>button</span>
+        </button>
+        <button class="button button--medium button--outline-primary" disabled>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+      </div>
+
+      <h3 class="section-subtitle">fill-secondary <span class="badge-new">NEW</span></h3>
+      <div class="button-row">
+        <button class="button button--medium button--fill-secondary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--medium button--fill-secondary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+        </button>
+        <button class="button button--medium button--fill-secondary">
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--medium button--fill-secondary">
+          <span>button</span>
+        </button>
+        <button class="button button--medium button--fill-secondary" disabled>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+      </div>
+
+      <h3 class="section-subtitle">outline-secondary <span class="badge-changed">CHANGED</span> — hover/click 시
+        #005386으로 변경</h3>
+      <div class="button-row">
+        <button class="button button--medium button--outline-secondary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--medium button--outline-secondary">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+        </button>
+        <button class="button button--medium button--outline-secondary">
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--medium button--outline-secondary">
+          <span>button</span>
+        </button>
+        <button class="button button--medium button--outline-secondary" disabled>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+      </div>
+
+      <h3 class="section-subtitle">text <span class="badge-new">NEW</span></h3>
+      <div class="button-row">
+        <button class="button button--medium button--text">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--medium button--text">
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+        </button>
+        <button class="button button--medium button--text">
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+        <button class="button button--medium button--text">
+          <span>button</span>
+        </button>
+        <button class="button button--medium button--text" disabled>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-info.svg);mask-image:url(../assets/icons/ic-info.svg)"></span>
+          <span>button</span>
+          <span class="button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-caret-right01.svg);mask-image:url(../assets/icons/ic-caret-right01.svg)"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Icon Buttons ===== -->
+  <div class="preview-section">
+    <h2 class="section-title">Button Icon</h2>
+    <div class="preview-box">
+
+      <h3 class="section-subtitle">Small (32×32) — default / default-accent / outline / outline-accent</h3>
+      <div class="icon-row">
+        <button class="button-icon button-icon--small button-icon--default">
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+        <button class="button-icon button-icon--small button-icon--default-accent">
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+        <button class="button-icon button-icon--small button-icon--outline">
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+        <button class="button-icon button-icon--small button-icon--outline-accent">
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+      </div>
+
+      <h3 class="section-subtitle">Medium (40×40)</h3>
+      <div class="icon-row">
+        <button class="button-icon button-icon--medium button-icon--default">
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+        <button class="button-icon button-icon--medium button-icon--default-accent">
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+        <button class="button-icon button-icon--medium button-icon--outline">
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+        <button class="button-icon button-icon--medium button-icon--outline-accent">
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+      </div>
+
+      <h3 class="section-subtitle">Large (56×56)</h3>
+      <div class="icon-row">
+        <button class="button-icon button-icon--large button-icon--default">
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+        <button class="button-icon button-icon--large button-icon--default-accent">
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+        <button class="button-icon button-icon--large button-icon--outline">
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+        <button class="button-icon button-icon--large button-icon--outline-accent">
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+      </div>
+
+      <h3 class="section-subtitle">Disabled (Medium)</h3>
+      <div class="icon-row">
+        <button class="button-icon button-icon--medium button-icon--default" disabled>
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+        <button class="button-icon button-icon--medium button-icon--default-accent" disabled>
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+        <button class="button-icon button-icon--medium button-icon--outline" disabled>
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+        <button class="button-icon button-icon--medium button-icon--outline-accent" disabled>
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+      </div>
+
+      <h3 class="section-subtitle">FAB — Floating Action Button (56×56) <span class="badge-new">NEW</span></h3>
+      <div class="icon-row" style="position: relative; height: 80px;">
+        <button class="button-icon button-icon--fab" style="position: static;">
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       Toggle Button (Figma 374:12366)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="preview-section">
+    <h2 class="section-title">Toggle Button <span class="badge-new">NEW</span></h2>
+    <p style="font-size:14px; color:var(--klds-color-text-gray); margin-bottom:16px;">
+      Figma 노드: 374:12366 &nbsp;|&nbsp; 그룹 내 하나의 버튼이 항상 활성화 상태
+    </p>
+
+    <h3 class="section-subtitle">아이콘 + 텍스트 (3개 그룹)</h3>
+    <div class="button-row">
+      <div class="toggle-button-group" data-toggle-group>
+        <button class="toggle-button is-active">
+          <span class="toggle-button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-color-filter.svg);mask-image:url(../assets/icons/ic-color-filter.svg)"></span>
+          First
+        </button>
+        <button class="toggle-button">
+          <span class="toggle-button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-color-filter.svg);mask-image:url(../assets/icons/ic-color-filter.svg)"></span>
+          Center
+        </button>
+        <button class="toggle-button">
+          <span class="toggle-button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-color-filter.svg);mask-image:url(../assets/icons/ic-color-filter.svg)"></span>
+          Last
+        </button>
+      </div>
+    </div>
+
+    <h3 class="section-subtitle">텍스트만 (2개 그룹)</h3>
+    <div class="button-row">
+      <div class="toggle-button-group" data-toggle-group>
+        <button class="toggle-button is-active">List</button>
+        <button class="toggle-button">Board</button>
+      </div>
+    </div>
+
+    <h3 class="section-subtitle">텍스트만 (4개 그룹)</h3>
+    <div class="button-row">
+      <div class="toggle-button-group" data-toggle-group>
+        <button class="toggle-button is-active">All</button>
+        <button class="toggle-button">대기</button>
+        <button class="toggle-button">진행</button>
+        <button class="toggle-button">지연</button>
+      </div>
+    </div>
+
+    <h3 class="section-subtitle">아이콘만 (3개 그룹)</h3>
+    <div class="button-row">
+      <div class="toggle-button-group" data-toggle-group>
+        <button class="toggle-button is-active" aria-label="리스트">
+          <span class="toggle-button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-list.svg);mask-image:url(../assets/icons/ic-list.svg)"></span>
+        </button>
+        <button class="toggle-button" aria-label="그리드">
+          <span class="toggle-button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-grid.svg);mask-image:url(../assets/icons/ic-grid.svg)"></span>
+        </button>
+        <button class="toggle-button" aria-label="캘린더">
+          <span class="toggle-button__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-calendar-days.svg);mask-image:url(../assets/icons/ic-calendar-days.svg)"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toggle Button 토글 동작 스크립트 -->
+  <script>
+    document.querySelectorAll('[data-toggle-group]').forEach(group => {
+      group.addEventListener('click', (e) => {
+        const btn = e.target.closest('.toggle-button');
+        if (!btn || btn.classList.contains('is-active')) return;
+        group.querySelectorAll('.toggle-button').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+      });
+    });
+  </script>
+
+</body>
+
+</html>

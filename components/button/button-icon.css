@@ -1,0 +1,325 @@
+/**
+ * Button Icon Component — Figma node 11:5340
+ *
+ * Figma 노드에서 추출한 정확한 색상표 (Vector fills 기준):
+ *
+ * default:
+ *   default  → bg:transparent, icon:#121212
+ *   hover    → bg:#F3F4F6,     icon:#121212
+ *   click    → bg:#F3F4F6,     icon:#121212
+ *   disabled → bg:transparent, icon:#9CA3AF
+ *
+ * default-accent:
+ *   default  → bg:transparent, icon:#121212
+ *   hover    → bg:#121212,     icon:#FFFFFF
+ *   click    → bg:#121212,     icon:#FFFFFF
+ *   disabled → bg:transparent, icon:#9CA3AF
+ *
+ * outline:
+ *   default  → bg:transparent, border:#E5E7EB, icon:#121212
+ *   hover    → bg:#F3F4F6,     border:none,    icon:#121212
+ *   click    → bg:#F3F4F6,     border:none,    icon:#121212
+ *   disabled → bg:transparent, border:#E5E7EB, icon:#9CA3AF
+ *
+ * outline-accent:
+ *   default  → bg:transparent, border:#E5E7EB, icon:#121212
+ *   hover    → bg:#121212,     border:none,    icon:#FFFFFF
+ *   click    → bg:#121212,     border:none,    icon:#FFFFFF
+ *   disabled → bg:transparent, border:#E5E7EB, icon:#9CA3AF
+ *
+ * 아이콘 색상 처리: mask-image 방식
+ *   .button-icon__icon에 mask-image로 SVG를 지정
+ *   background-color로 정확한 토큰 색상 적용
+ *
+ * 토큰 매핑:
+ *   32px → --klds-size-size5
+ *   40px → --klds-size-size6
+ *   56px → --klds-size-size8
+ *   24px → --klds-size-size4
+ *   32px (icon) → --klds-size-size5
+ *   9999px → --klds-radius-circle
+ *   #121212 → --klds-color-text-black
+ *   #FFFFFF → --klds-color-white
+ *   #F3F4F6 → --klds-color-background-hover (hover 배경)
+ *   #E5E7EB → --klds-color-border-default
+ *   #9CA3AF → --klds-color-gray-gray05
+ */
+
+/* ─────────────────────────────────────────
+   .button-icon  —  아이콘 전용 버튼 구조
+   Figma: HORIZONTAL, gap: 10, align: CENTER, cornerRadius: 9999
+   ───────────────────────────────────────── */
+.button-icon {
+  display: inline-flex;
+  /* layout.mode: HORIZONTAL */
+  align-items: center;
+  /* layout.align: CENTER */
+  justify-content: center;
+  gap: 10px;
+  /* layout.gap: 10 */
+  border: none;
+  border-radius: var(--klds-radius-circle);
+  /* cornerRadius: 9999 */
+  cursor: pointer;
+  box-sizing: border-box;
+  background: transparent;
+  padding: 0;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.button-icon:disabled {
+  cursor: not-allowed;
+}
+
+
+/* ─────────────────────────────────────────
+   Size Variants
+   ───────────────────────────────────────── */
+
+/* Small: 32×32, icon 24×24 */
+.button-icon--small {
+  width: var(--klds-size-size5);
+  /* 32px */
+  height: var(--klds-size-size5);
+  /* 32px */
+}
+
+.button-icon--small .button-icon__icon {
+  width: var(--klds-size-size4);
+  /* 24px */
+  height: var(--klds-size-size4);
+  /* 24px */
+}
+
+/* Medium: 40×40, icon 24×24 */
+.button-icon--medium {
+  width: var(--klds-size-size6);
+  /* 40px */
+  height: var(--klds-size-size6);
+  /* 40px */
+}
+
+.button-icon--medium .button-icon__icon {
+  width: var(--klds-size-size4);
+  /* 24px */
+  height: var(--klds-size-size4);
+  /* 24px */
+}
+
+/* Large: 56×56, icon 32×32 */
+.button-icon--large {
+  width: var(--klds-size-size8);
+  /* 56px */
+  height: var(--klds-size-size8);
+  /* 56px */
+}
+
+.button-icon--large .button-icon__icon {
+  width: var(--klds-size-size5);
+  /* 32px */
+  height: var(--klds-size-size5);
+  /* 32px */
+}
+
+
+/* ─────────────────────────────────────────
+   Icon Element  —  mask-image 방식
+   ───────────────────────────────────────── */
+.button-icon__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  transition: background-color 0.15s;
+}
+
+
+/* ═════════════════════════════════════════
+   Type: default
+   ═════════════════════════════════════════ */
+
+/* default → bg:transparent, icon:#121212 */
+.button-icon--default .button-icon__icon {
+  background-color: var(--klds-color-text-black);
+  /* icon: #121212 */
+}
+
+/* hover → bg:#F3F4F6, icon:#121212 */
+.button-icon--default:hover:not(:disabled) {
+  background-color: var(--klds-color-background-hover);
+  /* fills: #F3F4F6 */
+}
+
+/* click → hover와 동일 */
+.button-icon--default:active:not(:disabled) {
+  background-color: var(--klds-color-background-hover);
+  /* fills: #F3F4F6 */
+}
+
+/* disabled → bg:transparent, icon:#9CA3AF */
+.button-icon--default:disabled .button-icon__icon {
+  background-color: var(--klds-color-gray-gray05);
+  /* icon: #9CA3AF */
+}
+
+
+/* ═════════════════════════════════════════
+   Type: default-accent
+   ═════════════════════════════════════════ */
+
+/* default → bg:transparent, icon:#121212 */
+.button-icon--default-accent .button-icon__icon {
+  background-color: var(--klds-color-text-black);
+  /* icon: #121212 */
+}
+
+/* hover → bg:#121212, icon:#FFFFFF */
+.button-icon--default-accent:hover:not(:disabled) {
+  background-color: var(--klds-color-text-black);
+  /* fills: #121212 */
+}
+
+.button-icon--default-accent:hover:not(:disabled) .button-icon__icon {
+  background-color: var(--klds-color-white);
+  /* icon: #FFFFFF */
+}
+
+/* click → hover와 동일 */
+.button-icon--default-accent:active:not(:disabled) {
+  background-color: var(--klds-color-text-black);
+}
+
+.button-icon--default-accent:active:not(:disabled) .button-icon__icon {
+  background-color: var(--klds-color-white);
+  /* icon: #FFFFFF */
+}
+
+/* disabled → bg:transparent, icon:#9CA3AF */
+.button-icon--default-accent:disabled .button-icon__icon {
+  background-color: var(--klds-color-gray-gray05);
+  /* icon: #9CA3AF */
+}
+
+
+/* ═════════════════════════════════════════
+   Type: outline
+   ═════════════════════════════════════════ */
+
+/* default → bg:transparent, border:#E5E7EB, icon:#121212 */
+.button-icon--outline {
+  border: 1px solid var(--klds-color-border-default);
+  /* strokes: #E5E7EB */
+}
+
+.button-icon--outline .button-icon__icon {
+  background-color: var(--klds-color-text-black);
+  /* icon: #121212 */
+}
+
+/* hover → bg:#F3F4F6, border:none, icon:#121212 */
+.button-icon--outline:hover:not(:disabled) {
+  background-color: var(--klds-color-background-hover);
+  /* fills: #F3F4F6 */
+  border-color: transparent;
+  /* strokes: 없음 */
+}
+
+/* click → hover와 동일 */
+.button-icon--outline:active:not(:disabled) {
+  background-color: var(--klds-color-background-hover);
+  border-color: transparent;
+}
+
+/* disabled → bg:transparent, border:#E5E7EB, icon:#9CA3AF */
+.button-icon--outline:disabled .button-icon__icon {
+  background-color: var(--klds-color-gray-gray05);
+  /* icon: #9CA3AF */
+}
+
+
+/* ═════════════════════════════════════════
+   Type: outline-accent
+   ═════════════════════════════════════════ */
+
+/* default → bg:transparent, border:#E5E7EB, icon:#121212 */
+.button-icon--outline-accent {
+  border: 1px solid var(--klds-color-border-default);
+  /* strokes: #E5E7EB */
+}
+
+.button-icon--outline-accent .button-icon__icon {
+  background-color: var(--klds-color-text-black);
+  /* icon: #121212 */
+}
+
+/* hover → bg:#121212, border:none, icon:#FFFFFF */
+.button-icon--outline-accent:hover:not(:disabled) {
+  background-color: var(--klds-color-text-black);
+  /* fills: #121212 */
+  border-color: transparent;
+  /* strokes: 없음 */
+}
+
+.button-icon--outline-accent:hover:not(:disabled) .button-icon__icon {
+  background-color: var(--klds-color-white);
+  /* icon: #FFFFFF */
+}
+
+/* click → hover와 동일 */
+.button-icon--outline-accent:active:not(:disabled) {
+  background-color: var(--klds-color-text-black);
+  border-color: transparent;
+}
+
+.button-icon--outline-accent:active:not(:disabled) .button-icon__icon {
+  background-color: var(--klds-color-white);
+  /* icon: #FFFFFF */
+}
+
+/* disabled → bg:transparent, border:#E5E7EB, icon:#9CA3AF */
+.button-icon--outline-accent:disabled .button-icon__icon {
+  background-color: var(--klds-color-gray-gray05);
+  /* icon: #9CA3AF */
+}
+
+
+/* ═════════════════════════════════════════
+   Type: fab (Floating Action Button)
+   Figma node: 501:10390 — button-fab (COMPONENT)
+   56×56, HORIZONTAL, gap:10, align:CENTER
+   fills: #005386 (primary06), radius:28
+   shadow: offset(0,2) blur:4 rgba(0,0,0,0.15)
+   positioning: ABSOLUTE (우하단 플로팅)
+   icon: ic-star02 24×24, #FFFFFF
+   ═════════════════════════════════════════ */
+
+/* default → bg:#005386, icon:#FFFFFF */
+.button-icon--fab {
+  width: var(--klds-size-size8);
+  /* 56px */
+  height: var(--klds-size-size8);
+  /* 56px */
+  background-color: var(--klds-color-button-fill-surface);
+  /* fills: #005386 */
+  border-radius: 28px;
+  /* cornerRadius: 28 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  /* drop-shadow */
+  position: absolute;
+  /* positioning: ABSOLUTE */
+}
+
+.button-icon--fab .button-icon__icon {
+  width: var(--klds-size-size4);
+  /* 24px */
+  height: var(--klds-size-size4);
+  /* 24px */
+  background-color: var(--klds-color-white);
+  /* icon: #FFFFFF */
+}

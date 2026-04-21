@@ -1,0 +1,304 @@
+/**
+ * KLDS Weekly Calendar Component
+ *
+ * Figma 노드: 1386:24698 (weekly-celanedar)
+ *
+ * 의존 CSS:
+ *   - styles/tokens.css
+ *   - components/avatar/avatar.css
+ *   - components/schedule-tag/schedule-tag.css
+ *
+ * 구성:
+ *   .weekly-calendar               — root (border, radius, overflow)
+ *   .weekly-calendar__header       — 요일/날짜 헤더 행
+ *   .weekly-calendar__time-gutter  — 100px 시간 레이블 열 (헤더용 spacer)
+ *   .weekly-calendar__col          — 요일 열 (헤더)
+ *   .weekly-calendar__col-day      — 요일 이름 (Sun, Mon…)
+ *   .weekly-calendar__col-date     — 날짜 숫자 뱃지 (40×40)
+ *   .weekly-calendar__col-date--today — 오늘 뱃지 (검정 원)
+ *   .weekly-calendar__body         — 스크롤 포함 본문 영역
+ *   .weekly-calendar__allday       — 종일 행
+ *   .weekly-calendar__allday-gutter— "종일" 레이블 셀
+ *   .weekly-calendar__allday-cell  — 종일 행의 각 요일 셀
+ *   .weekly-calendar__scroll       — 시간 그리드 스크롤 컨테이너
+ *   .weekly-calendar__grid         — 시간 행들 + 이벤트 레이어 (relative)
+ *   .weekly-calendar__row          — 1시간 행 (80px)
+ *   .weekly-calendar__row-label    — 시간 레이블 (08:00 …)
+ *   .weekly-calendar__day-cell     — 각 요일 시간 셀
+ *   .weekly-calendar__events-layer — 절대 위치 이벤트 오버레이
+ *   .weekly-calendar__event        — 개별 이벤트 래퍼 (JS가 top/height/--ev-col 설정)
+ *
+ * ※ Figma에 정의되지 않은 :hover, :active, transition 등 임의 인터랙션 금지
+ */
+
+/* ============================================================
+   0. Local Custom Properties
+   ============================================================ */
+
+.weekly-calendar {
+  --wc-time-gutter: 100px;  /* Figma: time column width */
+  --wc-row-height:  80px;   /* Figma: each hour row height */
+  --wc-allday-height: 80px; /* Figma: 종일 row height */
+}
+
+/* ============================================================
+   1. Root Container
+   Figma: bg=white, border=1px #E5E7EB, cornerRadius=16px, overflow=clip
+   ============================================================ */
+
+.weekly-calendar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: var(--klds-color-white);
+  border: 1px solid var(--klds-color-border-default);
+  border-radius: var(--klds-radius-m); /* 16px */
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   2. Header (th)
+   Figma: py=8px, border-bottom=#E5E7EB
+   ============================================================ */
+
+.weekly-calendar__header {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: var(--klds-padding-xxs) 0; /* 8px */
+  border-bottom: 1px solid var(--klds-color-border-default);
+}
+
+/* 헤더 왼쪽 빈 spacer (time gutter 너비 확보) */
+.weekly-calendar__time-gutter {
+  width: var(--wc-time-gutter);
+  flex-shrink: 0;
+}
+
+/* ── 요일 열 (헤더) ── */
+
+.weekly-calendar__col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--klds-gap-xxs); /* 4px */
+  padding: 4px 12px;
+  box-sizing: border-box;
+}
+
+/* 요일 이름: body/body_small_semibold — 14px, SemiBold, gray */
+.weekly-calendar__col-day {
+  font-family: var(--klds-typography-fontfamily-text);
+  font-size: var(--klds-typography-fontsize-xs);       /* 14px */
+  font-weight: var(--klds-typography-fontweight-semibold);
+  line-height: 1.5;
+  color: var(--klds-color-text-gray);
+  white-space: nowrap;
+}
+
+/* 날짜 뱃지: 40×40, body/body_large_semibold — 18px, SemiBold */
+.weekly-calendar__col-date {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--klds-radius-circle);
+  font-family: var(--klds-typography-fontfamily-text);
+  font-size: var(--klds-typography-fontsize-m);        /* 18px */
+  font-weight: var(--klds-typography-fontweight-semibold);
+  line-height: 1.5;
+  color: var(--klds-color-black);
+  box-sizing: border-box;
+}
+
+/* 오늘: 검정 원, 흰 텍스트 */
+.weekly-calendar__col-date--today {
+  background-color: var(--klds-color-black);
+  color: var(--klds-color-white);
+}
+
+/* ============================================================
+   3. Body
+   ============================================================ */
+
+.weekly-calendar__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ============================================================
+   4. All-day Row (종일)
+   Figma: h=80px, border-bottom=#E5E7EB
+   ============================================================ */
+
+.weekly-calendar__allday {
+  display: flex;
+  align-items: stretch;
+  height: var(--wc-allday-height);
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--klds-color-border-default);
+}
+
+/* "종일" 레이블 셀 */
+.weekly-calendar__allday-gutter {
+  width: var(--wc-time-gutter);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--klds-color-border-default);
+  font-family: var(--klds-typography-fontfamily-text);
+  font-size: var(--klds-typography-fontsize-xs);  /* 14px */
+  font-weight: var(--klds-typography-fontweight-semibold);
+  line-height: 1.5;
+  color: var(--klds-color-black);
+  padding: 4px 12px;
+  box-sizing: border-box;
+}
+
+/* 종일 행의 각 요일 셀 */
+.weekly-calendar__allday-cell {
+  flex: 1;
+  min-width: 0;
+  border-right: 1px solid var(--klds-color-gray-gray02);
+  box-sizing: border-box;
+}
+
+.weekly-calendar__allday-cell:last-child {
+  border-right: none;
+}
+
+/* ============================================================
+   5. Scroll Area
+   ============================================================ */
+
+.weekly-calendar__scroll {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  position: relative;
+}
+
+/* ============================================================
+   6. Grid (time rows + events overlay)
+   position: relative 으로 이벤트 레이어의 기준점이 됨
+   ============================================================ */
+
+.weekly-calendar__grid {
+  position: relative;
+}
+
+/* ── 시간 행 (1시간 = 80px) ── */
+
+.weekly-calendar__row {
+  display: flex;
+  align-items: stretch;
+  height: var(--wc-row-height); /* 80px */
+}
+
+/* 시간 레이블 (08:00, 09:00 …) — center-aligned
+   Figma: items-center → 텍스트가 행 높이 가운데 정렬 */
+.weekly-calendar__row-label {
+  width: var(--wc-time-gutter);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--klds-color-border-default);
+  font-family: var(--klds-typography-fontfamily-text);
+  font-size: var(--klds-typography-fontsize-xs);  /* 14px */
+  font-weight: var(--klds-typography-fontweight-semibold);
+  line-height: 1.5;
+  color: var(--klds-color-black);
+  box-sizing: border-box;
+}
+
+/* 각 요일의 시간 셀 */
+.weekly-calendar__day-cell {
+  flex: 1;
+  min-width: 0;
+  border-right: 1px solid var(--klds-color-gray-gray02);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.weekly-calendar__day-cell:last-child {
+  border-right: none;
+}
+
+/* 시간 구분선 (셀 50% 지점 = 시간 레이블과 동일한 높이)
+   Figma: solid horizontal line, 시간 레이블과 세로 중앙 정렬 */
+.weekly-calendar__day-cell::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--klds-color-border-default);
+  pointer-events: none;
+}
+
+/* ============================================================
+   7. Events Layer
+   Figma: schedule-tag들이 절대 위치로 배치
+   - top: 시간(분) × (ROW_HEIGHT / 60)
+   - height: 지속 시간(분) × (ROW_HEIGHT / 60)
+   - left: dayIndex × (1/7 of events layer width)
+   ============================================================ */
+
+.weekly-calendar__events-layer {
+  position: absolute;
+  top: 0;
+  left: var(--wc-time-gutter); /* time gutter 제외 */
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+/* 개별 이벤트 래퍼
+   JS가 inline style로 설정:
+     left   : dayIndex * (100 / 7) % — timetable과 동일한 퍼센트 방식
+     top    : 시작 픽셀
+     height : 높이 픽셀                        */
+.weekly-calendar__event {
+  position: absolute;
+  width: calc(100% / 7 - 4px); /* 4px gap으로 셀 구분선 노출 */
+  overflow: hidden;
+  pointer-events: auto;
+  box-sizing: border-box;
+}
+
+/* ── 캘린더 내 schedule-tag 오버라이드 ──
+   이벤트 컨테이너 크기에 맞게 확장                */
+.weekly-calendar__event .klds-schedule-tag {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.weekly-calendar__event .klds-schedule-tag__content {
+  min-height: 0;
+  height: 100%;
+}
+
+/* 제목: 캘린더에서는 줄바꿈 허용 (standalone은 nowrap)
+   Figma: 긴 제목이 여러 줄로 표시됨              */
+.weekly-calendar__event .klds-schedule-tag__title {
+  white-space: normal;
+  overflow: hidden;
+  word-break: keep-all;
+}
+
+/* 아바타 그룹: 축소 방지 (space-between으로 자동 하단 배치) */
+.weekly-calendar__event .klds-schedule-tag__avatars {
+  flex-shrink: 0;
+}

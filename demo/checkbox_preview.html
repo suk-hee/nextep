@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script src="https://cdn.tailwindcss.com"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KLDS Checkbox Component Preview</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../components/checkbox/checkbox.css">
+  <style>
+    body {
+      font-family: var(--klds-typography-fontfamily-text), -apple-system, sans-serif;
+      background-color: var(--klds-color-gray-gray02);
+      padding: 40px;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--klds-color-text-black);
+      margin-bottom: 8px;
+    }
+    .page-desc {
+      font-size: 14px;
+      color: var(--klds-color-gray-gray07);
+      margin-bottom: 40px;
+    }
+    .preview-section {
+      margin-bottom: 40px;
+    }
+    .preview-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--klds-color-text-black);
+      margin-bottom: 8px;
+    }
+    .preview-desc {
+      font-size: 13px;
+      color: var(--klds-color-gray-gray06);
+      margin-bottom: 16px;
+    }
+    .preview-row {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      padding: 24px;
+      background-color: var(--klds-color-white);
+      border-radius: var(--klds-radius-m);
+      border: 1px solid var(--klds-color-border-default);
+    }
+    .preview-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .preview-item__label {
+      font-size: 12px;
+      color: var(--klds-color-gray-gray06);
+    }
+  </style>
+</head>
+<body>
+  <h1>Checkbox Component</h1>
+  <p class="page-desc">Figma 노드: 1:17637 — checked=false / checked=true 두 가지 변형</p>
+
+  <div class="preview-section">
+    <div class="preview-title">checked=false / checked=true</div>
+    <div class="preview-desc">클릭하여 상태 전환을 확인하세요</div>
+    <div class="preview-row">
+      <div class="preview-item">
+        <label class="klds-checkbox">
+          <input type="checkbox" class="klds-checkbox__input">
+          <span class="klds-checkbox__box">
+            <svg class="klds-checkbox__icon" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 3.5L4.5 7L11 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </label>
+        <span class="preview-item__label">checked=false</span>
+      </div>
+      <div class="preview-item">
+        <label class="klds-checkbox">
+          <input type="checkbox" class="klds-checkbox__input" checked>
+          <span class="klds-checkbox__box">
+            <svg class="klds-checkbox__icon" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 3.5L4.5 7L11 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </label>
+        <span class="preview-item__label">checked=true</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-title">인터랙션 테스트</div>
+    <div class="preview-desc">각 체크박스를 클릭하여 false ↔ true 전환을 확인하세요</div>
+    <div class="preview-row">
+      <label class="klds-checkbox">
+        <input type="checkbox" class="klds-checkbox__input">
+        <span class="klds-checkbox__box">
+          <svg class="klds-checkbox__icon" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 3.5L4.5 7L11 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </label>
+      <label class="klds-checkbox">
+        <input type="checkbox" class="klds-checkbox__input">
+        <span class="klds-checkbox__box">
+          <svg class="klds-checkbox__icon" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 3.5L4.5 7L11 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </label>
+      <label class="klds-checkbox">
+        <input type="checkbox" class="klds-checkbox__input">
+        <span class="klds-checkbox__box">
+          <svg class="klds-checkbox__icon" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 3.5L4.5 7L11 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </label>
+    </div>
+  </div>
+
+</body>
+</html>

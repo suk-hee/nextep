@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Component Preview - KLDS</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../components/tab/tab.css">
+  <style>
+    body {
+      font-family: 'Pretendard', sans-serif;
+      padding: 40px;
+      background: #F9FAFB;
+    }
+
+    .preview-section {
+      margin-bottom: 60px;
+    }
+
+    .preview-section h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #121212;
+    }
+
+    .preview-section p {
+      font-size: 14px;
+      color: #6B7280;
+      margin-bottom: 24px;
+    }
+
+    .preview-box {
+      background: white;
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 16px;
+    }
+
+    .preview-box h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 16px;
+    }
+
+    .event-log {
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      padding: 16px;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 12px;
+      color: #374151;
+      max-height: 200px;
+      overflow-y: auto;
+      margin-top: 24px;
+    }
+
+    .event-log__item {
+      margin-bottom: 4px;
+    }
+
+    .event-log__time {
+      color: #9CA3AF;
+    }
+
+    .event-log__data {
+      color: #005386;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 40px;">Tab Component Preview</h1>
+
+  <!-- ═══════════════════════════════════════
+     Pill 탭 (type=pill)
+     ═══════════════════════════════════════ -->
+  <div class="preview-section">
+    <h2>Pill 탭 (type=pill)</h2>
+    <p>배경이 있는 pill 형태, active 시 검정 배경 + 흰색 텍스트</p>
+
+    <!-- 아이콘 + 텍스트 -->
+    <div class="preview-box">
+      <h3>아이콘 + 텍스트</h3>
+      <div class="tabs tabs--pill" id="tabs-pill-icon">
+        <button class="tab tab--pill tab--active" data-tab="today">
+          <span class="tab__icon" data-icon="ic-calendar-event"></span>
+          <span class="tab__label">Today</span>
+        </button>
+        <button class="tab tab--pill" data-tab="weekly">
+          <span class="tab__icon" data-icon="ic-calendar-week"></span>
+          <span class="tab__label">Weekly</span>
+        </button>
+        <button class="tab tab--pill" data-tab="monthly">
+          <span class="tab__icon" data-icon="ic-calendar-30"></span>
+          <span class="tab__label">Monthly</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 텍스트만 -->
+    <div class="preview-box">
+      <h3>텍스트만</h3>
+      <div class="tabs tabs--pill" id="tabs-pill-text">
+        <button class="tab tab--pill tab--active" data-tab="all">
+          <span class="tab__label">All</span>
+        </button>
+        <button class="tab tab--pill" data-tab="active">
+          <span class="tab__label">Active</span>
+        </button>
+        <button class="tab tab--pill" data-tab="archived">
+          <span class="tab__label">Archived</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Disabled 상태 -->
+    <div class="preview-box">
+      <h3>Disabled 상태</h3>
+      <div class="tabs tabs--pill" id="tabs-pill-disabled">
+        <button class="tab tab--pill tab--active" data-tab="enabled">
+          <span class="tab__label">Enabled</span>
+        </button>
+        <button class="tab tab--pill" data-tab="disabled" disabled>
+          <span class="tab__label">Disabled</span>
+        </button>
+        <button class="tab tab--pill" data-tab="normal">
+          <span class="tab__label">Normal</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+     Line 탭 (type=line)
+     ═══════════════════════════════════════ -->
+  <div class="preview-section">
+    <h2>Line 탭 (type=line)</h2>
+    <p>배경 없음, active 시 하단 primary 색상 언더라인</p>
+
+    <!-- 텍스트만 -->
+    <div class="preview-box">
+      <h3>텍스트만</h3>
+      <div class="tabs tabs--line" id="tabs-line-text">
+        <button class="tab tab--line tab--active" data-tab="me">
+          <span class="tab__label">Me</span>
+        </button>
+        <button class="tab tab--line" data-tab="team">
+          <span class="tab__label">Team</span>
+        </button>
+        <button class="tab tab--line" data-tab="company">
+          <span class="tab__label">Company</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 아이콘 + 텍스트 -->
+    <div class="preview-box">
+      <h3>아이콘 + 텍스트</h3>
+      <div class="tabs tabs--line" id="tabs-line-icon">
+        <button class="tab tab--line tab--active" data-tab="inbox">
+          <span class="tab__icon" data-icon="ic-mail"></span>
+          <span class="tab__label">Inbox</span>
+        </button>
+        <button class="tab tab--line" data-tab="sent">
+          <span class="tab__icon" data-icon="ic-mail"></span>
+          <span class="tab__label">Sent</span>
+        </button>
+        <button class="tab tab--line" data-tab="draft">
+          <span class="tab__icon" data-icon="ic-mail"></span>
+          <span class="tab__label">Draft</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Disabled 상태 -->
+    <div class="preview-box">
+      <h3>Disabled 상태</h3>
+      <div class="tabs tabs--line" id="tabs-line-disabled">
+        <button class="tab tab--line tab--active" data-tab="enabled">
+          <span class="tab__label">Enabled</span>
+        </button>
+        <button class="tab tab--line" data-tab="disabled" disabled>
+          <span class="tab__label">Disabled</span>
+        </button>
+        <button class="tab tab--line" data-tab="normal">
+          <span class="tab__label">Normal</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+     이벤트 로그
+     ═══════════════════════════════════════ -->
+  <div class="preview-section">
+    <h2>이벤트 로그</h2>
+    <p>탭 클릭 시 발생하는 <code>tab:change</code> 이벤트</p>
+    <div class="event-log" id="eventLog">
+      <div class="event-log__item">이벤트 대기 중...</div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="../components/tab/tab.js"></script>
+  <script>
+    // 모든 tabs 컨테이너에 이벤트 리스너 추가
+    document.querySelectorAll('.tabs').forEach(function (tabsContainer) {
+      tabsContainer.addEventListener('tab:change', function (e) {
+        var now = new Date().toLocaleTimeString();
+        var containerId = tabsContainer.id || 'unknown';
+        var logItem = document.createElement('div');
+        logItem.className = 'event-log__item';
+        logItem.innerHTML =
+          '<span class="event-log__time">[' + now + ']</span> ' +
+          '<span class="event-log__data">' + containerId + '</span> → ' +
+          '<strong>' + e.detail.tabId + '</strong> (index: ' + e.detail.index + ')';
+
+        var eventLog = document.getElementById('eventLog');
+        eventLog.insertBefore(logItem, eventLog.firstChild);
+
+        // 로그 최대 20개로 제한
+        if (eventLog.children.length > 20) {
+          eventLog.removeChild(eventLog.lastChild);
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>

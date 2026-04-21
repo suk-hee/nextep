@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Board Component — KLDS</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../avatar/avatar.css">
+  <link rel="stylesheet" href="board.css">
+</head>
+
+<body style="padding:40px; background:#F3F4F6; font-family:var(--klds-typography-fontfamily-text),sans-serif;">
+
+  <!-- ============================================================
+     Kanban Board
+     Figma: 3:13254 (board)
+     columns: Delay · Pending · In Progress · Done
+     ============================================================ -->
+  <div class="board">
+
+    <!-- ── Delay ───────────────────────────────────────── -->
+    <div class="board__column board__column--delay">
+      <div class="board__column-header">
+        <p class="board__column-title">Delay</p>
+        <button class="board__column-more" aria-label="더보기"></button>
+      </div>
+      <div class="board__card-list">
+
+        <!-- Card: 디자인 시스템 정리 -->
+        <div class="board__card">
+          <div class="board__card-title-row">
+            <p class="board__card-name board__card-name--delay">디자인 시스템 정리</p>
+          </div>
+          <div class="board__card-assignee">
+            <div class="avatar avatar--xsmall board__card-avatar">
+              <img class="avatar__image" src="../../assets/avatars/female01.jpg" alt="박소정"
+                onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<div class=\'avatar__fallback\'>박</div>')">
+            </div>
+            <span class="board__card-assignee-name">박소정</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Pending ─────────────────────────────────────── -->
+    <div class="board__column board__column--pending">
+      <div class="board__column-header">
+        <p class="board__column-title">Pending</p>
+        <button class="board__column-more" aria-label="더보기"></button>
+      </div>
+      <div class="board__card-list">
+
+        <!-- Card: EP 제안 기능 작성 (AI 추천) -->
+        <div class="board__card">
+          <div class="board__card-title-row">
+            <span class="board__card-star"></span>
+            <p class="board__card-name">EP 제안 기능 작성</p>
+          </div>
+          <div class="board__card-assignee">
+            <div class="avatar avatar--xsmall board__card-avatar">
+              <img class="avatar__image" src="../../assets/avatars/female01.jpg" alt="박소정"
+                onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<div class=\'avatar__fallback\'>박</div>')">
+            </div>
+            <span class="board__card-assignee-name">박소정</span>
+          </div>
+        </div>
+
+        <!-- Card: 아키텍처 이미지 제작 (AI 추천) -->
+        <div class="board__card">
+          <div class="board__card-title-row">
+            <span class="board__card-star"></span>
+            <p class="board__card-name">아키텍처 이미지 제작</p>
+          </div>
+          <div class="board__card-assignee">
+            <div class="avatar avatar--xsmall board__card-avatar">
+              <img class="avatar__image" src="../../assets/avatars/female01.jpg" alt="박소정"
+                onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<div class=\'avatar__fallback\'>박</div>')">
+            </div>
+            <span class="board__card-assignee-name">박소정</span>
+          </div>
+        </div>
+
+        <!-- Card: 웨비나 행사 아젠다 정리 -->
+        <div class="board__card">
+          <div class="board__card-title-row">
+            <p class="board__card-name">웨비나 행사 아젠다 정리</p>
+          </div>
+          <div class="board__card-assignee">
+            <div class="avatar avatar--xsmall board__card-avatar">
+              <img class="avatar__image" src="../../assets/avatars/female01.jpg" alt="박소정"
+                onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<div class=\'avatar__fallback\'>박</div>')">
+            </div>
+            <span class="board__card-assignee-name">박소정</span>
+          </div>
+        </div>
+
+        <!-- 등록 버튼 -->
+        <button class="board__btn-create">
+          <span class="board__btn-create-icon">
+            <span class="board__btn-create-plus"></span>
+          </span>
+          <span class="board__btn-create-label">등록</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- ── In Progress ─────────────────────────────────── -->
+    <div class="board__column board__column--inprogress">
+      <div class="board__column-header">
+        <p class="board__column-title">In Progress</p>
+        <button class="board__column-more" aria-label="더보기"></button>
+      </div>
+      <div class="board__card-list">
+
+        <!-- Card: 업무 관리 시안 제작 -->
+        <div class="board__card">
+          <div class="board__card-title-row">
+            <p class="board__card-name">업무 관리 시안 제작</p>
+          </div>
+          <div class="board__card-assignee">
+            <div class="avatar avatar--xsmall board__card-avatar">
+              <img class="avatar__image" src="../../assets/avatars/female01.jpg" alt="박소정"
+                onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<div class=\'avatar__fallback\'>박</div>')">
+            </div>
+            <span class="board__card-assignee-name">박소정</span>
+          </div>
+        </div>
+
+        <!-- Card: 웨비나 행사 초대 디자인 -->
+        <div class="board__card">
+          <div class="board__card-title-row">
+            <p class="board__card-name">웨비나 행사 초대 디자인</p>
+          </div>
+          <div class="board__card-assignee">
+            <div class="avatar avatar--xsmall board__card-avatar">
+              <img class="avatar__image" src="../../assets/avatars/female01.jpg" alt="박소정"
+                onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<div class=\'avatar__fallback\'>박</div>')">
+            </div>
+            <span class="board__card-assignee-name">박소정</span>
+          </div>
+        </div>
+
+        <!-- 등록 버튼 -->
+        <button class="board__btn-create">
+          <span class="board__btn-create-icon">
+            <span class="board__btn-create-plus"></span>
+          </span>
+          <span class="board__btn-create-label">등록</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- ── Done ────────────────────────────────────────── -->
+    <div class="board__column board__column--done">
+      <div class="board__column-header">
+        <p class="board__column-title">Done</p>
+        <button class="board__column-more" aria-label="더보기"></button>
+      </div>
+      <div class="board__card-list">
+
+        <!-- Card: 업무 관리 시안 제작 -->
+        <div class="board__card">
+          <div class="board__card-title-row">
+            <p class="board__card-name">업무 관리 시안 제작</p>
+          </div>
+          <div class="board__card-assignee">
+            <div class="avatar avatar--xsmall board__card-avatar">
+              <img class="avatar__image" src="../../assets/avatars/female01.jpg" alt="박소정"
+                onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<div class=\'avatar__fallback\'>박</div>')">
+            </div>
+            <span class="board__card-assignee-name">박소정</span>
+          </div>
+        </div>
+
+        <!-- 등록 버튼 -->
+        <button class="board__btn-create">
+          <span class="board__btn-create-icon">
+            <span class="board__btn-create-plus"></span>
+          </span>
+          <span class="board__btn-create-label">등록</span>
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="board.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!-- 
+  Common Layout Component
+  Figma: common layout (node 83:4818)
+  
+  사용법:
+  1. CSS 임포트
+     <link rel="stylesheet" href="styles/tokens.css">
+     <link rel="stylesheet" href="components/avatar/avatar.css">
+     <link rel="stylesheet" href="components/switch/mode-switch.css">
+     <link rel="stylesheet" href="components/button/button-icon.css">
+     <link rel="stylesheet" href="components/layout/header/header.css">
+     <link rel="stylesheet" href="components/layout/lnb/lnb.css">
+     <link rel="stylesheet" href="components/layout/common-layout.css">
+     <link rel="stylesheet" href="components/ai-assistant/ai-assistant.css">
+     <link rel="stylesheet" href="components/prompt/prompt.css">
+  
+  2. JS 임포트
+     <script src="components/switch/mode-switch.js"></script>
+     <script src="components/layout/common-layout.js"></script>
+  
+  3. layout-content__work-area에 페이지별 컨텐츠 삽입
+-->
+
+<div class="layout-container">
+
+  <!-- ========== HEADER (83:4819) — INSTANCE ========== -->
+  <header class="header">
+
+
+    <!-- Header 컴포넌트 재사용: components/layout/header/header.html 참조 -->
+    <!-- 
+      구조:
+      - header-left: 햄버거 메뉴, 즐겨찾기 사용자
+      - logo-nextep: POSCO DX Next EP 로고
+      - header-right: 모드 스위치, 검색/알림 버튼, 내 프로필
+    -->
+  </header>
+
+  <!-- ========== WRAP (83:4820) — MAIN SECTION ========== -->
+  <div class="layout-main">
+
+    <!-- ========== LNB (83:4821) — INSTANCE ========== -->
+    <nav class="lnb" role="navigation" aria-label="메인 네비게이션">
+      <!-- LNB 컴포넌트 재사용: components/layout/lnb/lnb.html 참조 -->
+      <!-- 
+        구조:
+        - group-menus: 상단 10개 메뉴 (home, bag, chat, mail, calendar, folder, webcam, sitemap, file-document, more-horizontal)
+        - menu-todo, menu-help: 하단 2개 메뉴
+      -->
+    </nav>
+
+    <!-- ========== CONTENTS (83:4822) — CONTENT SECTION ========== -->
+    <div class="layout-content">
+
+      <!-- ========== WORK AREA (83:4823) — SLOT ========== -->
+      <div class="layout-content__work-area">
+        <!-- 
+          ✨ 페이지별 컨텐츠 삽입 슬롯 ✨
+          
+          예시 1: Daily View
+          <div class="daily-view">
+            <div class="daily-view__header">...</div>
+            <div class="daily-view__calendar">...</div>
+            <div class="daily-view__tasks">...</div>
+          </div>
+          
+          예시 2: Mail View
+          <div class="mail-view">
+            <div class="mail-view__sidebar">...</div>
+            <div class="mail-view__content">...</div>
+          </div>
+          
+          예시 3: Blank (빈 상태)
+          <div class="empty-state">
+            <img src="assets/images/empty-state.svg" alt="빈 상태">
+            <p>컨텐츠가 없습니다</p>
+          </div>
+        -->
+      </div>
+
+      <!-- ========== AI ASSISTANT (83:4935) — INSTANCE ========== -->
+      <aside class="ai-assistant">
+        <!-- AI Assistant 컴포넌트 재사용: components/ai-assistant/ai-assistant.html 참조 -->
+        <!-- 
+          구조:
+          - ai-header: 최대화/사이드바/닫기 버튼
+          - ai-body: 타이틀, 6개 버튼 카드
+          - prompt: 입력 영역
+        -->
+      </aside>
+
+      <!-- ========== FAB BUTTON — AI Assistant 재열기 ========== -->
+      <button class="button-icon button-icon--fab layout-fab" aria-label="AI Assistant 열기">
+        <span class="button-icon__icon"
+          style="-webkit-mask-image:url(assets/icons/ic-star02.svg);mask-image:url(assets/icons/ic-star02.svg)"></span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ========== OVERLAY (모바일 LNB 배경 딤) ========== -->
+  <div class="layout-overlay" aria-hidden="true"></div>
+
+</div>

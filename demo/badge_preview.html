@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KLDS Badge Component Preview</title>
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/tokens.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../components/badge/badge.css">
+    <style>
+        body {
+            padding: var(--klds-padding-xl);
+            background-color: var(--klds-color-white);
+            font-family: var(--klds-typography-fontfamily-text), sans-serif;
+        }
+
+        .preview-title {
+            font-size: 28px;
+            font-weight: var(--klds-typography-fontweight-bold);
+            color: var(--klds-color-text-black);
+            margin-bottom: var(--klds-gap-xl);
+        }
+
+        .preview-subtitle {
+            font-size: var(--klds-typography-fontsize-xl);
+            font-weight: var(--klds-typography-fontweight-bold);
+            color: var(--klds-color-text-black);
+            margin: var(--klds-gap-xxl) 0 var(--klds-gap-m);
+            padding-bottom: var(--klds-gap-xs);
+            border-bottom: 2px solid var(--klds-color-gray-gray03);
+        }
+
+        .preview-section-title {
+            font-size: var(--klds-typography-fontsize-l);
+            font-weight: var(--klds-typography-fontweight-medium);
+            color: var(--klds-color-gray-gray07);
+            margin: var(--klds-gap-xl) 0 var(--klds-gap-s);
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--klds-gap-m);
+            align-items: center;
+            margin-bottom: var(--klds-gap-m);
+        }
+
+        .badge-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--klds-gap-xs);
+        }
+
+        .badge-item__label {
+            font-size: var(--klds-typography-fontsize-xs);
+            color: var(--klds-color-gray-gray05);
+        }
+
+        .badge-usage {
+            display: flex;
+            align-items: center;
+            gap: var(--klds-gap-m);
+            margin-bottom: var(--klds-gap-m);
+        }
+
+        .badge-usage__example {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--klds-color-gray-gray01);
+            border-radius: var(--klds-radius-xs);
+        }
+
+        .badge-usage__example .icon-placeholder {
+            width: 24px;
+            height: 24px;
+            background-color: var(--klds-color-gray-gray05);
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+        }
+
+        .badge-usage__example .klds-badge {
+            position: absolute;
+        }
+
+        .badge-usage__example .klds-badge--number {
+            top: -4px;
+            right: -6px;
+        }
+
+        .badge-usage__example .klds-badge--dot {
+            top: 4px;
+            right: 4px;
+        }
+
+        .badge-usage__desc {
+            font-size: var(--klds-typography-fontsize-s);
+            color: var(--klds-color-gray-gray06);
+        }
+
+        .info-text {
+            font-size: var(--klds-typography-fontsize-xs);
+            color: var(--klds-color-gray-gray05);
+            margin-top: var(--klds-gap-xs);
+        }
+
+        .code-block {
+            background: var(--klds-color-gray-gray01);
+            border: 1px solid var(--klds-color-border-default);
+            border-radius: var(--klds-radius-xxs);
+            padding: var(--klds-padding-s);
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: var(--klds-typography-fontsize-xs);
+            color: var(--klds-color-text-black);
+            margin-top: var(--klds-gap-xs);
+            white-space: pre;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="preview-title">🔴 Badge Component</h1>
+    <p
+        style="color: var(--klds-color-gray-gray06); margin-bottom: var(--klds-gap-xl); font-size: var(--klds-typography-fontsize-s);">
+        Figma 노드: 512:11070 &nbsp;|&nbsp;
+        속성: type (number, dot) &nbsp;|&nbsp;
+        <a href="https://www.figma.com/design/HJdhN6zf8pJq8mh4RvlDd3/NextEP?node-id=512-11070" target="_blank"
+            style="color: var(--klds-color-primary);">Figma에서 보기 ↗</a>
+    </p>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+       SECTION 1: type=number
+       ═══════════════════════════════════════════════════════ -->
+    <h2 class="preview-subtitle">type=number</h2>
+    <p class="info-text">20×20, min-width:20px, padding: 0 4px, border-radius: 9999px, bg: #FF4D4F, text: #FFF
+        14px/600</p>
+
+    <h3 class="preview-section-title">숫자 변형</h3>
+    <div class="badge-row">
+        <div class="badge-item">
+            <span class="klds-badge klds-badge--number">1</span>
+            <span class="badge-item__label">1자리</span>
+        </div>
+        <div class="badge-item">
+            <span class="klds-badge klds-badge--number">3</span>
+            <span class="badge-item__label">1자리</span>
+        </div>
+        <div class="badge-item">
+            <span class="klds-badge klds-badge--number">8</span>
+            <span class="badge-item__label">1자리</span>
+        </div>
+        <div class="badge-item">
+            <span class="klds-badge klds-badge--number">12</span>
+            <span class="badge-item__label">2자리</span>
+        </div>
+        <div class="badge-item">
+            <span class="klds-badge klds-badge--number">99</span>
+            <span class="badge-item__label">2자리</span>
+        </div>
+        <div class="badge-item">
+            <span class="klds-badge klds-badge--number">99+</span>
+            <span class="badge-item__label">최대</span>
+        </div>
+    </div>
+
+    <h3 class="preview-section-title">코드</h3>
+    <div class="code-block">&lt;span class="klds-badge klds-badge--number"&gt;3&lt;/span&gt;</div>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+       SECTION 2: type=dot
+       ═══════════════════════════════════════════════════════ -->
+    <h2 class="preview-subtitle">type=dot</h2>
+    <p class="info-text">4×4, border-radius: 9999px, bg: #FF4D4F</p>
+
+    <div class="badge-row">
+        <div class="badge-item">
+            <span class="klds-badge klds-badge--dot"></span>
+            <span class="badge-item__label">dot</span>
+        </div>
+    </div>
+
+    <h3 class="preview-section-title">코드</h3>
+    <div class="code-block">&lt;span class="klds-badge klds-badge--dot"&gt;&lt;/span&gt;</div>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+       SECTION 3: 사용 예시
+       ═══════════════════════════════════════════════════════ -->
+    <h2 class="preview-subtitle">사용 예시</h2>
+
+    <h3 class="preview-section-title">아이콘 + number badge</h3>
+    <div class="badge-usage">
+        <div class="badge-usage__example">
+            <span class="icon-placeholder"
+                style="-webkit-mask-image:url(../assets/icons/ic-bell.svg);mask-image:url(../assets/icons/ic-bell.svg)"></span>
+            <span class="klds-badge klds-badge--number">8</span>
+        </div>
+        <span class="badge-usage__desc">알림 아이콘에 읽지 않은 알림 수 표시</span>
+    </div>
+
+    <div class="badge-usage">
+        <div class="badge-usage__example">
+            <span class="icon-placeholder"
+                style="-webkit-mask-image:url(../assets/icons/ic-mail.svg);mask-image:url(../assets/icons/ic-mail.svg)"></span>
+            <span class="klds-badge klds-badge--number">3</span>
+        </div>
+        <span class="badge-usage__desc">메일 아이콘에 새 메일 수 표시</span>
+    </div>
+
+    <h3 class="preview-section-title">아이콘 + dot badge</h3>
+    <div class="badge-usage">
+        <div class="badge-usage__example">
+            <span class="icon-placeholder"
+                style="-webkit-mask-image:url(../assets/icons/ic-bell.svg);mask-image:url(../assets/icons/ic-bell.svg)"></span>
+            <span class="klds-badge klds-badge--dot"></span>
+        </div>
+        <span class="badge-usage__desc">새로운 알림이 있음을 표시 (숫자 없이)</span>
+    </div>
+
+    <div class="badge-usage">
+        <div class="badge-usage__example">
+            <span class="icon-placeholder"
+                style="-webkit-mask-image:url(../assets/icons/ic-chat-circle.svg);mask-image:url(../assets/icons/ic-chat-circle.svg)"></span>
+            <span class="klds-badge klds-badge--dot"></span>
+        </div>
+        <span class="badge-usage__desc">읽지 않은 채팅 메시지가 있음을 표시</span>
+    </div>
+
+</body>
+
+</html>

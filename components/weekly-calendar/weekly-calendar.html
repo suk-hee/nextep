@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weekly Calendar — KLDS Demo</title>
+
+  <!-- 의존 스타일 -->
+  <link rel="stylesheet" href="../../styles/global.css" />
+  <link rel="stylesheet" href="../avatar/avatar.css" />
+  <link rel="stylesheet" href="../schedule-tag/schedule-tag.css" />
+  <link rel="stylesheet" href="weekly-calendar.css" />
+
+  <style>
+    body {
+      font-family: var(--klds-typography-fontfamily-text, 'Pretendard', sans-serif);
+      background-color: var(--klds-color-gray-gray02, #f3f4f6);
+      padding: 40px;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .demo-wrapper {
+      max-width: 1200px;
+      height: 820px;
+    }
+
+    #weekly-calendar-demo {
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    KLDS Weekly Calendar Component — HTML Template
+    ================================================
+
+    사용법 (JS):
+      new WeeklyCalendar('#container', {
+        startDate:  new Date(),   // 주의 일요일 (자동 계산)
+        startHour:  8,
+        endHour:    20,
+        events: [
+          {
+            title:       '미팅 제목',
+            dayIndex:    1,           // 0=일, 1=월, …, 6=토
+            startHour:   9,
+            startMinute: 0,
+            endHour:     10,
+            endMinute:   0,
+            color:       'lightblue', // schedule-tag color variant
+            avatars: [
+              { src: '/img/photo.jpg', name: '홍길동' },
+              { name: '김철수' },      // src 없으면 fallback 아이콘
+            ]
+          }
+        ]
+      });
+
+    사용법 (마크업 자동 초기화):
+      <div data-weekly-calendar='{"startHour":8}'></div>
+  -->
+
+  <div class="demo-wrapper">
+    <div id="weekly-calendar-demo"></div>
+  </div>
+
+  <!-- 컴포넌트 스크립트 -->
+  <script src="weekly-calendar.js"></script>
+
+  <!-- 데모 초기화 (Figma 디자인 기반 샘플 데이터) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      /* 이번 주 일요일 */
+      var today = new Date();
+      var sunday = new Date(today);
+      sunday.setDate(today.getDate() - today.getDay());
+
+      new WeeklyCalendar('#weekly-calendar-demo', {
+        startDate: sunday,
+        startHour: 8,
+        endHour:   20,
+        events: [
+          /* ── 월요일 (dayIndex: 1) ── */
+          {
+            title:       '디자인 시스템 컴포넌트 회의',
+            dayIndex:    1,
+            startHour:   9,  startMinute: 0,
+            endHour:     10, endMinute:   0,
+            color:       'lightblue',
+            avatars: [
+              { src: '../../assets/avatars/male01.jpg',   name: '홍길동' },
+              { src: '../../assets/avatars/male02.jpg',   name: '김철수' },
+              { src: '../../assets/avatars/female01.jpg', name: '이영희' },
+              { src: '../../assets/avatars/female02.jpg', name: '박지수' },
+            ]
+          },
+          {
+            title:       '콘텐츠 디자이너 면접',
+            dayIndex:    1,
+            startHour:   13, startMinute: 0,
+            endHour:     15, endMinute:   0,
+            color:       'purple',
+            avatars: [
+              { src: '../../assets/avatars/female01.jpg', name: '이영희' },
+            ]
+          },
+
+          /* ── 화요일 (dayIndex: 2) ── */
+          {
+            title:       '차세대 EP 논의',
+            dayIndex:    2,
+            startHour:   9,  startMinute: 0,
+            endHour:     10, endMinute:   0,
+            color:       'green',
+            avatars: [
+              { src: '../../assets/avatars/female01.jpg', name: '이영희' },
+              { src: '../../assets/avatars/male02.jpg',   name: '김철수' },
+              { src: '../../assets/avatars/female02.jpg', name: '박지수' },
+            ]
+          },
+          {
+            title:       '차세대 EP 논의',
+            dayIndex:    2,
+            startHour:   10, startMinute: 0,
+            endHour:     12, endMinute:   0,
+            color:       'pink',
+            avatars: [
+              { src: '../../assets/avatars/female02.jpg', name: '박지수' },
+            ]
+          },
+          {
+            title:       '사업계획서 작성',
+            dayIndex:    2,
+            startHour:   14, startMinute: 0,
+            endHour:     15, endMinute:   0,
+            color:       'blue',
+            avatars: [
+              { src: '../../assets/avatars/female02.jpg', name: '박지수' },
+            ]
+          },
+          {
+            title:       'UT 논의',
+            dayIndex:    2,
+            startHour:   15, startMinute: 0,
+            endHour:     16, endMinute:   30,
+            color:       'volcano',
+            avatars: [
+              { src: '../../assets/avatars/female01.jpg', name: '이영희' },
+              { src: '../../assets/avatars/male02.jpg',   name: '김철수' },
+              { src: '../../assets/avatars/female02.jpg', name: '박지수' },
+            ]
+          },
+
+          /* ── 수요일 (dayIndex: 3) ── */
+          {
+            title:       '디자인 시스템 컴포넌트 회의',
+            dayIndex:    3,
+            startHour:   10, startMinute: 0,
+            endHour:     11, endMinute:   30,
+            color:       'lightblue',
+            avatars: [
+              { src: '../../assets/avatars/male01.jpg',   name: '홍길동' },
+              { src: '../../assets/avatars/male02.jpg',   name: '김철수' },
+              { src: '../../assets/avatars/female01.jpg', name: '이영희' },
+              { src: '../../assets/avatars/female02.jpg', name: '박지수' },
+            ]
+          },
+          {
+            title:       '프로덕트 디자이너 과제 준비 회의',
+            dayIndex:    3,
+            startHour:   11, startMinute: 0,
+            endHour:     12, endMinute:   0,
+            color:       'pink',
+            avatars: [
+              { src: '../../assets/avatars/male02.jpg',   name: '김철수' },
+              { src: '../../assets/avatars/female02.jpg', name: '박지수' },
+            ]
+          },
+
+          /* ── 목요일 (dayIndex: 4) ── */
+          {
+            title:       '고객사 인터뷰',
+            dayIndex:    4,
+            startHour:   8,  startMinute: 0,
+            endHour:     9,  endMinute:   0,
+            color:       'purple',
+            avatars: [
+              { src: '../../assets/avatars/female01.jpg', name: '이영희' },
+            ]
+          },
+          {
+            title:       '비즈니스 모델 캔버스 작성',
+            dayIndex:    4,
+            startHour:   13, startMinute: 0,
+            endHour:     16, endMinute:   0,
+            color:       'blue',
+            avatars: [
+              { src: '../../assets/avatars/female02.jpg', name: '박지수' },
+            ]
+          },
+        ]
+      });
+    });
+  </script>
+</body>
+</html>

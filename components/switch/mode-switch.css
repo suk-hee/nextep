@@ -1,0 +1,87 @@
+.mode-switch {
+    display: inline-flex;
+    align-items: center;
+    height: var(--klds-size-size8, 56px);
+    padding: var(--klds-padding-xxs, 8px);
+    border-radius: 9999px;
+    background: var(--klds-color-button-tonal-surface-hover, #D6E4FF);
+    box-sizing: border-box;
+}
+
+/* ========================================
+   Button (btn-mode)
+   Figma: btn-mode (1:17554)
+   active=false: 106×40, horizontal, padding 16, gap 8, radius 9999
+   fill: none, text/icon #121212
+   ======================================== */
+.mode-switch__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--klds-gap-xs, 8px);
+    height: var(--klds-size-size6, 40px);
+    padding: 0 var(--klds-padding-m, 16px);
+    border: none;
+    border-radius: 9999px;
+    background: transparent;
+    cursor: pointer;
+    font-family: var(--klds-typography-fontfamily-text, 'Pretendard'), sans-serif;
+    font-size: var(--klds-typography-fontsize-s, 16px);
+    font-weight: 600;
+    line-height: 24px;
+    color: var(--klds-color-text-black, #121212);
+    white-space: nowrap;
+}
+
+/* Focus — 접근성 */
+.mode-switch__btn:focus-visible {
+    outline: 2px solid var(--klds-color-border-primary, #005386);
+    outline-offset: 2px;
+}
+
+/* ========================================
+   Active State
+   Figma: active=true
+   fill: #005386 → --klds-color-button-fill-surface
+   text/icon: #FFFFFF → --klds-color-text-white
+   ======================================== */
+.mode-switch__btn.is-active {
+    background: var(--klds-color-button-fill-surface, #005386);
+    color: var(--klds-color-text-white, #FFFFFF);
+}
+
+/* Active 아이콘 흰색 반전 */
+.mode-switch__btn.is-active .mode-switch__icon img {
+    filter: brightness(0) invert(1);
+}
+
+/* ========================================
+   Icon (24×24)
+   Figma: ic-menu-grid, ic-star02 등
+   ======================================== */
+.mode-switch__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.mode-switch__icon img {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+/* ========================================
+   Label
+   Figma: text node — Pretendard 16/600/lh24
+   상속값 사용
+   ======================================== */
+.mode-switch__label {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+}

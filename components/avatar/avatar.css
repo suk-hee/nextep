@@ -1,0 +1,321 @@
+/**
+ * Avatar Component Styles
+ * 
+ * Figma Source:
+ *   - avata (27-5347): 프로필 아바타 컴포넌트
+ *   - user status (27-5363): 상태 인디케이터
+ *   - avata-group-favorite (1-17477): 아바타 그룹
+ * 
+ * Design Tokens: styles/tokens.css (--klds-*)
+ */
+
+/* ==========================================================================
+   Avatar Base
+   - Figma: avata > profile (INSTANCE), cornerRadius: 9999
+   - bg: #E5E7EB (gray03), stroke: #E5E7EB (gray03)
+   ========================================================================== */
+
+.avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--klds-radius-circle);
+  /* 9999px - Figma: cornerRadius 9999 */
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+.avatar__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--klds-radius-circle);
+  /* Figma: profile > cornerRadius 9999 */
+  display: block;
+}
+
+/* ==========================================================================
+   Avatar Fallback
+   - Figma: profile 내 기본 아이콘 Vector (Stroke)
+   - bg: #E5E7EB (gray03), icon color: #9CA3AF (gray05)
+   ========================================================================== */
+
+.avatar__fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--klds-color-gray-gray02);
+  border-radius: var(--klds-radius-circle);
+  overflow: hidden;
+  color: var(--klds-color-gray-gray05);
+  /* Figma: Vector fill #9CA3AF */
+  font-weight: var(--klds-typography-fontweight-medium);
+  user-select: none;
+}
+
+/* ==========================================================================
+   Avatar Sizes
+   - Figma: avata COMPONENT_SET > size variants
+   - xsmall: 32×32, small: 40×40, medium: 48×48, large: 64×64, xlarge: 100×100
+   ========================================================================== */
+
+/* size=xxsmall - Figma: avata-group size=xxsmall 24×24 */
+.avatar--xxsmall {
+  width: var(--klds-size-size4);
+  /* 24px */
+  height: var(--klds-size-size4);
+}
+
+.avatar--xxsmall .avatar__fallback {
+  font-size: var(--klds-typography-fontsize-xxs);
+  /* 12px */
+}
+
+/* size=xsmall - Figma: 32×32, cornerRadius 20 */
+.avatar--xsmall {
+  width: var(--klds-size-size5);
+  /* 32px */
+  height: var(--klds-size-size5);
+}
+
+.avatar--xsmall .avatar__fallback {
+  font-size: var(--klds-typography-fontsize-xxs);
+  /* 12px */
+}
+
+/* size=small - Figma: 40×40, cornerRadius 20 */
+.avatar--small {
+  width: var(--klds-size-size6);
+  /* 40px */
+  height: var(--klds-size-size6);
+}
+
+.avatar--small .avatar__fallback {
+  font-size: var(--klds-typography-fontsize-xs);
+  /* 14px */
+}
+
+/* size=medium - Figma: 48×48, cornerRadius 24 */
+.avatar--medium {
+  width: var(--klds-size-size7);
+  /* 48px */
+  height: var(--klds-size-size7);
+}
+
+.avatar--medium .avatar__fallback {
+  font-size: var(--klds-typography-fontsize-s);
+  /* 16px */
+}
+
+/* size=large - Figma: 64×64, cornerRadius 32 */
+.avatar--large {
+  width: var(--klds-size-size9);
+  /* 64px */
+  height: var(--klds-size-size9);
+}
+
+.avatar--large .avatar__fallback {
+  font-size: var(--klds-typography-fontsize-l);
+  /* 20px */
+}
+
+/* size=xlarge - Figma: 100×100, cornerRadius 50 */
+.avatar--xlarge {
+  width: 100px;
+  height: 100px;
+}
+
+.avatar--xlarge .avatar__fallback {
+  font-size: var(--klds-typography-fontsize-xl);
+  /* 32px */
+}
+
+/* ==========================================================================
+   Status Indicator
+   - Figma: user status COMPONENT_SET (27-5363)
+   - ELLIPSE, stroke: #FFFFFF (white), border-width: 2px
+   - position: 각 size 별 우하단 배치 (absolute)
+   
+   Status 위치 계산 (Figma bounds 기반):
+   - xsmall(32): status 10×10, Figma에서 (25-1700, -7962-(-7981))=(25,19) → right:-3, bottom:-3 (원 테두리 고려)
+   - small(40): status 12×12, Figma에서 (43-40=3, 40-15=25) → right:-3, bottom:-3
+   - medium(48): status 14×14, Figma에서 (1970-1932=38, -7959-(-7989)=30) → right:-4, bottom:-4
+   - large(64): status 18×18, Figma에서 (1110-1060=50, -7955-(-7997)=42) → right:-4, bottom:-4
+   - xlarge(100): status 24×24, Figma에서 (2283-2204=79, -7949-(-8015)=66) → right:-3, bottom:-10
+   ========================================================================== */
+
+.avatar__status {
+  position: absolute;
+  border-radius: var(--klds-radius-circle);
+  border: 2px solid var(--klds-color-white);
+  /* Figma: stroke #FFFFFF */
+  box-sizing: border-box;
+}
+
+/* xsmall status - Figma: size=small 10×10 (user status에는 xsmall이 없으므로 small 사용) */
+.avatar--xsmall .avatar__status {
+  width: 10px;
+  height: 10px;
+  bottom: -1px;
+  right: -1px;
+}
+
+/* small status - Figma: size=small 12×12
+   Figma 위치: avatar(1812,-7985,40,40) status(1843,-7960,12,12)
+   right = (1812+40) - (1843+12) = 1852 - 1855 = -3 → right: -3px
+   bottom = (−7985+40) − (−7960+12) = −7945 − (−7948) = 3 → bottom: -3px */
+.avatar--small .avatar__status {
+  width: 12px;
+  /* Figma: Ellipse 12×12 */
+  height: 12px;
+  bottom: 0px;
+  right: -1px;
+}
+
+/* medium status - Figma: size=medium 14×14
+   Figma 위치: avatar(1932,-7989,48,48) status(1970,-7959,14,14)
+   right = (1932+48) - (1970+14) = 1980 - 1984 = -4 → right: -4px
+   bottom = (-7989+48) - (-7959+14) = -7941 - (-7945) = 4 → bottom: -4px */
+.avatar--medium .avatar__status {
+  width: 14px;
+  /* Figma: Ellipse 14×14 */
+  height: 14px;
+  bottom: 1px;
+  right: -1px;
+}
+
+/* large status - Figma: size=large 18×18
+   Figma 위치: avatar(2060,-7997,64,64) status(2110,-7955,18,18)
+   right = (2060+64) - (2110+18) = 2124 - 2128 = -4 → right: -4px
+   bottom = (-7997+64) - (-7955+18) = -7933 - (-7937) = 4 → bottom: -4px */
+.avatar--large .avatar__status {
+  width: 18px;
+  /* Figma: Ellipse 18×18 */
+  height: 18px;
+  bottom: 2px;
+  right: -2px;
+}
+
+/* xlarge status - Figma: size=xlarge 24×24
+   Figma 위치: avatar(2204,-8015,100,100) status(2283,-7949,24,24)
+   right = (2204+100) - (2283+24) = 2304 - 2307 = -3 → right: -3px
+   bottom = (-8015+100) - (-7949+24) = -7915 - (-7925) = 10 → bottom: -10px... 
+   재계산: bottom = avatarBottom - statusBottom = (-8015+100) = -7915, statusTop=-7949, statusBottom=-7949+24=-7925
+   statusBottom(-7925) - avatarBottom(-7915) = -10 → bottom: -3px (Figma에서 status가 avatar 내부에 위치) */
+.avatar--xlarge .avatar__status {
+  width: var(--klds-size-size4);
+  /* 24px - Figma: Ellipse 24×24 */
+  height: var(--klds-size-size4);
+  bottom: 4px;
+  right: 1px;
+}
+
+/* ==========================================================================
+   Status Colors
+   - Figma: user status > Ellipse fills
+   - online: #95DE64 (green04), offline: #CBD0D7 (gray04)
+   - away: #FFC53D (orange05), busy: #FF7875 (red04)
+   ========================================================================== */
+
+.avatar__status--online {
+  background-color: var(--klds-color-green-green04);
+  /* Figma: rgba(149,222,100) → #95DE64 */
+}
+
+.avatar__status--offline {
+  background-color: var(--klds-color-gray-gray04);
+  /* Figma: rgba(203,208,215) → #CBD0D7 */
+}
+
+.avatar__status--away {
+  background-color: var(--klds-color-orange-orange05);
+  /* Figma: rgba(255,197,61) → #FFC53D */
+}
+
+.avatar__status--busy {
+  background-color: var(--klds-color-red-red04);
+  /* Figma: rgba(255,120,117) → #FF7875 */
+}
+
+/* ==========================================================================
+   Avatar Group
+   - Figma: avata-group-favorite (1-17477)
+   - layout: HORIZONTAL, gap: 4px
+   ========================================================================== */
+
+.avatar-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--klds-gap-xxs);
+  /* 4px - Figma: gap 4.0 */
+}
+
+/* Stacked variant */
+.avatar-group--stacked {
+  gap: 0;
+}
+
+.avatar-group--stacked .avatar {
+  margin-left: calc(var(--klds-gap-xs) * -1);
+  /* -8px */
+  border: 2px solid var(--klds-color-white);
+}
+
+.avatar-group--stacked .avatar:first-child {
+  margin-left: 0;
+}
+
+/* ==========================================================================
+   Add Button
+   - Figma: btn-add (1-17484)
+   - 40×40, cornerRadius 9999, border: #CBD0D7 (gray04), bg: #FFFFFF
+   - icon: ic-plus 20×20, color: #9CA3AF (gray05)
+   ========================================================================== */
+
+.avatar-group__add {
+  width: var(--klds-size-size6);
+  /* 40px - Figma: 40×40 */
+  height: var(--klds-size-size6);
+  border-radius: var(--klds-radius-circle);
+  /* Figma: cornerRadius 9999 */
+  border: 1px dashed var(--klds-color-gray-gray04);
+  /* Figma: stroke #CBD0D7, dashed */
+  background-color: var(--klds-color-white);
+  /* Figma: fills #FFFFFF */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+
+.avatar-group__add:hover {
+  border-color: var(--klds-color-gray-gray05);
+  background-color: var(--klds-color-gray-gray01);
+}
+
+.avatar-group__add-icon {
+  width: var(--klds-size-size3);
+  /* 20px - Figma: ic-plus 20×20 */
+  height: var(--klds-size-size3);
+  color: var(--klds-color-gray-gray05);
+  /* Figma: Union fill #9CA3AF */
+}
+
+/* ==========================================================================
+   Interaction
+   ========================================================================== */
+
+.avatar {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+
+
+.avatar-group--stacked .avatar:hover {
+  z-index: 10;
+}

@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily View - KLDS</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../components/avatar/avatar.css">
+  <link rel="stylesheet" href="../components/switch/mode-switch.css">
+  <link rel="stylesheet" href="../components/button/button-icon.css">
+  <link rel="stylesheet" href="../components/layout/header/header.css">
+  <link rel="stylesheet" href="../components/badge/badge.css">
+  <link rel="stylesheet" href="../components/layout/lnb/lnb.css">
+  <link rel="stylesheet" href="../components/layout/common-layout.css">
+  <link rel="stylesheet" href="../components/ai-assistant/ai-assistant.css">
+  <link rel="stylesheet" href="../components/snackbar/snackbar.css">
+  <link rel="stylesheet" href="../components/tab/tab.css">
+  <link rel="stylesheet" href="../components/button/button.css">
+  <link rel="stylesheet" href="../components/table/table.css">
+  <link rel="stylesheet" href="../components/tag/tag.css">
+  <link rel="stylesheet" href="../components/prompt/prompt.css">
+  <link rel="stylesheet" href="../components/timetable/timetable.css">
+  <link rel="stylesheet" href="../components/schedule-tag/schedule-tag.css">
+  <link rel="stylesheet" href="../components/weekly-calendar/weekly-calendar.css">
+  <link rel="stylesheet" href="../components/menu/menu.css">
+  <link rel="stylesheet" href="../components/checkbox/checkbox.css">
+  <link rel="stylesheet" href="../components/avatar/avatar.css">
+  <link rel="stylesheet" href="../components/board/board.css">
+  <link rel="stylesheet" href="workpanel.css">
+  <script src="../components/board/board.js"></script>
+  <script src="../components/weekly-calendar/weekly-calendar.js"></script>
+</head>
+
+<body>
+  <div class="layout-container">
+
+
+    <script src="/components/components.js"></script>
+
+    <div id="comp-header"></div>
+
+    <div class="layout-main">
+
+      <div id="comp-lnb"></div>
+
+      <div class="layout-content">
+
+        <div class="layout-content__work-area">
+          <!-- ============================================================
+             TOP-BOX (1:10768) — Daily View 메인 콘텐츠
+             1168×429, flex-direction: column, gap: 24
+             ============================================================ -->
+          <div class="top-box">
+
+            <!-- header (1:10769) — 인사말 + 날짜 요약 -->
+            <div class="top-box__header">
+              <div class="top-box__header-text">
+                <h1 class="top-box__greeting">안녕하세요. 박소정 차장님!</h1>
+              </div>
+              <p class="top-box__summary" id="top-box-summary">오늘은 날짜로 회의가 많은 하루입니다.</p>
+              <script>
+                (function () {
+                  var DAY_KO = ['일', '월', '화', '수', '목', '금', '토'];
+                  var t = new Date();
+                  var y = t.getFullYear();
+                  var m = String(t.getMonth() + 1).padStart(2, '0');
+                  var d = String(t.getDate()).padStart(2, '0');
+                  var day = DAY_KO[t.getDay()];
+                  document.getElementById('top-box-summary').textContent =
+                    '오늘은 ' + y + '-' + m + '-' + d + '(' + day + ')로 회의가 많은 하루입니다.';
+                })();
+              </script>
+            </div>
+
+              <!-- chart-card (319:9016) — My Task + Request Task
+                   Figma: HORIZONTAL, gap:16, 588×196 each
+                   compact 변형: 120×120 도넛, left-box 가로배치, right-box 컴팩트 -->
+              <div class="chart-card chart-card--compact">
+
+                <!-- ===== My Task 카드 (588×196, p:16/20/20/20, r:16, border:#E5E7EB) ===== -->
+                <div class="chart-card__item">
+                  <div class="chart-card__header">
+                    <h3 class="chart-card__title">My Task</h3>
+                    <button class="chart-card__link-btn" aria-label="바로가기">
+                      <span class="button-icon__icon"></span>
+                    </button>
+                  </div>
+                  <div class="chart-card__contents">
+                    <!-- left-box (203×120, HORIZONTAL, gap:16) -->
+                    <div class="chart-card__left">
+                      <div class="chart-card__chart-container">
+                        <div class="chart-card__total-container">
+                          <span class="chart-card__total-label">Total</span>
+                          <span class="chart-card__total-value">48</span>
+                        </div>
+                        <canvas id="chartMyTask" class="chart-card__donut" width="120" height="120"></canvas>
+                      </div>
+                      <div class="chart-card__legend">
+                        <div class="chart-card__legend-item">
+                          <span class="chart-card__legend-dot chart-card__legend-dot--pending"></span>
+                          <span class="chart-card__legend-label">대기</span>
+                          <span class="chart-card__legend-value">10</span>
+                        </div>
+                        <div class="chart-card__legend-item">
+                          <span class="chart-card__legend-dot chart-card__legend-dot--progress"></span>
+                          <span class="chart-card__legend-label">진행</span>
+                          <span class="chart-card__legend-value">28</span>
+                        </div>
+                        <div class="chart-card__legend-item">
+                          <span class="chart-card__legend-dot chart-card__legend-dot--delay"></span>
+                          <span class="chart-card__legend-label">지연</span>
+                          <span class="chart-card__legend-value">4</span>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- right-box (305×120, VERTICAL, gap:24) -->
+                    <div class="chart-card__right">
+                      <!-- box: 지연 업무 경고 (305×89, VERTICAL, gap:8) -->
+                      <div class="chart-card__info-box">
+                        <div class="chart-card__info-text">
+                          <div class="chart-card__info-title">
+                            <span class="chart-card__icon chart-card__icon--warning"></span>
+                            <strong>내 업무가 4건 지연 되었습니다.</strong>
+                          </div>
+                          <p class="chart-card__info-desc">지연된 업무 먼저 작업이 필요합니다.</p>
+                        </div>
+                        <button class="chart-card__action-btn">
+                          <span>지연 업무 확인하기</span>
+                          <span class="chart-card__icon chart-card__icon--caret-right"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ===== Request Task 카드 (588×196, p:16/20/20/20, r:16, border:#E5E7EB) ===== -->
+                <div class="chart-card__item">
+                  <div class="chart-card__header">
+                    <h3 class="chart-card__title">Request Task</h3>
+                    <button class="chart-card__link-btn" aria-label="바로가기">
+                      <span class="button-icon__icon"></span>
+                    </button>
+                  </div>
+                  <div class="chart-card__contents">
+                    <!-- left-box (201×120, HORIZONTAL, gap:16) -->
+                    <div class="chart-card__left">
+                      <div class="chart-card__chart-container">
+                        <div class="chart-card__total-container">
+                          <span class="chart-card__total-label">Total</span>
+                          <span class="chart-card__total-value">34</span>
+                        </div>
+                        <canvas id="chartRequestTask" class="chart-card__donut" width="120" height="120"></canvas>
+                      </div>
+                      <div class="chart-card__legend">
+                        <div class="chart-card__legend-item">
+                          <span class="chart-card__legend-dot chart-card__legend-dot--pending"></span>
+                          <span class="chart-card__legend-label">대기</span>
+                          <span class="chart-card__legend-value">18</span>
+                        </div>
+                        <div class="chart-card__legend-item">
+                          <span class="chart-card__legend-dot chart-card__legend-dot--progress"></span>
+                          <span class="chart-card__legend-label">진행</span>
+                          <span class="chart-card__legend-value">12</span>
+                        </div>
+                        <div class="chart-card__legend-item">
+                          <span class="chart-card__legend-dot chart-card__legend-dot--delay"></span>
+                          <span class="chart-card__legend-label">지연</span>
+                          <span class="chart-card__legend-value">4</span>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- right-box (307×120, VERTICAL, gap:16) -->
+                    <div class="chart-card__right">
+                      <!-- box (307×64, VERTICAL, gap:8) -->
+                      <div class="chart-card__insight-box">
+                        <!-- 텍스트 -->
+                        <div class="chart-card__insight-text">
+                          <strong class="chart-card__insight-title">요청한 업무 중 4건이 지연 되었습니다.</strong>
+                        </div>
+                        <!-- 담당자 아바타 그룹 (gap:-8, 4명 + "+3" + add 버튼) -->
+                        <div class="chart-card__user-group">
+                          <div class="chart-card__avatar"><img src="../assets/avatars/male01.jpg" alt="담당자1" /></div>
+                          <div class="chart-card__avatar"><img src="../assets/avatars/female01.jpg" alt="담당자2" /></div>
+                          <div class="chart-card__avatar"><img src="../assets/avatars/male02.jpg" alt="담당자3" /></div>
+                          <div class="chart-card__avatar"><img src="../assets/avatars/female02.jpg" alt="담당자4" /></div>
+                        </div>
+                      </div>
+                      <!-- 리마인드 보내기 버튼 -->
+                      <button class="chart-card__action-btn">
+                        <span class="chart-card__icon chart-card__icon--bell"></span>
+                        <span>리마인드 보내기</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div><!-- /chart-card -->
+          </div><!-- /top-box -->
+
+          <!-- ============================================================
+             BOTTOM-BOX (128:5024) — Today's Schedule
+             1168×148, flex-direction: column, gap: 16
+             ============================================================ -->
+          <div class="bottom-box">
+
+
+            <!-- contents (128:5031) — 스케줄 컨텐츠 카드 -->
+            <div class="bottom-box__contents">
+              <div class="bottom-box__schedule">
+                <!-- schedule header — Me/Team/Favorites 탭 + 날짜 네비게이터 + 토글 버튼 -->
+                <div class="bottom-box__schedule-header">
+                  <!-- tabs — Me/Team/Favorites -->
+                  <div class="tabs tabs--line">
+                    <button class="tab tab--line tab--active" data-tab="me">
+                      <span class="tab__label">Me</span>
+                    </button>
+                    <button class="tab tab--line" data-tab="team">
+                      <span class="tab__label">Team</span>
+                    </button>
+                    <button class="tab tab--line" data-tab="favorites">
+                      <span class="tab__label">Favorites</span>
+                    </button>
+                  </div>
+                  <!-- date-navigator — 날짜 이동 버튼 + 날짜 -->
+                  <div class="bottom-box__date-navigator">
+                    <button
+                      class="button-icon button-icon--medium button-icon--default bottom-box__nav-btn bottom-box__nav-btn--prev"
+                      aria-label="이전">
+                      <span class="button-icon__icon"></span>
+                    </button>
+                    <span class="bottom-box__date">2026.01.26</span>
+                    <button
+                      class="button-icon button-icon--medium button-icon--default bottom-box__nav-btn bottom-box__nav-btn--next"
+                      aria-label="다음">
+                      <span class="button-icon__icon"></span>
+                    </button>
+                  </div>
+                  <!-- toggle-btns — Daily/Weekly/Monthly -->
+                  <div class="bottom-box__toggle-group">
+                    <button class="bottom-box__toggle-btn bottom-box__toggle-btn--active" data-view="daily">
+                      <span class="bottom-box__toggle-icon" style="-webkit-mask-image:url(../assets/icons/ic-calendar-event.svg);mask-image:url(../assets/icons/ic-calendar-event.svg)"></span>
+                      <span>Daily</span>
+                    </button>
+                    <button class="bottom-box__toggle-btn" data-view="weekly">
+                      <span class="bottom-box__toggle-icon" style="-webkit-mask-image:url(../assets/icons/ic-calendar-week.svg);mask-image:url(../assets/icons/ic-calendar-week.svg)"></span>
+                      <span>Weekly</span>
+                    </button>
+                    <button class="bottom-box__toggle-btn" data-view="monthly">
+                      <span class="bottom-box__toggle-icon" style="-webkit-mask-image:url(../assets/icons/ic-calendar-30.svg);mask-image:url(../assets/icons/ic-calendar-30.svg)"></span>
+                      <span>Monthly</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- timetable type=me (136:6559) — 내 업무 타임테이블 -->
+                <div id="comp-timetable-me"></div>
+
+                <!-- timetable type=another (136:6560) — 팀 업무 타임테이블 -->
+                <div id="comp-timetable-team"></div>
+
+                <!-- klds-table: 헤더 + 3개 행 -->
+                <div id="comp-table"></div>
+
+                <!-- monthly calendar (Monthly 토글 시 노출, JS로 동적 렌더링) -->
+                <div id="comp-monthly-calendar" class="bottom-box__calendar" style="display:none;">
+                  <div class="calendar"></div>
+                </div>
+
+                <!-- weekly calendar (Weekly 토글 시 노출) -->
+                <div id="comp-weekly-calendar" class="bottom-box__calendar" style="display:none; height:740px;"></div>
+
+              </div><!-- /task-box -->
+
+            </div>
+
+          </div><!-- /bottom-box -->
+        </div>
+
+        <div id="comp-ai-assistant"></div>
+
+        <!-- FAB Button — AI Assistant 재열기 -->
+        <button class="button-icon button-icon--fab layout-fab" aria-label="AI Assistant 열기">
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="layout-overlay" aria-hidden="true"></div>
+
+  </div>
+
+  <script>
+    // innerHTML로 컴포넌트 삽입
+    document.getElementById('comp-header').innerHTML = HEADER_HTML;
+    document.getElementById('comp-lnb').innerHTML = LNB_HTML;
+    // todo 메뉴 활성화
+    document.querySelector('#comp-lnb .lnb-menu-item.active')?.classList.remove('active');
+    document.querySelector('#comp-lnb .lnb-menu-item[data-menu="todo"]')?.classList.add('active');
+    document.getElementById('comp-timetable-me').innerHTML = TIMETABLE_ME_HTML;
+    document.getElementById('comp-timetable-team').innerHTML = TIMETABLE_TEAM_HTML;
+    document.getElementById('comp-table').innerHTML = TABLE_HTML;
+    document.getElementById('comp-ai-assistant').innerHTML = AI_ASSISTANT_HTML;
+
+    // 오른쪽 패널 탭 활성화
+    document.querySelectorAll('.ai-assistant__right-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.ai-assistant__right-tab').forEach(function (t) {
+          t.classList.remove('ai-assistant__right-tab--active');
+        });
+        tab.classList.add('ai-assistant__right-tab--active');
+      });
+    });
+  </script>
+
+  <script>
+    // Chart.js 도넛 차트 초기화
+    (function () {
+      var chartColors = {
+        pending: '#FFC53D',
+        progress: '#36CFC9',
+        delay: '#F759AB'
+      };
+
+      var commonOptions = {
+        responsive: false,
+        maintainAspectRatio: false,
+        cutout: '55%',
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            enabled: true,
+            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+            titleFont: { family: 'Pretendard', size: 12, weight: '600' },
+            bodyFont: { family: 'Pretendard', size: 12, weight: '500' },
+            padding: { top: 6, bottom: 6, left: 10, right: 10 },
+            cornerRadius: 6,
+            displayColors: true,
+            boxWidth: 10,
+            boxHeight: 10,
+            boxPadding: 4,
+            callbacks: {
+              label: function (context) {
+                return ' ' + context.label + '  ' + context.parsed + '건';
+              }
+            }
+          }
+        },
+        elements: {
+          arc: {
+            borderWidth: 2,
+            borderColor: '#FFFFFF',
+            hoverOffset: 0,
+            hoverBorderWidth: 2,
+            hoverBorderColor: '#FFFFFF'
+          }
+        },
+        spacing: 2
+      };
+
+      // My Task: 대기 10, 진행 28, 지연 4
+      var ctxMyTask = document.getElementById('chartMyTask');
+      if (ctxMyTask) {
+        new Chart(ctxMyTask, {
+          type: 'doughnut',
+          data: {
+            labels: ['진행', '지연', '대기'],
+            datasets: [{
+              data: [28, 4, 10],
+              backgroundColor: [
+                chartColors.progress,
+                chartColors.delay,
+                chartColors.pending
+              ],
+              borderWidth: 2,
+              borderColor: '#FFFFFF'
+            }]
+          },
+          options: commonOptions
+        });
+      }
+
+      // Request Task: 대기 18, 진행 12, 지연 4
+      var ctxRequestTask = document.getElementById('chartRequestTask');
+      if (ctxRequestTask) {
+        new Chart(ctxRequestTask, {
+          type: 'doughnut',
+          data: {
+            labels: ['진행', '지연', '대기'],
+            datasets: [{
+              data: [12, 4, 18],
+              backgroundColor: [
+                chartColors.progress,
+                chartColors.delay,
+                chartColors.pending
+              ],
+              borderWidth: 2,
+              borderColor: '#FFFFFF'
+            }]
+          },
+          options: commonOptions
+        });
+      }
+    })();
+  </script>
+
+  <!-- Monthly Calendar 동적 렌더링 모듈 -->
+  <script>
+    (function () {
+      'use strict';
+
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      var calYear = today.getFullYear();
+      var calMonth = today.getMonth();
+
+      var tagPeople = [
+        { name: '박소정', color: 'purple' },
+        { name: '신명훈', color: 'green' },
+        { name: '박수진', color: 'blue' }
+      ];
+
+      function getTags(date) {
+        var dow = date.getDay();
+        if (dow === 0 || dow === 6) return [];
+        var d = date.getDate();
+        var mo = date.getMonth();
+        return tagPeople.map(function (person, i) {
+          var seed = d * 7 + i * 13 + mo * 3;
+          var isYeoncha = (seed % 17 === 0);
+          var count = (seed % 6) + 1;
+          return { color: person.color, text: person.name + (isYeoncha ? ' 연차' : ' ' + count) };
+        });
+      }
+
+      function formatMonth(y, m) {
+        return y + '.' + String(m + 1).padStart(2, '0');
+      }
+
+      function render(year, month) {
+        var calendarEl = document.getElementById('comp-monthly-calendar');
+        var grid = calendarEl ? calendarEl.querySelector('.calendar') : null;
+        if (!grid) return;
+
+        calYear = year;
+        calMonth = month;
+
+        grid.innerHTML = '';
+
+        // 요일 헤더
+        ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].forEach(function (label, i) {
+          var h = document.createElement('div');
+          h.className = 'calendar__header' + (i === 0 ? ' calendar__header--holiday' : '');
+          h.textContent = label;
+          grid.appendChild(h);
+        });
+
+        var activeTabEl = document.querySelector('.bottom-box__schedule-header .tab--active');
+        var activeTabId = activeTabEl ? activeTabEl.getAttribute('data-tab') : 'me';
+
+        var firstDay = new Date(year, month, 1).getDay();
+        var daysInMonth = new Date(year, month + 1, 0).getDate();
+        var totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+        var weeks = totalCells / 7;
+
+        grid.style.gridTemplateRows = '48px repeat(' + weeks + ', 1fr)';
+
+        for (var i = 0; i < totalCells; i++) {
+          var cellDate = new Date(year, month, i - firstDay + 1);
+          var cellDay = cellDate.getDate();
+          var cellMonthVal = cellDate.getMonth();
+          var dow = cellDate.getDay();
+          var isCurrentMonth = cellMonthVal === month;
+          var isToday = isCurrentMonth && cellDate.getTime() === today.getTime();
+
+          var classes = ['calendar__cell'];
+          if (!isCurrentMonth) {
+            classes.push('calendar__cell--another');
+          } else if (isToday) {
+            classes.push('calendar__cell--today');
+          } else if (dow === 0) {
+            classes.push('calendar__cell--holiday');
+          }
+
+          var cell = document.createElement('div');
+          cell.className = classes.join(' ');
+
+          var numDiv = document.createElement('div');
+          numDiv.className = 'calendar__number';
+          var numSpan = document.createElement('span');
+          numSpan.textContent = cellDay;
+          numDiv.appendChild(numSpan);
+          cell.appendChild(numDiv);
+
+          if (isCurrentMonth) {
+            var tags = getTags(cellDate);
+            if (activeTabId === 'me') {
+              tags = tags.filter(function (t) { return t.color === 'purple'; });
+            }
+            if (tags.length > 0) {
+              var tagsDiv = document.createElement('div');
+              tagsDiv.className = 'calendar__tags';
+              tags.forEach(function (tag) {
+                var tagEl = document.createElement('div');
+                tagEl.className = 'calendar__tag calendar__tag--' + tag.color;
+                tagEl.textContent = tag.text;
+                tagsDiv.appendChild(tagEl);
+              });
+              cell.appendChild(tagsDiv);
+            }
+          }
+
+          grid.appendChild(cell);
+        }
+
+        // 날짜 표시 → 월/년 포맷으로 전환
+        var dateEl = document.querySelector('.bottom-box__date');
+        if (dateEl) dateEl.textContent = formatMonth(year, month);
+
+        // monthly 뷰에서는 next 버튼 항상 활성화
+        var nextBtn = document.querySelector('.bottom-box__nav-btn--next');
+        if (nextBtn) nextBtn.disabled = false;
+      }
+
+      window.__monthlyCalendar = {
+        render: function () { render(calYear, calMonth); },
+        prevMonth: function () {
+          calMonth--;
+          if (calMonth < 0) { calMonth = 11; calYear--; }
+          render(calYear, calMonth);
+        },
+        nextMonth: function () {
+          calMonth++;
+          if (calMonth > 11) { calMonth = 0; calYear++; }
+          render(calYear, calMonth);
+        },
+        reset: function () {
+          calYear = today.getFullYear();
+          calMonth = today.getMonth();
+        }
+      };
+    })();
+  </script>
+
+  <!-- Daily/Weekly/Monthly 토글 스크립트 -->
+  <script>
+    (function () {
+      'use strict';
+
+      var toggleBtns = document.querySelectorAll('.bottom-box__toggle-btn');
+      var monthlyCalendar = document.getElementById('comp-monthly-calendar');
+      var weeklyCalendarEl = document.getElementById('comp-weekly-calendar');
+      var timetableMe = document.getElementById('comp-timetable-me');
+      var timetableTeam = document.getElementById('comp-timetable-team');
+      var compTable = document.getElementById('comp-table');
+
+      function hideDailyViews() {
+        if (timetableMe) timetableMe.style.display = 'none';
+        if (timetableTeam) timetableTeam.style.display = 'none';
+        if (compTable) compTable.style.display = 'none';
+      }
+
+      function showDailyViews() {
+        if (monthlyCalendar) monthlyCalendar.style.display = 'none';
+        if (weeklyCalendarEl) weeklyCalendarEl.style.display = 'none';
+        if (compTable) compTable.style.display = '';
+        var activeScheduleTab = document.querySelector('.bottom-box__schedule-header .tab--active');
+        var activeTabId = activeScheduleTab ? activeScheduleTab.getAttribute('data-tab') : 'me';
+        if (activeTabId === 'team') {
+          if (timetableMe) timetableMe.style.display = 'none';
+          if (timetableTeam) timetableTeam.style.display = '';
+          var innerTeam = document.querySelector('[data-timetable-tab="team"]');
+          if (innerTeam) innerTeam.style.display = '';
+        } else {
+          if (timetableMe) timetableMe.style.display = '';
+          if (timetableTeam) timetableTeam.style.display = '';
+          var innerTeam = document.querySelector('[data-timetable-tab="team"]');
+          if (innerTeam) innerTeam.style.display = 'none';
+        }
+        if (window.__dateNav) window.__dateNav.restore();
+      }
+
+      toggleBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          toggleBtns.forEach(function (b) {
+            b.classList.remove('bottom-box__toggle-btn--active');
+          });
+          btn.classList.add('bottom-box__toggle-btn--active');
+
+          var view = btn.getAttribute('data-view');
+          if (view === 'monthly') {
+            hideDailyViews();
+            if (weeklyCalendarEl) weeklyCalendarEl.style.display = 'none';
+            if (monthlyCalendar) monthlyCalendar.style.display = '';
+            if (window.__monthlyCalendar) window.__monthlyCalendar.render();
+          } else if (view === 'weekly') {
+            hideDailyViews();
+            if (monthlyCalendar) monthlyCalendar.style.display = 'none';
+            if (weeklyCalendarEl) weeklyCalendarEl.style.display = '';
+            /* 네비게이션 스크립트의 현재 주 일요일로 날짜 표시 갱신 */
+            if (window.__dateNav) window.__dateNav.initWeekly();
+            /* 전체 이벤트 1회 정의 (me: true = 박소정 참여 일정) */
+            if (!window.__weeklyEventsAll) {
+              window.__weeklyEventsAll = [
+                /* ── 월요일 ── */
+                { me: true,  title: '디자인 시스템 컴포넌트 회의', dayIndex: 1,
+                  startHour: 9,  startMinute: 0,  endHour: 10, endMinute: 0,
+                  color: 'lightblue',
+                  avatars: [
+                    { src: '../assets/avatars/male01.jpg',   name: '홍길동' },
+                    { src: '../assets/avatars/male02.jpg',   name: '김철수' },
+                    { src: '../assets/avatars/female01.jpg', name: '박소정' },
+                    { src: '../assets/avatars/female02.jpg', name: '박지수' }
+                  ]},
+                { me: true,  title: '콘텐츠 디자이너 면접', dayIndex: 1,
+                  startHour: 13, startMinute: 0,  endHour: 15, endMinute: 0,
+                  color: 'purple',
+                  avatars: [{ src: '../assets/avatars/female01.jpg', name: '박소정' }]},
+                /* ── 화요일 ── */
+                { me: true,  title: '차세대 EP 논의', dayIndex: 2,
+                  startHour: 9,  startMinute: 0,  endHour: 10, endMinute: 0,
+                  color: 'green',
+                  avatars: [
+                    { src: '../assets/avatars/female01.jpg', name: '박소정' },
+                    { src: '../assets/avatars/male02.jpg',   name: '김철수' },
+                    { src: '../assets/avatars/female02.jpg', name: '박지수' }
+                  ]},
+                { me: false, title: '차세대 EP 논의', dayIndex: 2,
+                  startHour: 10, startMinute: 0,  endHour: 12, endMinute: 0,
+                  color: 'pink',
+                  avatars: [{ src: '../assets/avatars/female02.jpg', name: '박지수' }]},
+                { me: false, title: '사업계획서 작성', dayIndex: 2,
+                  startHour: 14, startMinute: 0,  endHour: 15, endMinute: 0,
+                  color: 'blue',
+                  avatars: [{ src: '../assets/avatars/female02.jpg', name: '박지수' }]},
+                { me: true,  title: 'UT 논의', dayIndex: 2,
+                  startHour: 15, startMinute: 0,  endHour: 16, endMinute: 30,
+                  color: 'volcano',
+                  avatars: [
+                    { src: '../assets/avatars/female01.jpg', name: '박소정' },
+                    { src: '../assets/avatars/male02.jpg',   name: '김철수' },
+                    { src: '../assets/avatars/female02.jpg', name: '박지수' }
+                  ]},
+                /* ── 수요일 ── */
+                { me: true,  title: '디자인 시스템 컴포넌트 회의', dayIndex: 3,
+                  startHour: 10, startMinute: 0,  endHour: 11, endMinute: 30,
+                  color: 'lightblue',
+                  avatars: [
+                    { src: '../assets/avatars/male01.jpg',   name: '홍길동' },
+                    { src: '../assets/avatars/male02.jpg',   name: '김철수' },
+                    { src: '../assets/avatars/female01.jpg', name: '박소정' },
+                    { src: '../assets/avatars/female02.jpg', name: '박지수' }
+                  ]},
+                { me: false, title: '프로덕트 디자이너 과제 준비 회의', dayIndex: 3,
+                  startHour: 11, startMinute: 0,  endHour: 12, endMinute: 0,
+                  color: 'pink',
+                  avatars: [
+                    { src: '../assets/avatars/male02.jpg',   name: '김철수' },
+                    { src: '../assets/avatars/female02.jpg', name: '박지수' }
+                  ]},
+                /* ── 목요일 ── */
+                { me: true,  title: '고객사 인터뷰', dayIndex: 4,
+                  startHour: 8,  startMinute: 0,  endHour: 9,  endMinute: 0,
+                  color: 'purple',
+                  avatars: [{ src: '../assets/avatars/female01.jpg', name: '박소정' }]},
+                { me: false, title: '비즈니스 모델 캔버스 작성', dayIndex: 4,
+                  startHour: 13, startMinute: 0,  endHour: 16, endMinute: 0,
+                  color: 'blue',
+                  avatars: [{ src: '../assets/avatars/female02.jpg', name: '박지수' }]}
+              ];
+              /* 활성 탭 기준 이벤트 필터 */
+              window.__getWeeklyEvents = function () {
+                var activeTab = document.querySelector('.bottom-box__schedule-header .tab--active');
+                var tabId = activeTab ? activeTab.getAttribute('data-tab') : 'me';
+                return tabId === 'me'
+                  ? window.__weeklyEventsAll.filter(function (e) { return e.me; })
+                  : window.__weeklyEventsAll;
+              };
+            }
+
+            var sunday = window.__dateNav ? window.__dateNav.getSunday() : (function () {
+              var t = new Date(); t.setDate(t.getDate() - t.getDay()); t.setHours(0,0,0,0); return t;
+            }());
+
+            if (window.__weeklyCalendar) {
+              window.__weeklyCalendar.update({
+                startDate: sunday,
+                events: window.__getWeeklyEvents()
+              });
+            } else if (typeof WeeklyCalendar !== 'undefined') {
+              window.__weeklyCalendar = new WeeklyCalendar(weeklyCalendarEl, {
+                startDate: sunday,
+                startHour: 8,
+                endHour: 20,
+                events: window.__getWeeklyEvents()
+              });
+            }
+          } else {
+            showDailyViews();
+          }
+        });
+      });
+    })();
+  </script>
+
+  <script src="../components/switch/mode-switch.js"></script>
+  <script src="../components/snackbar/snackbar.js"></script>
+  <script src="../components/ai-assistant/ai-assistant.js"></script>
+  <script src="../components/layout/common-layout.js"></script>
+  <script src="../components/prompt/prompt.js"></script>
+  <script src="../components/tab/tab.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var aiPanel = document.querySelector('.ai-assistant');
+      var btnMaximize = document.querySelector('.ai-assistant__btn-maximize');
+      var workArea = document.querySelector('.layout-content__work-area');
+
+      if (!aiPanel) return;
+
+      // Maximize 토글: 좌우 패널 노출 + work-area 숨김
+      if (btnMaximize) {
+        btnMaximize.addEventListener('click', function () {
+          if (aiPanel.classList.contains('is-maximized')) return;
+          if (window.innerWidth <= 1200) {
+            Snackbar.show('작은 화면에서 AI Assistant를 확장할 수 없습니다.');
+            return;
+          }
+          var isMaximized = aiPanel.classList.toggle('is-maximized');
+          if (isMaximized) {
+            if (workArea) workArea.classList.add('is-hidden');
+          } else {
+            if (workArea) workArea.classList.remove('is-hidden');
+          }
+        });
+      }
+
+      // Collapse — 확장 상태에서 close 버튼 클릭 시
+      document.addEventListener('ai-assistant:collapse', function () {
+        aiPanel.classList.remove('is-maximized');
+        if (workArea) workArea.classList.remove('is-hidden');
+      });
+
+      // Close + FAB 토글은 common-layout.js의
+      // closeAiAssistant / openAiAssistant에서 처리
+      // (ai-assistant:close 이벤트 + .layout-fab 클릭)
+    })();
+  </script>
+
+  <!-- Today/Weekly/Monthly 탭 전환 시 타이틀 변경 -->
+  <script>
+    (function () {
+      'use strict';
+
+      var pillTabs = document.querySelector('.bottom-box__header .tabs--pill');
+      var titleEl = document.querySelector('.bottom-box__title');
+      if (!pillTabs || !titleEl) return;
+
+      var titleMap = {
+        today: "Today's Schedule",
+        weekly: 'Weekly Schedule',
+        monthly: 'Monthly Schedule'
+      };
+
+      pillTabs.addEventListener('tab:change', function (e) {
+        var tabId = e.detail.tabId;
+        if (titleMap[tabId]) {
+          titleEl.textContent = titleMap[tabId];
+        }
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var scheduleTabs = document.querySelector('.bottom-box__schedule-header .tabs');
+      if (!scheduleTabs) return;
+
+      var timetableMe = document.querySelector('[data-timetable-tab="me"]');
+      var timetableTeam = document.querySelector('[data-timetable-tab="team"]');
+      if (!timetableMe || !timetableTeam) return;
+
+      var compTimetableMe = document.getElementById('comp-timetable-me');
+
+      scheduleTabs.addEventListener('tab:change', function (e) {
+        var tabId = e.detail.tabId;
+        var activeToggle = document.querySelector('.bottom-box__toggle-btn--active');
+        var activeView = activeToggle ? activeToggle.getAttribute('data-view') : 'daily';
+        var isMonthly = activeView === 'monthly';
+        var isWeekly  = activeView === 'weekly';
+
+        if (isMonthly) {
+          if (window.__monthlyCalendar) window.__monthlyCalendar.render();
+          return;
+        }
+
+        if (isWeekly) {
+          if (window.__weeklyCalendar && window.__getWeeklyEvents) {
+            window.__weeklyCalendar.update({ events: window.__getWeeklyEvents() });
+          }
+          return;
+        }
+
+        if (tabId === 'team') {
+          if (compTimetableMe) compTimetableMe.style.display = 'none';
+          timetableTeam.style.display = '';
+        } else {
+          if (compTimetableMe) compTimetableMe.style.display = '';
+          timetableMe.style.display = '';
+          timetableTeam.style.display = 'none';
+        }
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var timetableTeam = document.querySelector('[data-timetable-tab="team"]');
+      if (!timetableTeam) return;
+
+      var checkAll = timetableTeam.querySelector('[data-check-all]');
+      var rows = timetableTeam.querySelectorAll('.timetable__row');
+      var rowCheckboxes = [];
+
+      rows.forEach(function (row) {
+        var cb = row.querySelector('.timetable__checkbox');
+        if (cb) rowCheckboxes.push({ checkbox: cb, row: row });
+      });
+
+      function toggleCheckbox(item) {
+        var isChecked = item.checkbox.classList.toggle('timetable__checkbox--checked');
+        if (isChecked) {
+          item.row.classList.add('timetable__row--checked');
+        } else {
+          item.row.classList.remove('timetable__row--checked');
+        }
+        updateCheckAll();
+      }
+
+      function updateCheckAll() {
+        if (!checkAll) return;
+        var allChecked = rowCheckboxes.every(function (item) {
+          return item.checkbox.classList.contains('timetable__checkbox--checked');
+        });
+        if (allChecked && rowCheckboxes.length > 0) {
+          checkAll.classList.add('timetable__checkbox--checked');
+        } else {
+          checkAll.classList.remove('timetable__checkbox--checked');
+        }
+      }
+
+      if (checkAll) {
+        checkAll.addEventListener('click', function () {
+          var willCheck = !checkAll.classList.contains('timetable__checkbox--checked');
+          rowCheckboxes.forEach(function (item) {
+            if (willCheck) {
+              item.checkbox.classList.add('timetable__checkbox--checked');
+              item.row.classList.add('timetable__row--checked');
+            } else {
+              item.checkbox.classList.remove('timetable__checkbox--checked');
+              item.row.classList.remove('timetable__row--checked');
+            }
+          });
+          updateCheckAll();
+        });
+      }
+
+      rowCheckboxes.forEach(function (item) {
+        item.checkbox.addEventListener('click', function () {
+          toggleCheckbox(item);
+        });
+      });
+
+      rowCheckboxes.forEach(function (item) {
+        if (item.row.classList.contains('timetable__row--checked')) {
+          item.checkbox.classList.add('timetable__checkbox--checked');
+        }
+      });
+      updateCheckAll();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var dateEl = document.querySelector('.bottom-box__date');
+      var prevBtn = document.querySelector('.bottom-box__nav-btn--prev');
+      var nextBtn = document.querySelector('.bottom-box__nav-btn--next');
+
+      if (!dateEl || !prevBtn || !nextBtn) return;
+
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      var currentDate = new Date(today);
+
+      /* 날짜 → 해당 주의 일요일 반환 */
+      function getSunday(date) {
+        var d = new Date(date);
+        d.setDate(d.getDate() - d.getDay());
+        d.setHours(0, 0, 0, 0);
+        return d;
+      }
+      var currentWeekSunday = getSunday(today);
+
+      function formatDate(date) {
+        var y = date.getFullYear();
+        var m = String(date.getMonth() + 1).padStart(2, '0');
+        var d = String(date.getDate()).padStart(2, '0');
+        return y + '.' + m + '.' + d;
+      }
+
+      /* 주간 범위 포맷: "2026.04.13 ~ 04.19" */
+      function formatWeekRange(sunday) {
+        var end = new Date(sunday);
+        end.setDate(end.getDate() + 6);
+        var y  = sunday.getFullYear();
+        var sm = String(sunday.getMonth() + 1).padStart(2, '0');
+        var sd = String(sunday.getDate()).padStart(2, '0');
+        var em = String(end.getMonth() + 1).padStart(2, '0');
+        var ed = String(end.getDate()).padStart(2, '0');
+        return y + '.' + sm + '.' + sd + ' ~ ' + em + '.' + ed;
+      }
+
+      function getActiveView() {
+        var btn = document.querySelector('.bottom-box__toggle-btn--active');
+        return btn ? btn.getAttribute('data-view') : 'daily';
+      }
+
+      function isMonthlyActive() { return getActiveView() === 'monthly'; }
+      function isWeeklyActive()  { return getActiveView() === 'weekly';  }
+
+      function updateUI() {
+        if (isWeeklyActive()) {
+          dateEl.textContent = formatWeekRange(currentWeekSunday);
+          nextBtn.disabled = false;
+          if (window.__weeklyCalendar) {
+            window.__weeklyCalendar.update({ startDate: new Date(currentWeekSunday) });
+          }
+        } else if (!isMonthlyActive()) {
+          dateEl.textContent = formatDate(currentDate);
+          nextBtn.disabled = currentDate.getTime() === today.getTime();
+        }
+      }
+
+      updateUI();
+
+      prevBtn.addEventListener('click', function () {
+        if (isMonthlyActive() && window.__monthlyCalendar) {
+          window.__monthlyCalendar.prevMonth();
+        } else if (isWeeklyActive()) {
+          currentWeekSunday.setDate(currentWeekSunday.getDate() - 7);
+          updateUI();
+        } else {
+          currentDate.setDate(currentDate.getDate() - 1);
+          updateUI();
+        }
+      });
+
+      nextBtn.addEventListener('click', function () {
+        if (isMonthlyActive() && window.__monthlyCalendar) {
+          window.__monthlyCalendar.nextMonth();
+        } else if (isWeeklyActive()) {
+          currentWeekSunday.setDate(currentWeekSunday.getDate() + 7);
+          updateUI();
+        } else {
+          if (nextBtn.disabled) return;
+          currentDate.setDate(currentDate.getDate() + 1);
+          updateUI();
+        }
+      });
+
+      window.__dateNav = {
+        restore:     function ()  { updateUI(); },
+        getSunday:   function ()  { return new Date(currentWeekSunday); },
+        initWeekly:  function ()  {
+          currentWeekSunday = getSunday(currentDate);
+          updateUI();
+        }
+      };
+    })();
+  </script>
+
+  <!-- List / Board 탭 전환 -->
+  <script>
+    (function () {
+      // event delegation — task-box 탭은 동적 주입이므로 document에서 위임
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest('.task-box [data-tab]');
+        if (!btn) return;
+
+        var tabId = btn.getAttribute('data-tab');
+        if (tabId !== 'list' && tabId !== 'board') return;
+
+        // active 클래스 전환
+        var taskBox = btn.closest('.task-box');
+        taskBox.querySelectorAll('[data-tab]').forEach(function (t) {
+          t.classList.toggle('tab--active', t === btn);
+        });
+
+        var compTable = document.getElementById('comp-table');
+        if (tabId === 'board') {
+          if (window.__tableFilters) window.__tableFilters.destroy();
+          compTable.innerHTML = BOARD_HTML;
+          if (window.__initBoardDnD) window.__initBoardDnD(compTable.querySelector('.board'));
+        } else {
+          compTable.innerHTML = TABLE_HTML;
+          if (window.__tableFilters) window.__tableFilters.init();
+        }
+      });
+    })();
+  </script>
+
+  <!-- 테이블 필터 메뉴 (요청자 / 우선순위 / 상태) -->
+  <script>
+    (function () {
+      // 필터 정의: iconIndex = 헤더 filter-icon 순서, getValue = 행에서 값 추출
+      var FILTERS = [
+        {
+          items: ['임혁수', '박소정', 'AI'],
+          getValue: function (row) {
+            var cell = row.querySelectorAll('.klds-table__col--120')[0];
+            return cell ? cell.textContent.trim() : '';
+          }
+        },
+        {
+          items: ['높음', '중간', '낮음'],
+          getValue: function (row) {
+            var cell = row.querySelectorAll('.klds-table__col--100')[0];
+            var label = cell && cell.querySelector('.klds-tag__label');
+            return label ? label.textContent.trim() : '';
+          }
+        },
+        {
+          items: ['대기', '진행', '완료'],
+          getValue: function (row) {
+            var cell = row.querySelectorAll('.klds-table__col--100')[1];
+            var label = cell && cell.querySelector('.klds-tag__label');
+            return label ? label.textContent.trim() : '';
+          }
+        }
+      ];
+
+      var menus = [];
+
+      // 단일 klds-menu 생성 (body에 붙임 — overflow 클리핑 회피)
+      function buildMenu(items) {
+        var menu = document.createElement('div');
+        menu.className = 'klds-menu';
+        menu.style.cssText = 'position:fixed;z-index:9999;display:none;min-width:140px';
+
+        items.forEach(function (name) {
+          var label = document.createElement('label');
+          label.className = 'klds-menu__item';
+          label.innerHTML = [
+            '<div class="klds-menu__item-checkbox">',
+            '  <div class="klds-checkbox">',
+            '    <input type="checkbox" class="klds-checkbox__input" checked>',
+            '    <span class="klds-checkbox__box">',
+            '      <svg class="klds-checkbox__icon" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">',
+            '        <path d="M1 3.5L4.5 7L11 1" stroke="white" stroke-width="1.6667" stroke-linecap="round" stroke-linejoin="round"/>',
+            '      </svg>',
+            '    </span>',
+            '  </div>',
+            '</div>',
+            '<span class="klds-menu__item-text">' + name + '</span>'
+          ].join('');
+
+          label.querySelector('.klds-checkbox__input').addEventListener('change', applyAllFilters);
+          menu.appendChild(label);
+        });
+
+        document.body.appendChild(menu);
+        return menu;
+      }
+
+      // 열려 있는 다른 메뉴 모두 닫기
+      function closeAllMenus() {
+        menus.forEach(function (m) { m.style.display = 'none'; });
+      }
+
+      // 모든 필터를 AND 조건으로 적용
+      function applyAllFilters() {
+        // 각 필터의 체크된 값 수집
+        var checkedSets = FILTERS.map(function (f, i) {
+          var checked = [];
+          menus[i].querySelectorAll('.klds-checkbox__input').forEach(function (cb, j) {
+            if (cb.checked) checked.push(f.items[j]);
+          });
+          return checked;
+        });
+
+        document.querySelectorAll('#comp-table .klds-table__row').forEach(function (row) {
+          var visible = FILTERS.every(function (f, i) {
+            return checkedSets[i].includes(f.getValue(row));
+          });
+          row.style.display = visible ? '' : 'none';
+        });
+      }
+
+      function destroy() {
+        menus.forEach(function (m) { m.remove(); });
+        menus = [];
+      }
+
+      function init() {
+        destroy(); // 이전 메뉴 정리 후 재초기화
+        var filterIcons = document.querySelectorAll('#comp-table .klds-table__filter-icon');
+        if (!filterIcons.length) return;
+
+        // 각 filter icon에 메뉴 연결
+        filterIcons.forEach(function (icon, idx) {
+          if (!FILTERS[idx]) return;
+
+          var menu = buildMenu(FILTERS[idx].items);
+          menus.push(menu);
+
+          icon.style.cursor = 'pointer';
+          icon.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isOpen = menu.style.display !== 'none';
+            closeAllMenus();
+            if (!isOpen) {
+              var rect = icon.getBoundingClientRect();
+              menu.style.top = (rect.bottom + 4) + 'px';
+              menu.style.left = rect.left + 'px';
+              menu.style.display = 'block';
+            }
+          });
+
+          // 메뉴 내부 클릭은 닫히지 않도록
+          menu.addEventListener('click', function (e) { e.stopPropagation(); });
+        });
+
+        // 바깥 클릭 → 모든 메뉴 닫기
+        document.addEventListener('click', closeAllMenus);
+      }
+
+      window.__tableFilters = { init: init, destroy: destroy };
+      init();
+    })();
+  </script>
+
+</body>
+
+</html>

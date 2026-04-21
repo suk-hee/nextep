@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LNB Component Preview</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link rel="stylesheet" href="../styles/tokens.css">
+    <link rel="stylesheet" href="../components/layout/lnb/lnb.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background: var(--klds-color-gray-gray02, #F3F4F6);
+            height: 100vh;
+            display: flex;
+        }
+        
+        /* 프리뷰 레이아웃 */
+        .preview-container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+        
+        /* LNB가 실제 사이즈로 표시됨 */
+        .lnb {
+            height: 100vh;
+        }
+        
+        /* 오른쪽 설명 영역 */
+        .preview-content {
+            flex: 1;
+            padding: var(--klds-gap-xxl, 32px);
+            overflow-y: auto;
+        }
+        
+        .preview-content h1 {
+            font-size: var(--klds-typography-fontsize-xl, 24px);
+            font-weight: var(--klds-typography-fontweight-bold, 700);
+            color: var(--klds-color-gray-gray09, #1F2937);
+            margin-bottom: var(--klds-gap-xs, 8px);
+        }
+        
+        .preview-content p {
+            font-size: var(--klds-typography-fontsize-s, 14px);
+            color: var(--klds-color-gray-gray06, #6B7280);
+            margin-bottom: var(--klds-gap-xl, 24px);
+        }
+        
+        .spec-table {
+            width: 100%;
+            max-width: 600px;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        
+        .spec-table th,
+        .spec-table td {
+            padding: var(--klds-gap-xs, 8px) var(--klds-gap-s, 12px);
+            text-align: left;
+            border-bottom: 1px solid var(--klds-color-border-default, #E5E7EB);
+        }
+        
+        .spec-table th {
+            font-weight: var(--klds-typography-fontweight-bold, 600);
+            color: var(--klds-color-gray-gray08, #374151);
+            background: var(--klds-color-gray-gray01, #FAFAFA);
+            width: 180px;
+        }
+        
+        .spec-table td {
+            color: var(--klds-color-gray-gray06, #6B7280);
+        }
+
+        .spec-table td code {
+            font-family: 'Menlo', 'Consolas', monospace;
+            font-size: 12px;
+            background: var(--klds-color-gray-gray02, #F3F4F6);
+            padding: 2px 6px;
+            border-radius: var(--klds-radius-xxxs, 4px);
+            color: var(--klds-color-primary-primary06, #005386);
+        }
+        
+        .spec-section {
+            margin-bottom: var(--klds-gap-xxl, 32px);
+        }
+        
+        .spec-section h2 {
+            font-size: var(--klds-typography-fontsize-m, 16px);
+            font-weight: var(--klds-typography-fontweight-bold, 600);
+            color: var(--klds-color-gray-gray09, #1F2937);
+            margin-bottom: var(--klds-gap-s, 12px);
+            padding-bottom: var(--klds-gap-xs, 8px);
+            border-bottom: 2px solid var(--klds-color-primary-primary06, #005386);
+            display: inline-block;
+        }
+        
+        .color-chip {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            vertical-align: middle;
+            margin-right: 6px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .state-demos {
+            display: flex;
+            gap: var(--klds-gap-s, 12px);
+            margin-top: var(--klds-gap-s, 12px);
+        }
+
+        .state-demo-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--klds-gap-xs, 8px);
+        }
+
+        .state-demo-card .label {
+            font-size: var(--klds-typography-fontsize-xs, 12px);
+            color: var(--klds-color-gray-gray06, #6B7280);
+            font-weight: var(--klds-typography-fontweight-medium, 500);
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <!-- LNB Component 실제 렌더링 -->
+        <nav class="lnb" role="navigation" aria-label="메인 네비게이션">
+            <div class="lnb-menu-group">
+                <button class="lnb-menu-item" data-menu="home" title="홈">
+                    <span class="lnb-menu-icon">
+                        <span style="-webkit-mask-image:url(../assets/icons/ic-home01.svg);mask-image:url(../assets/icons/ic-home01.svg)"></span>
+                    </span>
+                </button>
+                <button class="lnb-menu-item" data-menu="workspace" title="워크스페이스">
+                    <span class="lnb-menu-icon">
+                        <span style="-webkit-mask-image:url(../assets/icons/ic-bag.svg);mask-image:url(../assets/icons/ic-bag.svg)"></span>
+                    </span>
+                </button>
+                <button class="lnb-menu-item" data-menu="chat" title="채팅" data-badge="5">
+                    <span class="lnb-menu-icon">
+                        <span style="-webkit-mask-image:url(../assets/icons/ic-chat-circle.svg);mask-image:url(../assets/icons/ic-chat-circle.svg)"></span>
+                    </span>
+                    <span class="lnb-badge lnb-badge--count">5</span>
+                </button>
+                <button class="lnb-menu-item" data-menu="mail" title="메일" data-badge="8">
+                    <span class="lnb-menu-icon">
+                        <span style="-webkit-mask-image:url(../assets/icons/ic-mail.svg);mask-image:url(../assets/icons/ic-mail.svg)"></span>
+                    </span>
+                    <span class="lnb-badge lnb-badge--count">8</span>
+                </button>
+                <button class="lnb-menu-item active" data-menu="schedule" title="일정">
+                    <span class="lnb-menu-icon">
+                        <span style="-webkit-mask-image:url(../assets/icons/ic-calendar-days.svg);mask-image:url(../assets/icons/ic-calendar-days.svg)"></span>
+                    </span>
+                </button>
+                <button class="lnb-menu-item" data-menu="files" title="자료실">
+                    <span class="lnb-menu-icon">
+                        <span style="-webkit-mask-image:url(../assets/icons/ic-folder1.svg);mask-image:url(../assets/icons/ic-folder1.svg)"></span>
+                    </span>
+                </button>
+                <button class="lnb-menu-item" data-menu="video-meeting" title="화상회의">
+                    <span class="lnb-menu-icon">
+                        <span style="-webkit-mask-image:url(../assets/icons/ic-webcam.svg);mask-image:url(../assets/icons/ic-webcam.svg)"></span>
+                    </span>
+                </button>
+                <button class="lnb-menu-item" data-menu="org" title="조직도">
+                    <span class="lnb-menu-icon">
+                        <span style="-webkit-mask-image:url(../assets/icons/ic-sitemap.svg);mask-image:url(../assets/icons/ic-sitemap.svg)"></span>
+                    </span>
+                </button>
+                <button class="lnb-menu-item" data-menu="collect" title="문서수합">
+                    <span class="lnb-menu-icon">
+                        <span style="-webkit-mask-image:url(../assets/icons/ic-file-document.svg);mask-image:url(../assets/icons/ic-file-document.svg)"></span>
+                    </span>
+                </button>
+                <button class="lnb-menu-item" data-menu="more" title="더보기">
+                    <span class="lnb-menu-icon">
+                        <span style="-webkit-mask-image:url(../assets/icons/ic-more-horizontal.svg);mask-image:url(../assets/icons/ic-more-horizontal.svg)"></span>
+                    </span>
+                </button>
+            </div>
+            <div class="lnb-menu-bottom">
+                <button class="lnb-menu-item" data-menu="todo" title="할 일">
+                    <span class="lnb-menu-icon">
+                        <span style="-webkit-mask-image:url(../assets/icons/ic-check02.svg);mask-image:url(../assets/icons/ic-check02.svg)"></span>
+                    </span>
+                </button>
+                <button class="lnb-menu-item" data-menu="help" title="도움말">
+                    <span class="lnb-menu-icon">
+                        <span style="-webkit-mask-image:url(../assets/icons/ic-circle-help.svg);mask-image:url(../assets/icons/ic-circle-help.svg)"></span>
+                    </span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- 설명 영역 -->
+        <div class="preview-content">
+            <h1>LNB Component</h1>
+            <p>Figma node: lnb (3:3540) — 피그마 디자인 기반 구현</p>
+
+            <div class="spec-section">
+                <h2>📐 레이아웃 스펙 (Figma 매핑)</h2>
+                <table class="spec-table">
+                    <tr><th>컨테이너 크기</th><td>80 × full-height</td></tr>
+                    <tr><th>Padding</th><td><code>--klds-padding-xxs</code> (8px)</td></tr>
+                    <tr><th>Gap</th><td><code>--klds-gap-xs</code> (8px)</td></tr>
+                    <tr><th>Layout</th><td>Vertical, space-between</td></tr>
+                    <tr><th>메뉴 아이템 크기</th><td><code>--klds-size-size7</code> (48 × 48px)</td></tr>
+                    <tr><th>메뉴 아이템 radius</th><td><code>--klds-radius-xs</code> (8px)</td></tr>
+                    <tr><th>아이콘 크기</th><td><code>--klds-size-size4</code> (24 × 24px)</td></tr>
+                    <tr><th>아이템 내부 gap</th><td>10px (Figma 원본 값)</td></tr>
+                    <tr><th>그룹 내 gap</th><td><code>--klds-gap-xs</code> (8px)</td></tr>
+                </table>
+            </div>
+
+            <div class="spec-section">
+                <h2>🎨 색상 스펙 (Semantic Tokens)</h2>
+                <table class="spec-table">
+                    <tr>
+                        <th>배경 (default)</th>
+                        <td>transparent</td>
+                    </tr>
+                    <tr>
+                        <th>배경 (hover)</th>
+                        <td>transparent (배경색 없음)</td>
+                    </tr>
+                    <tr>
+                        <th>아이콘 (hover)</th>
+                        <td>
+                            <span class="color-chip" style="background:#005386"></span>
+                            <code>--klds-color-primary-primary06</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>배경 (active)</th>
+                        <td>
+                            <span class="color-chip" style="background:#005386"></span>
+                            <code>--klds-color-primary-primary06</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>배경 (active+hover)</th>
+                        <td>
+                            <span class="color-chip" style="background:#024A77"></span>
+                            <code>--klds-color-primary-primary07</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>아이콘 (default)</th>
+                        <td>
+                            <span class="color-chip" style="background:#121212"></span>
+                            <code>--klds-color-text-black</code> (mask)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>아이콘 (active)</th>
+                        <td>
+                            <span class="color-chip" style="background:#FFFFFF; border:1px solid #ccc"></span>
+                            <code>--klds-color-text-white</code> (mask)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Badge 배경</th>
+                        <td>
+                            <span class="color-chip" style="background:#FF4D4F"></span>
+                            <code>--klds-color-red-red05</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Badge 텍스트</th>
+                        <td>
+                            <span class="color-chip" style="background:#FFFFFF; border:1px solid #ccc"></span>
+                            <code>--klds-color-text-white</code> / Pretendard 14px/600
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Focus ring</th>
+                        <td>
+                            <span class="color-chip" style="background:#005386"></span>
+                            <code>--klds-color-primary</code>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="spec-section">
+                <h2>📦 메뉴 구성</h2>
+                <table class="spec-table">
+                    <tr><th colspan="2" style="background:#E7F3FB; color:#005386;">상단 그룹 (group-menus) — 10개</th></tr>
+                    <tr><th>menu-home</th><td>ic-home01 — 홈</td></tr>
+                    <tr><th>menu-workspace</th><td>ic-bag — 워크스페이스</td></tr>
+                    <tr><th>menu-chat</th><td>ic-chat-circle — 채팅</td></tr>
+                    <tr><th>menu-mail</th><td>ic-mail — 메일</td></tr>
+                    <tr><th>menu-schedule</th><td>ic-calendar-days — 일정</td></tr>
+                    <tr><th>menu-files</th><td>ic-folder1 — 자료실</td></tr>
+                    <tr><th>menu-video-meeting</th><td>ic-webcam — 화상회의</td></tr>
+                    <tr><th>menu-org</th><td>ic-sitemap — 조직도</td></tr>
+                    <tr><th>menu-collect</th><td>ic-file-document — 문서수합</td></tr>
+                    <tr><th>menu-more</th><td>ic-more-horizontal — 더보기</td></tr>
+                    <tr><th colspan="2" style="background:#E7F3FB; color:#005386;">하단 그룹 — 2개</th></tr>
+                    <tr><th>menu-todo</th><td>ic-check02 — 할 일</td></tr>
+                    <tr><th>menu-help</th><td>ic-circle-help — 도움말</td></tr>
+                </table>
+            </div>
+
+            <div class="spec-section">
+                <h2>🔄 상태 데모</h2>
+                <p style="margin-bottom: 8px;">각 메뉴 아이템에 마우스를 올리면 hover / tooltip 확인 가능</p>
+                <div class="state-demos">
+                    <div class="state-demo-card">
+                        <button class="lnb-menu-item" style="position:relative;">
+                            <span class="lnb-menu-icon">
+                                <span style="-webkit-mask-image:url(../assets/icons/ic-home01.svg);mask-image:url(../assets/icons/ic-home01.svg)"></span>
+                            </span>
+                        </button>
+                        <span class="label">Default</span>
+                    </div>
+                    <div class="state-demo-card">
+                        <button class="lnb-menu-item active" style="position:relative;">
+                            <span class="lnb-menu-icon">
+                                <span style="-webkit-mask-image:url(../assets/icons/ic-home01.svg);mask-image:url(../assets/icons/ic-home01.svg)"></span>
+                            </span>
+                        </button>
+                        <span class="label">Active</span>
+                    </div>
+                    <div class="state-demo-card">
+                        <button class="lnb-menu-item" style="position:relative;">
+                            <span class="lnb-menu-icon">
+                                <span style="-webkit-mask-image:url(../assets/icons/ic-mail.svg);mask-image:url(../assets/icons/ic-mail.svg)"></span>
+                            </span>
+                            <span class="lnb-badge lnb-badge--count">8</span>
+                        </button>
+                        <span class="label">With Badge</span>
+                    </div>
+                    <div class="state-demo-card">
+                        <button class="lnb-menu-item active" style="position:relative;">
+                            <span class="lnb-menu-icon">
+                                <span style="-webkit-mask-image:url(../assets/icons/ic-chat-circle.svg);mask-image:url(../assets/icons/ic-chat-circle.svg)"></span>
+                            </span>
+                            <span class="lnb-badge lnb-badge--count">3</span>
+                        </button>
+                        <span class="label">Active+Badge</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="spec-section">
+                <h2>🔗 토큰 매핑 요약</h2>
+                <table class="spec-table">
+                    <tr><th>속성</th><th>Figma 값 → CSS 토큰</th></tr>
+                    <tr><td>Container padding</td><td>8px → <code>--klds-padding-xxs</code></td></tr>
+                    <tr><td>Item gap</td><td>8px → <code>--klds-gap-xs</code></td></tr>
+                    <tr><td>Item size</td><td>48px → <code>--klds-size-size7</code></td></tr>
+                    <tr><td>Item radius</td><td>8px → <code>--klds-radius-xs</code></td></tr>
+                    <tr><td>Icon size</td><td>24px → <code>--klds-size-size4</code></td></tr>
+                    <tr><td>Badge size</td><td>20px → <code>--klds-size-size3</code></td></tr>
+                    <tr><td>Badge radius</td><td>9999px → <code>--klds-radius-circle</code></td></tr>
+                    <tr><td>Active bg</td><td>#005386 → <code>--klds-color-primary-primary06</code></td></tr>
+                    <tr><td>Hover bg</td><td>transparent (없음)</td></tr>
+                    <tr><td>Hover icon</td><td>#005386 → <code>--klds-color-primary-primary06</code></td></tr>
+                    <tr><td>Badge bg</td><td>#FF4D4F → <code>--klds-color-red-red05</code></td></tr>
+                    <tr><td>Badge font</td><td>14px/600 → <code>--klds-typography-fontsize-s</code></td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 메뉴 클릭 시 active 토글
+        document.querySelectorAll('.lnb .lnb-menu-item').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 같은 nav 안의 모든 active 제거
+                btn.closest('.lnb').querySelectorAll('.lnb-menu-item').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

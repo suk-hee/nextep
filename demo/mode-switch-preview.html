@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mode Switch Component Preview — KLDS Design System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link rel="stylesheet" href="../components/switch/mode-switch.css">
+    <style>
+        :root {
+            --primary: #005386;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-500: #6B7280;
+            --gray-700: #374151;
+            --gray-900: #111827;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background: var(--gray-100);
+            color: var(--gray-900);
+        }
+
+        .page { max-width: 800px; margin: 0 auto; padding: 32px 24px 64px; }
+
+        .page-header { margin-bottom: 40px; }
+        .page-header h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+        .page-header h1 span { color: var(--primary); }
+        .page-header p { font-size: 14px; color: var(--gray-500); }
+
+        /* Section */
+        .section {
+            background: #fff;
+            border: 1px solid var(--gray-200);
+            border-radius: 14px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .section-header h2 { font-size: 16px; font-weight: 600; }
+        .section-header .badge {
+            font-size: 11px; font-weight: 600;
+            padding: 3px 10px; border-radius: 20px;
+            background: #EFF6FF; color: var(--primary);
+        }
+        .section-body { padding: 28px 24px; }
+
+        /* Demo row */
+        .demo-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+        .demo-row:last-child { margin-bottom: 0; }
+
+        .demo-label {
+            font-size: 12px; font-weight: 600;
+            color: var(--gray-500); text-transform: uppercase;
+            letter-spacing: 0.5px; min-width: 100px;
+        }
+
+        .divider { height: 1px; background: var(--gray-200); margin: 20px 0; }
+
+        /* Event log */
+        .event-log {
+            background: #1E293B;
+            border-radius: 10px;
+            padding: 16px 20px;
+            font-family: 'SF Mono', 'Consolas', monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #94A3B8;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .event-log .log-item { margin-bottom: 2px; }
+        .event-log .log-time { color: #64748B; }
+        .event-log .log-mode { color: #7DD3FC; font-weight: 600; }
+        .event-log .log-index { color: #FDA4AF; }
+        .event-log .log-empty { color: #475569; font-style: italic; }
+
+        /* Spec table */
+        .spec-table {
+            width: 100%; border-collapse: collapse; font-size: 13px;
+        }
+        .spec-table th, .spec-table td {
+            padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--gray-200);
+        }
+        .spec-table th {
+            font-weight: 600; color: var(--gray-700); background: var(--gray-50); width: 140px;
+        }
+        .spec-table td { color: var(--gray-500); }
+
+        .color-chip {
+            display: inline-block; width: 14px; height: 14px;
+            border-radius: 3px; vertical-align: middle; margin-right: 6px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* Dark bg section */
+        .dark-bg {
+            background: var(--gray-900);
+            border-radius: 0 0 13px 13px;
+        }
+
+        /* Code */
+        .code-block {
+            background: #1E293B; color: #E2E8F0; border-radius: 10px;
+            padding: 16px 20px;
+            font-family: 'SF Mono', 'Consolas', monospace;
+            font-size: 13px; line-height: 1.7;
+            overflow-x: auto; margin-top: 16px;
+        }
+        .code-block .tag { color: #7DD3FC; }
+        .code-block .attr { color: #FDA4AF; }
+        .code-block .val { color: #86EFAC; }
+        .code-block .cmt { color: #64748B; }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <!-- Header -->
+    <div class="page-header">
+        <h1><span>Mode Switch</span> Component</h1>
+        <p>Figma: mode-switch (1:17486) · btn-mode (1:17554)</p>
+    </div>
+
+    <!-- ============================
+         1. 기본 (Figma 원본)
+         ============================ -->
+    <div class="section">
+        <div class="section-header">
+            <h2>🔄 기본 — 클래식 / AI</h2>
+            <span class="badge">Figma 원본</span>
+        </div>
+        <div class="section-body">
+            <div class="demo-row">
+                <span class="demo-label">클래식 활성</span>
+                <div class="mode-switch" role="tablist" aria-label="모드 전환" id="switch1">
+                    <button class="mode-switch__btn is-active" role="tab" aria-selected="true" data-mode="classic">
+                        <span class="mode-switch__icon">
+                            <img src="../assets/icons/ic-menu-grid.svg" alt="" width="24" height="24">
+                        </span>
+                        <span class="mode-switch__label">클래식</span>
+                    </button>
+                    <button class="mode-switch__btn" role="tab" aria-selected="false" data-mode="ai">
+                        <span class="mode-switch__icon">
+                            <img src="../assets/icons/ic-star02.svg" alt="" width="24" height="24">
+                        </span>
+                        <span class="mode-switch__label">AI</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="demo-row">
+                <span class="demo-label">AI 활성</span>
+                <div class="mode-switch" role="tablist" aria-label="모드 전환" id="switch2">
+                    <button class="mode-switch__btn" role="tab" aria-selected="false" data-mode="classic">
+                        <span class="mode-switch__icon">
+                            <img src="../assets/icons/ic-menu-grid.svg" alt="" width="24" height="24">
+                        </span>
+                        <span class="mode-switch__label">클래식</span>
+                    </button>
+                    <button class="mode-switch__btn is-active" role="tab" aria-selected="true" data-mode="ai">
+                        <span class="mode-switch__icon">
+                            <img src="../assets/icons/ic-star02.svg" alt="" width="24" height="24">
+                        </span>
+                        <span class="mode-switch__label">AI</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================
+         2. 다양한 활용
+         ============================ -->
+    <div class="section">
+        <div class="section-header">
+            <h2>🎨 다양한 활용</h2>
+            <span class="badge">Variations</span>
+        </div>
+        <div class="section-body">
+            <!-- 3개 버튼 -->
+            <div class="demo-row">
+                <span class="demo-label">3개 탭</span>
+                <div class="mode-switch" role="tablist" aria-label="보기 전환">
+                    <button class="mode-switch__btn is-active" role="tab" aria-selected="true" data-mode="daily">
+                        <span class="mode-switch__icon">
+                            <img src="../assets/icons/ic-calendar-1.svg" alt="" width="24" height="24">
+                        </span>
+                        <span class="mode-switch__label">일간</span>
+                    </button>
+                    <button class="mode-switch__btn" role="tab" aria-selected="false" data-mode="weekly">
+                        <span class="mode-switch__icon">
+                            <img src="../assets/icons/ic-calendar-7.svg" alt="" width="24" height="24">
+                        </span>
+                        <span class="mode-switch__label">주간</span>
+                    </button>
+                    <button class="mode-switch__btn" role="tab" aria-selected="false" data-mode="monthly">
+                        <span class="mode-switch__icon">
+                            <img src="../assets/icons/ic-calendar-30.svg" alt="" width="24" height="24">
+                        </span>
+                        <span class="mode-switch__label">월간</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- 텍스트만 -->
+            <div class="demo-row">
+                <span class="demo-label">텍스트만</span>
+                <div class="mode-switch" role="tablist" aria-label="뷰 전환">
+                    <button class="mode-switch__btn is-active" role="tab" aria-selected="true" data-mode="grid">
+                        <span class="mode-switch__label">그리드</span>
+                    </button>
+                    <button class="mode-switch__btn" role="tab" aria-selected="false" data-mode="list">
+                        <span class="mode-switch__label">리스트</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- 아이콘만 -->
+            <div class="demo-row">
+                <span class="demo-label">아이콘만</span>
+                <div class="mode-switch" role="tablist" aria-label="레이아웃 전환">
+                    <button class="mode-switch__btn mode-switch__btn--icon-only is-active" role="tab" aria-selected="true" data-mode="grid" title="그리드">
+                        <span class="mode-switch__icon">
+                            <img src="../assets/icons/ic-menu-grid.svg" alt="그리드" width="24" height="24">
+                        </span>
+                    </button>
+                    <button class="mode-switch__btn mode-switch__btn--icon-only" role="tab" aria-selected="false" data-mode="list" title="리스트">
+                        <span class="mode-switch__icon">
+                            <img src="../assets/icons/ic-menu-hamburger.svg" alt="리스트" width="24" height="24">
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Small Size -->
+            <div class="demo-row">
+                <span class="demo-label">Small 사이즈</span>
+                <div class="mode-switch mode-switch--sm" role="tablist" aria-label="모드 전환">
+                    <button class="mode-switch__btn is-active" role="tab" aria-selected="true" data-mode="edit">
+                        <span class="mode-switch__icon">
+                            <img src="../assets/icons/ic-pencil01.svg" alt="" width="20" height="20">
+                        </span>
+                        <span class="mode-switch__label">편집</span>
+                    </button>
+                    <button class="mode-switch__btn" role="tab" aria-selected="false" data-mode="preview">
+                        <span class="mode-switch__icon">
+                            <img src="../assets/icons/ic-show.svg" alt="" width="20" height="20">
+                        </span>
+                        <span class="mode-switch__label">미리보기</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================
+         3. 인터랙션 로그
+         ============================ -->
+    <div class="section">
+        <div class="section-header">
+            <h2>⚡ 인터랙션 테스트</h2>
+            <span class="badge">클릭해 보세요</span>
+        </div>
+        <div class="section-body">
+            <div class="demo-row">
+                <div class="mode-switch" role="tablist" aria-label="모드 전환" id="switchTest">
+                    <button class="mode-switch__btn is-active" role="tab" aria-selected="true" data-mode="classic">
+                        <span class="mode-switch__icon">
+                            <img src="../assets/icons/ic-menu-grid.svg" alt="" width="24" height="24">
+                        </span>
+                        <span class="mode-switch__label">클래식</span>
+                    </button>
+                    <button class="mode-switch__btn" role="tab" aria-selected="false" data-mode="ai">
+                        <span class="mode-switch__icon">
+                            <img src="../assets/icons/ic-star02.svg" alt="" width="24" height="24">
+                        </span>
+                        <span class="mode-switch__label">AI</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="event-log" id="eventLog">
+                <div class="log-item log-empty">버튼을 클릭하면 이벤트 로그가 표시됩니다...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================
+         4. 다크 배경
+         ============================ -->
+    <div class="section">
+        <div class="section-header">
+            <h2>🌙 다크 배경 미리보기</h2>
+        </div>
+        <div class="section-body dark-bg">
+            <div class="demo-row" style="justify-content: center;">
+                <div class="mode-switch" role="tablist" aria-label="모드 전환">
+                    <button class="mode-switch__btn is-active" role="tab" aria-selected="true" data-mode="classic">
+                        <span class="mode-switch__icon">
+                            <img src="../assets/icons/ic-menu-grid.svg" alt="" width="24" height="24">
+                        </span>
+                        <span class="mode-switch__label">클래식</span>
+                    </button>
+                    <button class="mode-switch__btn" role="tab" aria-selected="false" data-mode="ai">
+                        <span class="mode-switch__icon">
+                            <img src="../assets/icons/ic-star02.svg" alt="" width="24" height="24">
+                        </span>
+                        <span class="mode-switch__label">AI</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================
+         5. 스펙
+         ============================ -->
+    <div class="section">
+        <div class="section-header">
+            <h2>📐 디자인 스펙</h2>
+        </div>
+        <div class="section-body">
+            <table class="spec-table">
+                <tr><th colspan="2" style="background:#EFF6FF; color:#005386; font-weight:600;">Container (mode-switch · 1:17486)</th></tr>
+                <tr><th>Height</th><td>56px → <code>var(--klds-size-size8)</code></td></tr>
+                <tr><th>Padding</th><td>8px → <code>var(--klds-padding-xxs)</code></td></tr>
+                <tr><th>Border Radius</th><td>9999px (Figma 직접 지정)</td></tr>
+                <tr><th>Background</th><td><span class="color-chip" style="background:#D6E4FF"></span>#D6E4FF → <code>var(--klds-color-button-tonal-surface-hover)</code><br><small style="color:#9CA3AF">Primitive: color/blue/blue02</small></td></tr>
+                <tr><th colspan="2" style="background:#EFF6FF; color:#005386; font-weight:600;">Button (btn-mode · 1:17554) — Default (active=false)</th></tr>
+                <tr><th>Height</th><td>40px → <code>var(--klds-size-size6)</code></td></tr>
+                <tr><th>Padding</th><td>0 16px → <code>var(--klds-padding-m)</code></td></tr>
+                <tr><th>Gap</th><td>8px → <code>var(--klds-gap-xs)</code></td></tr>
+                <tr><th>Border Radius</th><td>9999px (Figma 직접 지정)</td></tr>
+                <tr><th>Background</th><td>transparent</td></tr>
+                <tr><th>Text Color</th><td><span class="color-chip" style="background:#121212"></span>#121212 → <code>var(--klds-color-text-black)</code></td></tr>
+                <tr><th>Icon Color</th><td><span class="color-chip" style="background:#121212"></span>#121212 → <code>var(--klds-color-icon-black)</code></td></tr>
+                <tr><th>Font</th><td>Pretendard 16px / 600 / lh 24px → <code>var(--klds-typography-fontsize-m)</code></td></tr>
+                <tr><th>Icon Size</th><td>24 × 24px</td></tr>
+                <tr><th colspan="2" style="background:#EFF6FF; color:#005386; font-weight:600;">Button — Active (active=true)</th></tr>
+                <tr><th>Background</th><td><span class="color-chip" style="background:#005386"></span>#005386 → <code>var(--klds-color-button-fill-surface)</code><br><small style="color:#9CA3AF">Primitive: color/primary</small></td></tr>
+                <tr><th>Hover BG</th><td><span class="color-chip" style="background:#024A77"></span>#024A77 → <code>var(--klds-color-button-fill-surface-hover)</code><br><small style="color:#9CA3AF">Primitive: color/primary/primary07</small></td></tr>
+                <tr><th>Text Color</th><td><span class="color-chip" style="background:#FFF; border:1px solid #ccc"></span>#FFFFFF → <code>var(--klds-color-text-white)</code></td></tr>
+                <tr><th>Icon</th><td>filter: brightness(0) invert(1)</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- ============================
+         6. 코드
+         ============================ -->
+    <div class="section">
+        <div class="section-header">
+            <h2>💻 사용법</h2>
+        </div>
+        <div class="section-body">
+            <div class="code-block">
+<span class="cmt">&lt;!-- CSS + JS 로드 --&gt;</span>
+<span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="val">"stylesheet"</span> <span class="attr">href</span>=<span class="val">"components/switch/mode-switch.css"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="val">"components/switch/mode-switch.js"</span><span class="tag">&gt;&lt;/script&gt;</span>
+
+<span class="cmt">&lt;!-- 기본 사용 --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"mode-switch"</span> <span class="attr">role</span>=<span class="val">"tablist"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attr">class</span>=<span class="val">"mode-switch__btn is-active"</span> <span class="attr">data-mode</span>=<span class="val">"classic"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="val">"mode-switch__icon"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"icons/ic-menu-grid.svg"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="val">"mode-switch__label"</span><span class="tag">&gt;</span>클래식<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attr">class</span>=<span class="val">"mode-switch__btn"</span> <span class="attr">data-mode</span>=<span class="val">"ai"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="val">"mode-switch__icon"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"icons/ic-star02.svg"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="val">"mode-switch__label"</span><span class="tag">&gt;</span>AI<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="cmt">&lt;!-- 이벤트 리스닝 --&gt;</span>
+<span class="tag">&lt;script&gt;</span>
+  document.querySelector('.mode-switch')
+    .addEventListener('mode-change', (e) =&gt; {
+      console.log('모드:', e.detail.mode);
+    });
+<span class="tag">&lt;/script&gt;</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="../components/switch/mode-switch.js"></script>
+<script>
+    // 인터랙션 테스트 로그
+    const logEl = document.getElementById('eventLog');
+    const switchTest = document.getElementById('switchTest');
+    let logCount = 0;
+
+    switchTest.addEventListener('mode-change', (e) => {
+        logCount++;
+        if (logCount === 1) logEl.innerHTML = ''; // 첫 이벤트 시 placeholder 제거
+
+        const time = new Date().toLocaleTimeString('ko-KR', { hour12: false });
+        const item = document.createElement('div');
+        item.className = 'log-item';
+        item.innerHTML = `<span class="log-time">[${time}]</span> mode-change → mode: <span class="log-mode">"${e.detail.mode}"</span>, index: <span class="log-index">${e.detail.index}</span>`;
+        logEl.prepend(item);
+    });
+</script>
+
+</body>
+</html>

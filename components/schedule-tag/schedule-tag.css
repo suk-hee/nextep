@@ -1,0 +1,193 @@
+/**
+ * KLDS Schedule Tag Component
+ *
+ * Figma 노드: 1392:25573 (ScheduleTag COMPONENT_SET)
+ *
+ * 속성:
+ *   - color: white | gray | red | orange | green | lightblue | blue | purple | pink | volcano
+ *
+ * 구성 (VERTICAL layout):
+ *   - .klds-schedule-tag__title    (스케쥴 제목, 12px)
+ *   - .klds-schedule-tag__avatars  (아바타 그룹, xxsmall/24px stacked)
+ *
+ * ※ Figma에 정의되지 않은 :hover, :active, :focus, transition 등 임의 인터랙션 금지
+ */
+
+/* ============================================================
+   1. Base
+   Figma: layout.mode=VERTICAL, padding=4px 8px,
+          cornerRadius=6px (--klds-radius-xxs)
+   ============================================================ */
+
+.klds-schedule-tag {
+  display: inline-flex;
+  flex-direction: column;
+  padding: var(--klds-padding-xxxs) var(--klds-padding-xxs);
+  /* 4px 8px */
+  border-radius: var(--klds-radius-xxs);
+  /* 6px */
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   2. Inner Content
+   Figma: layout.mode=VERTICAL, gap=4px, h=46px,
+          primaryAxisAlignItems=CENTER (justify-content: center)
+   ============================================================ */
+
+.klds-schedule-tag__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-xxs);
+  /* 4px */
+  min-height: 46px;
+  justify-content: space-between;
+}
+
+/* ============================================================
+   3. Title Text
+   Figma: body/body_extra_small — font 12px, Regular, lineHeight 1.5
+   ============================================================ */
+
+.klds-schedule-tag__title {
+  font-family: var(--klds-typography-fontfamily-text);
+  font-size: var(--klds-typography-fontsize-xs);
+  /* 14px */
+  font-weight: var(--klds-typography-fontweight-regular);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   4. Avatar Group (xxsmall = 24px, stacked)
+   Figma: avata-group size=xxsmall, type=stack
+          avatars overlap with margin-left: -8px
+   ============================================================ */
+
+.klds-schedule-tag__avatars {
+  display: inline-flex;
+  align-items: center;
+  padding-right: var(--klds-padding-xxs);
+  /* 8px — compensates for last avatar's negative margin */
+}
+
+.klds-schedule-tag__avatars .avatar {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-left: -8px;
+  border: 1px solid var(--klds-color-gray-gray03); /* Figma: profile border */
+  box-sizing: border-box; /* border 포함 24px 고정 */
+  position: relative;
+}
+
+.klds-schedule-tag__avatars .avatar:first-child {
+  margin-left: 0;
+}
+
+/* ============================================================
+   5. Color Variants
+   Figma: 각 variant별 fills (01-단계 배경) + text 색상 매핑
+   ============================================================ */
+
+/* --- White ---
+   Figma: fills=#FFFFFF, stroke=#E5E7EB, text=#374151 */
+.klds-schedule-tag--white {
+  background-color: var(--klds-color-white);
+  border-color: var(--klds-color-border-default);
+}
+
+.klds-schedule-tag--white .klds-schedule-tag__title {
+  color: var(--klds-color-text-gray);
+}
+
+/* --- Gray ---
+   Figma: fills=#F3F4F6 (gray02), text=#374151 */
+.klds-schedule-tag--gray {
+  background-color: var(--klds-color-gray-gray02);
+}
+
+.klds-schedule-tag--gray .klds-schedule-tag__title {
+  color: var(--klds-color-text-gray);
+}
+
+/* --- Red ---
+   Figma: fills=#FFF1F0 (red01), text=#F5222D (red06) */
+.klds-schedule-tag--red {
+  background-color: var(--klds-color-red-red01);
+}
+
+.klds-schedule-tag--red .klds-schedule-tag__title {
+  color: var(--klds-color-red-red06);
+}
+
+/* --- Orange ---
+   Figma: fills=#FFFBE6 (orange01), text=#D48806 (orange07) */
+.klds-schedule-tag--orange {
+  background-color: var(--klds-color-orange-orange01);
+}
+
+.klds-schedule-tag--orange .klds-schedule-tag__title {
+  color: var(--klds-color-orange-orange07);
+}
+
+/* --- Green ---
+   Figma: fills=#EFFEE1 (green01), text=#389E0D (green07) */
+.klds-schedule-tag--green {
+  background-color: var(--klds-color-green-green01);
+}
+
+.klds-schedule-tag--green .klds-schedule-tag__title {
+  color: var(--klds-color-green-green07);
+}
+
+/* --- Light Blue ---
+   Figma: fills=#E6F7FF (lightblue01), text=#096DD9 (lightblue07) */
+.klds-schedule-tag--lightblue {
+  background-color: var(--klds-color-lightblue-lightblue01);
+}
+
+.klds-schedule-tag--lightblue .klds-schedule-tag__title {
+  color: var(--klds-color-lightblue-lightblue07);
+}
+
+/* --- Blue ---
+   Figma: fills=#F0F5FF (blue01), text=#2F54EB (blue06) */
+.klds-schedule-tag--blue {
+  background-color: var(--klds-color-blue-blue01);
+}
+
+.klds-schedule-tag--blue .klds-schedule-tag__title {
+  color: var(--klds-color-blue-blue06);
+}
+
+/* --- Purple ---
+   Figma: fills=#F9F0FF (purple01), text=#722ED1 (purple06) */
+.klds-schedule-tag--purple {
+  background-color: var(--klds-color-purple-purple01);
+}
+
+.klds-schedule-tag--purple .klds-schedule-tag__title {
+  color: var(--klds-color-purple-purple06);
+}
+
+/* --- Pink ---
+   Figma: fills=#FFF0F6 (pink01), text=#EB2F96 (pink06) */
+.klds-schedule-tag--pink {
+  background-color: var(--klds-color-pink-pink01);
+}
+
+.klds-schedule-tag--pink .klds-schedule-tag__title {
+  color: var(--klds-color-pink-pink06);
+}
+
+/* --- Volcano ---
+   Figma: fills=#FFF2E8 (volcano01), text=#FA541C (volcano06) */
+.klds-schedule-tag--volcano {
+  background-color: var(--klds-color-volcano-volcano01);
+}
+
+.klds-schedule-tag--volcano .klds-schedule-tag__title {
+  color: var(--klds-color-volcano-volcano06);
+}

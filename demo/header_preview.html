@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header Component Preview - KLDS</title>
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../components/avatar/avatar.css">
+  <link rel="stylesheet" href="../components/switch/mode-switch.css">
+  <link rel="stylesheet" href="../components/button/button-icon.css">
+  <link rel="stylesheet" href="../components/layout/header/header.css">
+  <style>
+    body {
+      font-family: var(--klds-typography-fontfamily-text), sans-serif;
+      background-color: var(--klds-color-gray-gray02);
+      padding: var(--klds-gap-xxxl);
+    }
+
+    .preview-container {
+      max-width: 1920px;
+      margin: 0 auto;
+    }
+
+    .preview-title {
+      font-size: var(--klds-typography-fontsize-xxl);
+      font-weight: var(--klds-typography-fontweight-bold);
+      margin-bottom: var(--klds-gap-xs);
+      color: var(--klds-color-text-black);
+    }
+
+    .preview-description {
+      font-size: var(--klds-typography-fontsize-m);
+      color: var(--klds-color-text-gray);
+      margin-bottom: var(--klds-gap-xxxl);
+      line-height: var(--klds-typography-lineheight-xl);
+    }
+
+    .preview-section {
+      margin-bottom: var(--klds-gap-xxxl);
+    }
+
+    .section-title {
+      font-size: var(--klds-typography-fontsize-xl);
+      font-weight: 600;
+      margin-bottom: var(--klds-gap-m);
+      color: var(--klds-color-text-black);
+    }
+
+    .preview-box {
+      background-color: var(--klds-color-white);
+      border-radius: var(--klds-radius-m);
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .code-section {
+      margin-top: var(--klds-gap-xxl);
+    }
+
+    .code-block {
+      background-color: #1e1e1e;
+      border-radius: var(--klds-radius-s);
+      padding: var(--klds-padding-m);
+      overflow-x: auto;
+    }
+
+    .code-block pre {
+      margin: 0;
+      color: #d4d4d4;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .features-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .features-list li {
+      padding: var(--klds-gap-s) 0;
+      border-bottom: 1px solid var(--klds-color-border-default);
+      display: flex;
+      gap: var(--klds-gap-m);
+    }
+
+    .features-list li:last-child {
+      border-bottom: none;
+    }
+
+    .features-list strong {
+      min-width: 120px;
+      color: var(--klds-color-text-black);
+      font-weight: 600;
+    }
+
+    .features-list span {
+      color: var(--klds-color-text-gray);
+      line-height: 1.6;
+    }
+
+    .badge-new {
+      display: inline-block;
+      background: #52C41A;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-container">
+    
+    <!-- Title Section -->
+    <h1 class="preview-title">Header Component <span class="badge-new">button-icon 적용</span></h1>
+    <p class="preview-description">
+      KLDS 디자인 시스템의 Header 컴포넌트입니다.<br>
+      Figma node 1:17439 (company=posco variant)를 기반으로 구현되었으며, 
+      button-icon, avatar, mode-switch 컴포넌트를 재사용합니다.
+    </p>
+    
+    <!-- Preview Section -->
+    <div class="preview-section">
+      <h2 class="section-title">기본 헤더 (company=posco)</h2>
+      <div class="preview-box">
+        <header class="header">
+          
+          <!-- Left Section -->
+          <div class="header__left">
+            
+            <!-- Menu Button → btn-menu 래퍼(48×48) + button-icon 컴포넌트(48×48) -->
+            <div class="header__btn-menu">
+              <button class="button-icon button-icon--medium button-icon--default" aria-label="메뉴 열기" data-action="toggle-lnb">
+                <span class="button-icon__icon" style="-webkit-mask-image:url(../assets/icons/ic-menu-hamburger.svg);mask-image:url(../assets/icons/ic-menu-hamburger.svg)"></span>
+              </button>
+            </div>
+            
+            <!-- Favorite Users -->
+            <div class="header__favorite-users">
+              <div class="avatar-group">
+                <!-- Avatar 1 -->
+                <div class="avatar avatar--small">
+                  <img src="../assets/avatars/male01.jpg" alt="User 1" class="avatar__image">
+                </div>
+                <!-- Avatar 2 -->
+                <div class="avatar avatar--small">
+                  <img src="../assets/avatars/female01.jpg" alt="User 2" class="avatar__image">
+                </div>
+                <!-- Avatar 3 -->
+                <div class="avatar avatar--small">
+                  <img src="../assets/avatars/male02.jpg" alt="User 3" class="avatar__image">
+                </div>
+                <!-- Avatar 4 -->
+                <div class="avatar avatar--small">
+                  <img src="../assets/avatars/female02.jpg" alt="User 4" class="avatar__image">
+                </div>
+              </div>
+              <!-- Add Button -->
+              <button class="avatar-group__add" aria-label="사용자 추가">
+                <img src="../assets/icons/ic-plus.svg" alt="" class="avatar-group__add-icon">
+              </button>
+            </div>
+            
+          </div>
+          
+          <!-- Center Logo -->
+          <div class="header__logo">
+            <img src="../assets/images/logo-nextep.svg" alt="Next EP" height="26">
+          </div>
+          
+          <!-- Right Section -->
+          <div class="header__right">
+            
+            <!-- Mode Switch (기존 mode-switch 컴포넌트 재사용) -->
+            <div class="mode-switch" role="tablist" aria-label="모드 전환">
+              <button class="mode-switch__btn" role="tab" aria-selected="false" data-mode="classic">
+                <span class="mode-switch__icon">
+                  <img src="../assets/icons/ic-menu-grid.svg" alt="" width="24" height="24">
+                </span>
+                <span class="mode-switch__label">클래식</span>
+              </button>
+              <button class="mode-switch__btn is-active" role="tab" aria-selected="true" data-mode="ai">
+                <span class="mode-switch__icon">
+                  <img src="../assets/icons/ic-star02.svg" alt="" width="24" height="24">
+                </span>
+                <span class="mode-switch__label">AI</span>
+              </button>
+            </div>
+            
+            <!-- Right Buttons → button-icon 컴포넌트 사용 -->
+            <div class="header__right-btns">
+              <!-- Search Button -->
+              <button class="button-icon button-icon--medium button-icon--default" aria-label="검색">
+                <span class="button-icon__icon" style="-webkit-mask-image:url(../assets/icons/ic-search.svg);mask-image:url(../assets/icons/ic-search.svg)"></span>
+              </button>
+              
+              <!-- Bolt Button -->
+              <button class="button-icon button-icon--medium button-icon--default" aria-label="빠른 실행">
+                <span class="button-icon__icon" style="-webkit-mask-image:url(../assets/icons/ic-bolt.svg);mask-image:url(../assets/icons/ic-bolt.svg)"></span>
+              </button>
+              
+              <!-- Bell Button -->
+              <button class="button-icon button-icon--medium button-icon--default" aria-label="알림">
+                <span class="button-icon__icon" style="-webkit-mask-image:url(../assets/icons/ic-bell.svg);mask-image:url(../assets/icons/ic-bell.svg)"></span>
+              </button>
+              
+              <!-- Settings Button -->
+              <button class="button-icon button-icon--medium button-icon--default" aria-label="설정">
+                <span class="button-icon__icon" style="-webkit-mask-image:url(../assets/icons/ic-setting.svg);mask-image:url(../assets/icons/ic-setting.svg)"></span>
+              </button>
+              
+              <!-- User Profile Button -->
+              <button class="header__user-btn" aria-label="사용자 메뉴">
+                <div class="header__user-avatar">
+                  <img src="../assets/icons/ic-user.svg" alt="" width="24" height="24">
+                </div>
+                <img src="../assets/icons/ic-caret-down02.svg" alt="" class="header__user-dropdown" width="20" height="20">
+              </button>
+            </div>
+            
+          </div>
+          
+        </header>
+      </div>
+    </div>
+    
+    <!-- Features Section -->
+    <div class="preview-section">
+      <h2 class="section-title">주요 구성 요소</h2>
+      <ul class="features-list">
+        <li>
+          <strong>Left Section</strong>
+          <span><b>button-icon 컴포넌트</b> (48×48, header__btn-menu 래퍼) + 즐겨찾기 사용자 그룹 (avatar 컴포넌트)</span>
+        </li>
+        <li>
+          <strong>Center Logo</strong>
+          <span>Next EP 로고 (중앙 정렬, absolute 위치)</span>
+        </li>
+        <li>
+          <strong>Mode Switch</strong>
+          <span><b>mode-switch 컴포넌트</b> — 클래식/AI 모드 전환</span>
+        </li>
+        <li>
+          <strong>Right Buttons</strong>
+          <span><b>button-icon 컴포넌트 × 4</b> (검색, 빠른실행, 알림, 설정) + 사용자 프로필</span>
+        </li>
+        <li>
+          <strong>아이콘 색상</strong>
+          <span><b>mask-image 방식</b> — background-color로 정확한 색상 제어, hover 시 #F3F4F6 배경</span>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Usage Section -->
+    <div class="preview-section code-section">
+      <h2 class="section-title">사용 방법</h2>
+      <div class="code-block">
+        <pre>&lt;!-- CSS 임포트 --&gt;
+&lt;link rel="stylesheet" href="styles/tokens.css"&gt;
+&lt;link rel="stylesheet" href="components/avatar/avatar.css"&gt;
+&lt;link rel="stylesheet" href="components/switch/mode-switch.css"&gt;
+&lt;link rel="stylesheet" href="components/button/button-icon.css"&gt;
+&lt;link rel="stylesheet" href="components/layout/header/header.css"&gt;
+
+&lt;!-- HTML 마크업 --&gt;
+&lt;header class="header"&gt;
+  &lt;div class="header__left"&gt;
+    &lt;!-- Menu Button → btn-menu 래퍼(48×48) + button-icon (48×48) --&gt;
+    &lt;div class="header__btn-menu"&gt;
+      &lt;button class="button-icon button-icon--medium button-icon--default" aria-label="메뉴 열기"&gt;
+        &lt;span class="button-icon__icon" 
+              style="-webkit-mask-image:url(assets/icons/ic-menu-hamburger.svg);
+                     mask-image:url(assets/icons/ic-menu-hamburger.svg)"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="header__favorite-users"&gt;
+      &lt;div class="avatar-group"&gt;
+        &lt;div class="avatar avatar--small"&gt;...&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;button class="avatar-group__add"&gt;...&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="header__logo"&gt;
+    &lt;img src="assets/images/logo-nextep.svg" alt="Next EP" height="26"&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="header__right"&gt;
+    &lt;div class="mode-switch"&gt;...&lt;/div&gt;
+    
+    &lt;div class="header__right-btns"&gt;
+      &lt;!-- 검색 버튼 → button-icon 컴포넌트 --&gt;
+      &lt;button class="button-icon button-icon--medium button-icon--default" aria-label="검색"&gt;
+        &lt;span class="button-icon__icon" 
+              style="-webkit-mask-image:url(assets/icons/ic-search.svg);
+                     mask-image:url(assets/icons/ic-search.svg)"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;!-- ... 나머지 버튼들 --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</pre>
+      </div>
+    </div>
+    
+    <!-- Token Mapping Section -->
+    <div class="preview-section">
+      <h2 class="section-title">디자인 토큰 매핑</h2>
+      <ul class="features-list">
+        <li>
+          <strong>색상</strong>
+          <span>#FFFFFF → --klds-color-white, #005386 → --klds-color-button-fill-surface, #D6E4FF → --klds-color-blue-blue02, #F3F4F6 → --klds-color-background-hover</span>
+        </li>
+        <li>
+          <strong>간격</strong>
+          <span>4px → --klds-gap-xxs, 8px → --klds-gap-xs, 12px → --klds-padding-s, 16px → --klds-gap-m, 20px → --klds-padding-l</span>
+        </li>
+        <li>
+          <strong>높이</strong>
+          <span>20px → --klds-size-size3, 24px → --klds-size-size4, 40px → --klds-size-size6, 48px → --klds-size-size7, 56px → --klds-size-size8</span>
+        </li>
+        <li>
+          <strong>반경</strong>
+          <span>20px → --klds-radius-l, 9999px → --klds-radius-circle</span>
+        </li>
+        <li>
+          <strong>타이포그래피</strong>
+          <span>Pretendard 16px/600 → --klds-typography-fontsize-m / font-weight: 600</span>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Assets Used Section -->
+    <div class="preview-section">
+      <h2 class="section-title">재사용한 Assets & Components</h2>
+      <ul class="features-list">
+        <li>
+          <strong>button-icon.css</strong>
+          <span><b>NEW!</b> .button-icon--medium.button-icon--default (40×40, 내부 아이콘 24×24) — mask-image 방식, hover 효과 포함</span>
+        </li>
+        <li>
+          <strong>avatar.css</strong>
+          <span>.avatar, .avatar-group, .avatar-group__add 클래스 재사용</span>
+        </li>
+        <li>
+          <strong>mode-switch.css</strong>
+          <span>.mode-switch, .mode-switch__btn 클래스 재사용</span>
+        </li>
+        <li>
+          <strong>아이콘</strong>
+          <span>ic-menu-hamburger, ic-search, ic-bolt, ic-bell, ic-setting, ic-menu-grid, ic-star02, ic-user, ic-caret-down02, ic-plus</span>
+        </li>
+        <li>
+          <strong>토큰</strong>
+          <span>tokens.css의 모든 디자인 토큰 활용 (하드코딩 없음)</span>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Improvements Section -->
+    <div class="preview-section">
+      <h2 class="section-title">button-icon 적용 개선점</h2>
+      <ul class="features-list">
+        <li>
+          <strong>컴포넌트 재사용</strong>
+          <span>button-icon.css 공통 컴포넌트 활용 → 코드 중복 제거</span>
+        </li>
+        <li>
+          <strong>정확한 크기</strong>
+          <span>메뉴 버튼: 48×48px (--klds-size-size7), 기능 버튼: 40×40px (--klds-size-size6), 아이콘: 24×24px (--klds-size-size4)</span>
+        </li>
+        <li>
+          <strong>mask-image 방식</strong>
+          <span>아이콘 색상을 background-color로 제어 → 피그마와 정확히 일치</span>
+        </li>
+        <li>
+          <strong>hover 효과</strong>
+          <span>0.15s transition, 배경색 #F3F4F6 (--klds-color-background-hover)</span>
+        </li>
+        <li>
+          <strong>일관성</strong>
+          <span>모든 아이콘 버튼이 동일한 스타일 시스템 사용</span>
+        </li>
+      </ul>
+    </div>
+    
+  </div>
+<!-- Mode Switch JS (기존 컴포넌트 재사용) -->
+<script src="../components/switch/mode-switch.js"></script>
+</body>
+</html>

@@ -1,0 +1,448 @@
+/**
+ * KLDS Tag Component
+ * 
+ * Figma 노드: 67:5055 (tag FRAME)
+ * 
+ * 속성 조합:
+ *   - size: small | medium | large
+ *   - state: default | active | disabled
+ *   - color: white | gray | red | orange | green | mint | lightblue | blue | purple | pink | volcano
+ *   - shape: round | pill
+ * 
+ * 구성요소 (HORIZONTAL layout):
+ *   - [optional] ic-check (leading icon)
+ *   - Tag name (text)
+ *   - [optional] ic-close-small (trailing icon / close button)
+ *
+ * ※ Figma에 정의되지 않은 :hover, :active, :focus, transition 등 임의 인터랙션 금지
+ */
+
+/* ============================================================
+   1. Base Tag
+   Figma: layout.mode=HORIZONTAL, layout.align=CENTER
+   gap: 4px = --klds-gap-xxs
+   padding: 0 8px = --klds-gap-xs (horizontal only)
+   font: Pretendard Regular
+   ============================================================ */
+
+.klds-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--klds-gap-xxs);
+  /* 4px */
+  padding: 0 var(--klds-padding-xxs);
+  /* 0 8px */
+  font-family: var(--klds-typography-fontfamily-text);
+  font-weight: var(--klds-typography-fontweight-regular);
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ============================================================
+   2. Size Variants
+   ============================================================ */
+
+/* --- Small (20px height) ---
+   Figma: h=20, font=12px, lineHeight=1.5, icon=16×16, cornerRadius=4 */
+.klds-tag--small {
+  height: var(--klds-size-size3);
+  /* 20px */
+  font-size: var(--klds-typography-fontsize-xxs);
+  /* 12px */
+  line-height: 1.5;
+  border-radius: var(--klds-radius-xxxs);
+  /* 4px */
+}
+
+.klds-tag--small .klds-tag__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.klds-tag--small .klds-tag__close {
+  width: 16px;
+  height: 16px;
+}
+
+/* --- Medium (24px height) ---
+   Figma: h=24, font=14px, lineHeight=1.5, icon=20×20, cornerRadius=6 */
+.klds-tag--medium {
+  height: var(--klds-size-size4);
+  /* 24px */
+  font-size: var(--klds-typography-fontsize-xs);
+  /* 14px */
+  line-height: 1.5;
+  border-radius: var(--klds-radius-xxs);
+  /* 6px */
+}
+
+.klds-tag--medium .klds-tag__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.klds-tag--medium .klds-tag__close {
+  width: 20px;
+  height: 20px;
+}
+
+/* --- Large (32px height) ---
+   Figma: h=32, font=16px, lineHeight=1.5, icon=20×20, cornerRadius=8 */
+.klds-tag--large {
+  height: var(--klds-size-size5);
+  /* 32px */
+  font-size: var(--klds-typography-fontsize-s);
+  /* 16px */
+  line-height: 1.5;
+  border-radius: var(--klds-radius-xs);
+  /* 8px */
+}
+
+.klds-tag--large .klds-tag__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.klds-tag--large .klds-tag__close {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================================
+   3. Shape Variants
+   ============================================================ */
+
+/* --- Pill ---
+   Figma: cornerRadius=9999 → --klds-radius-circle
+   pill shape overrides the default round border-radius */
+.klds-tag--pill.klds-tag--small {
+  border-radius: var(--klds-radius-circle);
+  /* 9999px */
+}
+
+.klds-tag--pill.klds-tag--medium {
+  border-radius: var(--klds-radius-circle);
+}
+
+.klds-tag--pill.klds-tag--large {
+  border-radius: var(--klds-radius-circle);
+}
+
+/* ============================================================
+   4. Color Variants — Default State
+   ============================================================ */
+
+/* --- White ---
+   Figma: fills=#FFFFFF, stroke=#E5E7EB, text=#374151 */
+.klds-tag--white {
+  background-color: var(--klds-color-white);
+  border-color: var(--klds-color-gray-gray03);
+  color: var(--klds-color-text-gray);
+}
+
+.klds-tag--white .klds-tag__icon {
+  color: var(--klds-color-text-gray);
+}
+
+/* --- Gray ---
+   Figma: fills=#E5E7EB, text=#374151 */
+.klds-tag--gray {
+  background-color: var(--klds-color-gray-gray03);
+  color: var(--klds-color-text-gray);
+}
+
+.klds-tag--gray .klds-tag__icon {
+  color: var(--klds-color-text-gray);
+}
+
+/* --- Red ---
+   Figma: fills=#FFCCC7 (red02), text=#F5222D (red06) */
+.klds-tag--red {
+  background-color: var(--klds-color-red-red02);
+  color: var(--klds-color-red-red06);
+}
+
+.klds-tag--red .klds-tag__icon {
+  color: var(--klds-color-red-red06);
+}
+
+/* --- Orange ---
+   Figma: fills=#FFF1B8 (orange02), text=#D48806 (orange07) */
+.klds-tag--orange {
+  background-color: var(--klds-color-orange-orange02);
+  color: var(--klds-color-orange-orange07);
+}
+
+.klds-tag--orange .klds-tag__icon {
+  color: var(--klds-color-orange-orange07);
+}
+
+/* --- Green ---
+   Figma: fills=#D9F7BE (green02), text=#389E0D (green07) */
+.klds-tag--green {
+  background-color: var(--klds-color-green-green02);
+  color: var(--klds-color-green-green07);
+}
+
+.klds-tag--green .klds-tag__icon {
+  color: var(--klds-color-green-green07);
+}
+
+/* --- Mint ---
+   Figma: fills=#B5F5EC (mint02), text=#08979C (mint07) */
+.klds-tag--mint {
+  background-color: var(--klds-color-mint-mint02);
+  color: var(--klds-color-mint-mint07);
+}
+
+.klds-tag--mint .klds-tag__icon {
+  color: var(--klds-color-mint-mint07);
+}
+
+/* --- Light Blue ---
+   Figma: fills=#BAE7FF (lightblue02), text=#096DD9 (lightblue07) */
+.klds-tag--lightblue {
+  background-color: var(--klds-color-lightblue-lightblue02);
+  color: var(--klds-color-lightblue-lightblue07);
+}
+
+.klds-tag--lightblue .klds-tag__icon {
+  color: var(--klds-color-lightblue-lightblue07);
+}
+
+/* --- Blue ---
+   Figma: fills=#D6E4FF (blue02), text=#2F54EB (blue06) */
+.klds-tag--blue {
+  background-color: var(--klds-color-blue-blue02);
+  color: var(--klds-color-blue-blue06);
+}
+
+.klds-tag--blue .klds-tag__icon {
+  color: var(--klds-color-blue-blue06);
+}
+
+/* --- Purple ---
+   Figma: fills=#EFDBFF (purple02), text=#722ED1 (purple06) */
+.klds-tag--purple {
+  background-color: var(--klds-color-purple-purple02);
+  color: var(--klds-color-purple-purple06);
+}
+
+.klds-tag--purple .klds-tag__icon {
+  color: var(--klds-color-purple-purple06);
+}
+
+/* --- Pink ---
+   Figma: fills=#FFD6E7 (pink02), text=#EB2F96 (pink06) */
+.klds-tag--pink {
+  background-color: var(--klds-color-pink-pink02);
+  color: var(--klds-color-pink-pink06);
+}
+
+.klds-tag--pink .klds-tag__icon {
+  color: var(--klds-color-pink-pink06);
+}
+
+/* --- Volcano ---
+   Figma: fills=#FFD8BF (volcano02), text=#FA541C (volcano06) */
+.klds-tag--volcano {
+  background-color: var(--klds-color-volcano-volcano02);
+  color: var(--klds-color-volcano-volcano06);
+}
+
+.klds-tag--volcano .klds-tag__icon {
+  color: var(--klds-color-volcano-volcano06);
+}
+
+/* ============================================================
+   5. Active State
+   ============================================================ */
+
+/* --- White Active ---
+   Figma: fills=#4B5563 (gray07), text=#FFFFFF */
+.klds-tag--white.klds-tag--active {
+  background-color: var(--klds-color-gray-gray07);
+  border-color: var(--klds-color-gray-gray07);
+  color: var(--klds-color-text-white);
+}
+
+.klds-tag--white.klds-tag--active .klds-tag__icon {
+  color: var(--klds-color-icon-white);
+}
+
+/* --- Gray Active ---
+   Figma: fills=#4B5563 (gray07), text=#FFFFFF */
+.klds-tag--gray.klds-tag--active {
+  background-color: var(--klds-color-gray-gray07);
+  color: var(--klds-color-text-white);
+}
+
+.klds-tag--gray.klds-tag--active .klds-tag__icon {
+  color: var(--klds-color-icon-white);
+}
+
+/* --- Red Active ---
+   Figma: fills=#FF4D4F (red05), text=#FFFFFF */
+.klds-tag--red.klds-tag--active {
+  background-color: var(--klds-color-red-red05);
+  color: var(--klds-color-text-white);
+}
+
+.klds-tag--red.klds-tag--active .klds-tag__icon {
+  color: var(--klds-color-icon-white);
+}
+
+/* --- Orange Active ---
+   Figma: fills=#FAAD14 (orange06), text=#FFFFFF */
+.klds-tag--orange.klds-tag--active {
+  background-color: var(--klds-color-orange-orange06);
+  color: var(--klds-color-text-white);
+}
+
+.klds-tag--orange.klds-tag--active .klds-tag__icon {
+  color: var(--klds-color-icon-white);
+}
+
+/* --- Green Active ---
+   Figma: fills=#73D13D (green05), text=#FFFFFF */
+.klds-tag--green.klds-tag--active {
+  background-color: var(--klds-color-green-green05);
+  color: var(--klds-color-text-white);
+}
+
+.klds-tag--green.klds-tag--active .klds-tag__icon {
+  color: var(--klds-color-icon-white);
+}
+
+/* --- Mint Active ---
+   Figma: fills=#13C2C2 (mint06), text=#FFFFFF */
+.klds-tag--mint.klds-tag--active {
+  background-color: var(--klds-color-mint-mint06);
+  color: var(--klds-color-text-white);
+}
+
+.klds-tag--mint.klds-tag--active .klds-tag__icon {
+  color: var(--klds-color-icon-white);
+}
+
+/* --- Light Blue Active ---
+   Figma: fills=#40A9FF (lightblue05), text=#FFFFFF */
+.klds-tag--lightblue.klds-tag--active {
+  background-color: var(--klds-color-lightblue-lightblue05);
+  color: var(--klds-color-text-white);
+}
+
+.klds-tag--lightblue.klds-tag--active .klds-tag__icon {
+  color: var(--klds-color-icon-white);
+}
+
+/* --- Blue Active ---
+   Figma: fills=#2F54EB (blue06), text=#FFFFFF */
+.klds-tag--blue.klds-tag--active {
+  background-color: var(--klds-color-blue-blue06);
+  color: var(--klds-color-text-white);
+}
+
+.klds-tag--blue.klds-tag--active .klds-tag__icon {
+  color: var(--klds-color-icon-white);
+}
+
+/* --- Purple Active ---
+   Figma: fills=#9254DE (purple05), text=#FFFFFF */
+.klds-tag--purple.klds-tag--active {
+  background-color: var(--klds-color-purple-purple05);
+  color: var(--klds-color-text-white);
+}
+
+.klds-tag--purple.klds-tag--active .klds-tag__icon {
+  color: var(--klds-color-icon-white);
+}
+
+/* --- Pink Active ---
+   Figma: fills=#F759AB (pink05), text=#FFFFFF */
+.klds-tag--pink.klds-tag--active {
+  background-color: var(--klds-color-pink-pink05);
+  color: var(--klds-color-text-white);
+}
+
+.klds-tag--pink.klds-tag--active .klds-tag__icon {
+  color: var(--klds-color-icon-white);
+}
+
+/* --- Volcano Active ---
+   Figma: fills=#FF7A45 (volcano05), text=#FFFFFF */
+.klds-tag--volcano.klds-tag--active {
+  background-color: var(--klds-color-volcano-volcano05);
+  color: var(--klds-color-text-white);
+}
+
+.klds-tag--volcano.klds-tag--active .klds-tag__icon {
+  color: var(--klds-color-icon-white);
+}
+
+/* ============================================================
+   6. Disabled State
+   Figma: fills=#F3F4F6 (gray02), text=#9CA3AF (모든 color 공통)
+   ============================================================ */
+
+.klds-tag--disabled,
+.klds-tag[disabled] {
+  background-color: var(--klds-color-gray-gray02);
+  border-color: transparent;
+  color: var(--klds-color-text-disabled);
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.klds-tag--disabled .klds-tag__icon,
+.klds-tag[disabled] .klds-tag__icon {
+  color: var(--klds-color-icon-disabled);
+}
+
+/* ============================================================
+   7. Inner Elements
+   ============================================================ */
+
+/* --- Icon (leading) --- */
+.klds-tag__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.klds-tag__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+/* --- Text Label --- */
+.klds-tag__label {
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* --- Close Button (trailing) --- */
+.klds-tag__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.klds-tag__close svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}

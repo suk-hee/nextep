@@ -1,0 +1,343 @@
+/**
+ * Apps Page Styles
+ * Figma: 1194:22908 (20260409 - app)
+ * work-area: 1194:22913 (1240×976, VERTICAL, gap:32, p:32, r:24, fill:#ffffff)
+ */
+
+/* ============================================================
+   work-area override for apps
+   ============================================================ */
+.layout-content__work-area--apps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-xxxl);
+  /* 32px — Figma gap:32 */
+  padding: var(--klds-padding-xxl);
+  /* 32px — Figma padding:32 */
+  background: var(--klds-color-white);
+  /* #FFFFFF — Figma fills */
+  border-radius: var(--klds-radius-xl);
+  /* 24px — Figma cornerRadius:24 */
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  font-family: var(--klds-typography-fontfamily-text), sans-serif;
+}
+
+
+/* ============================================================
+   추천 APP 영역 (1194:22914)
+   Figma: VERTICAL, gap:16
+   ============================================================ */
+.apps-recommend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-m);
+  /* 16px — Figma gap:16 */
+}
+
+/* 헤더 (1194:22915) — HORIZONTAL, gap:16 */
+.apps-recommend__header {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-xxs);
+  /* 4px — Figma gap:4 */
+}
+
+.apps-recommend__header-icon {
+  display: inline-block;
+  width: var(--klds-size-size4);
+  /* 24px */
+  height: var(--klds-size-size4);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-image: url(../assets/icons/ic-star03-fill.svg);
+  mask-image: url(../assets/icons/ic-star03-fill.svg);
+  background-color: var(--klds-color-primary);
+  /* #005386 */
+}
+
+.apps-recommend__title {
+  font-size: var(--klds-typography-fontsize-l);
+  /* 20px — Figma fontSize:20 */
+  font-weight: var(--klds-typography-fontweight-semibold);
+  /* 600 */
+  line-height: var(--klds-typography-lineheight-xxl);
+  /* 26px */
+  color: var(--klds-color-text-black);
+  margin: 0;
+}
+
+/* 추천 카드 그리드 (1194:22920) — HORIZONTAL, gap:16 */
+.apps-recommend__grid {
+  display: flex;
+  gap: var(--klds-gap-m);
+  /* 16px */
+}
+
+/* 추천 카드 (285×102, p:16, r:16, border) */
+.apps-recommend__card {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-s);
+  /* 12px — Figma gap:12 */
+  padding: var(--klds-padding-s);
+  /* 16px — Figma padding:16 */
+  border-radius: var(--klds-radius-l);
+  /* 16px — Figma cornerRadius:16 */
+  border: 1px solid var(--klds-color-border-default);
+  /* #E5E7EB */
+  background: var(--klds-color-white);
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+/* 아이콘 래퍼 (46×46, circle, 배경색 가변) */
+.apps-card__icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--klds-radius-circle);
+  /* 9999px */
+  flex-shrink: 0;
+}
+
+.apps-card__icon-wrap--pink {
+  background: var(--klds-color-pink-pink01);
+  /* #FFF0F6 */
+}
+
+.apps-card__icon-wrap--blue {
+  background: var(--klds-color-blue-blue01);
+  /* #F0F5FF */
+}
+
+.apps-card__icon-wrap--green {
+  background: var(--klds-color-green-green01);
+  /* #EFFEE1 */
+}
+
+.apps-card__icon-wrap--purple {
+  background: var(--klds-color-purple-purple01);
+  /* #F9F0FF */
+}
+
+/* 아이콘 (24×24, mask) — 기본 색상 */
+.apps-card__icon {
+  display: inline-block;
+  width: var(--klds-size-size4);
+  /* 24px */
+  height: var(--klds-size-size4);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  background-color: var(--klds-color-icon-gray);
+  /* #374151 — 기본 폴백 */
+}
+
+/* 아이콘 색상 — 배경색에 어울리는 컬러 (Figma 수치) */
+.apps-card__icon-wrap--pink .apps-card__icon {
+  background-color: var(--klds-color-pink-pink07);
+  /* #C41D7F */
+}
+
+.apps-card__icon-wrap--blue .apps-card__icon {
+  background-color: var(--klds-color-blue-blue07);
+  /* #1D39C4 */
+}
+
+.apps-card__icon-wrap--green .apps-card__icon {
+  background-color: var(--klds-color-green-green07);
+  /* #389E0D */
+}
+
+.apps-card__icon-wrap--purple .apps-card__icon {
+  background-color: var(--klds-color-purple-purple07);
+  /* #531DAB */
+}
+
+/* 텍스트 영역 */
+.apps-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-xxs);
+  /* 4px */
+  min-width: 0;
+}
+
+.apps-card__name {
+  font-size: var(--klds-typography-fontsize-m);
+  /* 16px — Figma fontSize:16 */
+  font-weight: var(--klds-typography-fontweight-semibold);
+  /* 600 */
+  line-height: var(--klds-typography-lineheight-xl);
+  /* 24px */
+  color: var(--klds-color-text-black);
+  margin: 0;
+}
+
+.apps-card__desc {
+  font-size: var(--klds-typography-fontsize-s);
+  /* 14px — Figma fontSize:14 */
+  font-weight: var(--klds-typography-fontweight-regular);
+  /* 400 */
+  line-height: var(--klds-typography-lineheight-l);
+  /* 20px */
+  color: var(--klds-color-text-gray);
+  /* #374151 */
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   APP 목록 영역 (1194:22949)
+   Figma: VERTICAL, gap:16
+   ============================================================ */
+.apps-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--klds-gap-m);
+  /* 16px — Figma gap:16 */
+  flex: 1;
+  min-height: 0;
+}
+
+/* 탭 + 검색바 헤더 (1194:22950) — HORIZONTAL, gap:16, SPACE_BETWEEN */
+.apps-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--klds-gap-m);
+  /* 16px — Figma gap:16 */
+}
+
+/* 검색 필드 (460×42, r:8, border, p:0 12) */
+.apps-list__search {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-xs);
+  /* 8px — Figma gap:8 */
+  width: 460px;
+  height: 42px;
+  padding: 0 var(--klds-padding-xs);
+  /* 0 12px — Figma pL:12, pR:12 */
+  border-radius: var(--klds-radius-s);
+  /* 8px — Figma cornerRadius:8 */
+  border: 1px solid var(--klds-color-border-default);
+  /* #E5E7EB */
+  background: var(--klds-color-white);
+}
+
+.apps-list__search-icon {
+  display: inline-block;
+  width: var(--klds-size-size4);
+  /* 24px */
+  height: var(--klds-size-size4);
+  flex-shrink: 0;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-image: url(../assets/icons/ic-search.svg);
+  mask-image: url(../assets/icons/ic-search.svg);
+  background-color: var(--klds-color-icon-lightgray);
+  /* #9CA3AF */
+}
+
+.apps-list__search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Pretendard', sans-serif;
+  font-size: var(--klds-typography-fontsize-s);
+  /* 14px */
+  color: var(--klds-color-text-black);
+  line-height: var(--klds-typography-lineheight-l);
+  /* 20px */
+}
+
+.apps-list__search-input::placeholder {
+  color: var(--klds-color-text-placeholder);
+  /* #9CA3AF */
+}
+
+
+/* ============================================================
+   APP 카드 그리드 (1194:22964)
+   Figma: HORIZONTAL wrap, gap:16, 3열
+   카드: 381×98, p:16, r:16, border
+   ============================================================ */
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--klds-gap-m);
+  /* 16px — Figma gap:16 */
+}
+
+@media (min-width: 2560px) {
+  .apps-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================================
+   Empty State (1239:22232)
+   Figma: VERTICAL, center, image:200×200
+   ============================================================ */
+.apps-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--klds-gap-m); /* 16px */
+  flex: 1;
+  padding: var(--klds-padding-xxxl) 0;
+}
+
+.apps-empty__img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.apps-empty__text {
+  font-size: var(--klds-typography-fontsize-l); /* 20px */
+  font-weight: var(--klds-typography-fontweight-semibold); /* 600 */
+  line-height: 1.3;
+  color: var(--klds-color-text-black);
+  text-align: center;
+  margin: 0;
+}
+
+
+.apps-grid__card {
+  display: flex;
+  align-items: center;
+  gap: var(--klds-gap-s);
+  /* 12px — Figma gap:12 */
+  padding: var(--klds-padding-s);
+  /* 16px — Figma padding:16 */
+  border-radius: var(--klds-radius-l);
+  /* 16px — Figma cornerRadius:16 */
+  border: 1px solid var(--klds-color-border-default);
+  /* #E5E7EB */
+  background: var(--klds-color-white);
+  cursor: pointer;
+}

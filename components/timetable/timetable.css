@@ -1,0 +1,452 @@
+/**
+ * Timetable Component
+ * 
+ * Figma: timetable (136:6561)
+ * 
+ * Variants:
+ *   type=me     (136:6559) — 내 업무 타임테이블 (1 row, no checkbox)
+ *   type=another (136:6560) — 다른 사람 업무 타임테이블 (multiple rows, checkbox)
+ *
+ * 구조:
+ *   .timetable                         — 최상위 컨테이너
+ *   .timetable__thead                  — 헤더 행 (이름 + 시간 08:00~19:00)
+ *   .timetable__row                    — 데이터 행
+ *   .timetable__cell-checkbox          — 체크박스 셀 (type=another 전용)
+ *   .timetable__cell-user              — 사용자 정보 셀 (아바타 + 이름/직급)
+ *   .timetable__cell-time              — 시간 그리드 영역 (상대 배치 기준)
+ *   .timetable__grid                   — 30분 단위 그리드 셀들
+ *   .timetable__event                  — 이벤트 태그 (absolute)
+ */
+
+
+/* ============================================
+   Timetable Container
+   Figma: 136:6561
+   bg: #FFFFFF, border: 1px solid #E5E7EB, radius: 16px
+   ============================================ */
+
+.timetable {
+    display: flex;
+    /* Figma layout.mode: VERTICAL */
+    flex-direction: column;
+    /* Figma layout.mode: VERTICAL */
+    align-items: flex-start;
+    /* Figma layout.align */
+    justify-content: center;
+    /* Figma layout.justify */
+    width: 100%;
+    /* fill container */
+    background: var(--klds-color-white);
+    /* #FFFFFF — Figma fills */
+    border: 1px solid var(--klds-color-border-default);
+    /* #E5E7EB — Figma strokes */
+    border-radius: var(--klds-radius-m);
+    /* 16px — Figma cornerRadius: 16 */
+    overflow: clip;
+    /* Figma overflow: clip (type=another) */
+}
+
+
+/* ============================================
+   Header Row (thead)
+   Figma: 136:5930 / 136:6035
+   h: 40px, border-bottom: 1px solid #E5E7EB
+   ============================================ */
+
+.timetable__thead {
+    display: flex;
+    /* Figma layout.mode: HORIZONTAL */
+    align-items: center;
+    /* Figma layout.align: CENTER */
+    width: 100%;
+    height: 40px;
+    /* Figma bounds.h: 40 */
+    border-bottom: 1px solid var(--klds-color-border-default);
+    /* Figma strokes */
+    flex-shrink: 0;
+}
+
+.timetable__th {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--klds-padding-xxxs) var(--klds-padding-s);
+    /* 4px 12px — Figma padding */
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-xs);
+    /* 14px — Figma font.size: 14 */
+    font-weight: 600;
+    /* Figma font.weight: SemiBold */
+    line-height: var(--klds-typography-lineheight-s);
+    /* 1.2 — Figma lineHeight: 1.2 */
+    letter-spacing: -0.28px;
+    /* Figma letterSpacing: -0.28 */
+    color: var(--klds-color-text-black);
+    /* #121212 — Figma fills */
+    white-space: nowrap;
+}
+
+/* 이름 열 — 고정 150px, 우측 구분선 */
+.timetable__th--name {
+    width: 150px;
+    /* Figma bounds.w: 150 */
+    flex-shrink: 0;
+    border-right: 1px solid var(--klds-color-border-default);
+    /* Figma strokes */
+    height: 100%;
+}
+
+/* 체크박스 열 — 고정 44px (type=another 전용) */
+.timetable__th--checkbox {
+    width: 44px;
+    /* Figma bounds.w: 44 */
+    flex-shrink: 0;
+    border-right: 1px solid var(--klds-color-border-default);
+    /* Figma strokes */
+    height: 100%;
+}
+
+/* 시간 열 — flex-grow */
+.timetable__th--time {
+    flex: 1 0 0;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+}
+
+
+/* ============================================
+   Data Row
+   Figma: 136:5957 (me), 136:6064 (another - first row)
+   ============================================ */
+
+.timetable__row {
+    display: flex;
+    /* Figma layout.mode: HORIZONTAL */
+    align-items: flex-start;
+    /* Figma layout.align */
+    width: 100%;
+    flex-shrink: 0;
+}
+
+/* another 타입 행에 하단 구분선 */
+.timetable__row--border {
+    border-bottom: 1px solid var(--klds-color-border-default);
+    /* Figma strokes */
+}
+
+/* 체크됨(선택됨) 행 배경 */
+.timetable__row--checked {
+    background-color: var(--klds-color-background-checked);
+    /* #F0F5FF — Figma fills */
+}
+
+
+/* ============================================
+   Checkbox Cell (type=another 전용)
+   Figma: 136:6065 — w: 44px, border-right
+   ============================================ */
+
+.timetable__cell-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    /* Figma bounds.w: 44 */
+    flex-shrink: 0;
+    align-self: stretch;
+    padding: var(--klds-padding-xxxs) var(--klds-padding-s);
+    /* 4px 12px — Figma padding */
+    border-right: 1px solid var(--klds-color-border-default);
+    /* Figma strokes */
+}
+
+/* 체크박스 기본 스타일 */
+.timetable__checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    /* Figma bounds: 20×20 */
+    height: 20px;
+    border-radius: var(--klds-radius-xxxs);
+    /* 4px — Figma cornerRadius: 4 */
+    border: 1px solid var(--klds-color-input-border);
+    /* #9CA3AF — Figma strokes */
+    background-color: var(--klds-color-white);
+    /* #FFFFFF — Figma fills */
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* 체크박스 체크 상태 */
+.timetable__checkbox--checked {
+    background-color: var(--klds-color-primary);
+    /* #005386 — Figma fills */
+    border-color: var(--klds-color-primary);
+    /* #005386 — Figma strokes (none) */
+}
+
+.timetable__checkbox--checked .timetable__check-icon {
+    display: flex;
+}
+
+.timetable__check-icon {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 12px;
+    height: 8px;
+    line-height: 0;
+}
+
+.timetable__check-icon svg {
+    display: block;
+    width: 12px;
+    height: 8px;
+    flex-shrink: 0;
+}
+
+
+/* ============================================
+   User Cell (아바타 + 이름 + 직급)
+   Figma: 136:5958 — w: 150px, border-right, gap: 8px
+   재사용: avatar 컴포넌트 (avatar--small: 40×40)
+   ============================================ */
+
+.timetable__cell-user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    /* Figma bounds.w: 150 */
+    flex-shrink: 0;
+    align-self: stretch;
+    padding: var(--klds-padding-xxxs) var(--klds-padding-s);
+    /* 4px 12px — Figma padding */
+    border-right: 1px solid var(--klds-color-border-default);
+    /* Figma strokes */
+}
+
+.timetable__user-info {
+    display: flex;
+    /* Figma layout.mode: HORIZONTAL */
+    align-items: center;
+    /* Figma layout.align: CENTER */
+    gap: var(--klds-gap-xs);
+    /* 8px — Figma gap: 8 */
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.timetable__user-text {
+    display: flex;
+    /* Figma layout.mode: VERTICAL */
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.timetable__user-name {
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-s);
+    /* 16px — Figma font.size: 16 */
+    font-weight: 600;
+    /* Figma font.weight: SemiBold */
+    line-height: var(--klds-typography-lineheight-xl);
+    /* 1.5 — Figma lineHeight: 1.5 */
+    letter-spacing: -0.32px;
+    /* Figma letterSpacing: -0.32 */
+    color: var(--klds-color-text-black);
+    /* #121212 — Figma fills */
+    white-space: nowrap;
+}
+
+.timetable__user-role {
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-xs);
+    /* 14px — Figma font.size: 14 */
+    font-weight: var(--klds-typography-fontweight-medium);
+    /* 500 — Figma font.weight: Medium */
+    line-height: var(--klds-typography-lineheight-xl);
+    /* 1.5 — Figma lineHeight: 1.5 */
+    letter-spacing: -0.28px;
+    /* Figma letterSpacing: -0.28 */
+    color: var(--klds-color-gray-gray06);
+    /* #6B7280 — Figma fills: #777 → 가장 가까운 토큰 */
+    white-space: nowrap;
+}
+
+
+/* ============================================
+   Time Grid Area
+   Figma: 136:5965 — flex: 1 0 0, VERTICAL
+   ============================================ */
+
+.timetable__cell-time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+    min-width: 0;
+    overflow: hidden;
+    /* 마지막 그리드 셀 border-right가 컨테이너 border와 겹치지 않도록 clip */
+}
+
+
+/* ============================================
+   Time Grid Row (td)
+   Figma: 136:5966 — h: 60px, HORIZONTAL
+   24칸 (30분 단위 × 12시간), 각 칸 flex: 1 0 0
+   ============================================ */
+
+.timetable__grid {
+    display: flex;
+    /* Figma layout.mode: HORIZONTAL */
+    align-items: center;
+    /* Figma layout.align: CENTER */
+    width: calc(100% + 1px);
+    /* 1px 넓게 설정하여 마지막 셀 border-right가 부모 영역 밖으로 밀림 → overflow:hidden 으로 clip */
+    height: 60px;
+    /* Figma bounds.h: 60 */
+    flex-shrink: 0;
+    position: relative;
+    /* 이벤트 absolute 배치 기준 */
+}
+
+/* 정시 셀 — border-right: #E5E7EB (solid border) */
+.timetable__grid-cell {
+    flex: 1 0 0;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--klds-padding-xxxs) var(--klds-padding-s);
+    /* 4px 12px — Figma padding */
+    border-right: 1px solid var(--klds-color-border-default);
+    /* #E5E7EB — Figma strokes */
+}
+
+/* 30분 셀 — border-right: #F3F4F6 (lighter border) */
+.timetable__grid-cell--half {
+    border-right-color: var(--klds-color-gray-gray02);
+    /* #F3F4F6 — Figma strokes */
+}
+
+
+
+/* ============================================
+   Event Tag (Absolute positioned)
+   Figma: 136:6016, 136:6017, 136:6018 등
+   h: 32px, radius: 8px, gap: 4px, padding: 0 8px
+   ============================================ */
+
+.timetable__event {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 32px;
+    /* Figma bounds.h: 32 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--klds-gap-xxs);
+    /* 4px — Figma gap: 4 */
+    padding: 0 var(--klds-gap-xs);
+    /* 0 8px — Figma padding: 0 8 */
+    border-radius: var(--klds-radius-xs);
+    /* 8px — Figma cornerRadius: 8 */
+    font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    font-size: var(--klds-typography-fontsize-s);
+    /* 16px — Figma font.size: 16 */
+    font-weight: var(--klds-typography-fontweight-regular);
+    /* 400 — Figma font.weight: Regular */
+    line-height: var(--klds-typography-lineheight-xl);
+    /* 1.5 — Figma lineHeight: 1.5 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+    z-index: 1;
+}
+
+.timetable__event-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ─── Event Color Variants ─── */
+
+/* green — Figma: bg #D9F7BE, text #389E0D */
+.timetable__event--green {
+    background-color: var(--klds-color-green-green02);
+    /* #D9F7BE — Figma fills */
+    color: var(--klds-color-green-green07);
+    /* #389E0D — Figma text fills */
+}
+
+/* lightblue — Figma: bg #BAE7FF, text #096DD9 */
+.timetable__event--lightblue {
+    background-color: var(--klds-color-lightblue-lightblue02);
+    /* #BAE7FF — Figma fills */
+    color: var(--klds-color-lightblue-lightblue07);
+    /* #096DD9 — Figma text fills */
+}
+
+/* purple — Figma: bg #EFDBFF, text #722ED1 */
+.timetable__event--purple {
+    background-color: var(--klds-color-purple-purple02);
+    /* #EFDBFF — Figma fills */
+    color: var(--klds-color-purple-purple06);
+    /* #722ED1 — Figma text fills */
+}
+
+/* orange — Figma: bg #FFF1B8, text #D48806 */
+.timetable__event--orange {
+    background-color: var(--klds-color-orange-orange02);
+    /* #FFF1B8 — Figma fills */
+    color: var(--klds-color-orange-orange07);
+    /* #D48806 — Figma text fills */
+}
+
+/* mint — Figma: bg #B5F5EC, text #08979C */
+.timetable__event--mint {
+    background-color: var(--klds-color-mint-mint02);
+    /* #B5F5EC — Figma fills */
+    color: var(--klds-color-mint-mint07);
+    /* #08979C — Figma text fills */
+}
+
+/* AI tag — Figma: bg #FFFFFF, border: #9CA3AF, text: #005386, pill shape */
+.timetable__event--ai {
+    background-color: var(--klds-color-white);
+    /* #FFFFFF — Figma fills */
+    border: 1px solid var(--klds-color-input-border);
+    /* #9CA3AF — Figma strokes */
+    border-radius: var(--klds-radius-circle);
+    /* 9999px — Figma cornerRadius: 9999 */
+    color: var(--klds-color-primary);
+    /* #005386 — Figma text fills */
+}
+
+.timetable__event--ai .timetable__event-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--klds-color-primary);
+    /* #005386 — Figma icon color */
+}
+
+.timetable__event--ai .timetable__event-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}

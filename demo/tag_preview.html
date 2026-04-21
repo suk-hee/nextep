@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KLDS Tag Component Preview</title>
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../components/tag/tag.css">
+  <style>
+    body {
+      padding: var(--klds-padding-xl);
+      background-color: var(--klds-color-white);
+      font-family: var(--klds-typography-fontfamily-text), sans-serif;
+    }
+
+    .preview-title {
+      font-size: 28px;
+      font-weight: var(--klds-typography-fontweight-bold);
+      color: var(--klds-color-text-black);
+      margin-bottom: var(--klds-gap-xl);
+    }
+
+    .preview-subtitle {
+      font-size: var(--klds-typography-fontsize-xl);
+      font-weight: var(--klds-typography-fontweight-bold);
+      color: var(--klds-color-text-black);
+      margin: var(--klds-gap-xxl) 0 var(--klds-gap-m);
+      padding-bottom: var(--klds-gap-xs);
+      border-bottom: 2px solid var(--klds-color-gray-gray03);
+    }
+
+    .preview-section-title {
+      font-size: var(--klds-typography-fontsize-l);
+      font-weight: var(--klds-typography-fontweight-medium);
+      color: var(--klds-color-gray-gray07);
+      margin: var(--klds-gap-xl) 0 var(--klds-gap-s);
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: 100px 1fr 1fr 1fr;
+      gap: var(--klds-gap-m);
+      align-items: center;
+      margin-bottom: var(--klds-gap-m);
+    }
+
+    .preview-grid-header {
+      font-size: var(--klds-typography-fontsize-s);
+      font-weight: var(--klds-typography-fontweight-bold);
+      color: var(--klds-color-gray-gray07);
+      text-align: center;
+    }
+
+    .preview-grid-label {
+      font-size: var(--klds-typography-fontsize-s);
+      font-weight: var(--klds-typography-fontweight-medium);
+      color: var(--klds-color-gray-gray06);
+      text-transform: capitalize;
+    }
+
+    .preview-grid-cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: var(--klds-padding-xxxs) 0;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--klds-gap-xs);
+      margin-bottom: var(--klds-gap-xs);
+      align-items: center;
+    }
+
+    .info-text {
+      font-size: var(--klds-typography-fontsize-xs);
+      color: var(--klds-color-gray-gray05);
+      margin-top: var(--klds-gap-xs);
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 class="preview-title">🏷️ Tag Component</h1>
+  <p
+    style="color: var(--klds-color-gray-gray06); margin-bottom: var(--klds-gap-xl); font-size: var(--klds-typography-fontsize-s);">
+    Figma 노드: 67:5055 &nbsp;|&nbsp;
+    속성: size × color × state × shape &nbsp;|&nbsp;
+    Figma에 정의되지 않은 hover/transition 제거 &nbsp;|&nbsp;
+    <a href="https://www.figma.com/design/HJdhN6zf8pJq8mh4RvlDd3/NextEP?node-id=67-5055" target="_blank"
+      style="color: var(--klds-color-primary);">Figma에서 보기 ↗</a>
+  </p>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION 1: Small (20px) — Round
+       ═══════════════════════════════════════════════════════ -->
+  <h2 class="preview-subtitle">Small (20px) — Round</h2>
+  <div id="small-round-colors"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION 2: Small (20px) — Pill
+       ═══════════════════════════════════════════════════════ -->
+  <h2 class="preview-subtitle">Small (20px) — Pill</h2>
+  <div id="small-pill-colors"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION 3: Medium (24px) — Round
+       ═══════════════════════════════════════════════════════ -->
+  <h2 class="preview-subtitle">Medium (24px) — Round</h2>
+  <div id="medium-round-colors"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION 4: Medium (24px) — Pill
+       ═══════════════════════════════════════════════════════ -->
+  <h2 class="preview-subtitle">Medium (24px) — Pill</h2>
+  <div id="medium-pill-colors"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION 5: Large (32px) — Round
+       ═══════════════════════════════════════════════════════ -->
+  <h2 class="preview-subtitle">Large (32px) — Round</h2>
+  <div id="large-round-colors"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION 6: Large (32px) — Pill
+       ═══════════════════════════════════════════════════════ -->
+  <h2 class="preview-subtitle">Large (32px) — Pill</h2>
+  <div id="large-pill-colors"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION 7: 구성 변형
+       ═══════════════════════════════════════════════════════ -->
+  <h2 class="preview-subtitle">구성 변형</h2>
+
+  <h3 class="preview-section-title">텍스트만</h3>
+  <div class="tag-row">
+    <span class="klds-tag klds-tag--medium klds-tag--blue">
+      <span class="klds-tag__label">Frontend</span>
+    </span>
+    <span class="klds-tag klds-tag--medium klds-tag--red">
+      <span class="klds-tag__label">Bug</span>
+    </span>
+    <span class="klds-tag klds-tag--medium klds-tag--green">
+      <span class="klds-tag__label">Done</span>
+    </span>
+    <span class="klds-tag klds-tag--medium klds-tag--orange">
+      <span class="klds-tag__label">In Review</span>
+    </span>
+    <span class="klds-tag klds-tag--medium klds-tag--purple">
+      <span class="klds-tag__label">Design</span>
+    </span>
+  </div>
+
+  <h3 class="preview-section-title">Leading 아이콘 + 텍스트</h3>
+  <div class="tag-row" id="icon-text-tags"></div>
+
+  <h3 class="preview-section-title">텍스트 + Close 버튼</h3>
+  <div class="tag-row" id="text-close-tags"></div>
+
+  <h3 class="preview-section-title">Leading 아이콘 + 텍스트 + Close 버튼 (풀 구성)</h3>
+  <div class="tag-row" id="full-tags"></div>
+
+  <script>
+    // ─── SVG Templates ───
+    const IC_CHECK = `<svg viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.4341 7.05018C19.8246 7.44068 19.8247 8.07385 19.4342 8.46439L10.9498 16.9497C10.7623 17.1373 10.5079 17.2426 10.2427 17.2426C9.97744 17.2426 9.72308 17.1373 9.53553 16.9497L5.29289 12.7071C4.90237 12.3166 4.90237 11.6834 5.29289 11.2929C5.68342 10.9024 6.31658 10.9024 6.70711 11.2929L10.2426 14.8284L18.0199 7.05026C18.4104 6.65971 19.0435 6.65968 19.4341 7.05018Z" fill="currentColor"/></svg>`;
+    const IC_CLOSE = `<svg viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.79289 6.29289C6.18342 5.90237 6.81658 5.90237 7.20711 6.29289L11.5 10.5858L15.7929 6.29289C16.1835 5.90237 16.8166 5.90237 17.2071 6.29289C17.5977 6.68342 17.5977 7.31658 17.2071 7.70711L12.9142 12L17.2071 16.2929C17.5976 16.6834 17.5976 17.3165 17.2071 17.7071C16.8165 18.0976 16.1834 18.0976 15.7929 17.7071L11.5 13.4142L7.20711 17.7071C6.81658 18.0977 6.18342 18.0977 5.79289 17.7071C5.40237 17.3166 5.40237 16.6835 5.79289 16.2929L10.0858 12L5.79289 7.70711C5.40237 7.31658 5.40237 6.68342 5.79289 6.29289Z" fill="currentColor"/></svg>`;
+
+    const COLORS = ['white', 'gray', 'red', 'orange', 'green', 'mint', 'lightblue', 'blue', 'purple', 'pink', 'volcano'];
+    const STATES = ['', 'klds-tag--active', 'klds-tag--disabled'];
+    const STATE_LABELS = ['Default', 'Active', 'Disabled'];
+
+    // ─── Tag Builder ───
+    function createTag(size, color, state = '', text = 'Tag name', hasIcon = true, hasClose = true, shape = '') {
+      const classes = ['klds-tag', `klds-tag--${size}`, `klds-tag--${color}`];
+      if (shape) classes.push(`klds-tag--${shape}`);
+      if (state) classes.push(state);
+
+      let html = `<span class="${classes.join(' ')}">`;
+      if (hasIcon) html += `<span class="klds-tag__icon">${IC_CHECK}</span>`;
+      html += `<span class="klds-tag__label">${text}</span>`;
+      if (hasClose) html += `<button class="klds-tag__close" aria-label="Remove">${IC_CLOSE}</button>`;
+      html += `</span>`;
+      return html;
+    }
+
+    // ─── Grid Builder ───
+    function buildColorGrid(containerId, size, shape = '') {
+      const container = document.getElementById(containerId);
+      let html = '<div class="preview-grid">';
+
+      // Header
+      html += '<div class="preview-grid-header"></div>';
+      STATE_LABELS.forEach(label => {
+        html += `<div class="preview-grid-header">${label}</div>`;
+      });
+
+      // Rows
+      COLORS.forEach(color => {
+        html += `<div class="preview-grid-label">${color}</div>`;
+        STATES.forEach(state => {
+          html += `<div class="preview-grid-cell">${createTag(size, color, state, 'Tag name', true, true, shape)}</div>`;
+        });
+      });
+
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
+    // ─── Generate All Grids ───
+    buildColorGrid('small-round-colors', 'small');
+    buildColorGrid('small-pill-colors', 'small', 'pill');
+    buildColorGrid('medium-round-colors', 'medium');
+    buildColorGrid('medium-pill-colors', 'medium', 'pill');
+    buildColorGrid('large-round-colors', 'large');
+    buildColorGrid('large-pill-colors', 'large', 'pill');
+
+    // ─── Icon + Text Tags ───
+    (function () {
+      const colors = ['blue', 'red', 'green', 'orange', 'purple'];
+      const labels = ['Frontend', 'Bug', 'Done', 'In Review', 'Design'];
+
+      const iconText = document.getElementById('icon-text-tags');
+      let html1 = '';
+      colors.forEach((c, i) => {
+        html1 += createTag('medium', c, '', labels[i], true, false);
+      });
+      iconText.innerHTML = html1;
+
+      const textClose = document.getElementById('text-close-tags');
+      let html2 = '';
+      colors.forEach((c, i) => {
+        html2 += createTag('medium', c, '', labels[i], false, true);
+      });
+      textClose.innerHTML = html2;
+
+      const full = document.getElementById('full-tags');
+      let html3 = '';
+      colors.forEach((c, i) => {
+        html3 += createTag('medium', c, '', labels[i], true, true);
+      });
+      full.innerHTML = html3;
+    })();
+  </script>
+</body>
+
+</html>

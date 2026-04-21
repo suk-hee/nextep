@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KLDS Menu Component Preview</title>
+
+    <link rel="stylesheet" href="../styles/tokens.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../components/checkbox/checkbox.css">
+    <link rel="stylesheet" href="../components/menu/menu.css">
+
+    <style>
+        body {
+            padding: 40px;
+            background-color: #F8F9FA;
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .preview-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .preview-section h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="preview-section">
+        <h2>1. Default Menu</h2>
+        <div class="klds-menu">
+            <div class="klds-menu__item">
+                <span class="klds-menu__item-text">안 읽은 메일함</span>
+            </div>
+            <div class="klds-menu__item is-hover">
+                <span class="klds-menu__item-text">받은 메일함 (강제 Hover)</span>
+            </div>
+            <div class="klds-menu__item">
+                <span class="klds-menu__item-text">보낸 메일함</span>
+            </div>
+            <div class="klds-menu__item">
+                <span class="klds-menu__item-text">임시 메일함</span>
+            </div>
+            <div class="klds-menu__item">
+                <span class="klds-menu__item-text">예약 메일함</span>
+            </div>
+            <div class="klds-menu__item">
+                <span class="klds-menu__item-text">전체 메일함</span>
+            </div>
+            <div class="klds-menu__item">
+                <span class="klds-menu__item-text">폴더</span>
+            </div>
+            <div class="klds-menu__item">
+                <span class="klds-menu__item-text">휴지통</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="preview-section">
+        <h2>2. With Checkbox Option</h2>
+        <div class="klds-menu">
+            <label class="klds-menu__item">
+                <div class="klds-menu__item-checkbox">
+                    <div class="klds-checkbox">
+                        <input type="checkbox" class="klds-checkbox__input">
+                        <span class="klds-checkbox__box">
+                            <svg class="klds-checkbox__icon" width="12" height="8" viewBox="0 0 12 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 3.5L4.5 7L11 1" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                <span class="klds-menu__item-text">선택 옵션 1</span>
+            </label>
+            <label class="klds-menu__item">
+                <div class="klds-menu__item-checkbox">
+                    <div class="klds-checkbox">
+                        <input type="checkbox" class="klds-checkbox__input" checked>
+                        <span class="klds-checkbox__box">
+                            <svg class="klds-checkbox__icon" width="12" height="8" viewBox="0 0 12 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 3.5L4.5 7L11 1" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                <span class="klds-menu__item-text">선택 옵션 2 (Checked)</span>
+            </label>
+            <label class="klds-menu__item is-hover">
+                <div class="klds-menu__item-checkbox">
+                    <div class="klds-checkbox">
+                        <input type="checkbox" class="klds-checkbox__input">
+                        <span class="klds-checkbox__box">
+                            <svg class="klds-checkbox__icon" width="12" height="8" viewBox="0 0 12 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 3.5L4.5 7L11 1" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                <span class="klds-menu__item-text">선택 옵션 3 (강제 Hover)</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="preview-section">
+        <h2>3. With Icon Option</h2>
+        <div class="klds-menu">
+            <div class="klds-menu__item">
+                <div class="klds-menu__item-icon icon-mail"></div>
+                <span class="klds-menu__item-text">메일 편지함</span>
+            </div>
+            <div class="klds-menu__item is-hover">
+                <div class="klds-menu__item-icon icon-folder"></div>
+                <span class="klds-menu__item-text">공용 폴더 (강제 Hover)</span>
+            </div>
+            <div class="klds-menu__item">
+                <div class="klds-menu__item-icon icon-trash"></div>
+                <span class="klds-menu__item-text">휴지통</span>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* 데모 페이지용 아이콘 스타일 (mask-image 방식 권장) */
+        .icon-mail,
+        .icon-folder,
+        .icon-trash {
+            background-color: var(--klds-color-text-black, #121212);
+        }
+
+        .klds-menu__item:hover .icon-mail,
+        .klds-menu__item:hover .icon-folder,
+        .klds-menu__item:hover .icon-trash,
+        .klds-menu__item.is-hover .icon-mail,
+        .klds-menu__item.is-hover .icon-folder,
+        .klds-menu__item.is-hover .icon-trash {
+            background-color: var(--klds-color-primary, #005386);
+            /* hover 시 Primary 색상 */
+        }
+
+        .icon-mail {
+            -webkit-mask-image: url(../assets/icons/ic-mail.svg);
+            mask-image: url(../assets/icons/ic-mail.svg);
+            mask-size: contain;
+        }
+
+        .icon-folder {
+            -webkit-mask-image: url(../assets/icons/ic-folder.svg);
+            mask-image: url(../assets/icons/ic-folder.svg);
+            mask-size: contain;
+        }
+
+        .icon-trash {
+            -webkit-mask-image: url(../assets/icons/ic-trash-empty.svg);
+            mask-image: url(../assets/icons/ic-trash-empty.svg);
+            mask-size: contain;
+        }
+    </style>
+
+</body>
+
+</html>

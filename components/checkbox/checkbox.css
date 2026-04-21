@@ -1,0 +1,62 @@
+/**
+ * KLDS Checkbox Component
+ *
+ * Figma 노드: 1:17637 (checkbox COMPONENT_SET)
+ *   - 1:17638 (checked=false)  20×20, fills:#FFFFFF, stroke:#9CA3AF, cornerRadius:4
+ *   - 1:17640 (checked=true)   20×20, fills:#005386, cornerRadius:4, check icon:#FFFFFF
+ *
+ * RGB→HEX→tokens.css 매핑:
+ *   unchecked bg     r:1.0 g:1.0 b:1.0       → #FFFFFF → --klds-color-white
+ *   unchecked stroke r:0.612 g:0.639 b:0.686  → #9CA3AF → --klds-color-gray-gray05
+ *   checked bg       r:0.0 g:0.325 b:0.525    → #005386 → --klds-color-primary
+ *   check icon fills r:1.0 g:1.0 b:1.0        → #FFFFFF → --klds-color-white
+ *   cornerRadius     4                         → --klds-radius-xxxs
+ */
+
+.klds-checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.klds-checkbox__input {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.klds-checkbox__box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--klds-radius-xxxs);
+  background-color: var(--klds-color-white);
+  border: 1px solid var(--klds-color-gray-gray05);
+  box-sizing: border-box;
+}
+
+.klds-checkbox__icon {
+  display: none;
+  width: 12px;
+  height: 8px;
+}
+
+.klds-checkbox__input:checked + .klds-checkbox__box {
+  background-color: var(--klds-color-primary);
+  border-color: var(--klds-color-primary);
+}
+
+.klds-checkbox__input:checked + .klds-checkbox__box .klds-checkbox__icon {
+  display: block;
+}

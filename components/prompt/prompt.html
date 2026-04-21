@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Component - KLDS</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="prompt.css">
+</head>
+<body style="padding: 40px; background: #f5f5f5;">
+
+  <!--
+    Prompt Component — Figma node 3:5651
+
+    status=default:
+      prompt__wrap (HORIZONTAL)
+        ├─ btn-global
+        ├─ textarea (1줄)
+        └─ right-btns (mic + send)
+
+    status=focus:
+      prompt__wrap (VERTICAL)
+        ├─ textarea (여러 줄, 전체 너비)
+        └─ prompt__btns (SPACE_BETWEEN)
+             ├─ btn-global
+             └─ right-btns (mic + send)
+  -->
+
+  <div class="prompt" data-base-path="../../assets/icons/">
+    <div class="prompt__wrap">
+
+      <!-- btn-global (JS가 위치 이동시킴) -->
+      <button class="prompt__btn-global" aria-label="글로벌 옵션">
+        <img src="../../assets/icons/ic-global.svg" alt="" width="24" height="24">
+      </button>
+
+      <!-- Input -->
+      <textarea
+        class="prompt__input"
+        placeholder="원하는 업무를 입력하세요."
+        rows="1"
+        aria-label="프롬프트 입력"></textarea>
+
+      <!-- right-btns (JS가 위치 이동시킴) -->
+      <div class="prompt__right-btns">
+        <button class="prompt__btn prompt__btn--mic" aria-label="음성 입력">
+          <span class="prompt__btn-icon"
+                style="-webkit-mask-image:url(../../assets/icons/ic-microphone.svg);mask-image:url(../../assets/icons/ic-microphone.svg)"></span>
+        </button>
+        <button class="prompt__btn prompt__btn--send" aria-label="전송" disabled>
+          <span class="prompt__btn-icon"
+                style="-webkit-mask-image:url(../../assets/icons/ic-arrow-circle-up02.svg);mask-image:url(../../assets/icons/ic-arrow-circle-up02.svg)"></span>
+        </button>
+      </div>
+
+      <!-- focus용 btns 컨테이너 (default에서는 숨김) -->
+      <div class="prompt__btns"></div>
+
+    </div>
+  </div>
+
+  <script src="prompt.js"></script>
+</body>
+</html>

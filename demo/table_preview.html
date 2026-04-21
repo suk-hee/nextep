@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KLDS Table Component - Preview</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../components/table/table.css">
+  <link rel="stylesheet" href="../components/tag/tag.css">
+  <style>
+    body {
+      font-family: var(--klds-typography-fontfamily-text), -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 40px;
+      background: var(--klds-color-gray-gray01);
+    }
+
+    .preview-header {
+      margin-bottom: 24px;
+    }
+
+    .preview-header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--klds-color-text-black);
+      margin: 0 0 8px;
+    }
+
+    .preview-header p {
+      font-size: 14px;
+      color: var(--klds-color-gray-gray07);
+      margin: 0;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="preview-header">
+    <h1>KLDS Table Component</h1>
+    <p>
+      Figma 노드 <code>1:15422</code> 기반 정밀 구현.<br>
+      모든 아이콘은 mask-image + background-color 방식으로 정확한 색상 적용.<br>
+      우선순위/상태 태그는 <code>klds-tag</code> 디자인 시스템 컴포넌트 사용.<br>
+      컬럼: 업무명(flex-1) | 요청자(120) | 시작일(120) | 종료일(120) | 우선순위(100) | 상태(100)
+    </p>
+  </div>
+
+  <!-- ═══════ Table Component ═══════ -->
+  <div class="klds-table-wrapper">
+    <div class="klds-table">
+
+      <!-- Header Row (1:15423) -->
+      <div class="klds-table__header">
+        <div class="klds-table__th klds-table__col--flex">업무명</div>
+        <div class="klds-table__th klds-table__col--120">
+          요청자
+          <span class="klds-table__filter-icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-filter.svg);mask-image:url(../assets/icons/ic-filter.svg)"></span>
+        </div>
+        <div class="klds-table__th klds-table__col--120">시작일</div>
+        <div class="klds-table__th klds-table__col--120">종료일</div>
+        <div class="klds-table__th klds-table__col--100">
+          우선순위
+          <span class="klds-table__filter-icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-filter.svg);mask-image:url(../assets/icons/ic-filter.svg)"></span>
+        </div>
+        <div class="klds-table__th klds-table__col--100">
+          상태
+          <span class="klds-table__filter-icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-filter.svg);mask-image:url(../assets/icons/ic-filter.svg)"></span>
+        </div>
+      </div>
+
+      <!-- Row 1 (1:15438): gap:null, text+redDot, 중간/진행 -->
+      <div class="klds-table__row">
+        <div class="klds-table__td klds-table__col--flex klds-table__td--task klds-table__td--task-default">
+          <div class="klds-table__task-text">
+            <span class="klds-table__task-label">1/26(월) 법인카드 사용 내역 정산</span>
+            <div class="klds-table__red-dot-wrap"><span class="klds-table__red-dot"></span></div>
+          </div>
+        </div>
+        <div class="klds-table__td klds-table__col--120">임혁수</div>
+        <div class="klds-table__td klds-table__col--120">2026-01-26</div>
+        <div class="klds-table__td klds-table__col--120">2026-01-26</div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--orange">
+            <span class="klds-tag__icon">
+              <span class="klds-table__mask-icon"
+                style="-webkit-mask-image:url(../assets/icons/ic-minus.svg);mask-image:url(../assets/icons/ic-minus.svg)"></span>
+            </span>
+            <span class="klds-tag__label">중간</span>
+          </span>
+        </div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--lightblue">
+            <span class="klds-tag__label">진행</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Row 2 (1:15450): gap:null, text+redDot, 낮음/대기 -->
+      <div class="klds-table__row">
+        <div class="klds-table__td klds-table__col--flex klds-table__td--task klds-table__td--task-default">
+          <div class="klds-table__task-text">
+            <span class="klds-table__task-label">주간 회의 보고서 생성</span>
+            <div class="klds-table__red-dot-wrap"><span class="klds-table__red-dot"></span></div>
+          </div>
+        </div>
+        <div class="klds-table__td klds-table__col--120">박소정</div>
+        <div class="klds-table__td klds-table__col--120">2026-01-26</div>
+        <div class="klds-table__td klds-table__col--120">2026-01-26</div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--lightblue">
+            <span class="klds-tag__icon">
+              <span class="klds-table__mask-icon"
+                style="-webkit-mask-image:url(../assets/icons/ic-caret-down01.svg);mask-image:url(../assets/icons/ic-caret-down01.svg)"></span>
+            </span>
+            <span class="klds-tag__label">낮음</span>
+          </span>
+        </div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--orange">
+            <span class="klds-tag__label">대기</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Row 3 (1:15462): ★ gap:8, star+text+redDot, 높음/진행 -->
+      <div class="klds-table__row">
+        <div class="klds-table__td klds-table__col--flex klds-table__td--task klds-table__td--task-star">
+          <span class="klds-table__mask-icon klds-table__mask-icon--primary"
+            style="-webkit-mask-image:url(../assets/icons/ic-star03-fill.svg);mask-image:url(../assets/icons/ic-star03-fill.svg)"></span>
+          <div class="klds-table__task-text">
+            <span class="klds-table__task-label">부서 필수 교육 수료</span>
+            <div class="klds-table__red-dot-wrap"><span class="klds-table__red-dot"></span></div>
+          </div>
+        </div>
+        <div class="klds-table__td klds-table__col--120">AI</div>
+        <div class="klds-table__td klds-table__col--120">2026-01-26</div>
+        <div class="klds-table__td klds-table__col--120">2026-01-26</div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--red">
+            <span class="klds-tag__icon">
+              <span class="klds-table__mask-icon"
+                style="-webkit-mask-image:url(../assets/icons/ic-caret-up.svg);mask-image:url(../assets/icons/ic-caret-up.svg)"></span>
+            </span>
+            <span class="klds-tag__label">높음</span>
+          </span>
+        </div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--lightblue">
+            <span class="klds-tag__label">진행</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Row 4 (1:15475): ⚠ gap:4, warning+text(red), 낮음/지연 -->
+      <div class="klds-table__row">
+        <div class="klds-table__td klds-table__col--flex klds-table__td--task klds-table__td--task-warning">
+          <span class="klds-table__mask-icon klds-table__mask-icon--danger"
+            style="-webkit-mask-image:url(../assets/icons/ic-triangle-warning.svg);mask-image:url(../assets/icons/ic-triangle-warning.svg)"></span>
+          <span class="klds-table__task-label klds-table__task-label--warning">디자인 시스템 개편</span>
+        </div>
+        <div class="klds-table__td klds-table__col--120">박소정</div>
+        <div class="klds-table__td klds-table__col--120">2025-12-01</div>
+        <div class="klds-table__td klds-table__col--120">2026-01-16</div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--lightblue">
+            <span class="klds-tag__icon">
+              <span class="klds-table__mask-icon"
+                style="-webkit-mask-image:url(../assets/icons/ic-caret-down01.svg);mask-image:url(../assets/icons/ic-caret-down01.svg)"></span>
+            </span>
+            <span class="klds-tag__label">낮음</span>
+          </span>
+        </div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--red">
+            <span class="klds-tag__label">지연</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Row 5 (1:15485): text only, 높음/진행 -->
+      <div class="klds-table__row">
+        <div class="klds-table__td klds-table__col--flex klds-table__td--task">
+          <span class="klds-table__task-label">사내 교육 동영상 시청</span>
+        </div>
+        <div class="klds-table__td klds-table__col--120">박소정</div>
+        <div class="klds-table__td klds-table__col--120">2026-01-26</div>
+        <div class="klds-table__td klds-table__col--120">2026-01-26</div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--red">
+            <span class="klds-tag__icon">
+              <span class="klds-table__mask-icon"
+                style="-webkit-mask-image:url(../assets/icons/ic-caret-up.svg);mask-image:url(../assets/icons/ic-caret-up.svg)"></span>
+            </span>
+            <span class="klds-tag__label">높음</span>
+          </span>
+        </div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--lightblue">
+            <span class="klds-tag__label">진행</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Row 6 (1:15494): text only, 높음/대기 -->
+      <div class="klds-table__row">
+        <div class="klds-table__td klds-table__col--flex klds-table__td--task">
+          <span class="klds-table__task-label">연말정산 제출</span>
+        </div>
+        <div class="klds-table__td klds-table__col--120">윤지민</div>
+        <div class="klds-table__td klds-table__col--120">2026-01-20</div>
+        <div class="klds-table__td klds-table__col--120">2026-02-06</div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--red">
+            <span class="klds-tag__icon">
+              <span class="klds-table__mask-icon"
+                style="-webkit-mask-image:url(../assets/icons/ic-caret-up.svg);mask-image:url(../assets/icons/ic-caret-up.svg)"></span>
+            </span>
+            <span class="klds-tag__label">높음</span>
+          </span>
+        </div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--orange">
+            <span class="klds-tag__label">대기</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Row 7 (1:15503): ★ gap:8, star+text, 높음/진행 -->
+      <div class="klds-table__row">
+        <div class="klds-table__td klds-table__col--flex klds-table__td--task klds-table__td--task-star">
+          <span class="klds-table__mask-icon klds-table__mask-icon--primary"
+            style="-webkit-mask-image:url(../assets/icons/ic-star03-fill.svg);mask-image:url(../assets/icons/ic-star03-fill.svg)"></span>
+          <span class="klds-table__task-label">연봉 협의안 작성</span>
+        </div>
+        <div class="klds-table__td klds-table__col--120">AI</div>
+        <div class="klds-table__td klds-table__col--120">2026-01-26</div>
+        <div class="klds-table__td klds-table__col--120">2026-02-04</div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--red">
+            <span class="klds-tag__icon">
+              <span class="klds-table__mask-icon"
+                style="-webkit-mask-image:url(../assets/icons/ic-caret-up.svg);mask-image:url(../assets/icons/ic-caret-up.svg)"></span>
+            </span>
+            <span class="klds-tag__label">높음</span>
+          </span>
+        </div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--lightblue">
+            <span class="klds-tag__label">진행</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Row 8 (1:15513): text only, 높음/진행 -->
+      <div class="klds-table__row">
+        <div class="klds-table__td klds-table__col--flex klds-table__td--task">
+          <span class="klds-table__task-label">브랜드 가이드 PPT 작성</span>
+        </div>
+        <div class="klds-table__td klds-table__col--120">김현수</div>
+        <div class="klds-table__td klds-table__col--120">2026-01-26</div>
+        <div class="klds-table__td klds-table__col--120">2026-01-26</div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--red">
+            <span class="klds-tag__icon">
+              <span class="klds-table__mask-icon"
+                style="-webkit-mask-image:url(../assets/icons/ic-caret-up.svg);mask-image:url(../assets/icons/ic-caret-up.svg)"></span>
+            </span>
+            <span class="klds-tag__label">높음</span>
+          </span>
+        </div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--lightblue">
+            <span class="klds-tag__label">진행</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Row 9 (1:15522): text only, 높음/진행 -->
+      <div class="klds-table__row">
+        <div class="klds-table__td klds-table__col--flex klds-table__td--task">
+          <span class="klds-table__task-label">Stitch 활용법 문서 작성</span>
+        </div>
+        <div class="klds-table__td klds-table__col--120">박소정</div>
+        <div class="klds-table__td klds-table__col--120">2026-01-26</div>
+        <div class="klds-table__td klds-table__col--120">2026-01-26</div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--red">
+            <span class="klds-tag__icon">
+              <span class="klds-table__mask-icon"
+                style="-webkit-mask-image:url(../assets/icons/ic-caret-up.svg);mask-image:url(../assets/icons/ic-caret-up.svg)"></span>
+            </span>
+            <span class="klds-tag__label">높음</span>
+          </span>
+        </div>
+        <div class="klds-table__td klds-table__col--100">
+          <span class="klds-tag klds-tag--small klds-tag--lightblue">
+            <span class="klds-tag__label">진행</span>
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+</html>

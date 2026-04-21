@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apps - KLDS</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../components/avatar/avatar.css">
+  <link rel="stylesheet" href="../components/switch/mode-switch.css">
+  <link rel="stylesheet" href="../components/button/button-icon.css">
+  <link rel="stylesheet" href="../components/layout/header/header.css">
+  <link rel="stylesheet" href="../components/badge/badge.css">
+  <link rel="stylesheet" href="../components/layout/lnb/lnb.css">
+  <link rel="stylesheet" href="../components/layout/common-layout.css">
+  <link rel="stylesheet" href="../components/checkbox/checkbox.css">
+  <link rel="stylesheet" href="../components/menu/menu.css">
+  <link rel="stylesheet" href="../components/ai-assistant/ai-assistant.css">
+  <link rel="stylesheet" href="../components/snackbar/snackbar.css">
+  <link rel="stylesheet" href="../components/tab/tab.css">
+  <link rel="stylesheet" href="../components/button/button.css">
+  <link rel="stylesheet" href="../components/prompt/prompt.css">
+  <link rel="stylesheet" href="apps.css">
+</head>
+
+<body>
+  <div class="layout-container">
+
+    <script src="../components/components.js"></script>
+
+    <div id="comp-header"></div>
+
+    <div class="layout-main">
+
+      <div id="comp-lnb"></div>
+
+      <div class="layout-content">
+
+        <!-- ============================================================
+             work-area (1194:22913) — APP 목록 페이지
+             Figma: 1240×976, VERTICAL, gap:32, p:32, r:24, fill:#FFFFFF
+             ============================================================ -->
+        <div class="layout-content__work-area layout-content__work-area--apps">
+
+          <!-- ============================================================
+               추천 APP 영역 (1194:22914)
+               Figma: VERTICAL, gap:16
+               ============================================================ -->
+          <section class="apps-recommend">
+            <!-- 헤더 (1194:22915) -->
+            <div class="apps-recommend__header">
+              <span class="apps-recommend__header-icon"></span>
+              <h2 class="apps-recommend__title">박소정 차장님 맞춤 추천 APP</h2>
+            </div>
+
+            <!-- 추천 카드 그리드 (1194:22920) — HORIZONTAL, gap:12, 4장 -->
+            <div class="apps-recommend__grid">
+              <!-- 날씨 정보 (1194:22921) -->
+              <div class="apps-recommend__card">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--pink">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-weather-sun.svg);mask-image:url(../assets/icons/ic-weather-sun.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">날씨 정보</h3>
+                  <p class="apps-card__desc">사용자의 현재 위치의 실시간 기상 상태와 기온 데이터를 제공합니다.</p>
+                </div>
+              </div>
+
+              <!-- K-GPT (1194:22927) -->
+              <div class="apps-recommend__card">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--blue">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-star03-fill.svg);mask-image:url(../assets/icons/ic-star03-fill.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">K-GPT</h3>
+                  <p class="apps-card__desc">사내 특화 AI를 활용해 문서 초안 작성 및 정보 탐색 시간을 단축합니다.</p>
+                </div>
+              </div>
+
+              <!-- 직원 조회 (1194:22935) -->
+              <div class="apps-recommend__card">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--pink">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-users-group.svg);mask-image:url(../assets/icons/ic-users-group.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">직원 조회</h3>
+                  <p class="apps-card__desc">성명, 부서, 직급 등으로 임직원을 검색하고 조직 정보를 확인합니다.</p>
+                </div>
+              </div>
+
+              <!-- TO DO (1194:22941) -->
+              <div class="apps-recommend__card">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--green">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-list-check.svg);mask-image:url(../assets/icons/ic-list-check.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">TO DO</h3>
+                  <p class="apps-card__desc">오늘 할 일을 잊지 않도록 리스트를 관리합니다.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               APP 목록 영역 (1194:22949)
+               Figma: VERTICAL, gap:16
+               ============================================================ -->
+          <section class="apps-list">
+            <!-- 헤더: 탭 + 검색 (1194:22950) — HORIZONTAL, gap:16, SPACE_BETWEEN -->
+            <div class="apps-list__header">
+              <!-- tabs (1194:22951) — pill 탭 5개 -->
+              <div class="tabs tabs--pill">
+                <button class="tab tab--pill tab--active" data-filter="all">
+                  <span class="tab__label">All APPs</span>
+                </button>
+                <button class="tab tab--pill" data-filter="myapps">
+                  <span class="tab__label">MY APPs</span>
+                </button>
+                <button class="tab tab--pill" data-filter="workplace">
+                  <span class="tab__label">WokPlace</span>
+                </button>
+                <button class="tab tab--pill" data-filter="cowork">
+                  <span class="tab__label">Co-Work</span>
+                </button>
+                <button class="tab tab--pill" data-filter="etc">
+                  <span class="tab__label">ETC</span>
+                </button>
+              </div>
+
+              <!-- 검색 필드 (1194:22957) — 460×42, r:8, border -->
+              <div class="apps-list__search">
+                <span class="apps-list__search-icon"></span>
+                <input type="text" class="apps-list__search-input" placeholder="앱을 검색해 주세요" id="app-search-input">
+              </div>
+            </div>
+
+            <!-- APP 카드 그리드 (1194:22964) — 3열 -->
+            <div class="apps-grid" id="apps-grid">
+
+              <!-- ===== 한글 가나다순 ===== -->
+              <!-- 결재 -->
+              <div class="apps-grid__card" data-category="workplace">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--purple">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-stamp.svg);mask-image:url(../assets/icons/ic-stamp.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">결재</h3>
+                  <p class="apps-card__desc">각종 전자결재 문서의 기안, 승인 및 반려 상태를 관리합니다.</p>
+                </div>
+              </div>
+
+              <!-- 경조사 -->
+              <div class="apps-grid__card" data-category="workplace">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--purple">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-news.svg);mask-image:url(../assets/icons/ic-news.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">경조사</h3>
+                  <p class="apps-card__desc">사내 임직원의 결혼, 부고 등 주요 경조사 소식을 알리고 확인합니다.</p>
+                </div>
+              </div>
+
+              <!-- 공지사항 -->
+              <div class="apps-grid__card" data-category="workplace">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--purple">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-file-document.svg);mask-image:url(../assets/icons/ic-file-document.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">공지사항</h3>
+                  <p class="apps-card__desc">전사적으로 알림이 필요한 주요 소식과 지침을 확인합니다.</p>
+                </div>
+              </div>
+
+              <!-- 광장 -->
+              <div class="apps-grid__card" data-category="workplace">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--purple">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-chat-conversation.svg);mask-image:url(../assets/icons/ic-chat-conversation.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">광장</h3>
+                  <p class="apps-card__desc">임직원들이 자유롭게 소통하고 의견을 나누는 열린 커뮤니티입니다.</p>
+                </div>
+              </div>
+
+              <!-- 날씨 정보 -->
+              <div class="apps-grid__card" data-category="etc">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--pink">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-weather-sun.svg);mask-image:url(../assets/icons/ic-weather-sun.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">날씨 정보</h3>
+                  <p class="apps-card__desc">사용자의 현재 위치의 실시간 기상 상태와 기온 데이터를 제공합니다.</p>
+                </div>
+              </div>
+
+              <!-- 메일 -->
+              <div class="apps-grid__card" data-category="myapps">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--blue">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-mail.svg);mask-image:url(../assets/icons/ic-mail.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">메일</h3>
+                  <p class="apps-card__desc">비즈니스 커뮤니케이션의 시작이자 핵심 기록을 관리합니다.</p>
+                </div>
+              </div>
+
+              <!-- 업무방 -->
+              <div class="apps-grid__card" data-category="cowork">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--green">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-bag.svg);mask-image:url(../assets/icons/ic-bag.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">업무방</h3>
+                  <p class="apps-card__desc">팀원들과 프로젝트를 위해 실시간으로 협업합니다.</p>
+                </div>
+              </div>
+
+              <!-- 일정 -->
+              <div class="apps-grid__card" data-category="myapps">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--blue">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-calendar-days.svg);mask-image:url(../assets/icons/ic-calendar-days.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">일정</h3>
+                  <p class="apps-card__desc">개인의 일과와 프로젝트 주요 마감 기한을 한눈에 파악합니다.</p>
+                </div>
+              </div>
+
+              <!-- 주간업무보고 -->
+              <div class="apps-grid__card" data-category="workplace">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--purple">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-file-edit.svg);mask-image:url(../assets/icons/ic-file-edit.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">주간업무보고</h3>
+                  <p class="apps-card__desc">팀별 주간 업무 현황을 보고하고 진행 상황을 공유합니다.</p>
+                </div>
+              </div>
+
+              <!-- 직원 조회 -->
+              <div class="apps-grid__card" data-category="etc">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--pink">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-users-group.svg);mask-image:url(../assets/icons/ic-users-group.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">직원 조회</h3>
+                  <p class="apps-card__desc">성명, 부서, 직급 등으로 임직원을 검색하고 조직 정보를 확인합니다.</p>
+                </div>
+              </div>
+
+              <!-- 채팅 -->
+              <div class="apps-grid__card" data-category="myapps">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--blue">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-chat-circle.svg);mask-image:url(../assets/icons/ic-chat-circle.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">채팅</h3>
+                  <p class="apps-card__desc">동료들과 실시간으로 소통하며 빠른 의사결정을 돕습니다.</p>
+                </div>
+              </div>
+
+              <!-- 취합 -->
+              <div class="apps-grid__card" data-category="cowork">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--green">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-layer.svg);mask-image:url(../assets/icons/ic-layer.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">취합</h3>
+                  <p class="apps-card__desc">여러 부서의 자료를 하나로 모아 취합 현황을 관리합니다.</p>
+                </div>
+              </div>
+
+              <!-- 파일 -->
+              <div class="apps-grid__card" data-category="myapps">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--blue">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-folder1.svg);mask-image:url(../assets/icons/ic-folder1.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">파일</h3>
+                  <p class="apps-card__desc">업무 관련 중요 문서를 안전하게 보관하고 신속하게 공유합니다.</p>
+                </div>
+              </div>
+
+              <!-- 회사규정 -->
+              <div class="apps-grid__card" data-category="workplace">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--purple">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-pencil-ai.svg);mask-image:url(../assets/icons/ic-pencil-ai.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">회사규정</h3>
+                  <p class="apps-card__desc">복무, 급여 등 사내에서 준수해야 할 공식 규정 문서를 열람합니다.</p>
+                </div>
+              </div>
+
+              <!-- 회의실 예약 -->
+              <div class="apps-grid__card" data-category="cowork">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--green">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-webcam.svg);mask-image:url(../assets/icons/ic-webcam.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">회의실 예약</h3>
+                  <p class="apps-card__desc">비어 있는 회의실을 찾아 빠르게 예약합니다.</p>
+                </div>
+              </div>
+
+              <!-- ===== 영문 ABC순 ===== -->
+              <!-- CEO 메일 -->
+              <div class="apps-grid__card" data-category="workplace">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--purple">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-send01.svg);mask-image:url(../assets/icons/ic-send01.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">CEO 메일</h3>
+                  <p class="apps-card__desc">경영진에게 직접 의견을 전달하거나 메시지를 확인하는 채널입니다.</p>
+                </div>
+              </div>
+
+              <!-- K-GPT -->
+              <div class="apps-grid__card" data-category="myapps">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--blue">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-star03-fill.svg);mask-image:url(../assets/icons/ic-star03-fill.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">K-GPT</h3>
+                  <p class="apps-card__desc">사내 특화 AI를 활용해 문서 초안 작성 및 정보 탐색 시간을 단축합니다.</p>
+                </div>
+              </div>
+
+              <!-- Q&A -->
+              <div class="apps-grid__card" data-category="workplace">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--purple">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-circle-help.svg);mask-image:url(../assets/icons/ic-circle-help.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">Q&A</h3>
+                  <p class="apps-card__desc">업무 관련 궁금한 점을 묻고 답하는 사내 질의응답 공간입니다.</p>
+                </div>
+              </div>
+
+              <!-- Tip&Tech -->
+              <div class="apps-grid__card" data-category="workplace">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--purple">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-pencil-ai01.svg);mask-image:url(../assets/icons/ic-pencil-ai01.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">Tip&Tech</h3>
+                  <p class="apps-card__desc">실무에 유용한 노하우와 기술 정보를 공유하는 게시판입니다.</p>
+                </div>
+              </div>
+
+              <!-- TO DO -->
+              <div class="apps-grid__card" data-category="cowork">
+                <div class="apps-card__icon-wrap apps-card__icon-wrap--green">
+                  <span class="apps-card__icon"
+                    style="-webkit-mask-image:url(../assets/icons/ic-list-check.svg);mask-image:url(../assets/icons/ic-list-check.svg)"></span>
+                </div>
+                <div class="apps-card__text">
+                  <h3 class="apps-card__name">TO DO</h3>
+                  <p class="apps-card__desc">오늘 할 일을 잊지 않도록 리스트를 관리합니다.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Empty State -->
+            <div class="apps-empty" id="apps-empty" style="display:none">
+              <img class="apps-empty__img" src="../assets/images/img-search2.png" alt="">
+              <p class="apps-empty__text">검색 결과가 없습니다.<br>올바른 키워드로 다시 검색해 주세요.</p>
+            </div>
+
+          </section>
+
+        </div>
+
+        <div id="comp-ai-assistant"></div>
+
+        <!-- FAB Button — AI Assistant 재열기 -->
+        <button class="button-icon button-icon--fab layout-fab" aria-label="AI Assistant 열기">
+          <span class="button-icon__icon"
+            style="-webkit-mask-image:url(../assets/icons/ic-star02.svg);mask-image:url(../assets/icons/ic-star02.svg)"></span>
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="layout-overlay" aria-hidden="true"></div>
+
+  </div>
+
+  <script>
+    // innerHTML로 컴포넌트 삽입
+    document.getElementById('comp-header').innerHTML = HEADER_HTML;
+    document.getElementById('comp-lnb').innerHTML = LNB_HTML;
+
+    // menu-apps 활성화
+    var lnbEl = document.getElementById('comp-lnb');
+    lnbEl.querySelectorAll('.lnb-menu-item').forEach(function (btn) {
+      btn.classList.remove('active');
+    });
+    var appsMenu = lnbEl.querySelector('.lnb-menu-item[data-menu="apps"]');
+    if (appsMenu) appsMenu.classList.add('active');
+
+    // AI Assistant
+    document.getElementById('comp-ai-assistant').innerHTML = AI_ASSISTANT_HTML;
+  </script>
+
+  <script src="../components/switch/mode-switch.js"></script>
+  <script src="../components/snackbar/snackbar.js"></script>
+  <script src="../components/ai-assistant/ai-assistant.js"></script>
+  <script src="../components/layout/common-layout.js"></script>
+  <script src="../components/prompt/prompt.js"></script>
+  <script src="../components/tab/tab.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // AI Assistant Maximize 토글
+      var aiPanel = document.querySelector('.ai-assistant');
+      var btnMaximize = document.querySelector('.ai-assistant__btn-maximize');
+      var workArea = document.querySelector('.layout-content__work-area');
+
+      if (btnMaximize) {
+        btnMaximize.addEventListener('click', function () {
+          if (aiPanel.classList.contains('is-maximized')) return;
+          if (window.innerWidth <= 1200) {
+            Snackbar.show('작은 화면에서 AI Assistant를 확장할 수 없습니다.');
+            return;
+          }
+          aiPanel.classList.add('is-maximized');
+          if (workArea) workArea.classList.add('is-hidden');
+        });
+      }
+
+      // Collapse — 확장 상태에서 close 버튼 클릭 시
+      document.addEventListener('ai-assistant:collapse', function () {
+        aiPanel.classList.remove('is-maximized');
+        if (workArea) workArea.classList.remove('is-hidden');
+      });
+
+      // pill 탭 전환 + 카테고리 필터링
+      var pillTabs = document.querySelectorAll('.tabs--pill .tab--pill');
+      var appsGridEl = document.getElementById('apps-grid');
+
+      var appsEmptyEl = document.getElementById('apps-empty');
+
+      function toggleEmpty() {
+        if (!appsGridEl || !appsEmptyEl) return;
+        var visible = Array.from(appsGridEl.querySelectorAll('.apps-grid__card')).some(function (c) {
+          return c.style.display !== 'none';
+        });
+        appsEmptyEl.style.display = visible ? 'none' : 'flex';
+      }
+
+      function filterCards(filterValue) {
+        if (!appsGridEl) return;
+        var cards = appsGridEl.querySelectorAll('.apps-grid__card');
+        cards.forEach(function (card) {
+          if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        toggleEmpty();
+      }
+
+      pillTabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          pillTabs.forEach(function (t) { t.classList.remove('tab--active'); });
+          tab.classList.add('tab--active');
+          var filter = tab.getAttribute('data-filter') || 'all';
+          filterCards(filter);
+          // 검색 입력 초기화
+          var si = document.getElementById('app-search-input');
+          if (si) si.value = '';
+        });
+      });
+
+      // 앱 검색 (활성 탭 카테고리도 함께 필터)
+      var searchInput = document.getElementById('app-search-input');
+      if (searchInput && appsGridEl) {
+        var searchTimer = null;
+        searchInput.addEventListener('input', function () {
+          var query = searchInput.value.trim().toLowerCase();
+          var activeTab = document.querySelector('.tabs--pill .tab--pill.tab--active');
+          var activeFilter = activeTab ? (activeTab.getAttribute('data-filter') || 'all') : 'all';
+          var cards = appsGridEl.querySelectorAll('.apps-grid__card');
+
+          // 카드 필터는 즉시 반영
+          cards.forEach(function (card) {
+            var matchCategory = (activeFilter === 'all' || card.getAttribute('data-category') === activeFilter);
+            var name = card.querySelector('.apps-card__name').textContent.toLowerCase();
+            var desc = card.querySelector('.apps-card__desc').textContent.toLowerCase();
+            var matchSearch = (query === '' || name.indexOf(query) !== -1 || desc.indexOf(query) !== -1);
+            card.style.display = (matchCategory && matchSearch) ? '' : 'none';
+          });
+
+          // empty state는 타이핑 멈춘 뒤 400ms 후에 반영
+          clearTimeout(searchTimer);
+          searchTimer = setTimeout(toggleEmpty, 400);
+        });
+      }
+
+      // 프롬프트 입력 시 채팅 버블 UI 추가 및 AI 답변 Mock 표시
+      document.addEventListener('ai-assistant:prompt', function (e) {
+        var text = e.detail.text;
+        var aiPanel = document.querySelector('.ai-assistant');
+        if (!aiPanel) return;
+
+        var contentsContainer = aiPanel.querySelector('.ai-assistant__contents');
+        if (!contentsContainer) return;
+
+        if (!contentsContainer.classList.contains('ai-assistant__contents--chat')) {
+          contentsContainer.innerHTML = '';
+          contentsContainer.classList.add('ai-assistant__contents--chat');
+        }
+
+        var userBubble = document.createElement('div');
+        userBubble.className = 'ai-assistant__chat-bubble ai-assistant__chat-bubble--user';
+        userBubble.innerHTML = '<div class="ai-assistant__chat-bubble-content"><p class="ai-assistant__chat-bubble-text">' + text + '</p></div>';
+        contentsContainer.appendChild(userBubble);
+        contentsContainer.scrollTop = contentsContainer.scrollHeight;
+
+        setTimeout(function () {
+          var aiMessage = document.createElement('div');
+          var responseContent = '<p class="ai-assistant__chat-text">요청하신 내용("' + text + '")을 처리하고 있습니다. 어떻게 더 도와드릴까요?</p>';
+
+          aiMessage.innerHTML = '<div class="ai-assistant__chat-bubble ai-assistant__chat-bubble--ai"><div class="ai-assistant__chat-bubble-content">' + responseContent + '</div></div>';
+          contentsContainer.appendChild(aiMessage.firstElementChild);
+          contentsContainer.scrollTop = contentsContainer.scrollHeight;
+        }, 500);
+      });
+    })();
+  </script>
+
+</body>
+
+</html>
