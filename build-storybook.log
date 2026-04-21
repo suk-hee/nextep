@@ -1,0 +1,20 @@
+
+> nextep-design-system@1.0.0 build-storybook
+> storybook build --output-dir=/var/folders/f_/rz2kb35d759_svt3hh09nqq80000gn/T/chromatic--16861-tUIwO1juQ3rw
+
+[1m@storybook/core v8.6.18
+[22m
+info => Cleaning outputDir: [36m../../../../../var/folders/f_/rz2kb35d759_svt3hh09nqq80000gn/T/chromatic--16861-tUIwO1juQ3rw[39m
+[38;2;241;97;97mSB_CORE-SERVER_0006 (MainFileMissingError): No configuration files have been found in your configDir: [33m./.storybook[39m.
+Storybook needs a "main.js" file, please add it.
+
+You can pass a --config-dir flag to tell Storybook, where your main.js file is located at.
+
+More info: https://storybook.js.org/docs/configure
+[39m
+    at validateConfigurationFiles (./node_modules/@storybook/core/dist/common/index.cjs:16327:11)
+    at async loadMainConfig (./node_modules/@storybook/core/dist/common/index.cjs:17535:3)
+    at async buildStaticStandalone (./node_modules/@storybook/core/dist/core-server/index.cjs:36905:11)
+    at async withTelemetry (./node_modules/@storybook/core/dist/core-server/index.cjs:37269:12)
+    at async build (./node_modules/@storybook/core/dist/cli/bin/index.cjs:5837:3)
+    at async s.<anonymous> (./node_modules/@storybook/core/dist/cli/bin/index.cjs:6072:7)
