@@ -3,6 +3,7 @@ import '../styles/tokens.css';
 
 /** @type { import('@storybook/html').Preview } */
 const preview = {
+  tags: ['autodocs'],
   parameters: {
     backgrounds: {
       default: 'light',
