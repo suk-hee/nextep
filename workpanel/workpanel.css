@@ -1444,11 +1444,4 @@ body {
   .dynamic-panel__grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  .ai-assistant {
-    width: 480px;
-  }
-  .ai-assistant__btn {
-    width: 128px;
-    height: 128px;
-  }
 }

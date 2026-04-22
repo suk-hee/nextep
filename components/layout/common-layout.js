@@ -89,6 +89,7 @@ const CommonLayout = (function () {
     // AI Assistant 확장 이벤트
     document.addEventListener('ai-assistant:maximize', function () {
       if (!aiAssistant) return;
+      if (window.innerWidth <= 1200) return;
       aiAssistant.classList.add('is-maximized');
       var workArea = container.querySelector('.layout-content__work-area');
       if (workArea) workArea.classList.add('is-hidden');

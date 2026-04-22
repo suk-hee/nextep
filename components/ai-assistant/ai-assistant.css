@@ -797,6 +797,15 @@
 
 
 /* ─── 반응형 ─── */
+@media (max-width: 1600px) {
+  .ai-assistant {
+    width: 480px;
+  }
+  .ai-assistant__btn {
+    width: 128px;
+    height: 128px;
+  }
+}
 
 @media (max-width: 1440px) {
   .ai-assistant {
