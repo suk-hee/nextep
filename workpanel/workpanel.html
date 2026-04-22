@@ -272,7 +272,7 @@
                 </div>
 
                 <!-- weekly calendar (Weekly 토글 시 노출) -->
-                <div id="comp-weekly-calendar" class="bottom-box__calendar" style="display:none; height:740px;"></div>
+                <div id="comp-weekly-calendar" class="bottom-box__calendar" style="display:none;"></div>
 
               </div><!-- /task-box -->
 
@@ -601,6 +601,9 @@
             if (weeklyCalendarEl) weeklyCalendarEl.style.display = 'none';
             if (monthlyCalendar) monthlyCalendar.style.display = '';
             if (window.__monthlyCalendar) window.__monthlyCalendar.render();
+            var _wa = document.querySelector('.layout-content__work-area');
+            var _tb = document.querySelector('.top-box');
+            if (_wa && _tb) _wa.scrollTo({ top: _tb.offsetHeight, behavior: 'smooth' });
           } else if (view === 'weekly') {
             hideDailyViews();
             if (monthlyCalendar) monthlyCalendar.style.display = 'none';
@@ -703,6 +706,12 @@
                 events: window.__getWeeklyEvents()
               });
             }
+            /* 캘린더 렌더링 후 스크롤 (콘텐츠 높이 확보 후 실행) */
+            requestAnimationFrame(function () {
+              var _wa = document.querySelector('.layout-content__work-area');
+              var _tb = document.querySelector('.top-box');
+              if (_wa && _tb) _wa.scrollTo({ top: _tb.offsetHeight, behavior: 'smooth' });
+            });
           } else {
             showDailyViews();
           }

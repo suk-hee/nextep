@@ -50,7 +50,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
   background-color: var(--klds-color-white);
   border: 1px solid var(--klds-color-border-default);
   border-radius: var(--klds-radius-m); /* 16px */
@@ -182,7 +181,6 @@
 
 .weekly-calendar__scroll {
   flex: 1;
-  overflow-y: auto;
   min-height: 0;
   position: relative;
 }
