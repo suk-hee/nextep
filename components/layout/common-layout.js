@@ -286,6 +286,7 @@ const CommonLayout = (function () {
     if (!aiAssistant) return;
 
     const isNarrow = window.innerWidth <= BREAKPOINT;
+    var workArea = container.querySelector('.layout-content__work-area');
 
     if (isNarrow) {
       // 좁아졌을 때 — AI가 열려 있으면 자동으로 숨김
@@ -298,6 +299,9 @@ const CommonLayout = (function () {
       if (isAutoHidden && !isClosedByUser) {
         isAutoHidden = false;
         openAiAssistant();
+      } else if (!aiAssistant.classList.contains('is-hidden') && !aiAssistant.classList.contains('is-maximized')) {
+        // AI가 열려있고 maximize 아닌 상태면 work-area 복원
+        if (workArea) workArea.classList.remove('is-hidden');
       }
     }
   }
