@@ -114,4 +114,5 @@ var Snackbar = (function () {
 
 }());
 
+window.Snackbar = Snackbar;
 export { Snackbar };

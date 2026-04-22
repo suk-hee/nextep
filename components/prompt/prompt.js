@@ -199,4 +199,5 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports = Prompt;
 }
 
+window.Prompt = Prompt;
 export { Prompt };
