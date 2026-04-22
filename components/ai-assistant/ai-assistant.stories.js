@@ -106,19 +106,45 @@ function tmplGroup(title, items) {
   `;
 }
 
+const CB = `<label class="klds-checkbox"><input type="checkbox" class="klds-checkbox__input"><span class="klds-checkbox__box"><svg class="klds-checkbox__icon" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 3.5L4.5 7L11 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></label>`;
+
+function dataGroup(folder, children) {
+  return `
+    <div class="ai-assistant__data-group">
+      <div class="ai-assistant__data-item ai-assistant__data-item--1depth">
+        <span class="ai-assistant__data-caret" style="${ICON('ic-caret-down02')}"></span>
+        ${CB}
+        <span class="ai-assistant__data-folder" style="${ICON('ic-folder1')}"></span>
+        <span class="ai-assistant__data-label">${folder}</span>
+      </div>
+      ${children.map((c) => `
+      <div class="ai-assistant__data-item ai-assistant__data-item--2depth">
+        ${CB}
+        <span class="ai-assistant__data-sub-icon" style="${ICON('ic-caret-down-left')}"></span>
+        <span class="ai-assistant__data-label">${c}</span>
+      </div>`).join('')}
+    </div>
+  `;
+}
+
 const RIGHT_MENU = `
   <div class="ai-assistant__right-menu">
     <div class="tabs tabs--pill">
       <button class="tab tab--pill tab--active" data-tab="template"><span class="tab__label">Template</span></button>
       <button class="tab tab--pill" data-tab="my-data"><span class="tab__label">My Data</span></button>
     </div>
-    <div class="ai-assistant__right-content">
+    <div class="ai-assistant__right-content" data-panel="template">
       ${tmplGroup('마케팅', ['마케팅 자료 생성', '리뷰 분석'])}
       ${tmplGroup('메일', ['어제 수신한 메일 요약', '미확인 메일 요약', '메일 작성', '메일 검색'])}
       ${tmplGroup('인사', ['인사 평가', '개인별 업무 설정'])}
       ${tmplGroup('일정', ['오늘 일정', '내일 일정', '이번주 일정', '다음주 일정', '일정 검색'])}
       ${tmplGroup('재경', ['영업 실적 분석'])}
       ${tmplGroup('전자결재', ['결재 현황 조회', '기안 작성'])}
+    </div>
+    <div class="ai-assistant__right-content ai-assistant__right-content--my-data" data-panel="my-data" style="display:none">
+      ${dataGroup('KMSLab', ['케이엠에스랩 홈페이지', 'OneView'])}
+      ${dataGroup('디자인 인사이트', ['AI 코딩 도구 4가지', 'Design.md'])}
+      ${dataGroup('Share', ['Design System', '디자인 가이드'])}
     </div>
   </div>
 `;
@@ -132,11 +158,21 @@ const MAIN_PANEL = `
           ${EXPAND_SVG}
           <h1 class="ai-assistant__title">AI Assistant</h1>
         </button>
-        <button class="ai-assistant__btn-close" aria-label="닫기">
-          ${CLOSE_SVG}
-          <span class="ai-assistant__icon-collapse-btn"
-            style="${ICON('ic-minimize02')}"></span>
-        </button>
+        <div class="ai-assistant__header-actions">
+          <div class="ai-assistant__settings-wrap">
+            <button class="ai-assistant__btn-settings" aria-label="설정">
+              <span class="ai-assistant__settings-icon" style="${ICON('ic-slider01')}"></span>
+            </button>
+            <div class="ai-assistant__settings-menu klds-menu" role="menu">
+              <div class="klds-menu__item" role="menuitem"><span class="klds-menu__item-text">브리핑 설정</span></div>
+              <div class="klds-menu__item" role="menuitem"><span class="klds-menu__item-text">My Data 설정</span></div>
+            </div>
+          </div>
+          <button class="ai-assistant__btn-close" aria-label="닫기">
+            ${CLOSE_SVG}
+            <span class="ai-assistant__icon-collapse-btn" style="${ICON('ic-minimize02')}"></span>
+          </button>
+        </div>
       </header>
 
       <div class="ai-assistant__contents">
