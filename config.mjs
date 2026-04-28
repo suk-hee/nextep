@@ -45,12 +45,36 @@ StyleDictionary.registerParser({
   },
 });
 
+StyleDictionary.registerTransform({
+  name: 'name/figma',
+  type: 'name',
+  transform: (token, config) => {
+    const prefix = config?.prefix ? `${config.prefix}-` : '';
+    const segments = token.path
+      .filter((p, i, arr) => !(i === arr.length - 1 && p === '$root'))
+      .map((p) => p.replace(/^\$/, '').toLowerCase());
+    return prefix + segments.join('-');
+  },
+});
+
+StyleDictionary.registerTransformGroup({
+  name: 'css/figma',
+  transforms: [
+    'attribute/cti',
+    'name/figma',
+    'time/seconds',
+    'content/icon',
+    'size/rem',
+    'color/css',
+  ],
+});
+
 export default {
   source: ['tokens/primitive_tokens.json', 'tokens/semantic_tokens.json'],
   parsers: ['figma-token-parser'],
   platforms: {
     css: {
-      transformGroup: 'css',
+      transformGroup: 'css/figma',
       prefix: 'klds',
       buildPath: 'styles/',
       files: [
