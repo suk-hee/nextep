@@ -1,362 +1,186 @@
 /**
- * KLDS Design System - Design Tokens
- * 
- * 이 파일은 자동 생성되었습니다.
- * 직접 수정하지 마세요.
- * 
- * 원본 파일:
- * - primitive_tokens.json
- * - sementic_tokens.json
+ * Do not edit directly, this file was auto-generated.
  */
 
 :root {
-  /* ===========================
-     Typography
-  =========================== */
-  --klds-typography-fontfamily-text: "Pretendard";
-  --klds-typography-fontfamily-code: "Menlo";
-
-  /* Font Size */
-  --klds-typography-fontsize-xxxxl: 56px;
-  --klds-typography-fontsize-xxxl: 48px;
-  --klds-typography-fontsize-xxl: 32px;
-  --klds-typography-fontsize-xl: 24px;
-  --klds-typography-fontsize-l: 20px;
-  --klds-typography-fontsize-m: 18px;
-  --klds-typography-fontsize-s: 16px;
-  --klds-typography-fontsize-xs: 14px;
-  --klds-typography-fontsize-xxs: 12px;
-
-  /* Line Height */
-  --klds-typography-lineheight-xs: 1.100000023841858;
-  --klds-typography-lineheight-s: 1.2000000476837158;
-  --klds-typography-lineheight-m: 1.2999999523162842;
-  --klds-typography-lineheight-l: 1.399999976158142;
-  --klds-typography-lineheight-xl: 1.5;
-
-  /* Font Weight */
-  --klds-typography-fontweight-light: 300;
-  --klds-typography-fontweight-regular: 400;
-  --klds-typography-fontweight-medium: 500;
-  --klds-typography-fontweight-semibold: 600;
-  --klds-typography-fontweight-bold: 700;
-
-  /* ===========================
-     Size (Height tokens from sementic_tokens.json)
-  =========================== */
-  --klds-size-size1: 8px;
-  --klds-size-size2: 16px;
-  --klds-size-size3: 20px;
-  --klds-size-size4: 24px;
-  --klds-size-size5: 32px;
-  --klds-size-size6: 40px;
-  --klds-size-size7: 48px;
-  --klds-size-size8: 56px;
-  --klds-size-size9: 64px;
-  --klds-size-size10: 72px;
-
-  /* ===========================
-     Padding (from sementic_tokens.json)
-  =========================== */
-  --klds-padding-4xs: 2px;
-  --klds-padding-xxxs: 4px;
-  --klds-padding-xxs: 8px;
-  --klds-padding-xs: 10px;
-  --klds-padding-s: 12px;
-  --klds-padding-m: 16px;
-  --klds-padding-l: 20px;
-  --klds-padding-xl: 24px;
-  --klds-padding-xxl: 32px;
-  --klds-padding-xxxl: 40px;
-
-  /* ===========================
-     Gap (from sementic_tokens.json)
-  =========================== */
-  --klds-gap-xxxs: 2px;
-  --klds-gap-xxs: 4px;
-  --klds-gap-xs: 8px;
-  --klds-gap-s: 12px;
-  --klds-gap-m: 16px;
-  --klds-gap-l: 20px;
-  --klds-gap-xl: 24px;
-  --klds-gap-xxl: 32px;
-  --klds-gap-xxxl: 40px;
-  --klds-gap-4xl: 48px;
-  --klds-gap-5xl: 64px;
-  --klds-gap-max: 80px;
-
-  /* ===========================
-     Radius (from sementic_tokens.json)
-  =========================== */
-  --klds-radius-4xs: 2px;
-  --klds-radius-xxxs: 4px;
-  --klds-radius-xxs: 6px;
-  --klds-radius-xs: 8px;
-  --klds-radius-s: 12px;
-  --klds-radius-m: 16px;
-  --klds-radius-l: 20px;
-  --klds-radius-xl: 24px;
-  --klds-radius-xxl: 32px;
-  --klds-radius-circle: 9999px;
-
-  /* ===========================
-     Number (from primitive_tokens.json)
-  =========================== */
-  --klds-number-0: 0;
-  --klds-number-1: 1;
-  --klds-number-2: 2;
-  --klds-number-3: 4;
-  --klds-number-4: 6;
-  --klds-number-5: 8;
-  --klds-number-6: 10;
-  --klds-number-7: 12;
-  --klds-number-8: 16;
-  --klds-number-9: 20;
-  --klds-number-10: 24;
-  --klds-number-11: 28;
-  --klds-number-12: 32;
-  --klds-number-13: 36;
-  --klds-number-14: 40;
-  --klds-number-15: 44;
-  --klds-number-16: 48;
-  --klds-number-17: 56;
-  --klds-number-18: 64;
-  --klds-number-19: 72;
-  --klds-number-20: 80;
-
-  /* ===========================
-     Color - Primitive (from primitive_tokens.json)
-  =========================== */
-
-  /* Base */
-  --klds-color-white: #FFFFFF;
-  --klds-color-black: #121212;
-  --klds-color-critical: #FF4D4F;
-  --klds-color-warning: #FAAD14;
-  --klds-color-success: #389E0D;
-  --klds-color-hover: #F4F7FF;
-  --klds-color-checked: #F0F5FF;
-
-  /* Red */
-  --klds-color-red-red01: #FFF1F0;
-  --klds-color-red-red02: #FFCCC7;
-  --klds-color-red-red03: #FFA39E;
-  --klds-color-red-red04: #FF7875;
-  --klds-color-red-red05: #FF4D4F;
-  --klds-color-red-red06: #F5222D;
-  --klds-color-red-red07: #CF1322;
-  --klds-color-red-red08: #A8071A;
-  --klds-color-red-red9: #820014;
-  --klds-color-red-red10: #5C0011;
-
-  /* Orange */
-  --klds-color-orange-orange01: #FFFBE6;
-  --klds-color-orange-orange02: #FFF1B8;
-  --klds-color-orange-orange03: #FFE58F;
-  --klds-color-orange-orange04: #FFD666;
-  --klds-color-orange-orange05: #FFC53D;
-  --klds-color-orange-orange06: #FAAD14;
-  --klds-color-orange-orange07: #D48806;
-  --klds-color-orange-orange08: #AD6800;
-  --klds-color-orange-orange9: #874D00;
-  --klds-color-orange-orange10: #613400;
-
-  /* Yellow */
-  --klds-color-yellow-yellow01: #FDFFE0;
-  --klds-color-yellow-yellow02: #FFFFB8;
-  --klds-color-yellow-yellow03: #FFFB8F;
-  --klds-color-yellow-yellow04: #FFF566;
-  --klds-color-yellow-yellow05: #FFEC3D;
-  --klds-color-yellow-yellow06: #FADB14;
-  --klds-color-yellow-yellow07: #D4B106;
-  --klds-color-yellow-yellow08: #AD8B00;
-  --klds-color-yellow-yellow9: #876800;
-  --klds-color-yellow-yellow10: #614700;
-
-  /* Light Green */
-  --klds-color-lightgreen-lightgreen01: #FAFEDD;
-  --klds-color-lightgreen-lightgreen02: #F4FFB8;
-  --klds-color-lightgreen-lightgreen03: #EAFF8F;
-  --klds-color-lightgreen-lightgreen04: #D3F261;
-  --klds-color-lightgreen-lightgreen05: #BAE637;
-  --klds-color-lightgreen-lightgreen06: #A0D911;
-  --klds-color-lightgreen-lightgreen07: #7CB305;
-  --klds-color-lightgreen-lightgreen08: #5B8C00;
-  --klds-color-lightgreen-lightgreen09: #3F6600;
-  --klds-color-lightgreen-lightgreen10: #254000;
-
-  /* Green */
-  --klds-color-green-green01: #EFFEE1;
-  --klds-color-green-green02: #D9F7BE;
-  --klds-color-green-green03: #B7EB8F;
-  --klds-color-green-green04: #95DE64;
-  --klds-color-green-green05: #73D13D;
-  --klds-color-green-green06: #52C41A;
-  --klds-color-green-green07: #389E0D;
-  --klds-color-green-green08: #237804;
-  --klds-color-green-green9: #135200;
-  --klds-color-green-green10: #092B00;
-
-  /* Mint */
-  --klds-color-mint-mint01: #E1FAF6;
-  --klds-color-mint-mint02: #B5F5EC;
-  --klds-color-mint-mint03: #87E8DE;
-  --klds-color-mint-mint04: #5CDBD3;
-  --klds-color-mint-mint05: #36CFC9;
-  --klds-color-mint-mint06: #13C2C2;
-  --klds-color-mint-mint07: #08979C;
-  --klds-color-mint-mint08: #006D75;
-  --klds-color-mint-mint09: #00474F;
-  --klds-color-mint-mint10: #002329;
-
-  /* Light Blue */
-  --klds-color-lightblue-lightblue01: #E6F7FF;
-  --klds-color-lightblue-lightblue02: #BAE7FF;
-  --klds-color-lightblue-lightblue03: #91D5FF;
-  --klds-color-lightblue-lightblue04: #69C0FF;
-  --klds-color-lightblue-lightblue05: #40A9FF;
-  --klds-color-lightblue-lightblue06: #1890FF;
-  --klds-color-lightblue-lightblue07: #096DD9;
-  --klds-color-lightblue-lightblue08: #0050B3;
-  --klds-color-lightblue-lightblue9: #003A8C;
-  --klds-color-lightblue-lightblue10: #002766;
-
-  /* Blue */
-  --klds-color-blue-blue01: #F0F5FF;
-  --klds-color-blue-blue02: #D6E4FF;
-  --klds-color-blue-blue03: #ADC6FF;
-  --klds-color-blue-blue04: #85A5FF;
-  --klds-color-blue-blue05: #597EF7;
-  --klds-color-blue-blue06: #2F54EB;
-  --klds-color-blue-blue07: #1D39C4;
-  --klds-color-blue-blue08: #10239E;
-  --klds-color-blue-blue9: #061178;
-  --klds-color-blue-blue10: #030852;
-
-  /* Purple */
-  --klds-color-purple-purple01: #F9F0FF;
-  --klds-color-purple-purple02: #EFDBFF;
-  --klds-color-purple-purple03: #D3ADF7;
-  --klds-color-purple-purple04: #B37FEB;
-  --klds-color-purple-purple05: #9254DE;
-  --klds-color-purple-purple06: #722ED1;
-  --klds-color-purple-purple07: #531DAB;
-  --klds-color-purple-purple08: #391085;
-  --klds-color-purple-purple9: #22075E;
-  --klds-color-purple-purple10: #120338;
-
-  /* Pink */
-  --klds-color-pink-pink01: #FFF0F6;
-  --klds-color-pink-pink02: #FFD6E7;
-  --klds-color-pink-pink03: #FFADD2;
-  --klds-color-pink-pink04: #FF85C0;
-  --klds-color-pink-pink05: #F759AB;
-  --klds-color-pink-pink06: #EB2F96;
-  --klds-color-pink-pink07: #C41D7F;
-  --klds-color-pink-pink08: #9E1068;
-  --klds-color-pink-pink9: #780650;
-  --klds-color-pink-pink10: #520339;
-
-  /* Gray */
-  --klds-color-gray-gray01: #FAFAFA;
-  --klds-color-gray-gray02: #F3F4F6;
-  --klds-color-gray-gray03: #E5E7EB;
-  --klds-color-gray-gray04: #CBD0D7;
-  --klds-color-gray-gray05: #9CA3AF;
-  --klds-color-gray-gray06: #6B7280;
-  --klds-color-gray-gray07: #4B5563;
-  --klds-color-gray-gray08: #374151;
-  --klds-color-gray-gray09: #1F2937;
-  --klds-color-gray-gray10: #121212;
-
-  /* Volcano */
-  --klds-color-volcano-volcano01: #FFF2E8;
-  --klds-color-volcano-volcano02: #FFD8BF;
-  --klds-color-volcano-volcano03: #FFBB96;
-  --klds-color-volcano-volcano04: #FF9C6E;
-  --klds-color-volcano-volcano05: #FF7A45;
-  --klds-color-volcano-volcano06: #FA541C;
-  --klds-color-volcano-volcano07: #D4380D;
-  --klds-color-volcano-volcano08: #A8071A;
-  --klds-color-volcano-volcano09: #871400;
-  --klds-color-volcano-volcano10: #610B00;
-
-  /* Primary */
-  --klds-color-primary-primary01: #E7F3FB;
-  --klds-color-primary-primary02: #B9D3E4;
-  --klds-color-primary-primary03: #8BB3CC;
-  --klds-color-primary-primary04: #5C93B5;
-  --klds-color-primary-primary05: #2E739D;
-  --klds-color-primary-primary06: #005386;
-  --klds-color-primary-primary07: #024A77;
-  --klds-color-primary-primary08: #054267;
-  --klds-color-primary-primary09: #073958;
-  --klds-color-primary-primary10: #093048;
-  --klds-color-primary: #005386;
-
-  /* ===========================
-     Color - Semantic (from sementic_tokens.json)
-  =========================== */
-
-  /* Chart */
-  --klds-color-chart-pending: #FFC53D;
-  --klds-color-chart-progress: #36CFC9;
-  --klds-color-chart-delay: #F759AB;
-
-  /* Input */
-  --klds-color-input-surface: #FFFFFF;
-  --klds-color-input-border: #9CA3AF;
-  --klds-color-input-border-error: #F5222D;
-  --klds-color-input-border-disabled: #E5E7EB;
-  --klds-color-input-surface-disabled: #F3F4F6;
-  --klds-color-input-surface-primary: #005386;
-  --klds-color-input-border-primary: #005386;
-  --klds-color-input-surface-gray: #9CA3AF;
-
-  /* Text */
-  --klds-color-text-disabled: #9CA3AF;
-  --klds-color-text-message: #4B5563;
-  --klds-color-text-black: #121212;
-  --klds-color-text-primary: #005386;
-  --klds-color-text-critical: #F5222D;
-  --klds-color-text-placeholder: #9CA3AF;
-  --klds-color-text-gray: #374151;
-  --klds-color-text-white: #FFFFFF;
-
-  /* Icon */
-  --klds-color-icon-primary: #005386;
-  --klds-color-icon-disabled: #9CA3AF;
-  --klds-color-icon-gray: #374151;
-  --klds-color-icon-white: #FFFFFF;
-  --klds-color-icon-critical: #F5222D;
-  --klds-color-icon-warning: #FAAD14;
-  --klds-color-icon-success: #389E0D;
-  --klds-color-icon-black: #121212;
-  --klds-color-icon-lightgray: #9CA3AF;
-
-  /* Border */
-  --klds-color-border-default: #E5E7EB;
-  --klds-color-border-primary: #005386;
-
-  /* Background */
-  --klds-color-background-hover: #F3F4F6;
-  --klds-color-background-checked: #F0F5FF;
-
-  /* Button */
-  --klds-color-button-fill-surface: #005386;
-  --klds-color-button-fill-surface-hover: #024A77;
-  --klds-color-button-fill-surface-click: #024A77;
-  --klds-color-button-surface-disabled: #F3F4F6;
-  --klds-color-button-border-disabled: #E5E7EB;
-  --klds-color-button-tonal-surface: #F0F5FF;
-  --klds-color-button-tonal-border: #85A5FF;
-  --klds-color-button-tonal-surface-hover: #D6E4FF;
-  --klds-color-button-tonal-surface-click: #ADC6FF;
-  --klds-color-button-outline-border: #005386;
-  --klds-color-button-outline-border-hover: #005386;
-  --klds-color-button-outline-border-click: #005386;
-  --klds-color-button-outline-surface-click: #D6E4FF;
-  --klds-color-button-text-surface-hover: #F0F5FF;
-  --klds-color-button-text-surface-click: #D6E4FF;
-  --klds-color-button-outline-border-disabled: #E5E7EB;
+  --typography-font-family-text: Pretendard;
+  --typography-font-family-code: Menlo;
+  --typography-font-size-xxxxl: 56;
+  --typography-font-size-xxxl: 48;
+  --typography-font-size-xxl: 32;
+  --typography-font-size-xl: 24;
+  --typography-font-size-l: 20;
+  --typography-font-size-m: 18;
+  --typography-font-size-s: 16;
+  --typography-font-size-xs: 14;
+  --typography-font-size-xxs: 12;
+  --typography-line-height-xs: 1.100000023841858;
+  --typography-line-height-s: 1.2000000476837158;
+  --typography-line-height-m: 1.2999999523162842;
+  --typography-line-height-l: 1.399999976158142;
+  --typography-line-height-xl: 1.5;
+  --typography-font-weight-light: 300;
+  --typography-font-weight-regular: 400;
+  --typography-font-weight-medium: 500;
+  --typography-font-weight-semibold: 600;
+  --typography-font-weight-bold: 700;
+  --color-white: [object Object];
+  --color-hover: [object Object];
+  --color-red-red01: [object Object];
+  --color-red-red02: [object Object];
+  --color-red-red03: [object Object];
+  --color-red-red04: [object Object];
+  --color-red-red05: [object Object];
+  --color-red-red06: [object Object];
+  --color-red-red07: [object Object];
+  --color-red-red08: [object Object];
+  --color-red-red9: [object Object];
+  --color-red-red10: [object Object];
+  --color-orange-orange01: [object Object];
+  --color-orange-orange02: [object Object];
+  --color-orange-orange03: [object Object];
+  --color-orange-orange04: [object Object];
+  --color-orange-orange05: [object Object];
+  --color-orange-orange06: [object Object];
+  --color-orange-orange07: [object Object];
+  --color-orange-orange08: [object Object];
+  --color-orange-orange9: [object Object];
+  --color-orange-orange10: [object Object];
+  --color-yellow-yellow01: [object Object];
+  --color-yellow-yellow02: [object Object];
+  --color-yellow-yellow03: [object Object];
+  --color-yellow-yellow04: [object Object];
+  --color-yellow-yellow05: [object Object];
+  --color-yellow-yellow06: [object Object];
+  --color-yellow-yellow07: [object Object];
+  --color-yellow-yellow08: [object Object];
+  --color-yellow-yellow9: [object Object];
+  --color-yellow-yellow10: [object Object];
+  --color-lightgreen-lightgreen01: [object Object];
+  --color-lightgreen-lightgreen02: [object Object];
+  --color-lightgreen-lightgreen03: [object Object];
+  --color-lightgreen-lightgreen04: [object Object];
+  --color-lightgreen-lightgreen05: [object Object];
+  --color-lightgreen-lightgreen06: [object Object];
+  --color-lightgreen-lightgreen07: [object Object];
+  --color-lightgreen-lightgreen08: [object Object];
+  --color-lightgreen-lightgreen09: [object Object];
+  --color-lightgreen-lightgreen10: [object Object];
+  --color-green-green01: [object Object];
+  --color-green-green02: [object Object];
+  --color-green-green03: [object Object];
+  --color-green-green04: [object Object];
+  --color-green-green05: [object Object];
+  --color-green-green06: [object Object];
+  --color-green-green07: [object Object];
+  --color-green-green08: [object Object];
+  --color-green-green9: [object Object];
+  --color-green-green10: [object Object];
+  --color-mint-mint01: [object Object];
+  --color-mint-mint02: [object Object];
+  --color-mint-mint03: [object Object];
+  --color-mint-mint04: [object Object];
+  --color-mint-mint05: [object Object];
+  --color-mint-mint06: [object Object];
+  --color-mint-mint07: [object Object];
+  --color-mint-mint08: [object Object];
+  --color-mint-mint09: [object Object];
+  --color-mint-mint10: [object Object];
+  --color-lightblue-lightblue01: [object Object];
+  --color-lightblue-lightblue02: [object Object];
+  --color-lightblue-lightblue03: [object Object];
+  --color-lightblue-lightblue04: [object Object];
+  --color-lightblue-lightblue05: [object Object];
+  --color-lightblue-lightblue06: [object Object];
+  --color-lightblue-lightblue07: [object Object];
+  --color-lightblue-lightblue08: [object Object];
+  --color-lightblue-lightblue9: [object Object];
+  --color-lightblue-lightblue10: [object Object];
+  --color-blue-blue01: [object Object];
+  --color-blue-blue02: [object Object];
+  --color-blue-blue03: [object Object];
+  --color-blue-blue04: [object Object];
+  --color-blue-blue05: [object Object];
+  --color-blue-blue06: [object Object];
+  --color-blue-blue07: [object Object];
+  --color-blue-blue08: [object Object];
+  --color-blue-blue9: [object Object];
+  --color-blue-blue10: [object Object];
+  --color-purple-purple01: [object Object];
+  --color-purple-purple02: [object Object];
+  --color-purple-purple03: [object Object];
+  --color-purple-purple04: [object Object];
+  --color-purple-purple05: [object Object];
+  --color-purple-purple06: [object Object];
+  --color-purple-purple07: [object Object];
+  --color-purple-purple08: [object Object];
+  --color-purple-purple9: [object Object];
+  --color-purple-purple10: [object Object];
+  --color-pink-pink01: [object Object];
+  --color-pink-pink02: [object Object];
+  --color-pink-pink03: [object Object];
+  --color-pink-pink04: [object Object];
+  --color-pink-pink05: [object Object];
+  --color-pink-pink06: [object Object];
+  --color-pink-pink07: [object Object];
+  --color-pink-pink08: [object Object];
+  --color-pink-pink9: [object Object];
+  --color-pink-pink10: [object Object];
+  --color-gray-gray01: [object Object];
+  --color-gray-gray02: [object Object];
+  --color-gray-gray03: [object Object];
+  --color-gray-gray04: [object Object];
+  --color-gray-gray05: [object Object];
+  --color-gray-gray06: [object Object];
+  --color-gray-gray07: [object Object];
+  --color-gray-gray08: [object Object];
+  --color-gray-gray09: [object Object];
+  --color-gray-gray10: [object Object];
+  --color-volcano-volcano01: [object Object];
+  --color-volcano-volcano02: [object Object];
+  --color-volcano-volcano03: [object Object];
+  --color-volcano-volcano04: [object Object];
+  --color-volcano-volcano05: [object Object];
+  --color-volcano-volcano06: [object Object];
+  --color-volcano-volcano07: [object Object];
+  --color-volcano-volcano08: [object Object];
+  --color-volcano-volcano09: [object Object];
+  --color-volcano-volcano10: [object Object];
+  --color-primary-primary01: [object Object];
+  --color-primary-primary02: [object Object];
+  --color-primary-primary03: [object Object];
+  --color-primary-primary04: [object Object];
+  --color-primary-primary05: [object Object];
+  --color-primary-primary06: [object Object];
+  --color-primary-primary07: [object Object];
+  --color-primary-primary08: [object Object];
+  --color-primary-primary09: [object Object];
+  --color-primary-primary10: [object Object];
+  --number-0: 0;
+  --number-1: 1;
+  --number-2: 2;
+  --number-3: 4;
+  --number-4: 6;
+  --number-5: 8;
+  --number-6: 10;
+  --number-7: 12;
+  --number-8: 16;
+  --number-9: 20;
+  --number-10: 24;
+  --number-11: 28;
+  --number-12: 32;
+  --number-13: 36;
+  --number-14: 40;
+  --number-15: 44;
+  --number-16: 48;
+  --number-17: 56;
+  --number-18: 64;
+  --number-19: 72;
+  --number-20: 80;
+  --color-black: var(--color-gray-gray10);
+  --color-critical: var(--color-red-red05);
+  --color-warning: var(--color-orange-orange06);
+  --color-success: var(--color-green-green07);
+  --color-checked: var(--color-blue-blue01);
+  --color-primary-root: var(--color-primary-primary06);
 }
