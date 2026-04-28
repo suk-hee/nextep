@@ -1,0 +1,37 @@
+name: Sync Design Tokens
+on:
+  push:
+    paths:
+      - 'tokens/**' # tokens 폴더 내의 파일이 변경될 때만 실행 (효율적)
+
+jobs:
+  build-tokens:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install style-dictionary
+
+      - name: Build design tokens
+        run: npx style-dictionary build --config config.json
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code styles/tokens.css || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and Push changes
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add styles/tokens.css
+          git commit -m "style: Figma 디자인 토큰 업데이트 (Primitive & Semantic)"
+          git push

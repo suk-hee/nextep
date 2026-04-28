@@ -1,0 +1,21 @@
+{
+  "source": [
+    "tokens/primitive_tokens.json",
+    "tokens/semantic_tokens.json"
+  ],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "styles/",
+      "files": [
+        {
+          "destination": "tokens.css",
+          "format": "css/variables",
+          "options": {
+            "outputReferences": true 
+          }
+        }
+      ]
+    }
+  }
+}
