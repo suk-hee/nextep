@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - 'tokens/**'
+      - 'config.mjs'
+  workflow_dispatch:
 
 # 1. 권한 추가: 이 부분이 없으면 push 단계에서 128 에러가 납니다.
 permissions:
