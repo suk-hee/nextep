@@ -3,27 +3,27 @@
  */
 
 :root {
-  --klds-typography-font-family-text: Pretendard;
-  --klds-typography-font-family-code: Menlo;
-  --klds-typography-font-size-xxxxl: 56px;
-  --klds-typography-font-size-xxxl: 48px;
-  --klds-typography-font-size-xxl: 32px;
-  --klds-typography-font-size-xl: 24px;
-  --klds-typography-font-size-l: 20px;
-  --klds-typography-font-size-m: 18px;
-  --klds-typography-font-size-s: 16px;
-  --klds-typography-font-size-xs: 14px;
-  --klds-typography-font-size-xxs: 12px;
-  --klds-typography-line-height-xs: 1.100000023841858;
-  --klds-typography-line-height-s: 1.2000000476837158;
-  --klds-typography-line-height-m: 1.2999999523162842;
-  --klds-typography-line-height-l: 1.399999976158142;
-  --klds-typography-line-height-xl: 1.5;
-  --klds-typography-font-weight-light: 300;
-  --klds-typography-font-weight-regular: 400;
-  --klds-typography-font-weight-medium: 500;
-  --klds-typography-font-weight-semibold: 600;
-  --klds-typography-font-weight-bold: 700;
+  --klds-typography-fontfamily-text: Pretendard;
+  --klds-typography-fontfamily-code: Menlo;
+  --klds-typography-fontsize-xxxxl: 56px;
+  --klds-typography-fontsize-xxxl: 48px;
+  --klds-typography-fontsize-xxl: 32px;
+  --klds-typography-fontsize-xl: 24px;
+  --klds-typography-fontsize-l: 20px;
+  --klds-typography-fontsize-m: 18px;
+  --klds-typography-fontsize-s: 16px;
+  --klds-typography-fontsize-xs: 14px;
+  --klds-typography-fontsize-xxs: 12px;
+  --klds-typography-lineheight-xs: 1.100000023841858;
+  --klds-typography-lineheight-s: 1.2000000476837158;
+  --klds-typography-lineheight-m: 1.2999999523162842;
+  --klds-typography-lineheight-l: 1.399999976158142;
+  --klds-typography-lineheight-xl: 1.5;
+  --klds-typography-fontweight-light: 300;
+  --klds-typography-fontweight-regular: 400;
+  --klds-typography-fontweight-medium: 500;
+  --klds-typography-fontweight-semibold: 600;
+  --klds-typography-fontweight-bold: 700;
   --klds-color-white: #ffffff;
   --klds-color-hover: #f4f7ff;
   --klds-color-red-red01: #fff1f0;
