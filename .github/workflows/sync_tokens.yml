@@ -21,10 +21,10 @@ jobs:
           node-version: '20' # 경고 메시지에 따라 Node 20 이상 권장
 
       - name: Install dependencies
-        run: npm install style-dictionary
+        run: npm install style-dictionary@^4
 
       - name: Build design tokens
-        run: npx style-dictionary build --config config.json
+        run: npx style-dictionary build --config config.mjs
 
       - name: Check for changes
         id: git-check
