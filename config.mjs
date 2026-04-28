@@ -1,6 +1,6 @@
 import StyleDictionary from 'style-dictionary';
 
-const PX_PATH_KEYS = new Set(['fontsize', 'size', 'number', 'gap']);
+const PX_PATH_KEYS = new Set(['fontsize', 'size', 'number', 'gap', 'padding', 'radius']);
 
 const transformFigmaTokens = (obj, path = []) => {
   if (!obj || typeof obj !== 'object') return;
