@@ -15,12 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4 # v3 -> v4 업데이트
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4 # v3 -> v4 업데이트
+        uses: actions/setup-node@v5
         with:
-          node-version: '20' # 경고 메시지에 따라 Node 20 이상 권장
+          node-version: '22'
 
       - name: Install dependencies
         run: npm install style-dictionary@^4

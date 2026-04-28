@@ -5,6 +5,13 @@ const PX_PATH_KEYS = new Set(['fontsize', 'size', 'number', 'gap', 'padding', 'r
 const transformFigmaTokens = (obj, path = []) => {
   if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return;
 
+  if (obj.$root && typeof obj.$root === 'object' && '$value' in obj.$root) {
+    obj.$value = obj.$root.$value;
+    if (obj.$root.$type !== undefined) obj.$type = obj.$root.$type;
+    if (obj.$root.$extensions !== undefined) obj.$extensions = obj.$root.$extensions;
+    delete obj.$root;
+  }
+
   if ('$value' in obj) {
     if (
       obj.$type === 'color' &&
@@ -22,10 +29,10 @@ const transformFigmaTokens = (obj, path = []) => {
     if (typeof obj.$value === 'string' && /^\{.+\}$/.test(obj.$value)) {
       obj.$value = obj.$value.toLowerCase();
     }
-    return;
   }
 
   for (const key of Object.keys(obj)) {
+    if (key.startsWith('$')) continue;
     const lowerKey = key.toLowerCase();
     transformFigmaTokens(obj[key], [...path, lowerKey]);
     if (lowerKey !== key && !(lowerKey in obj)) {
@@ -45,36 +52,12 @@ StyleDictionary.registerParser({
   },
 });
 
-StyleDictionary.registerTransform({
-  name: 'name/figma',
-  type: 'name',
-  transform: (token, config) => {
-    const prefix = config?.prefix ? `${config.prefix}-` : '';
-    const segments = token.path
-      .filter((p, i, arr) => !(i === arr.length - 1 && p === '$root'))
-      .map((p) => p.replace(/^\$/, '').toLowerCase());
-    return prefix + segments.join('-');
-  },
-});
-
-StyleDictionary.registerTransformGroup({
-  name: 'css/figma',
-  transforms: [
-    'attribute/cti',
-    'name/figma',
-    'time/seconds',
-    'content/icon',
-    'size/rem',
-    'color/css',
-  ],
-});
-
 export default {
   source: ['tokens/primitive_tokens.json', 'tokens/semantic_tokens.json'],
   parsers: ['figma-token-parser'],
   platforms: {
     css: {
-      transformGroup: 'css/figma',
+      transformGroup: 'css',
       prefix: 'klds',
       buildPath: 'styles/',
       files: [
