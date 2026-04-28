@@ -1,5 +1,7 @@
 import StyleDictionary from 'style-dictionary';
 
+const PX_PATH_KEYS = new Set(['fontsize', 'size', 'number', 'gap']);
+
 const transformFigmaTokens = (obj, path = []) => {
   if (!obj || typeof obj !== 'object') return;
   for (const key of Object.keys(obj)) {
@@ -14,8 +16,8 @@ const transformFigmaTokens = (obj, path = []) => {
     ) {
       node.$value = node.$value.hex;
     } else if (
-      nextPath.includes('fontSize') &&
-      typeof node.$value === 'number'
+      typeof node.$value === 'number' &&
+      nextPath.some((p) => PX_PATH_KEYS.has(p.toLowerCase()))
     ) {
       node.$value = `${node.$value}px`;
     } else {
@@ -40,6 +42,7 @@ export default {
   platforms: {
     css: {
       transformGroup: 'css',
+      prefix: 'klds',
       buildPath: 'styles/',
       files: [
         {
