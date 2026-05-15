@@ -24,7 +24,8 @@
   - `SideBar` → `side-bar`
   - `Main Button` → `main-button`
   - `Card_Item` → `card-item`
-- **html 구조화 규칙** : 내부 요소는 BEM(Block Element Modifier) 방식을 권장하되, 별도 지시가 없다면 하이픈(`-`)을 활용한 계층 구조로 작성.  
+- **html 구조화 규칙** : 내부 요소는 BEM 방식을 권장하되, 모든 클래스명은 klds- 접두사를 붙여 klds-block__element--modifier 형식으로 작성. 
+- **계층 구조** : 별도 지시가 없다면 하이픈(-)을 활용해 계층을 구분하며, 의미가 명확하게 드러나도록 작성. 
 
 ## 4. 금지 사항 (위반 시 재작업)
 - **외부 프레임워크 금지**: Tailwind, Bootstrap 등 절대 사용 금지.
