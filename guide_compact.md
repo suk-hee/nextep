@@ -18,15 +18,23 @@
   - `layout.gap` -> `gap` (null이면 작성 금지)
 - **색상 변환**: RGB는 HEX로 변환 후 `tokens.css`에서 검색하여 매핑.
 
-## 3. 금지 사항 (위반 시 재작업)
+## 3. 네이밍 컨벤션
+- **CSS 클래스명 변환 (Kebab-case)**: Figma의 `PascalCase` 또는 `Space Case` 명칭을 모두 **'kebab-case'**로 변환하여 클래스명을 생성.
+- **변환 예시:** :
+  - `SideBar` → `side-bar`
+  - `Main Button` → `main-button`
+  - `Card_Item` → `card-item`
+- **html 구조화 규칙** : 내부 요소는 BEM(Block Element Modifier) 방식을 권장하되, 별도 지시가 없다면 하이픈(`-`)을 활용한 계층 구조로 작성.  
+
+## 4. 금지 사항 (위반 시 재작업)
 - **외부 프레임워크 금지**: Tailwind, Bootstrap 등 절대 사용 금지.
 - **아이콘**: 반드시 `assets/icons/` 내 기존 SVG 재사용 (외부 CDN 금지).
 - **임의 속성**: 피그마 노드에 없는 `hover`, `shadow`, `transition` 임의 추가 금지.
 
-## 4. 컴포넌트 재사용
+## 5. 컴포넌트 재사용
 - 새로운 코드 작성 전 `components/` 폴더 내 기존 파일 최우선 참조.
 
-## 5. 토큰 및 시간 최적화 (Efficiency)
+## 6. 토큰 및 시간 최적화 (Efficiency)
 - **Time Limit**: 분석(Figma MCP 호출 등)이 30초 이상 지속되거나 루프가 반복되면, 즉시 중단하고 현재까지 파악된 정보만 요약하여 보고할 것.
 - **Partial Analysis**: 전체 구조 파악이 어려울 경우, 최상위 레이아웃(Depth 1-2)만 먼저 보고하고 사용자의 추가 지시를 기다릴 것.
 - **Stop & Query**: 분석 중 모호한 점이 발생하여 3회 이상 자가 수정을 반복하면 작업을 멈추고 사용자에게 질문할 것.
